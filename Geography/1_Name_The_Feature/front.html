@@ -1,0 +1,288 @@
+<div id="txt" style="color: white"></div>
+<canvas id="canvas" width="100%" height="100%"></canvas>
+<input type="text" autofocus id="type_input">
+<audio id="audio" src="">
+
+<script>
+var injectScript = (src) => {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+};
+(async () => {
+
+var typed_cities = [];
+var type_element = document.getElementById("type_input");
+var text_element = document.getElementById("txt");
+var back_element = document.getElementById("back");
+var on_back = !!back_element;
+if(on_back){
+  back_element.remove();
+  type_element.remove();
+}
+
+var feature_name = ("{{Name}}".startsWith("(")) ? "Minya" : "{{Name}}";
+var country_name = ("{{Country}}".startsWith("(")) ? "Egypt" : "{{Country}}";
+
+var is_city_question = country_name === "";
+
+if(is_city_question){
+    await injectScript('geog_cities.js');
+
+    var feature = -1, feature_no = -1;
+    for(var i = 0; i < geojson.features.length; i++){
+        if(geojson.features[i].properties.name == feature_name || geojson.features[i].properties.name_en == feature_name){
+            feature_no = i;
+            feature = geojson.features[i];
+            break;
+        }
+    }
+    await injectScript('geog_countries.js');
+    if(countries_with_maps.indexOf(feature.properties.country) !== -1){
+        await injectScript('geog_'+feature.properties.country+'.js');
+    }
+}
+
+else {
+    await injectScript('geog_'+country_name+'.js');
+    for(var i = 0; i < countryjson.features.length; i++){
+        if(countryjson.features[i].properties.name == feature_name || countryjson.features[i].properties.name_en == feature_name){
+            feature_no = i;
+            feature = countryjson.features[i];
+            break;
+        }
+    }
+}
+
+play_audio = function (str){
+ var audioElement = document.getElementById("audio");
+ audioElement.src = "geogaudio_" + str + ".mp3";
+ audioElement.autoplay = true;
+ audioElement.addEventListener("error", function(){
+  audioElement.src = "geogaudio_" + str + ".flac";
+  audioElement.autoplay = true;
+ });
+}
+
+play_feature_if_on_back = function(){
+ if(on_back){
+  play_audio(feature.properties.name);
+ }
+}
+
+play_feature_if_on_back();
+
+document.addEventListener("mousedown", play_feature_if_on_back);
+document.addEventListener("touchstart", play_feature_if_on_back);
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+var crowdedness = 0;
+
+render = function(){
+ if(is_city_question){
+  drawPoints();
+  crowdedness -= zoom.m;
+  dist_to_closest=Math.sqrt(1/crowdedness);
+  zoom.z = .1*dist_to_closest;
+ }
+ else drawShape(feature);
+ var parentDims = canvas.parentElement.getBoundingClientRect();
+ canvas.width = parentDims.width;
+ canvas.height = parentDims.height;
+ drawMap();
+ if(typeof countryjson !== "undefined") drawShapes();
+ if(is_city_question) drawPoints();
+}
+
+var zoom = is_city_question ? {x:lon_to_x(feature.geometry.coordinates[0]), y:lat_to_y(feature.geometry.coordinates[1]), z:.5} : {x: 1, y: 1, z: .5};
+zoom.m = 0;
+
+var maps = ['political', 'coastline', 'earth', 'night'];
+var exts = ['.svg', '.jpg', '.jpg', '.jpg'];
+var map_no = 0;
+var images = [];
+for(var i = 0; i < maps.length; i++){
+ images[i] = new Image;
+ if(i == map_no) images[i].onload = render;
+ images[i].src = "geog_" + maps[i] + exts[i];
+}
+var image = images[map_no];
+
+function drawPoints() {
+    crowdedness = 0;
+    ctx.textAlign = "center"
+    for (var i = 0; i < geojson.features.length; i++) {
+        f = geojson.features[i];
+        drawTriplePoint(f);
+    }
+}
+function drawShapes() {
+    for (i in countryjson.features){
+        var shape = countryjson.features[i];
+        drawShape(shape);
+    }
+}
+
+function lat_to_y(lat){
+ return -lat/180+.5;
+}
+function lon_to_x(lon){
+ return lon/360+.5;
+}
+function bound(val, min, max){
+ return Math.min(Math.max(val, min), max);
+}
+function drawTriplePoint(f){
+    var highlight = f == feature
+    var coords = f.geometry.coordinates;
+    drawParticle(coords[0], coords[1], highlight, f.properties.capitaltype);
+    drawParticle(coords[0]-360, coords[1], highlight, f.properties.capitaltype);
+    drawParticle(coords[0]+360, coords[1], highlight, f.properties.capitaltype);
+    if((on_back || typed_cities.includes(f.properties.name)) && Math.hypot(coords[0]-feature.geometry.coordinates[0],coords[1]-feature.geometry.coordinates[1]) < zoom.z*300){
+      if(highlight){
+        ctx.fillStyle = "#f66"
+        ctx.font = "24px Trebuchet MS";
+        ctx.textAlign = "center"
+        ctx.fillText(feature.properties.name, canvas.width/2, canvas.height/2+34);
+        ctx.font = "16px Trebuchet MS";
+        var write_state_name = feature.properties.state !=="" && typeof feature.properties.state !== "undefined";
+        var text = write_state_name ? feature.properties.state : feature.properties.country;
+        ctx.fillText(text, canvas.width/2, canvas.height/2+54);
+      }else{
+        ctx.font = "16px Trebuchet MS";
+        x = goob(lon_to_x(coords[0]),true);
+        y = goob(lat_to_y(coords[1]),false);
+        ctx.fillText(f.properties.name, x, y+18);
+      }
+    }
+}
+function drawParticle(lon, lat, red, capitaltype) {
+    ctx.lineWidth = 3;
+    ctx.fillStyle = ctx.strokeStyle = red?"#f66":"#0aa";
+    shift = bound(1/zoom.z, 2, 8);
+    x = goob(lon_to_x(lon),true);
+    y = goob(lat_to_y(lat),false);
+    ctx.beginPath();
+    if(capitaltype == "national"){
+        ctx.arc(x, y, shift*.75, 0, 2*Math.PI, false);
+        ctx.stroke();
+    } else if(capitaltype == "state"){
+        ctx.arc(x, y, shift*.5, 0, 2*Math.PI, false);
+        ctx.stroke();
+    } else {
+        ctx.arc(x, y, shift/2, 0, 2*Math.PI, false);
+        ctx.fill();
+    }
+    var dx = (canvas.width/2 - x)*zoom.z/4;
+    var dy = (canvas.height/2 - y)*zoom.z/4;
+    var hyp = Math.hypot(dy, dx);
+    var c = 1/(dx*dx+dy*dy);
+    if(hyp != 0){
+      crowdedness += c;
+      zoom.m = Math.max(c, zoom.m);
+    }
+}
+function drawShape(obj) {
+    var fill = obj === feature;
+
+    var multi = obj.geometry.type == "MultiPolygon";
+    var multishape = obj.geometry.coordinates;
+
+    if(!multi) multishape = [multishape];
+    ctx.lineWidth = fill?.5:.2;
+    ctx.fillStyle = "red"
+    ctx.strokeStyle = fill ? "red":"black";
+    init = false;
+    var maxx = -1000, maxy = -1000, minx = 1000, miny = 1000;
+    for(var i in multishape){
+        ctx.beginPath();
+        shape = multishape[i][0];
+        for(var j in shape){
+            point = shape[j];
+            lon = point[0];
+            lat = point[1];
+            ltx = lon_to_x(lon);
+            lty = lat_to_y(lat);
+            x = goob(ltx,true);
+            y = goob(lty,false);
+
+            maxx = Math.max(maxx, ltx);
+            maxy = Math.max(maxy, lty);
+            minx = Math.min(minx, ltx);
+            miny = Math.min(miny, lty);
+
+            if(init) ctx.lineTo(x, y);
+            else     ctx.moveTo(x, y);
+            init = true;
+        }
+        ctx.stroke();
+        if(fill) {ctx.globalAlpha=.25;ctx.fill();ctx.globalAlpha=1;}
+    }
+
+    var center_x = (maxx+minx)/2;
+    var center_y = (maxy+miny)/2;
+    if (fill) {
+        zoom.x = center_x;
+        zoom.y = center_y;
+        zoom.z = Math.pow(Math.max(maxx - minx, maxy - miny), .5) * .3;
+    }
+    if((on_back) || typed_cities.includes(obj.properties.name)){
+        ctx.fillStyle = "#f66"
+        ctx.font = (obj === feature? 18: 14)+"px Trebuchet MS";
+        ctx.textAlign = "center"
+        ctx.fillText(obj.properties.name, goob(center_x, true), goob(center_y, false)+5);
+    }
+}
+
+function drawMap() {
+  for (let i = -1; i <= 1; i++) {
+    const tlx = goob(0 + i, true);
+    const tly = goob(0, false);
+    const brx = goob(1 + i, true);
+    const bry = goob(1, false);
+    ctx.drawImage(image, tlx, tly, brx - tlx, bry - tly);
+  }
+}
+
+function goob(point, isX) {
+  const zoomCoordinate = isX ? zoom.x : zoom.y;
+  const canvasDimension = isX ? canvas.width : canvas.height;
+  const sz = isX ? 600 : 300;
+  return ((point - zoomCoordinate) * 1 / zoom.z) * sz + 0.5 * canvasDimension;
+}
+
+function sanitizeString(str) {
+  // Remove diacritics and convert to lowercase
+  str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  
+  // Remove non-alphabetical characters
+  str = str.replace(/[^a-z]/g, "");
+  
+  return str.length == 0 ? Math.random() : str;
+}
+
+type_element.focus();
+type_element.addEventListener("keypress", function() {
+  var thisjson = is_city_question ? geojson : countryjson;
+  if (event.key !== "Enter") return;
+  var currentInput = this.value;
+  if(currentInput === "")type_element.blur();
+  else for(i in thisjson.features){
+    geo = thisjson.features[i];
+    if (sanitizeString(geo.properties.name) === sanitizeString(currentInput) || sanitizeString(geo.properties.name_en) === sanitizeString(currentInput)) {
+      play_audio(geo.properties.name);
+      typed_cities.push(geo.properties.name);
+      this.value = "";
+      render();
+    }
+  }
+});
+
+})();
+</script>

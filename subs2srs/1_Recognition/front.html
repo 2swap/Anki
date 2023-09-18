@@ -1,0 +1,19 @@
+<div class="front">
+  <div id="subs2srs_pic">
+    {{Pic1}}
+  </div>
+  <div id="translation" class="translation-wrapper" style="display: none;">
+    {{Audio}}
+  </div>
+</div>
+
+<script>
+var id = window.setTimeout(function() {}, 0);
+while (id--) {
+    window.clearTimeout(id); // will do nothing if no timeout with id is present
+}
+  if(document.getElementById("back")) document.getElementById("translation").style.display = "block";
+  setTimeout(function() {
+    document.getElementById("subs2srs_pic").innerHTML = `{{Pic2}}`;
+  }, 1800);
+</script>

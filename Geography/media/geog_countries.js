@@ -1,0 +1,26 @@
+var countries_with_maps = [
+	"Brazil",
+	"Canada",
+	"Chile",
+	"China",
+	"Egypt",
+	"Germany",
+	"India",
+	"Japan",
+	"Malaysia",
+	"México",
+	"Nigeria",
+	"Pakistan",
+	"Philippines",
+	"South Africa",
+	"España",
+	"USA",
+
+	"Australia",
+	"Argentina",
+	"Peru",
+	"Bangladesh",
+	"Indonesia",
+	"France",
+	"UK"
+]

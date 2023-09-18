@@ -1,0 +1,21 @@
+.card.nightMode, .card {
+    background-color: black;
+}
+
+.container {
+    position:absolute;
+    top:30px;
+    bottom:30px;
+    left:30px;
+    right:30px
+}
+
+.canvas{
+    position:absolute;
+}
+
+.canvas, .card.nightMode, .card, .container {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}

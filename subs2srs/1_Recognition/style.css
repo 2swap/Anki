@@ -1,0 +1,18 @@
+@import url("_2swap_anki.css");
+
+
+#subs2srs_pic{
+  max-width: 70%;
+  max-height: 100%;
+}
+.front{
+  margin:10px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.translation-wrapper {
+  max-width: 100%;
+  max-height: 100%;
+}
