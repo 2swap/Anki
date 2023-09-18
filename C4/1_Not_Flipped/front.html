@@ -1,0 +1,175 @@
+    <center>
+    <canvas id="canvas" width="350px" height="350px"></canvas>
+    <a href="" id="link"><h2 id="text"></h2></a>
+    <h2 id="notes"></h2>
+    </center>
+    <!--div id="flip"--!>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+var w = 7;
+var h = 6;
+
+var flip = document.getElementById("flip");
+var back = document.getElementById("back");
+var link = document.getElementById("link");
+var text = document.getElementById("text");
+var notes = document.getElementById("notes");
+
+if(back) notes.innerHTML = "{{Notes}}";
+
+// hack to clear all timeouts
+var id = setTimeout(function() {}, 0);
+while (id--) clearTimeout(id);
+
+var position = ("{{Position}}".startsWith("(")) ? "434?44" : "{{Position}}";
+var solution = ("{{Solution}}".startsWith("(")) ? "--00---" : "{{Solution}}";
+
+if (flip) {
+  solution = solution.split("").reverse().join("");
+  var tmp = "";
+  for (var i = 0; i < position.length; i++) {
+    var charCode = position.charCodeAt(i);
+    var one = '1'.charCodeAt(0);
+    if (charCode >= one && charCode < w + one) {
+      charCode = w + one + one - 1 - charCode;
+    }
+    tmp += String.fromCharCode(charCode);
+  }
+  position = tmp;
+}
+
+var EMPTY       = "#025";
+var RED         = "#800";
+var YELLOW      = "#880";
+var LIGHTRED    = "#212";
+var LIGHTYELLOW = "#122";
+
+ctx.textAlign = "center";
+ctx.font = "48px Arial";
+
+var grid = [];
+var note = [];
+for(let y=0; y<h; y++) {
+ grid[y] = [];
+ note[y] = [];
+ for(let x=0; x<w; x++) {
+  grid[y][x] = EMPTY;
+  note[y][x] = "";
+ }
+}
+
+var currMove = 0;
+var asym = true;
+
+function timey(){
+ var x = String.fromCharCode(position.charCodeAt(currMove))-1;
+
+ // check blunder
+ var blunder = position.charAt(currMove+1) == "?";
+ if(blunder){position = position.substring(0, currMove+1) + position.substring(currMove+2);}
+
+ // check flipped
+ if(!flip && x > Math.floor(w/2) && asym){asym = false; text.innerHTML = "Mirrored position, fix note."; grid=0; render();}
+ if(x != Math.floor(w/2)) asym = false;
+
+ // place the piece
+ var col = (currMove%2==0)?RED:YELLOW;
+ y = move(x, col, blunder?"?":"");
+
+ currMove++;
+
+ var done = currMove == position.length;
+ if(!back) render();
+ if(done) onComplete();
+ if(back && !done) timey();
+}
+
+render();
+numMoves = position.length - (position.match(/\?/g) || []).length;
+var playFirst = numMoves % 2 == 1;
+if(playFirst || back) timey();
+
+function onComplete(){
+ for(var j = 0; j < w; j++){
+  move(j, playFirst?LIGHTYELLOW:LIGHTRED, solution.charAt(j));
+ }
+ render();
+ link.href = "https://connect4.gamesolver.org/?pos=" + position;
+ if(back) text.innerHTML = "link to position"
+}
+
+function move(x, col, text) {
+  for (let y = 0; y < h; y++) {
+    if (isCellEmpty(y, x)) {
+      setCell(y, x, col, text);
+      return y;
+    }
+  }
+}
+
+function isCellEmpty(row, col) {
+  return grid[row][col] === EMPTY;
+}
+
+function setCell(row, col, colVal, textVal) {
+  grid[row][col] = colVal;
+  note[row][col] = textVal;
+}
+
+function render() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const color = grid[y][x];
+      const text = note[y][x];
+      drawStone(x, y, color, text);
+    }
+  }
+}
+
+
+function getMouseX(canvas, event) {
+  const rect = canvas.getBoundingClientRect();
+  return Math.floor((event.clientX - rect.left) / 50);
+}
+
+function isMoveValid(currMove, mx) {
+  const x = String.fromCharCode(position.charCodeAt(currMove)) - 1;
+  return x === mx;
+}
+
+function handleMouseDown(canvas, event) {
+  const mx = getMouseX(canvas, event);
+  if (!isMoveValid(currMove, mx)) {
+    return;
+  }
+
+  timey();
+  setTimeout(timey, 200);
+}
+
+canvas.addEventListener("mousedown", function(event) {
+  handleMouseDown(canvas, event);
+});
+
+function drawStone(xCoord, yCoord, color, text) {
+  const stoneRadius = 20;
+  const x = (xCoord + 0.5) * 50;
+  const y = (h - yCoord - 0.5) * 50;
+
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.arc(x, y, stoneRadius, 0, 2 * Math.PI, false);
+  ctx.fill();
+
+  if (back || text === '?') {
+    const textColor = (color === LIGHTRED) ? RED : (color === LIGHTYELLOW) ? YELLOW : 'black';
+    ctx.fillStyle = textColor;
+    ctx.fillText(text, x, y + 18);
+  }
+}
+
+</script>

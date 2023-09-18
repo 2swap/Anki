@@ -1,0 +1,90 @@
+<div class="flashcard" style="font-size:120px">
+    <div class="front">
+        Draw {{Name}} {{Front_Extra}}
+    </div>
+    {{Picture}}
+    <canvas id="can" width="500" height="500" style="z-index:20;position:relative;"></canvas>
+</div>
+
+<script type="text/javascript">
+
+    //resize image
+    var img = document.getElementsByTagName("img")[0];
+    img.setAttribute("style", "z-index:1;position:absolute;max-width:500px;");
+
+    var canvas, ctx, flag = false,
+        prevX = 0,
+        currX = 0,
+        prevY = 0,
+        currY = 0,
+        dot_flag = false;
+    
+    canvas = document.getElementById('can');
+    ctx = canvas.getContext("2d");
+    
+    canvas.addEventListener("mousemove", function (e) {
+        findxy('move', e)
+    }, false);
+    canvas.addEventListener("mousedown", function (e) {
+        findxy('down', e)
+    }, false);
+    canvas.addEventListener("mouseup", function (e) {
+        findxy('up', e)
+    }, false);
+    canvas.addEventListener("mouseout", function (e) {
+        findxy('out', e)
+    }, false);    
+    canvas.addEventListener("ontouchmove", function (e) {
+        findxy('move', e)
+    }, false);
+    canvas.addEventListener("ontouchstart", function (e) {
+        findxy('down', e)
+    }, false);
+    canvas.addEventListener("ontouchend", function (e) {
+        findxy('up', e)
+    }, false);
+    canvas.addEventListener("ontouchout", function (e) {
+        findxy('out', e)
+    }, false);
+    
+    function draw() {
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(currX, currY);
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.closePath();
+    }
+    
+    function findxy(res, e) {
+        if (res == 'down') {
+            prevX = currX;
+            prevY = currY;
+            currX = e.clientX - canvas.offsetLeft;
+            currY = e.clientY - canvas.offsetTop;
+    
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
+        }
+        if (res == 'up' || res == "out") {
+            flag = false;
+        }
+        if (res == 'move') {
+            if (flag) {
+                prevX = currX;
+                prevY = currY;
+                currX = e.clientX - canvas.offsetLeft;
+                currY = e.clientY - canvas.offsetTop;
+                draw();
+            }
+        }
+    }
+</script>

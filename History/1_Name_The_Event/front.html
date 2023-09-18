@@ -1,0 +1,315 @@
+<div class="container">
+    <div id="txt" style="color: white"></div>
+    <canvas id="canvas"/>
+</div>
+
+<script>
+var injectScript = (src) => {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+};
+(async () => {
+
+
+
+await injectScript('history.js');
+
+const event_name = "{{Event}}".startsWith("(") ? "Assyrian Empire" : "{{Event}}";
+const back = document.getElementById("back");
+const canvas = document.getElementById("canvas");
+const container = document.getElementsByClassName("container")[0];
+const ctx = canvas.getContext("2d");
+
+canvas.width = container.clientWidth;
+canvas.height = container.clientHeight;
+
+const timeStrToInt = (time) => {
+  if (time.endsWith("BC") || time.endsWith("BCE")) {
+    return -parseInt(time) - 2023;
+  }
+  if (time.endsWith("AD") || time.endsWith("CE")) {
+    return parseInt(time) - 2023;
+  }
+  if (time.includes("/")) {
+    time = time.split("/");
+    return (parseInt(time[0]) - 1) / 12 + (parseInt(time[1]) - 1) / 365 + parseInt(time[2]) - 2023;
+  }
+  return parseInt(time);
+};
+
+//document.getElementById('txt').innerHTML = "a";
+
+var zoom = 1
+var lshift = 0;
+var whichGroup = 0;
+
+preprocessHistData();
+
+function preprocessHistData() {
+  for (var i = 0; i < hist.length; i++) {
+    hist[i].max_duration = 0;
+
+    for (var j = 0; j < hist[i].events.length; j++) {
+      hist[i].events[j].start_years_ago = timeStrToInt(hist[i].events[j].start);
+      hist[i].events[j].end_years_ago = timeStrToInt(hist[i].events[j].end);
+
+      if (event_name == hist[i].events[j].name) {
+        zoom = 200 / (hist[i].events[j].end_years_ago - hist[i].events[j].start_years_ago);
+        lshift = (hist[i].events[j].end_years_ago + hist[i].events[j].start_years_ago) / 2;
+        //whichGroup = i;
+      }
+
+      hist[i].max_duration = Math.max(hist[i].max_duration, hist[i].events[j].end_years_ago - hist[i].events[j].start_years_ago);
+    }
+  }
+}
+
+
+const box_height = 11;
+
+const renderTextAtPosition = (text, x, y, align = 'center') => {
+  const textWidth = ctx.measureText(text).width;
+  if (align === 'right') {
+    x -= textWidth/2;
+  }
+  let left = Math.max(textWidth / 2, Math.min(x, canvas.width - textWidth / 2));
+  ctx.textAlign = "center";
+  ctx.fillText(text, left, y + box_height / 2 + 3);
+};
+
+const renderEvent = (y, event) => {
+  const startX = canvas.width / 2. + zoom * (event.start_years_ago - lshift);
+  const endX = canvas.width / 2. + zoom * (event.end_years_ago - lshift);
+  const eventWidth = endX - startX;
+
+  if ((startX < 0 && endX > canvas.width) || startX < -1000 || eventWidth < 25 || endX < 40 || startX > canvas.width - 40) {
+    return false;
+  }
+
+  // Render main event box
+  ctx.globalAlpha = event.name === event_name ? 1 : 0.3;
+  ctx.fillRect(startX, y, eventWidth, box_height);
+  ctx.globalAlpha = 1;
+
+  let eventText = event.name;
+  if (event.name === event_name) {
+    eventText = (back ? event.name : '??? ') + ': ' + yearToBlurb(event.start_years_ago) + ' - ' + yearToBlurb(event.end_years_ago);
+    ctx.fillStyle = "black"
+  }
+  if (event.name === event_name || back) {
+    renderTextAtPosition(eventText, startX + eventWidth / 2, y);
+  }
+
+  ctx.lineWidth = 2;
+
+  if (event.important_events) {
+    // Render important events
+    ctx.fillStyle = "red";
+    ctx.textAlign = 'center';
+    let labelPosition = 0;
+    for (const [time, eventName] of Object.entries(event.important_events)) {
+      const yearsAgo = timeStrToInt(time)
+      const x = canvas.width / 2. + zoom * (yearsAgo - lshift);
+      ctx.fillRect(x, y, 1, box_height*(event.name === event_name?labelPosition+1.8:1));
+      labelPosition++;
+      if (back && event.name === event_name) {
+        renderTextAtPosition(eventName, x, y + labelPosition * box_height, 'right');
+      }
+    }
+  }
+
+  return true;
+};
+
+const rainbow = (hash) => {
+  const r = Math.floor((Math.sin(hash + Math.PI * 0 / 3) + 2) * 256 / 3.);
+  const g = Math.floor((Math.sin(hash + Math.PI * 1 / 3) + 2) * 256 / 3.);
+  const b = Math.floor((Math.sin(hash + Math.PI * 2 / 3) + 2) * 256 / 3.);
+  return `rgb(${r}, ${g}, ${b})`;
+};
+
+const renderGroup = (y, group, colorwheel) => {
+  if (group.max_duration * zoom < 50) {
+    return y;
+  }
+
+  let a = y;
+  let label = false;
+
+  for (let i = 0; i < group.events.length; i++) {
+    ctx.fillStyle = ctx.strokeStyle = rainbow(colorwheel);
+    if (renderEvent(y, group.events[i])) {
+      y += box_height + 1;
+      label = true;
+    }
+  }
+  ctx.fillStyle = ctx.strokeStyle = rainbow(colorwheel);
+
+  if (label) {
+    ctx.textAlign = 'left';
+    ctx.globalAlpha = 0.1;
+    ctx.fillRect(0, a - 10, canvas.width, y - a + 20);
+
+    const fontSize = Math.min(50, y - a + 10);
+
+    ctx.font = `${fontSize}px sans-serif`;
+    ctx.fillText(group.group_name, 10, y);
+    ctx.font = '10px sans-serif';
+
+    return y + 30;
+  }
+
+  return y;
+};
+
+yearToBlurb = function(years){
+  years = Math.floor(2023+years);
+  if (years < 0) {
+    if (years <= -1000000000) {
+      return -Math.floor(years/100000000)/10 + " BYA";
+    } else if (years <= -100000) {
+      return -Math.floor(years/100000)/10 + " MYA";
+    } else {
+      return -years + " BC";
+    }
+  } else {
+    return years;
+  }
+}
+
+function renderLine(year) {
+  // Set the opacity
+  ctx.globalAlpha = Math.min(0.5, Math.abs(zoom * year / 400));
+  
+  // Calculate the x-coordinate
+  var x = canvas.width / 2 + zoom * (year - lshift);
+  
+  // Draw the line
+  ctx.beginPath();
+  ctx.moveTo(x, 10);
+  ctx.lineTo(x, 40);
+  ctx.stroke();
+  
+  // Draw the year blurb
+  ctx.fillText(yearToBlurb(year), x, 10);
+}
+
+function renderLines() {
+  ctx.strokeStyle = "white";
+  ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+
+  // draw lines for powers of 10
+  for (let exp = 3; exp < 10; exp++) {
+    for (let i = -10; i < 0; i += 2) {
+      const year = Math.pow(10, exp) * i - 2023;
+      renderLine(year);
+    }
+  }
+
+  // draw lines for other years
+  for (let i = -1000; i < 0; i += 500) {
+    const year = -2023 + i;
+    renderLine(year);
+  }
+  for (let i = 0; i < 2000; i += 200) {
+    const year = -2023 + i;
+    renderLine(year);
+  }
+  for (let i = 1900; i < 2010; i += 20) {
+    const year = -2023 + i;
+    renderLine(year);
+  }
+  for (let i = 2010; i < 2023; i += 2) {
+    const year = -2023 + i;
+    renderLine(year);
+  }
+}
+
+
+function render() {
+  // Clear the canvas
+  canvas.width = canvas.width;
+  
+  // Render the lines
+  renderLines();
+  
+  // Render the current group
+  let a = 50;
+  a = renderGroup(a, hist[whichGroup], 2 * whichGroup);
+  
+  // Render the other groups
+  for (let i = 0; i < hist.length; i++) {
+    if (i !== whichGroup) {
+      a = renderGroup(a, hist[i], 2 * i);
+    }
+  }
+}
+
+render();
+
+
+
+
+canvas.addEventListener('wheel', handleWheelEvent);
+window.addEventListener('keypress', handleKeyPressEvent);
+canvas.addEventListener('mousedown', handleMouseDownEvent);
+canvas.addEventListener('mousemove', handleMouseMoveEvent);
+canvas.addEventListener('mouseup', handleMouseUpEvent);
+canvas.addEventListener('mouseleave', handleMouseLeaveEvent);
+
+let isDragging = false; // flag to indicate if mouse is being dragged
+let lastX = 0; // starting x position of the drag
+
+function handleWheelEvent(event) {
+  const mouseX = event.offsetX;
+  const mouseY = event.offsetY;
+  zoom *= event.deltaY > 0 ? 0.8 : 1.2;
+  render();
+}
+
+function handleKeyPressEvent(event) {
+  var keycode = event.keyCode;
+  if (keycode == 97) {
+    lshift -= 20 / zoom;
+  }
+  if (keycode == 100) {
+    lshift += 20 / zoom;
+  }
+  render();
+}
+
+function handleMouseDownEvent(event) {
+  if (event.button === 0) { // check if left mouse button was clicked
+    isDragging = true;
+    lastX = event.clientX;
+  }
+}
+
+function handleMouseMoveEvent(event) {
+  if (isDragging) {
+    const deltaX = event.clientX - lastX;
+    lshift -= deltaX / zoom;
+    lastX = event.clientX;
+    render();
+  }
+}
+
+function handleMouseUpEvent(event) {
+  isDragging = false;
+}
+
+function handleMouseLeaveEvent(event) {
+  isDragging = false;
+}
+
+
+
+})();
+</script>
