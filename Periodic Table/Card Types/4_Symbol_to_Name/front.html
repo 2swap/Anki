@@ -1,0 +1,22 @@
+<div class="bigelement">
+    <div id="number"></div>
+    <div id="symbol"></div>
+    <div id="name"></div>
+</div>
+
+<script>
+    var back = document.getElementById("back");
+
+    var sym  = "{{Atomic Symbol}}";
+    var name = "{{Name}}";
+    var num  = "{{Atomic Number}}";
+
+    if( sym.charAt(0) == '(') sym  = "O";
+    if(name.charAt(0) == '(') name = "Oxygen";
+    if( num.charAt(0) == '(') num  = "6";
+
+    // Set the text content of the elements to the values
+    document.getElementById("name"  ).innerHTML = back?name:"?";
+    document.getElementById("symbol").innerHTML = sym;
+    document.getElementById("number").innerHTML = back?num:"&nbsp;";
+</script>

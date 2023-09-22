@@ -1,0 +1,118 @@
+1	Hydrogen	H	Hydrogen
+2	Helium	He	Noble Gas
+3	Lithium	Li	Alkali Metal
+4	Beryllium	Be	Alkaline Earth Metal
+5	Boron	B	Metalloid
+6	Carbon	C	Other Nonmetal
+7	Nitrogen	N	Other Nonmetal
+8	Oxygen	O	Other Nonmetal
+9	Fluorine	F	Halogen
+10	Neon	Ne	Noble Gas
+11	Sodium	Na	Alkali Metal
+12	Magnesium	Mg	Alkaline Earth Metal
+13	Aluminium	Al	Poor Metal
+14	Silicon	Si	Metalloid
+15	Phosphorus	P	Other Nonmetal
+16	Sulfur	S	Other Nonmetal
+17	Chlorine	Cl	Halogen
+18	Argon	Ar	Noble Gas
+19	Potassium	K	Alkali Metal
+20	Calcium	Ca	Alkaline Earth Metal
+21	Scandium	Sc	Transition Metal
+22	Titanium	Ti	Transition Metal
+23	Vanadium	V	Transition Metal
+24	Chromium	Cr	Transition Metal
+25	Manganese	Mn	Transition Metal
+26	Iron	Fe	Transition Metal
+27	Cobalt	Co	Transition Metal
+28	Nickel	Ni	Transition Metal
+29	Copper	Cu	Transition Metal
+30	Zinc	Zn	Transition Metal
+31	Gallium	Ga	Poor Metal
+32	Germanium	Ge	Metalloid
+33	Arsenic	As	Metalloid
+34	Selenium	Se	Other Nonmetal
+35	Bromine	Br	Halogen
+36	Krypton	Kr	Noble Gas
+37	Rubidium	Rb	Alkali Metal
+38	Strontium	Sr	Alkaline Earth Metal
+39	Yttrium	Y	Transition Metal
+40	Zirconium	Zr	Transition Metal
+41	Niobium	Nb	Transition Metal
+42	Molybdenum	Mo	Transition Metal
+43	Technetium	Tc	Transition Metal
+44	Ruthenium	Ru	Transition Metal
+45	Rhodium	Rh	Transition Metal
+46	Palladium	Pd	Transition Metal
+47	Silver	Ag	Transition Metal
+48	Cadmium	Cd	Transition Metal
+49	Indium	In	Poor Metal
+50	Tin	Sn	Poor Metal
+51	Antimony	Sb	Metalloid
+52	Tellurium	Te	Metalloid
+53	Iodine	I	Halogen
+54	Xenon	Xe	Noble Gas
+55	Cesium	Cs	Alkali Metal
+56	Barium	Ba	Alkaline Earth Metal
+57	Lanthanum	La	Lanthanide
+58	Cerium	Ce	Lanthanide
+59	Praseodymium	Pr	Lanthanide
+60	Neodymium	Nd	Lanthanide
+61	Promethium	Pm	Lanthanide
+62	Samarium	Sm	Lanthanide
+63	Europium	Eu	Lanthanide
+64	Gadolinium	Gd	Lanthanide
+65	Terbium	Tb	Lanthanide
+66	Dysprosium	Dy	Lanthanide
+67	Holmium	Ho	Lanthanide
+68	Erbium	Er	Lanthanide
+69	Thulium	Tm	Lanthanide
+70	Ytterbium	Yb	Lanthanide
+71	Lutetium	Lu	Lanthanide/Transition Metal
+72	Hafnium	Hf	Transition Metal
+73	Tantalum	Ta	Transition Metal
+74	Tungsten	W	Transition Metal
+75	Rhenium	Re	Transition Metal
+76	Osmium	Os	Transition Metal
+77	Iridium	Ir	Transition Metal
+78	Platinum	Pt	Transition Metal
+79	Gold	Au	Transition Metal
+80	Mercury	Hg	Transition Metal
+81	Thallium	Tl	Poor Metal
+82	Lead	Pb	Poor Metal
+83	Bismuth	Bi	Poor Metal
+84	Polonium	Po	Poor Metal/Metalloid
+85	Astatine	At	Halogen
+86	Radon	Rn	Noble Gas
+87	Francium	Fr	Alkali Metal
+88	Radium	Ra	Alkaline Earth Metal
+89	Actinium	Ac	Actinide
+90	Thorium	Th	Actinide
+91	Protactinium	Pa	Actinide
+92	Uranium	U	Actinide
+93	Neptunium	Np	Actinide
+94	Plutonium	Pu	Actinide
+95	Americium	Am	Actinide
+96	Curium	Cm	Actinide
+97	Berkelium	Bk	Actinide
+98	Californium	Cf	Actinide
+99	Einsteinium	Es	Actinide
+100	Fermium	Fm	Actinide
+101	Mendelevium	Md	Actinide
+102	Nobelium	No	Actinide
+103	Lawrencium	Lr	Actinide/Transition Metal
+104	Rutherfordium	Rf	Transition Metal
+105	Dubnium	Db	Transition Metal
+106	Seaborgium	Sg	Transition Metal
+107	Bohrium	Bh	Transition Metal
+108	Hassium	Hs	Transition Metal
+109	Meitnerium	Mt	Transition Metal
+110	Darmstadtium	Ds	Transition Metal
+111	Roentgenium	Rg	Transition Metal
+112	Copernicium	Cn	Transition Metal
+113	Nihonium	Nh	Post-Transition Metal
+114	Flerovium	Fl	Post-Transition Metal
+115	Moscovium	Mc	Post-Transition Metal
+116	Livermorium	Lv	Post-Transition Metal
+117	Tennessine	Ts	Halogen
+118	Oganesson	Og	Noble Gas

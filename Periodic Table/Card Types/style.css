@@ -1,0 +1,53 @@
+@import url("_2swap_anki.css");
+
+.bigelement {
+    width:200px;
+    height:220px;
+    margin: 100px auto 0 auto; /* Center horizontally and add a margin of 100px above */
+    padding: 6px;
+    border: 2px solid rgb(100, 100, 100); /* Border style and color */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.periodictable {
+    height: 300px;
+    width: 540px;
+    max-width: 100%;
+}
+
+#symbol {
+    font-size: 72px;
+    margin: 32px;
+    text-align: center;
+}
+
+#name {
+    font-size: 24px;
+    text-align: center;
+}
+
+#number {
+    font-size: 32px;
+    text-align: left;
+}
+
+.periodictablerow {
+    height: 30px;
+}
+
+.elementsquare {
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    width: 5%;
+    height: 28px;
+    margin: 1px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 10px;
+}
+
+.element {
+    background-color: rgb(20, 20, 20);
+    border: 1px solid rgb(160, 160, 160);
+}
