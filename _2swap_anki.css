@@ -1,0 +1,53 @@
+.card, .card.nightMode {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    padding: 0;
+    margin: 0;
+    font-size: 26px;
+    font-weight: 900;
+    align-items: center;
+}
+
+.card, .card.nightMode, a:link {
+    color:rgb(160, 160, 160);
+}
+
+.body {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+.replay-button svg circle {
+    display: none;
+    fill: transparent;
+    stroke-width: 0;
+}
+
+.replay-button svg path {
+    display: none;
+    fill: rgb(160, 160, 160); 
+    transform: scale(0.6) translate(20px, 20px);
+}
+
+
+
+
+#pic {
+    margin-top: 24px;
+    max-height: 400px;
+    max-width: 300px;
+}
+
+
+
+
+.canvas {
+    padding: 0;
+    margin: 0;
+}
+

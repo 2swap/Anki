@@ -1,0 +1,49 @@
+<div class="flashcard">
+    <div class="atomicnumber">&nbsp;</div>
+    <div class="elementabbreviation">&nbsp;</div>
+    <div class="elementname" id="elem">???</div>
+</div>
+<br>
+
+<center>
+<div class="periodictable">
+</div>
+</center>
+
+<script>
+var height_map = [1, 2, 2, 2, 1, 2];
+var rows = [[1, 16, 1], [2, 10, 6], [18], [2, 1, 15], [], [0, 2, 15, 1]]
+
+if(document.getElementById("back"))
+ document.getElementById("elem").innerHTML = "{{Name}}";
+
+var highlight = ("{{Atomic Number}}".startsWith("(")) ? 114 : parseInt("{{Atomic Number}}");
+
+var protons = 0;
+var table = document.getElementsByClassName("periodictable")[0];
+for(var i = 0; i < height_map.length; i++) {
+    for(var j = 0; j < height_map[i]; j++) {
+        var row = document.createElement('div');
+        row.className = 'periodictablerow';
+        table.appendChild(row);
+
+        for(var k = 0; k < rows[i].length; k++) {
+            for(var l = 0; l < rows[i][k]; l++) {
+                var square = document.createElement('div');
+                square.className = 'elementsquare';
+                if (k%2 == 0) {
+                    protons++;
+
+                    // deal with f-block
+                    if(protons == 57 || protons == 89) protons += 15;
+                    if(i == 5 && (protons == 119 || protons == 72)) protons = [57, 89][j];
+
+                    if(protons == highlight) square.style.background = 'rgb(160, 160, 160)';
+                    square.className += ' element';
+                }
+                row.appendChild(square);
+            }
+        }
+    }
+}
+</script>
