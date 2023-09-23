@@ -1,0 +1,32 @@
+<br/>
+<div id="prompt"></div>
+<br/>
+<div id="solution"></div>
+<canvas id="can" style="position: fixed; top: 0; left: 0; z-index: 100;"></canvas>
+
+<script type="text/javascript" src="2swap_math.js"></script>
+
+<script>
+    var prompt = "{{Prompt}}";
+    if(prompt.charAt(0) == '(') prompt = "Z!"; // in-editor viewing
+    var randomInteger = window['randomInteger'] || Math.floor(Math.random() * 10); // Change 10 to the desired range of random numbers
+    prompt = prompt.replace(/Z/g, randomInteger.toString());
+
+    var back = document.getElementById("back");
+    
+    // Set the text content of the elements to the values
+    prompt += " = ?";
+    document.getElementById("prompt").innerHTML = prompt;
+    if(back){
+        var func = "{{JS Function}}";
+        var solution = "";
+        if(func.charAt(0) == '('){
+            solution = {{JS Function}}(randomInteger);
+        } else {
+            solution = factorial(randomInteger);
+        }
+        document.getElementById("solution").innerHTML = solution;
+    }
+</script>
+
+<script type="text/javascript" src="_2swap_drawing_pad.js"></script>
