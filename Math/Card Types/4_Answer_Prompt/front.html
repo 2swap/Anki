@@ -8,23 +8,31 @@
 
 <script>
     var prompt = "{{Prompt}}";
-    if(prompt.charAt(0) == '(') prompt = "Z!"; // in-editor viewing
-    var randomInteger = window['randomInteger'] || Math.floor(Math.random() * 10); // Change 10 to the desired range of random numbers
-    prompt = prompt.replace(/Z/g, randomInteger.toString());
+    var input = "";
+
+    if(prompt.charAt(0) == '(') prompt = "geom mean _L"; // in-editor viewing
+    var randomInteger = window['randomInteger'] || Math.floor(Math.random() * 8)+2;
+    if(prompt.includes("_Z")) input = randomInteger;
+    prompt = prompt.replace(/_Z/g, randomInteger.toString());
+
+    var listLength = Math.floor(Math.random() * 3) + 2;
+    var list = [];
+    for (var i = 0; i < listLength; i++) {
+        var randomNum = Math.floor(Math.random() * 8) + 2;
+        list.push(randomNum);
+    }
+    var randomList = window['randomList'] || list;
+    if(prompt.includes("_L")) input = randomList;
+    prompt = prompt.replace(/_L/g, "[" + randomList.join(",") + "]");
 
     var back = document.getElementById("back");
     
-    // Set the text content of the elements to the values
-    prompt += " = ?";
     document.getElementById("prompt").innerHTML = prompt;
     if(back){
         var func = "{{JS Function}}";
+        func = func.charAt(0) == '('?'geommean':func;
         var solution = "";
-        if(func.charAt(0) == '('){
-            solution = {{JS Function}}(randomInteger);
-        } else {
-            solution = factorial(randomInteger);
-        }
+        solution = eval(func+`(input)`);
         document.getElementById("solution").innerHTML = solution;
     }
 </script>
