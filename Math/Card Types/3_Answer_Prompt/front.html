@@ -1,40 +1,54 @@
 <br/>
 <div id="prompt"></div>
+<div id="text"></div>
 <br/>
 <div id="solution"></div>
 <canvas id="can" style="position: fixed; top: 0; left: 0; z-index: 100;"></canvas>
 
 <script type="text/javascript" src="2swap_math.js"></script>
 
+
+
 <script>
-    var prompt = "{{Prompt}}";
-    var input = "";
+var back = document.getElementById("back");
 
-    if(prompt.charAt(0) == '(') prompt = "geom mean _L"; // in-editor viewing
-    var randomInteger = window['randomInteger'] || Math.floor(Math.random() * 8)+2;
-    if(prompt.includes("_Z")) input = randomInteger;
-    prompt = prompt.replace(/_Z/g, randomInteger.toString());
+if (!back) {
+    window['randomInteger'] = false;
+    window['randomList'] = false;
+}
 
-    var listLength = Math.floor(Math.random() * 3) + 2;
-    var list = [];
-    for (var i = 0; i < listLength; i++) {
-        var randomNum = Math.floor(Math.random() * 8) + 2;
-        list.push(randomNum);
-    }
-    var randomList = window['randomList'] || list;
-    if(prompt.includes("_L")) input = randomList;
-    prompt = prompt.replace(/_L/g, "[" + randomList.join(",") + "]");
+var prompt = "{{Prompt}}";
+var input = "";
 
-    var back = document.getElementById("back");
-    
-    document.getElementById("prompt").innerHTML = prompt;
-    if(back){
-        var func = "{{JS Function}}";
-        func = func.charAt(0) == '('?'geommean':func;
-        var solution = "";
-        solution = eval(func+`(input)`);
-        document.getElementById("solution").innerHTML = solution;
-    }
+if (prompt.charAt(0) == '(') prompt = "geom mean _L"; // in-editor viewing
+
+var randomInteger = window['randomInteger'] = window['randomInteger'] || Math.floor(Math.random() * 8) + 2;
+
+if (prompt.includes("_Z")) input = randomInteger;
+prompt = prompt.replace(/_Z/g, randomInteger.toString());
+
+var listLength = Math.floor(Math.random() * 2) + 2;
+var list = [];
+for (var i = 0; i < listLength; i++) {
+    var randomNum = Math.floor(Math.random() * 8) + 2;
+    list.push(randomNum);
+}
+
+var randomList = window['randomList'] = window['randomList'] || list;
+
+if (prompt.includes("_L")) input = randomList;
+prompt = prompt.replace(/_L/g, "[" + randomList.join(",") + "]");
+
+document.getElementById("prompt").innerHTML = prompt;
+if (back) {
+    var func = "{{JS Function}}";
+    func = func.charAt(0) == '(' ? 'geommean' : func;
+    var solution = "";
+    solution = eval(func + `(input)`);
+    document.getElementById("solution").innerHTML = solution;
+}
 </script>
+
+
 
 <script type="text/javascript" src="_2swap_drawing_pad.js"></script>

@@ -175,13 +175,16 @@ function catalan(n) {
 }
 
 function mangoldt(n) {
-    if (n <= 1) return 0;
-    for (let p = 2; p <= n; p++) {
-        if (isPrime(p) && n % p === 0 && Math.log(n) / Math.log(p) % 1 === 0) {
-            return Math.log(p);
-        }
+  if (n <= 1) return 0;
+  for (let p = 2; p <= n; p++) {
+    if (isPrime(p) && n % p === 0) {
+      let k = Math.round(Math.log(n) / Math.log(p));
+      if (Math.pow(p, k) === n) {
+        return Math.log(p);
+      }
     }
-    return 0;
+  }
+  return 0;
 }
 
 function bertrand(n) {
