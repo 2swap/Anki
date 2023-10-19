@@ -58,7 +58,15 @@ function geommean(numbers) {
 function primenumbertheorem(N) {
   const piNApproximation = N / Math.log(N);
 
-  const htmlResult = `pi(${N}) ≈ ${N} / ln(${N}) ≈ ${piNApproximation.toFixed(10)}`;
+  // Compute the actual value of the prime number counting function
+  let actualPrimeCount = 0;
+  for (let i = 2; i <= N; i++) {
+    if (isPrime(i)) {
+      actualPrimeCount++;
+    }
+  }
+
+  const htmlResult = `pi(${N}) actual value: ${actualPrimeCount}, approximation: ${N} / ln(${N}) ≈ ${piNApproximation.toFixed(10)}`;
 
   return htmlResult;
 }
