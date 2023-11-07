@@ -16,10 +16,9 @@ tb = "{{Translation_Backup}}"
 arr = [t1, t2, t3, t4];
 
 translation_box = "";
-for(s in arr){
+for(s of arr)
     if(s !== "")
         translation_box += "<br/>" + s + "<br/>";
-}
 
 if(translation_box == "")
     translation_box = tb;
