@@ -27,8 +27,10 @@
             typeElement.remove();
         }
 
-        var featureName = ("{{Name}}".startsWith("(")) ? "Minya" : "{{Name}}";
-        var countryName = ("{{Country}}".startsWith("(")) ? "Egypt" : "{{Country}}";
+        var nameField = ("{{Name}}".startsWith("(")) ? "Aswan::Egypt" : "{{Name}}";
+        var splitName = nameField.split("::");
+        var featureName = splitName[0];
+        var countryName = splitName[1];
 
         var isCityQuestion = countryName === "";
 
@@ -61,10 +63,13 @@
         // Function to play audio for a feature
         var playAudio = function (str) {
             var audioElement = document.getElementById("audio");
-            audioElement.src = "geogaudio_" + str + ".mp3";
+            var prefix = "https://github.com/2swap/Anki/raw/main/Geography/Decks/World%20Geography/media/geogaudio_";
+            var encodey = encodeURIComponent(str);
+            audioElement.src = prefix + encodey + ".mp3";
+            textElement.innerHTML = audioElement.src;
             audioElement.autoplay = true;
             audioElement.addEventListener("error", function () {
-                audioElement.src = "geogaudio_" + str + ".flac";
+                audioElement.src = prefix + encodey + ".flac";
                 audioElement.autoplay = true;
             });
         }

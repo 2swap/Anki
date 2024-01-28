@@ -117,7 +117,7 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Sao Tome", "name_en":"Sao Tome", "country":"Sao Tome and Principe", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[6.733325153234773,0.333402118832907]}},
 {"type":"Feature","properties":{"name":"طرابلس", "name_en":"Tripoli", "country":"Libya", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[13.180011758078194,32.89250001935369]}},
 {"type":"Feature","properties":{"name":"تونس", "name_en":"Tunis", "country":"Tunisia", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[10.179678099212026,36.80277813623144]}},
-{"type":"Feature","properties":{"name":"Victoria", "name_en":"Victoria", "country":"Seychelles", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[55.44998978559113,-4.6166316539734]}},
+{"type":"Feature","properties":{"name":"Victoria, Seychelles", "name_en":"Victoria, Seychelles", "country":"Seychelles", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[55.44998978559113,-4.6166316539734]}},
 {"type":"Feature","properties":{"name":"Windhoek", "name_en":"Windhoek", "country":"Namibia", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[17.08354610054181,-22.570006084383806]}},
 {"type":"Feature","properties":{"name":"Yamoussoukro", "name_en":"Yamoussoukro", "country":"Cote d'Ivoire", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[-5.275502564912301,6.818380960004617]}},
 {"type":"Feature","properties":{"name":"Yaoundé", "name_en":"Yaoundé", "country":"Cameroon", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[11.514704896854425,3.868646520754112]}},
@@ -310,17 +310,16 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Chandler", "name_en":"Chandler", "country":"USA", "state":"Arizona", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-111.8412502,33.3061605]}},
 {"type":"Feature","properties":{"name":"Tucson", "name_en":"Tucson", "country":"USA", "state":"Arizona", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-110.926479,32.2217429]}},
 {"type":"Feature","properties":{"name":"Mesa", "name_en":"Mesa", "country":"USA", "state":"Arizona", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-111.8314724,33.4151843]}},
-{"type":"Feature","properties":{"name":"Glendale", "name_en":"Glendale", "country":"USA", "state":"Arizona", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-112.1859866,33.5386523]}},
+{"type":"Feature","properties":{"name":"Glendale, AZ", "name_en":"Glendale, AZ", "country":"USA", "state":"Arizona", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-112.1859866,33.5386523]}},
 {"type":"Feature","properties":{"name":"Gilbert", "name_en":"Gilbert", "country":"USA", "state":"Arizona", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-111.789027,33.3528264]}},
 {"type":"Feature","properties":{"name":"Scottsdale", "name_en":"Scottsdale", "country":"USA", "state":"Arizona", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-111.9260519,33.4941704]}},
-{"type":"Feature","properties":{"name":"Glendale", "name_en":"Glendale", "country":"USA", "state":"Arizona", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.255075,34.1425078]}},
 
 {"type":"Feature","properties":{"name":"Little Rock", "name_en":"Little Rock", "country":"USA", "state":"Arkansas", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-92.288986,34.746613]}},
 
 {"type":"Feature","properties":{"name":"Sacramento", "name_en":"Sacramento", "country":"USA", "state":"California", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-121.493629,38.576668]}},
 {"type":"Feature","properties":{"name":"Los Angeles", "name_en":"Los Angeles", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.2436849,34.0522342]}},
 {"type":"Feature","properties":{"name":"San Diego", "name_en":"San Diego", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.1610838,32.715738]}},
-{"type":"Feature","properties":{"name":"San Jose", "name_en":"San Jose", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-121.8863286,37.3382082]}},
+{"type":"Feature","properties":{"name":"San Jose, CA", "name_en":"San Jose, CA", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-121.8863286,37.3382082]}},
 {"type":"Feature","properties":{"name":"San Francisco", "name_en":"San Francisco", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-122.4194155,37.7749295]}},
 {"type":"Feature","properties":{"name":"Fresno", "name_en":"Fresno", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-119.7725868,36.7468422]}},
 {"type":"Feature","properties":{"name":"Long Beach", "name_en":"Long Beach", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.1937395,33.7700504]}},
@@ -358,7 +357,6 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Joshua Tree", "name_en":"Joshua Tree", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-116.314779,34.136659]}},
 {"type":"Feature","properties":{"name":"Beverly Hills", "name_en":"Beverly Hills", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.400428,34.074768]}},
 {"type":"Feature","properties":{"name":"Hollywood", "name_en":"Hollywood", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.329049,34.093467]}},
-{"type":"Feature","properties":{"name":"Glendale", "name_en":"Glendale", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.255258,34.143265]}},
 {"type":"Feature","properties":{"name":"Malibu", "name_en":"Malibu", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.779851,34.026102]}},
 {"type":"Feature","properties":{"name":"Indio", "name_en":"Indio", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-116.216485,33.719116]}},
 {"type":"Feature","properties":{"name":"Chino", "name_en":"Chino", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.688690,34.013233]}},
@@ -371,9 +369,10 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"San Luis Obispo", "name_en":"San Luis Obispo", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-120.6596156,35.2827524]}},
 {"type":"Feature","properties":{"name":"Lompoc", "name_en":"Lompoc", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-120.4579409,34.6391495]}},
 {"type":"Feature","properties":{"name":"Vandenberg", "name_en":"Vandenberg", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-120.4703838,34.7399619]}},
+{"type":"Feature","properties":{"name":"Glendale, CA", "name_en":"Glendale, CA", "country":"USA", "state":"Arizona", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.255075,34.1425078]}},
 
 {"type":"Feature","properties":{"name":"Denver", "name_en":"Denver", "country":"USA", "state":"Colorado", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-104.984856,39.739227]}},
-{"type":"Feature","properties":{"name":"Aurora", "name_en":"Aurora", "country":"USA", "state":"Colorado", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-104.8319195,39.7294319]}},
+{"type":"Feature","properties":{"name":"Aurora, CO", "name_en":"Aurora, CO", "country":"USA", "state":"Colorado", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-104.8319195,39.7294319]}},
 {"type":"Feature","properties":{"name":"Colorado Springs", "name_en":"Colorado Springs", "country":"USA", "state":"Colorado", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-104.8213634,38.8338816]}},
 
 {"type":"Feature","properties":{"name":"Hartford", "name_en":"Hartford", "country":"USA", "state":"Connecticut", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-72.682198,41.764046]}},
@@ -392,12 +391,12 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Hialeah", "name_en":"Hialeah", "country":"USA", "state":"Florida", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-80.2781057,25.8575963]}},
 
 {"type":"Feature","properties":{"name":"Atlanta", "name_en":"Atlanta", "country":"USA", "state":"Georgia", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-84.388229,33.749027]}},
-{"type":"Feature","properties":{"name":"Columbus", "name_en":"Columbus", "country":"USA", "state":"Georgia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-84.9877094,32.4609764]}},
+{"type":"Feature","properties":{"name":"Columbus, GA", "name_en":"Columbus, GA", "country":"USA", "state":"Georgia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-84.9877094,32.4609764]}},
 
 {"type":"Feature","properties":{"name":"Boise", "name_en":"Boise", "country":"USA", "state":"Idaho", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-116.199722,43.617775]}},
 
 {"type":"Feature","properties":{"name":"Springfield", "name_en":"Springfield", "country":"USA", "state":"Illinois", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-89.654961,39.798363]}},
-{"type":"Feature","properties":{"name":"Aurora", "name_en":"Aurora", "country":"USA", "state":"Illinois", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-88.32007150000001,41.7605849]}},
+{"type":"Feature","properties":{"name":"Aurora", "name_en":"Aurora, IL", "country":"USA", "state":"Illinois, IL", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-88.32007150000001,41.7605849]}},
 {"type":"Feature","properties":{"name":"Chicago", "name_en":"Chicago", "country":"USA", "state":"Illinois", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-87.6297982,41.8781136]}},
 
 {"type":"Feature","properties":{"name":"Indianapolis", "name_en":"Indianapolis", "country":"USA", "state":"Indiana", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-86.162643,39.768623]}},
@@ -427,14 +426,13 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Gaithersburg", "name_en":"Gaithersburg", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-77.20137,39.143471]}},
 {"type":"Feature","properties":{"name":"Rockville", "name_en":"Rockville", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-77.153589,39.083997]}},
 {"type":"Feature","properties":{"name":"Towson", "name_en":"Towson", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.606796,39.401495]}},
-{"type":"Feature","properties":{"name":"Owings Mills", "name_en":"Owings Mills", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.781223,39.398432]}},
 {"type":"Feature","properties":{"name":"Bel Air", "name_en":"Bel Air", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.348989,39.535004]}},
-{"type":"Feature","properties":{"name":"Aberdeen", "name_en":"Aberdeen", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.184829,39.515202]}},
+{"type":"Feature","properties":{"name":"Aberdeen, MD", "name_en":"Aberdeen, MD", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.184829,39.515202]}},
 {"type":"Feature","properties":{"name":"Silver Spring", "name_en":"Silver Spring", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-77.026088,39.007606]}},
 {"type":"Feature","properties":{"name":"Bethesda", "name_en":"Bethesda", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-77.09471,38.984652]}},
 {"type":"Feature","properties":{"name":"North Bethesda", "name_en":"North Bethesda", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-77.119752,39.044381]}},
 {"type":"Feature","properties":{"name":"Laurel", "name_en":"Laurel", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.8780399,39.0992752]}},
-{"type":"Feature","properties":{"name":"Columbia", "name_en":"Columbia", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.8313463,39.2037144]}},
+{"type":"Feature","properties":{"name":"Columbia, MD", "name_en":"Columbia, MD", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.8313463,39.2037144]}},
 {"type":"Feature","properties":{"name":"Timonium", "name_en":"Timonium", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.6367716,39.4453862]}},
 {"type":"Feature","properties":{"name":"Owings Mills", "name_en":"Owings Mills", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.7802535,39.4004955]}},
 {"type":"Feature","properties":{"name":"White Marsh", "name_en":"White Marsh", "country":"USA", "state":"Maryland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.4479617,39.3786032]}},
@@ -480,7 +478,7 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Newark", "name_en":"Newark", "country":"USA", "state":"New Jersey", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-74.1723667,40.735657]}},
 {"type":"Feature","properties":{"name":"Jersey City", "name_en":"Jersey City", "country":"USA", "state":"New Jersey", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-74.0776417,40.72815749999999]}},
 
-{"type":"Feature","properties":{"name":"Santa Fe", "name_en":"Santa Fe", "country":"USA", "state":"New Mexico", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-105.939728,35.68224]}},
+{"type":"Feature","properties":{"name":"Santa Fe, NM", "name_en":"Santa Fe, NM", "country":"USA", "state":"New Mexico", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-105.939728,35.68224]}},
 {"type":"Feature","properties":{"name":"Albuquerque", "name_en":"Albuquerque", "country":"USA", "state":"New Mexico", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-106.6055534,35.0853336]}},
 
 {"type":"Feature","properties":{"name":"Raleigh", "name_en":"Raleigh", "country":"USA", "state":"North Carolina", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-78.639099,35.78043]}},
@@ -506,10 +504,10 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Cohoes", "name_en":"Cohoes", "country":"USA", "state":"New York", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-73.700272,42.773733]}},
 {"type":"Feature","properties":{"name":"Rensselaer", "name_en":"Rensselaer", "country":"USA", "state":"New York", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-73.729682,42.641764]}},
 
-{"type":"Feature","properties":{"name":"Columbus", "name_en":"Columbus", "country":"USA", "state":"Ohio", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-82.999069,39.961346]}},
+{"type":"Feature","properties":{"name":"Columbus, OH", "name_en":"Columbus, OH", "country":"USA", "state":"Ohio", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-82.999069,39.961346]}},
 {"type":"Feature","properties":{"name":"Cleveland", "name_en":"Cleveland", "country":"USA", "state":"Ohio", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-81.6943605,41.49932]}},
 {"type":"Feature","properties":{"name":"Cincinnati", "name_en":"Cincinnati", "country":"USA", "state":"Ohio", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-84.5120196,39.1031182]}},
-{"type":"Feature","properties":{"name":"Toledo", "name_en":"Toledo", "country":"USA", "state":"Ohio", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-83.55521200000001,41.6639383]}},
+{"type":"Feature","properties":{"name":"Toledo, OH", "name_en":"Toledo, OH", "country":"USA", "state":"Ohio", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-83.55521200000001,41.6639383]}},
 {"type":"Feature","properties":{"name":"Akron", "name_en":"Akron", "country":"USA", "state":"Ohio", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-81.51900529999999,41.0814447]}},
 {"type":"Feature","properties":{"name":"Dayton", "name_en":"Dayton", "country":"USA", "state":"Ohio", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-84.1916074,39.7589478]}},
 
@@ -538,7 +536,7 @@ var geojson = {"type":"FeatureCollection","features":[
 
 {"type":"Feature","properties":{"name":"Providence", "name_en":"Providence", "country":"USA", "state":"Rhode Island", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-71.414963,41.830914]}},
 
-{"type":"Feature","properties":{"name":"Columbia", "name_en":"Columbia", "country":"USA", "state":"South Carolina", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-81.033211,34.000343]}},
+{"type":"Feature","properties":{"name":"Columbia, SC", "name_en":"Columbia, SC", "country":"USA", "state":"South Carolina", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-81.033211,34.000343]}},
 
 {"type":"Feature","properties":{"name":"Pierre", "name_en":"Pierre", "country":"USA", "state":"South Dakota", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-100.346405,44.367031]}},
 
@@ -603,7 +601,7 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Halifax", "name_en":"Halifax", "country":"Canada", "state":"Nova Scotia", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-63.60000451827062,44.650025247265376]}},
 {"type":"Feature","properties":{"name":"St. John's", "name_en":"St. John's", "country":"Canada", "state":"Newfoundland and Labrador", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-52.681006918943126,47.58498821928231]}},
 {"type":"Feature","properties":{"name":"Charlottetown", "name_en":"Charlottetown", "country":"Canada", "state":"Prince Edward Island", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-63.131325115599395,46.249281635618104]}},
-{"type":"Feature","properties":{"name":"Victoria", "name_en":"Victoria", "country":"Canada", "state":"British Columbia", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-123.35000085640019,48.43328269356965]}},
+{"type":"Feature","properties":{"name":"Victoria, BC", "name_en":"Victoria, BC", "country":"Canada", "state":"British Columbia", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-123.35000085640019,48.43328269356965]}},
 {"type":"Feature","properties":{"name":"Saskatoon", "name_en":"Saskatoon", "country":"Canada", "state":"Saskatchewan", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-106.66998539409389,52.17003135081103]}},
 {"type":"Feature","properties":{"name":"Regina", "name_en":"Regina", "country":"Canada", "state":"Saskatchewan", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-104.6170099302185,50.45003297840839]}},
 {"type":"Feature","properties":{"name":"Iqaluit", "name_en":"Iqaluit", "country":"Canada", "state":"Nunavut", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-68.50019174614948,63.75045937885693]}},
@@ -632,7 +630,7 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"La Rioja", "name_en":"La Rioja", "country":"Argentina", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-66.8499611833227,-29.409950338968372]}},
 {"type":"Feature","properties":{"name":"Catamarca", "name_en":"Catamarca", "country":"Argentina", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-65.78000065271937,-28.470007712011522]}},
 {"type":"Feature","properties":{"name":"Santiago del Estero", "name_en":"Santiago del Estero", "country":"Argentina", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-64.26665633305191,-27.783331279717117]}},
-{"type":"Feature","properties":{"name":"Santa Fe", "name_en":"Santa Fe", "country":"Argentina", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-60.69000126305065,-31.623872051216892]}},
+{"type":"Feature","properties":{"name":"Santa Fe, Argentina", "name_en":"Santa Fe, Argentina", "country":"Argentina", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-60.69000126305065,-31.623872051216892]}},
 {"type":"Feature","properties":{"name":"Corrientes", "name_en":"Corrientes", "country":"Argentina", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-58.809986818056075,-27.48996417359615]}},
 {"type":"Feature","properties":{"name":"Formosa", "name_en":"Formosa", "country":"Argentina", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-58.1828157975458,-26.17283526734093]}},
 {"type":"Feature","properties":{"name":"Buenos Aires", "name_en":"Buenos Aires", "country":"Argentina", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[-58.399477232331435,-34.600555749907414]}},
@@ -834,7 +832,7 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Zaragoza", "name_en":"Zaragoza", "country":"España", "state":"Aragón", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-0.889982138462472,41.65000164699296]}},
 {"type":"Feature","properties":{"name":"Barcelona", "name_en":"Barcelona", "country":"España", "state":"Cataluña", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[2.181424460619155,41.385245438547486]}},
 {"type":"Feature","properties":{"name":"Bilbao", "name_en":"Bilbao", "country":"España", "state":"País Vasco", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-2.929986817832628,43.24998150539773]}},
-{"type":"Feature","properties":{"name":"Toledo", "name_en":"Toledo", "country":"España", "state":"Castilla-La Mancha", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-4.016716350714489,39.86703554184254]}},
+{"type":"Feature","properties":{"name":"Toledo, España", "name_en":"Toledo, Spain", "country":"España", "state":"Castilla-La Mancha", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-4.016716350714489,39.86703554184254]}},
 {"type":"Feature","properties":{"name":"Salamanca", "name_en":"Salamanca", "country":"España", "state":"Castilla y León", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-5.670000449028464,40.970404885922505]}},
 {"type":"Feature","properties":{"name":"Guadalajara", "name_en":"Guadalajara (Spain)", "country":"España", "state":"Castilla–La Mancha", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-3.166587363080964,40.63370709132482]}},
 {"type":"Feature","properties":{"name":"Melilla", "name_en":"Melilla", "country":"España", "state":"Melilla", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-2.950011435345687,35.300001646967644]}},
@@ -933,7 +931,7 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Brighton", "name_en":"Brighton", "country":"United Kingdom", "state":"England", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-0.169974407339794,50.83034568186031]}},
 {"type":"Feature","properties":{"name":"Inverness", "name_en":"Inverness", "country":"United Kingdom", "state":"Scotland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-4.233266440233649,57.46712404288962]}},
 {"type":"Feature","properties":{"name":"Oxford", "name_en":"Oxford", "country":"United Kingdom", "state":"England", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-1.24998600402381,51.77041749989803]}},
-{"type":"Feature","properties":{"name":"Aberdeen", "name_en":"Aberdeen", "country":"United Kingdom", "state":"Scotland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-2.079987021279692,57.17039796866965]}},
+{"type":"Feature","properties":{"name":"Aberdeen, Scotland", "name_en":"Aberdeen, Scotland", "country":"United Kingdom", "state":"Scotland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-2.079987021279692,57.17039796866965]}},
 {"type":"Feature","properties":{"name":"Dundee", "name_en":"Dundee", "country":"United Kingdom", "state":"Scotland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-3.000008383588124,56.47038901684391]}},
 {"type":"Feature","properties":{"name":"Bath", "name_en":"Bath", "country":"United Kingdom", "state":"England", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-2.350022218220886,51.383748595274085]}},
 {"type":"Feature","properties":{"name":"Exeter", "name_en":"Exeter", "country":"United Kingdom", "state":"England", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-3.529950196741254,50.700405292862456]}},
