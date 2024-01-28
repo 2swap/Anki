@@ -1,0 +1,24 @@
+<div class="flashcard" style="font-size:120px">
+    <div class="front">
+        Draw {{Name}} {{Front_Extra}}
+    </div>
+    <!-- Placeholder for Background or Picture -->
+    <div id="imageContainer"></div>
+    <canvas id="can" style="position: fixed; top: 0; left: 0; z-index: 100;"></canvas>
+</div>
+
+<script type="text/javascript">
+    var back = document.getElementById("back");
+    var imageContainer = document.getElementById("imageContainer");
+
+    imageContainer.innerHTML = back?'{{Picture}}':'{{Background}}';
+
+    //resize image
+    var imgs = imageContainer.getElementsByTagName("img");
+    if (imgs.length > 0) {
+        imgs[0].setAttribute("style", "z-index:1;position:absolute;max-width:500px;");
+    }
+</script>
+
+<script type="text/javascript" src="_2swap_drawing_pad.js"></script>
+

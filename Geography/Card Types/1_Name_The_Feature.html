@@ -1,0 +1,303 @@
+<div id="txt" style="color: white"></div>
+<canvas id="canvas" width="100%" height="100%"></canvas>
+<input type="text" autofocus id="type_input">
+<audio id="audio" src="">
+
+<script>
+    // Function to dynamically inject a script
+    var injectScript = (src) => {
+        return new Promise((resolve, reject) => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+        });
+    };
+
+    (async () => {
+        var typedCities = [];
+        var typeElement = document.getElementById("type_input");
+        var textElement = document.getElementById("txt");
+        var backElement = document.getElementById("back");
+        var onBack = !!backElement;
+        if (onBack) {
+            backElement.remove();
+            typeElement.remove();
+        }
+
+        var featureName = ("{{Name}}".startsWith("(")) ? "Minya" : "{{Name}}";
+        var countryName = ("{{Country}}".startsWith("(")) ? "Egypt" : "{{Country}}";
+
+        var isCityQuestion = countryName === "";
+
+        if (isCityQuestion) {
+            await injectScript('geog_cities.js');
+
+            var feature = -1, featureNo = -1;
+            for (var i = 0; i < geojson.features.length; i++) {
+                if (geojson.features[i].properties.name == featureName || geojson.features[i].properties.name_en == featureName) {
+                    featureNo = i;
+                    feature = geojson.features[i];
+                    break;
+                }
+            }
+            await injectScript('geog_countries.js');
+            if (countriesWithMaps.indexOf(feature.properties.country) !== -1) {
+                await injectScript('geog_' + feature.properties.country + '.js');
+            }
+        } else {
+            await injectScript('geog_' + countryName + '.js');
+            for (var i = 0; i < countryjson.features.length; i++) {
+                if (countryjson.features[i].properties.name == featureName || countryjson.features[i].properties.name_en == featureName) {
+                    featureNo = i;
+                    feature = countryjson.features[i];
+                    break;
+                }
+            }
+        }
+
+        // Function to play audio for a feature
+        var playAudio = function (str) {
+            var audioElement = document.getElementById("audio");
+            audioElement.src = "geogaudio_" + str + ".mp3";
+            audioElement.autoplay = true;
+            audioElement.addEventListener("error", function () {
+                audioElement.src = "geogaudio_" + str + ".flac";
+                audioElement.autoplay = true;
+            });
+        }
+
+        // Function to play feature audio when on back
+        var playFeatureIfOnBack = function () {
+            if (onBack) {
+                playAudio(feature.properties.name);
+            }
+        }
+
+        playFeatureIfOnBack();
+
+        document.addEventListener("mousedown", playFeatureIfOnBack);
+        document.addEventListener("touchstart", playFeatureIfOnBack);
+
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+        var crowdedness = 0;
+
+        // Main render function
+        var render = function () {
+            if (isCityQuestion) {
+                drawPoints();
+                crowdedness -= zoom.m;
+                distToClosest = Math.sqrt(1 / crowdedness);
+                zoom.z = .1 * distToClosest;
+            } else {
+                drawShape(feature);
+            }
+            var parentDims = canvas.parentElement.getBoundingClientRect();
+            canvas.width = parentDims.width;
+            canvas.height = parentDims.height;
+            drawMap();
+            if (typeof countryjson !== "undefined") drawShapes();
+            if (isCityQuestion) drawPoints();
+        }
+
+        var zoom = isCityQuestion ? { x: lonToX(feature.geometry.coordinates[0]), y: latToY(feature.geometry.coordinates[1]), z: .5 } : { x: 1, y: 1, z: .5 };
+        zoom.m = 0;
+
+        var maps = ['political', 'coastline', 'earth', 'night'];
+        var exts = ['.svg', '.jpg', '.jpg', '.jpg'];
+        var mapNo = 0;
+        var images = [];
+        for (var i = 0; i < maps.length; i++) {
+            images[i] = new Image;
+            if (i == mapNo) images[i].onload = render;
+            images[i].src = "geog_" + maps[i] + exts[i];
+        }
+        var image = images[mapNo];
+
+        // Function definitions for drawing on canvas
+        // Function to draw points on the map
+        function drawPoints() {
+            crowdedness = 0;
+            ctx.textAlign = "center";
+            for (var i = 0; i < geojson.features.length; i++) {
+                var feature = geojson.features[i];
+                drawTriplePoint(feature);
+           }
+        }
+
+        // Function to draw shapes on the map
+        function drawShapes() {
+            for (var i in countryjson.features) {
+                var shape = countryjson.features[i];
+               drawShape(shape);
+            }
+        }
+
+        function latToY(lat) {
+            return -lat / 180 + .5;
+        }
+
+        function lonToX(lon) {
+            return lon / 360 + .5;
+        }
+
+        function bound(val, min, max) {
+            return Math.min(Math.max(val, min), max);
+        }
+
+        // Function to draw a point on the map three times (for wrap-around effect)
+        function drawTriplePoint(feature) {
+            var highlight = feature == feature;
+            var coords = feature.geometry.coordinates;
+            drawParticle(coords[0], coords[1], highlight, feature.properties.capitaltype);
+            drawParticle(coords[0] - 360, coords[1], highlight, feature.properties.capitaltype);
+            drawParticle(coords[0] + 360, coords[1], highlight, feature.properties.capitaltype);
+
+            if ((onBack || typedCities.includes(feature.properties.name)) && Math.hypot(coords[0] - feature.geometry.coordinates[0], coords[1] - feature.geometry.coordinates[1]) < zoom.z * 300) {
+                if (highlight) {
+                    ctx.fillStyle = "#f66";
+                    ctx.font = "24px Trebuchet MS";
+                    ctx.fillText(feature.properties.name, canvas.width / 2, canvas.height / 2 + 34);
+                    ctx.font = "16px Trebuchet MS";
+                    var writeStateName = feature.properties.state !== "" && typeof feature.properties.state !== "undefined";
+                    var text = writeStateName ? feature.properties.state : feature.properties.country;
+                    ctx.fillText(text, canvas.width / 2, canvas.height / 2 + 54);
+                } else {
+                    ctx.font = "16px Trebuchet MS";
+                    var x = goob(lonToX(coords[0]), true);
+                    var y = goob(latToY(coords[1]), false);
+                    ctx.fillText(feature.properties.name, x, y + 18);
+                }
+            }
+        }
+
+        // Function to draw a single particle on the map
+        function drawParticle(lon, lat, red, capitaltype) {
+            ctx.lineWidth = 3;
+            ctx.fillStyle = ctx.strokeStyle = red ? "#f66" : "#0aa";
+            var shift = bound(1 / zoom.z, 2, 8);
+            var x = goob(lonToX(lon), true);
+            var y = goob(latToY(lat), false);
+            ctx.beginPath();
+            if (capitaltype == "national") {
+                ctx.arc(x, y, shift * .75, 0, 2 * Math.PI, false);
+                ctx.stroke();
+            } else if (capitaltype == "state") {
+                ctx.arc(x, y, shift * .5, 0, 2 * Math.PI, false);
+                ctx.stroke();
+            } else {
+                ctx.arc(x, y, shift / 2, 0, 2 * Math.PI, false);
+                ctx.fill();
+            }
+            // Calculate the distance and adjust crowdedness
+            var dx = (canvas.width / 2 - x) * zoom.z / 4;
+            var dy = (canvas.height / 2 - y) * zoom.z / 4;
+            var c = 1 / (dx * dx + dy * dy);
+            if (Math.hypot(dy, dx) != 0) {
+                crowdedness += c;
+                zoom.m = Math.max(c, zoom.m);
+            }
+        }
+
+
+        // Function to draw a geographical shape on the map
+        function drawShape(obj) {
+            var fill = obj === feature;
+            var multi = obj.geometry.type == "MultiPolygon";
+            var multiShape = obj.geometry.coordinates;
+            if (!multi) multiShape = [multiShape];
+            ctx.lineWidth = fill ? .5 : .2;
+            ctx.fillStyle = "red";
+            ctx.strokeStyle = fill ? "red" : "black";
+            var init = false;
+            var maxx = -1000, maxy = -1000, minx = 1000, miny = 1000;
+            for (var i in multiShape) {
+                var shape = multiShape[i][0];
+                ctx.beginPath();
+                for (var j in shape) {
+                    var point = shape[j];
+                    var lon = point[0];
+                    var lat = point[1];
+                    var x = goob(lonToX(lon), true);
+                    var y = goob(latToY(lat), false);
+                    maxx = Math.max(maxx, lonToX(lon));
+                    maxy = Math.max(maxy, latToY(lat));
+                    minx = Math.min(minx, lonToX(lon));
+                    miny = Math.min(miny, latToY(lat));
+                    init ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+                    init = true;
+                }
+                ctx.stroke();
+                if (fill) {
+                    ctx.globalAlpha = .25;
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                }
+            }
+            var centerX = (maxx + minx) / 2;
+            var centerY = (maxy + miny) / 2;
+            if (fill) {
+                zoom.x = centerX;
+                zoom.y = centerY;
+                zoom.z = Math.pow(Math.max(maxx - minx, maxy - miny), .5) * .3;
+            }
+            if(onBack || typedCities.includes(obj.properties.name)){
+                ctx.textAlign = "center"
+                ctx.fillStyle = "#f66";
+                ctx.font = (obj === feature ? 18 : 14) + "px Trebuchet MS";
+                ctx.fillText(obj.properties.name, goob(centerX, true), goob(centerY, false) + 5);
+            }
+        }
+
+        // Function to draw the entire map
+        function drawMap() {
+            for (let i = -1; i <= 1; i++) {
+                const tlx = goob(0 + i, true);
+                const tly = goob(0, false);
+                const brx = goob(1 + i, true);
+                const bry = goob(1, false);
+                ctx.drawImage(image, tlx, tly, brx - tlx, bry - tly);
+            }
+        }
+
+        // Function to calculate position on canvas
+        function goob(point, isX) {
+            const zoomCoordinate = isX ? zoom.x : zoom.y;
+            const canvasDimension = isX ? canvas.width : canvas.height;
+            const size = isX ? 600 : 300;
+            return ((point - zoomCoordinate) * 1 / zoom.z) * size + 0.5 * canvasDimension;
+        }
+
+        // Sanitize input string for comparison
+        function sanitizeString(str) {
+            // Remove diacritics and lower the case
+            str = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            // Remove remaining nonalphanumeric chars
+            str = str.replace(/[^a-z]/g, "");
+            return str.length == 0 ? Math.random() : str;
+        }
+
+        // Event listener for typing input
+        typeElement.focus();
+        typeElement.addEventListener("keypress", function () {
+            var thisJson = isCityQuestion ? geojson : countryjson;
+            if (event.key !== "Enter") return;
+            var currentInput = this.value;
+            if (currentInput === "") typeElement.blur();
+            else for (i in thisJson.features) {
+                var geo = thisJson.features[i];
+                if (sanitizeString(geo.properties.name) === sanitizeString(currentInput) || sanitizeString(geo.properties.name_en) === sanitizeString(currentInput)) {
+                    playAudio(geo.properties.name);
+                    typedCities.push(geo.properties.name);
+                    this.value = "";
+                    render();
+                }
+            }
+        });
+
+    })();
+</script>
+
