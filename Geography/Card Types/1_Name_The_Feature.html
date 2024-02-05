@@ -27,12 +27,12 @@
             typeElement.remove();
         }
 
-        var nameField = ("{{Name}}".startsWith("(")) ? "Aswan::Egypt" : "{{Name}}";
+        var nameField = ("{{Name}}".startsWith("(")) ? "London::cities" : "{{Name}}";
         var splitName = nameField.split("::");
         var featureName = splitName[0];
         var countryName = splitName[1];
 
-        var isCityQuestion = countryName === "";
+        var isCityQuestion = countryName === "cities";
 
         if (isCityQuestion) {
             await injectScript('geog_cities.js');
@@ -66,7 +66,7 @@
             var prefix = "https://github.com/2swap/Anki/raw/main/Geography/Decks/World%20Geography/media/geogaudio_";
             var encodey = encodeURIComponent(str);
             audioElement.src = prefix + encodey + ".mp3";
-            textElement.innerHTML = audioElement.src;
+            //textElement.innerHTML = audioElement.src;
             audioElement.autoplay = true;
             audioElement.addEventListener("error", function () {
                 audioElement.src = prefix + encodey + ".flac";
@@ -154,14 +154,14 @@
         }
 
         // Function to draw a point on the map three times (for wrap-around effect)
-        function drawTriplePoint(feature) {
-            var highlight = feature == feature;
-            var coords = feature.geometry.coordinates;
-            drawParticle(coords[0], coords[1], highlight, feature.properties.capitaltype);
-            drawParticle(coords[0] - 360, coords[1], highlight, feature.properties.capitaltype);
-            drawParticle(coords[0] + 360, coords[1], highlight, feature.properties.capitaltype);
+        function drawTriplePoint(f) {
+            var highlight = f == feature;
+            var coords = f.geometry.coordinates;
+            drawParticle(coords[0], coords[1], highlight, f.properties.capitaltype);
+            drawParticle(coords[0] - 360, coords[1], highlight, f.properties.capitaltype);
+            drawParticle(coords[0] + 360, coords[1], highlight, f.properties.capitaltype);
 
-            if ((onBack || typedCities.includes(feature.properties.name)) && Math.hypot(coords[0] - feature.geometry.coordinates[0], coords[1] - feature.geometry.coordinates[1]) < zoom.z * 300) {
+            if ((onBack || typedCities.includes(f.properties.name_en) || typedCities.includes(f.properties.name)) && Math.hypot(coords[0] - feature.geometry.coordinates[0], coords[1] - feature.geometry.coordinates[1]) < zoom.z * 300) {
                 if (highlight) {
                     ctx.fillStyle = "#f66";
                     ctx.font = "24px Trebuchet MS";
@@ -174,7 +174,7 @@
                     ctx.font = "16px Trebuchet MS";
                     var x = goob(lonToX(coords[0]), true);
                     var y = goob(latToY(coords[1]), false);
-                    ctx.fillText(feature.properties.name, x, y + 18);
+                    ctx.fillText(f.properties.name, x, y + 18);
                 }
             }
         }
@@ -287,14 +287,13 @@
 
         // Event listener for typing input
         typeElement.focus();
-        typeElement.addEventListener("keypress", function () {
+        typeElement.addEventListener("keyup", function () {
             var thisJson = isCityQuestion ? geojson : countryjson;
-            if (event.key !== "Enter") return;
             var currentInput = this.value;
-            if (currentInput === "") typeElement.blur();
-            else for (i in thisJson.features) {
+            for (i in thisJson.features) {
                 var geo = thisJson.features[i];
                 if (sanitizeString(geo.properties.name) === sanitizeString(currentInput) || sanitizeString(geo.properties.name_en) === sanitizeString(currentInput)) {
+                    if(geo.properties.name == feature.properties.name) typeElement.blur();
                     playAudio(geo.properties.name);
                     typedCities.push(geo.properties.name);
                     this.value = "";
@@ -302,7 +301,11 @@
                 }
             }
         });
+        typeElement.addEventListener("keydown", function () {
+            if (event.key == "Enter") typeElement.blur();
+        });
 
     })();
 </script>
+
 

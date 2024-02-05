@@ -22,5 +22,11 @@ def extract_and_write(folder_path, output_tsv):
 # Example usage
 folder_path = 'media'  # Replace with the path to your folder
 output_tsv = 'include.tsv'  # The output TSV file name
+
+# Remove the output TSV file if it exists
+if os.path.exists(output_tsv):
+    os.remove(output_tsv)
+
+# Call the function
 extract_and_write(folder_path, output_tsv)
 

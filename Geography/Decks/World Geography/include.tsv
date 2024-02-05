@@ -377,7 +377,6 @@ Port Vila::cities
 Ngerulmud::cities
 Yaren::cities
 Vatican City::cities
-Zagreb::cities
 Belgrade::cities
 Sarajevo::cities
 Valletta::cities
@@ -1340,9 +1339,30 @@ Mainz::cities
 Wiesbaden::cities
 Erfurt::cities
 Frankfurt::cities
+Zagreb::cities
+Split::cities
+Rijeka::cities
+Osijek::cities
+Zadar::cities
+Dubrovnik::cities
 Brno::cities
 Ostrava::cities
+Pilsen::cities
+Olomouc::cities
+Liberec::cities
+Ceske Budejovice::cities
+Hradec Kralove::cities
+Usti nad Labem::cities
+Pardubice::cities
+Bratislava::cities
 Kosice::cities
+Presov::cities
+Zilina::cities
+Banska Bystrica::cities
+Nitra::cities
+Trnava::cities
+Martin::cities
+Trencin::cities
 Sofia::cities
 Plovdiv::cities
 Shumen::cities
