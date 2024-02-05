@@ -1,4 +1,4 @@
-var countries_with_maps = [
+var countriesWithMaps = [
 	"Brazil",
 	"Canada",
 	"Chile",
