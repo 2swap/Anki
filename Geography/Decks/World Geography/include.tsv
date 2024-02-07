@@ -387,8 +387,6 @@ Chisinau::cities
 Vaduz::cities
 Budapest::cities
 Bucharest::cities
-Vienna::cities
-Prague::cities
 Minsk::cities
 Pristina::cities
 Luxembourg City::cities
@@ -399,9 +397,7 @@ Reykjavík::cities
 Andorra la Vella::cities
 Ljubljana::cities
 Copenhagen::cities
-Brussels::cities
 Nicosia::cities
-Bratislava::cities
 Addis Ababa::cities
 Antananarivo::cities
 Asmara::cities
@@ -453,16 +449,13 @@ Windhoek::cities
 Yamoussoukro::cities
 Yaoundé::cities
 Muscat::cities
-Amman::cities
 Doha::cities
 Kuwait City::cities
 Beirut::cities
-Abu Dhabi::cities
 Sana'a::cities
 Riyadh::cities
 Damascus::cities
 Tehran::cities
-Jerusalem::cities
 Baghdad::cities
 Manama::cities
 Ramallah::cities
@@ -542,6 +535,16 @@ Davao::cities
 Cotabato::cities
 Batangas::cities
 General Santos::cities
+Amman::cities
+Zarqa::cities
+Irbid::cities
+Russeifa::cities
+Aqaba::cities
+Tel Aviv-Yafo::cities
+Jerusalem::cities
+Haifa::cities
+Be'er Sheva::cities
+Rishon LeZion::cities
 Táizhōng::cities
 Táinán::cities
 Gāoxióng::cities
@@ -962,6 +965,7 @@ Bangkok::cities
 Jakarta::cities
 Semarang::cities
 Bandung::cities
+Cimahi::cities
 Bogor::cities
 Bekasi::cities
 Depok::cities
@@ -973,7 +977,9 @@ Blitar::cities
 Probolinggo::cities
 Serang::cities
 Tangerang::cities
+South Tangerang::cities
 Yogyakarta::cities
+Banjarmasin::cities
 Palangkaraya::cities
 Samarinda::cities
 Pontianak::cities
@@ -991,6 +997,7 @@ Jambi::cities
 Medan::cities
 Bandar Lampung::cities
 Tanjungpinang::cities
+Batam::cities
 Pekanbaru::cities
 Palembang::cities
 Padang::cities
@@ -1309,10 +1316,20 @@ Kafr el Sheikh::cities
 Suez::cities
 Bur Said::cities
 Ismailia::cities
+Brussels::cities
+Liege::cities
+Charleroi::cities
+Mons::cities
+Ghent::cities
+Antwerp::cities
+Kortrijk::cities
+Bruges::cities
 The Hague::cities
 Rotterdam::cities
 Utrecht::cities
 Amsterdam::cities
+Groningen::cities
+Zwolle::cities
 Berlin::cities
 Nürnberg::cities
 Stuttgart::cities
@@ -1345,6 +1362,12 @@ Rijeka::cities
 Osijek::cities
 Zadar::cities
 Dubrovnik::cities
+Salzburg::cities
+Linz::cities
+Graz::cities
+Innsbruck::cities
+Vienna::cities
+Prague::cities
 Brno::cities
 Ostrava::cities
 Pilsen::cities
@@ -1418,6 +1441,12 @@ Jeonju::cities
 Jeju::cities
 Dublin::cities
 Cork::cities
+Galway::cities
+Limerick::cities
+Waterford::cities
+Drogheda::cities
+Dundalk::cities
+Bray::cities
 Algiers::cities
 Oran::cities
 Nouakchott::cities
@@ -1426,8 +1455,28 @@ Choum::cities
 Zouérat::cities
 Atar::cities
 Azougui::cities
+Abu Dhabi::cities
+Dubai::cities
+Sharjah::cities
+Ajman::cities
+Al Ain::cities
+Ras Al Khaimah::cities
+Fujairah::cities
+Umm Al Quwain::cities
 Valparaiso::cities
 Santiago::cities
+Concepcion::cities
+Antofagasta::cities
+La Serena::cities
+Puerto Montt::cities
+Arica::cities
+Copiapo::cities
+Temuco::cities
+Punta Arenas::cities
+Curico::cities
+Iquique::cities
+Calama::cities
+Valdivia::cities
 Bulawayo::cities
 Cotonou::cities
 Bujumbura::cities
@@ -1435,35 +1484,9 @@ Aleppo::cities
 Timbuktu::cities
 Guayaquil::cities
 Samarqand::cities
-Tel Aviv-Yafo::cities
 Douala::cities
 Abidjan::cities
 Beira::cities
-Dubai::cities
-Tucumán::Japan_Roadways
-Santiago del Estero::Japan_Roadways
-Salta::Japan_Roadways
-Jujuy::Japan_Roadways
-Formosa::Japan_Roadways
-Chaco::Japan_Roadways
-Misiones::Japan_Roadways
-Corrientes::Japan_Roadways
-Catamarca::Japan_Roadways
-Córdoba::Japan_Roadways
-Santa Fe::Japan_Roadways
-Entre Ríos::Japan_Roadways
-Buenos Aires::Japan_Roadways
-La Pampa::Japan_Roadways
-La Rioja::Japan_Roadways
-San Juan::Japan_Roadways
-San Luis::Japan_Roadways
-Mendoza::Japan_Roadways
-Neuquén::Japan_Roadways
-Río Negro::Japan_Roadways
-Chubut::Japan_Roadways
-Santa Cruz::Japan_Roadways
-Tierra del Fuego::Japan_Roadways
-Capital Federal::Japan_Roadways
 Quebec::Canada
 Newfoundland and Labrador::Canada
 British Columbia::Canada

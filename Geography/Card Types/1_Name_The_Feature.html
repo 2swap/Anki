@@ -1,6 +1,6 @@
 <div id="txt" style="color: white"></div>
 <canvas id="canvas" width="100%" height="100%"></canvas>
-<input type="text" autofocus id="type_input">
+<textarea type="text" autofocus id="type_input"></textarea>
 <audio id="audio" src="">
 
 <script>
@@ -27,21 +27,22 @@
             typeElement.remove();
         }
 
-        var nameField = ("{{Name}}".startsWith("(")) ? "London::cities" : "{{Name}}";
+        var nameField = ("{{Name}}".startsWith("(")) ? "Detroit::cities" : "{{Name}}";
         var splitName = nameField.split("::");
         var featureName = splitName[0];
         var countryName = splitName[1];
+        countryjson = {"type":"FeatureCollection","features":[]};
+
 
         var isCityQuestion = countryName === "cities";
 
+        await injectScript('geog_' + countryName + '.js');
         if (isCityQuestion) {
-            await injectScript('geog_cities.js');
-
             var feature = -1, featureNo = -1;
-            for (var i = 0; i < geojson.features.length; i++) {
-                if (geojson.features[i].properties.name == featureName || geojson.features[i].properties.name_en == featureName) {
+            for (var i = 0; i < countryjson.features.length; i++) {
+                if (countryjson.features[i].properties.name == featureName || countryjson.features[i].properties.name_en == featureName) {
                     featureNo = i;
-                    feature = geojson.features[i];
+                    feature = countryjson.features[i];
                     break;
                 }
             }
@@ -50,7 +51,6 @@
                 await injectScript('geog_' + feature.properties.country + '.js');
             }
         } else {
-            await injectScript('geog_' + countryName + '.js');
             for (var i = 0; i < countryjson.features.length; i++) {
                 if (countryjson.features[i].properties.name == featureName || countryjson.features[i].properties.name_en == featureName) {
                     featureNo = i;
@@ -66,7 +66,6 @@
             var prefix = "https://github.com/2swap/Anki/raw/main/Geography/Decks/World%20Geography/media/geogaudio_";
             var encodey = encodeURIComponent(str);
             audioElement.src = prefix + encodey + ".mp3";
-            //textElement.innerHTML = audioElement.src;
             audioElement.autoplay = true;
             audioElement.addEventListener("error", function () {
                 audioElement.src = prefix + encodey + ".flac";
@@ -93,7 +92,7 @@
         // Main render function
         var render = function () {
             if (isCityQuestion) {
-                drawPoints();
+                drawShapes();
                 crowdedness -= zoom.m;
                 distToClosest = Math.sqrt(1 / crowdedness);
                 zoom.z = .1 * distToClosest;
@@ -104,8 +103,8 @@
             canvas.width = parentDims.width;
             canvas.height = parentDims.height;
             drawMap();
-            if (typeof countryjson !== "undefined") drawShapes();
-            if (isCityQuestion) drawPoints();
+            drawShapes();
+            crowdedness = 0;
         }
 
         var zoom = isCityQuestion ? { x: lonToX(feature.geometry.coordinates[0]), y: latToY(feature.geometry.coordinates[1]), z: .5 } : { x: 1, y: 1, z: .5 };
@@ -122,22 +121,14 @@
         }
         var image = images[mapNo];
 
-        // Function definitions for drawing on canvas
-        // Function to draw points on the map
-        function drawPoints() {
-            crowdedness = 0;
-            ctx.textAlign = "center";
-            for (var i = 0; i < geojson.features.length; i++) {
-                var feature = geojson.features[i];
-                drawTriplePoint(feature);
-           }
-        }
-
         // Function to draw shapes on the map
         function drawShapes() {
+            ctx.textAlign = "center"
             for (var i in countryjson.features) {
                 var shape = countryjson.features[i];
-               drawShape(shape);
+                if(shape.geometry.type == "Point") drawTriplePoint(shape);
+                else if(shape.geometry.type == "LineString") drawLineString(shape);
+                else drawShape(shape);
             }
         }
 
@@ -155,6 +146,11 @@
 
         // Function to draw a point on the map three times (for wrap-around effect)
         function drawTriplePoint(f) {
+            // Ensure the object is a Point
+            if (f.geometry.type !== "Point") {
+                textElement.innerHTML = "Object is not a Point";
+                return;
+            }
             var highlight = f == feature;
             var coords = f.geometry.coordinates;
             drawParticle(coords[0], coords[1], highlight, f.properties.capitaltype);
@@ -250,11 +246,41 @@
                 zoom.z = Math.pow(Math.max(maxx - minx, maxy - miny), .5) * .3;
             }
             if(onBack || typedCities.includes(obj.properties.name)){
-                ctx.textAlign = "center"
                 ctx.fillStyle = "#f66";
                 ctx.font = (obj === feature ? 18 : 14) + "px Trebuchet MS";
                 ctx.fillText(obj.properties.name, goob(centerX, true), goob(centerY, false) + 5);
             }
+        }
+
+        // Function to draw a GeoJSON LineString on the map
+        function drawLineString(obj) {
+            // Ensure the object is a LineString
+            if (obj.geometry.type !== "LineString") {
+                textElement.innerHTML = "Object is not a LineString";
+                return;
+            }
+
+            ctx.lineWidth = 2; // Adjust line width as needed
+            ctx.strokeStyle = "red"; // Line color
+
+            var coordinates = obj.geometry.coordinates;
+            ctx.beginPath();
+
+            // Loop through each coordinate in the LineString
+            for (var i = 0; i < coordinates.length; i++) {
+                var lon = coordinates[i][0];
+                var lat = coordinates[i][1];
+                var x = goob(lonToX(lon), true);
+                var y = goob(latToY(lat), false);
+
+                if (i === 0) {
+                    ctx.moveTo(x, y); // Move to the starting point without drawing a line
+                } else {
+                    ctx.lineTo(x, y); // Draw a line to the next point
+                }
+            }
+
+            ctx.stroke(); // Apply the line to the canvas
         }
 
         // Function to draw the entire map
@@ -288,12 +314,10 @@
         // Event listener for typing input
         typeElement.focus();
         typeElement.addEventListener("keyup", function () {
-            var thisJson = isCityQuestion ? geojson : countryjson;
             var currentInput = this.value;
-            for (i in thisJson.features) {
-                var geo = thisJson.features[i];
+            for (i in countryjson.features) {
+                var geo = countryjson.features[i];
                 if (sanitizeString(geo.properties.name) === sanitizeString(currentInput) || sanitizeString(geo.properties.name_en) === sanitizeString(currentInput)) {
-                    if(geo.properties.name == feature.properties.name) typeElement.blur();
                     playAudio(geo.properties.name);
                     typedCities.push(geo.properties.name);
                     this.value = "";
@@ -307,5 +331,6 @@
 
     })();
 </script>
+
 
 

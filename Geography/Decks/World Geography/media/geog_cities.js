@@ -1,4 +1,4 @@
-var geojson = {"type":"FeatureCollection","features":[
+countryjson.features.push(...[
 
 
 //North America
@@ -52,8 +52,6 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Vaduz", "name_en":"Vaduz", "country":"Liechtenstein", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[9.516669472907267,47.13372377429357]}},
 {"type":"Feature","properties":{"name":"Budapest", "name_en":"Budapest", "country":"Hungary", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[19.081374818759684,47.50195218499135]}},
 {"type":"Feature","properties":{"name":"București", "name_en":"Bucharest", "country":"Romania", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[26.0980007953504,44.43531766349457]}},
-{"type":"Feature","properties":{"name":"Wien", "name_en":"Vienna", "country":"Austria", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[16.364693096743736,48.20196113681686]}},
-{"type":"Feature","properties":{"name":"Praha", "name_en":"Prague", "country":"Czechia", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[14.464033917048539,50.08528287347832]}},
 {"type":"Feature","properties":{"name":"Мінск", "name_en":"Minsk", "country":"Belarus", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[27.56468129665825,53.901923295043105]}},
 {"type":"Feature","properties":{"name":"Prishtinë", "name_en":"Pristina", "country":"Kosovo", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[21.165984251599866,42.666709614119384]}},
 {"type":"Feature","properties":{"name":"Stad Lëtzebuerg", "name_en":"Luxembourg City", "country":"Luxembourg", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[6.130002806227083,49.611660379121076]}},
@@ -64,7 +62,6 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Andorra la Vella", "name_en":"Andorra la Vella", "country":"Andorra", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[1.51648596050552,42.5000014435459]}},
 {"type":"Feature","properties":{"name":"Ljubljana", "name_en":"Ljubljana", "country":"Slovenia", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[14.51496903347413,46.0552883087945]}},
 {"type":"Feature","properties":{"name":"København", "name_en":"Copenhagen", "country":"Denmark", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[12.561539888703294,55.68051004902594]}},
-{"type":"Feature","properties":{"name":"Brussels", "name_en":"Brussels", "country":"Belgium", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[4.33137074969045,50.83526293533032]}},
 {"type":"Feature","properties":{"name":"Λευκωσία", "name_en":"Nicosia", "country":"Cyprus", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[33.36663488641415,35.166676451654496]}},
 
 
@@ -123,16 +120,13 @@ var geojson = {"type":"FeatureCollection","features":[
 
 //Middle East
 {"type":"Feature","properties":{"name":"مَسْقَط", "name_en":"Muscat", "country":"Oman", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[58.593312132608844,23.613324807728134]}},
-{"type":"Feature","properties":{"name":"عَمَّان", "name_en":"Amman", "country":"Jordan", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[35.93135406687412,31.951971105827454]}},
 {"type":"Feature","properties":{"name":"الدوحة", "name_en":"Doha", "country":"Qatar", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[51.532967894299304,25.286556008906587]}},
 {"type":"Feature","properties":{"name":"مدينة الكويت", "name_en":"Kuwait City", "country":"Kuwait", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[47.97635528762527,29.371663488629565]}},
 {"type":"Feature","properties":{"name":"بيروت", "name_en":"Beirut", "country":"Lebanon", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[35.507762351377664,33.8739209756269]}},
-{"type":"Feature","properties":{"name":"أَبُو ظَبْيٍ", "name_en":"Abu Dhabi", "country":"UAE", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[54.36659338259199,24.466683572379907]}},
 {"type":"Feature","properties":{"name":"صَنْعَاء", "name_en":"Sana'a", "country":"Yemen", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[44.20464752393843,15.356679154263645]}},
 {"type":"Feature","properties":{"name":"الرياض", "name_en":"Riyadh", "country":"Saudi Arabia", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[46.770795798688255,24.642779007816443]}},
 {"type":"Feature","properties":{"name":"دمشق", "name_en":"Damascus", "country":"Syria", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[36.29805003041707,33.50197985420613]}},
 {"type":"Feature","properties":{"name":"تهران", "name_en":"Tehran", "country":"Iran", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[51.42239817500899,35.673888627001304]}},
-{"type":"Feature","properties":{"name":"القُدس‎", "name_en":"Jerusalem", "country":"Israel", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[35.20662593459866,31.778407815573303]}},
 {"type":"Feature","properties":{"name":"بَغْدَاد", "name_en":"Baghdad", "country":"Iraq", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[44.391922914564134,33.34059435615865]}},
 {"type":"Feature","properties":{"name":"المنامة", "name_en":"Manama", "country":"Bahrain", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[50.58305171591019,26.236136290485945]}},
 {"type":"Feature","properties":{"name":"رام الله", "name_en":"Ramallah", "country":"Palestine", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[35.206209378189556,31.90294475142406]}},
@@ -224,6 +218,22 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Cotabato", "name_en":"Cotabato", "country":"The Philippines", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[124.24842606516324,7.216909605839476]}},
 {"type":"Feature","properties":{"name":"Batangas", "name_en":"Batangas", "country":"The Philippines", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[121.02169795642624,13.781676858470007]}},
 {"type":"Feature","properties":{"name":"General Santos", "name_en":"General Santos", "country":"The Philippines", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[125.174726113995,6.110827249064357]}},
+
+
+//Jordan
+{"type":"Feature","properties":{"name":"عَمَّان", "name_en":"Amman", "country":"Jordan", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[35.93135406687412,31.951971105827454]}},
+{"type":"Feature","properties":{"name":"الزرقاء", "name_en":"Zarqa", "country":"Jordan", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[36.083620,32.068230]}},
+{"type":"Feature","properties":{"name":"إربد", "name_en":"Irbid", "country":"Jordan", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[35.849730,32.555560]}},
+{"type":"Feature","properties":{"name":"الرصيفة", "name_en":"Russeifa", "country":"Jordan", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[36.005830,32.017220]}},
+{"type":"Feature","properties":{"name":"العقبة", "name_en":"Aqaba", "country":"Jordan", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[35.008930,29.526670]}},
+
+
+//Israel
+{"type":"Feature","properties":{"name":"תל אביב-יפו", "name_en":"Tel Aviv-Yafo", "country":"Israel", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[34.76806589955174,32.08193733304165]}},
+{"type":"Feature","properties":{"name":"ירושלים", "name_en":"Jerusalem", "country":"Israel", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[35.20662593459866,31.778407815573303]}},
+{"type":"Feature","properties":{"name":"חיפה", "name_en":"Haifa", "country":"Israel", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[34.989570,32.794046]}},
+{"type":"Feature","properties":{"name":"באר שבע", "name_en":"Be'er Sheva", "country":"Israel", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[34.791462,31.251810]}},
+{"type":"Feature","properties":{"name":"ראשון לציון", "name_en":"Rishon LeZion", "country":"Israel", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[34.806449,31.961390]}},
 
 
 //Taiwan
@@ -332,34 +342,22 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Chula Vista", "name_en":"Chula Vista", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.0841955,32.6400541]}},
 {"type":"Feature","properties":{"name":"Fremont", "name_en":"Fremont", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-121.9885719,37.5482697]}},
 {"type":"Feature","properties":{"name":"San Bernardino", "name_en":"San Bernardino", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.2897652,34.1083449]}},
-{"type":"Feature","properties":{"name":"Modesto", "name_en":"Modesto", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-120.9968782,37.63909719999999]}},
-{"type":"Feature","properties":{"name":"Moreno Valley", "name_en":"Moreno Valley", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.2296717,33.9424658]}},
 {"type":"Feature","properties":{"name":"Huntington Beach", "name_en":"Huntington Beach", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.9992265,33.660297]}},
 {"type":"Feature","properties":{"name":"Irvine", "name_en":"Irvine", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.7946942,33.6839473]}},
-{"type":"Feature","properties":{"name":"Covina", "name_en":"Covina", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.888304,34.089027]}},
 {"type":"Feature","properties":{"name":"Pasadena", "name_en":"Pasadena", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.144442,34.147391]}},
 {"type":"Feature","properties":{"name":"Compton", "name_en":"Compton", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.219934,33.895418]}},
 {"type":"Feature","properties":{"name":"Torrance", "name_en":"Torrance", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.340412,33.836219]}},
 {"type":"Feature","properties":{"name":"Lawndale", "name_en":"Lawndale", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.352583,33.887470]}},
 {"type":"Feature","properties":{"name":"Hawthorne", "name_en":"Hawthorne", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.352539,33.916851]}},
 {"type":"Feature","properties":{"name":"Santa Monica", "name_en":"Santa Monica", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.491198,34.019958]}},
-{"type":"Feature","properties":{"name":"Culver City", "name_en":"Culver City", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.396796,34.022767]}},
 {"type":"Feature","properties":{"name":"El Segundo", "name_en":"El Segundo", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.416364,33.919518]}},
 {"type":"Feature","properties":{"name":"Manhattan Beach", "name_en":"Manhattan Beach", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.410916,33.885858]}},
 {"type":"Feature","properties":{"name":"Hermosa Beach", "name_en":"Hermosa Beach", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.399667,33.863093]}},
 {"type":"Feature","properties":{"name":"Redondo Beach", "name_en":"Redondo Beach", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.388554,33.849990]}},
-{"type":"Feature","properties":{"name":"Yucca Valley", "name_en":"Yucca Valley", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-116.432733,34.115869]}},
-{"type":"Feature","properties":{"name":"Signal Hill", "name_en":"Signal Hill", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.167607,33.805300]}},
-{"type":"Feature","properties":{"name":"Santa Clarita", "name_en":"Santa Clarita", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.543725,34.392961]}},
-{"type":"Feature","properties":{"name":"Palm Springs", "name_en":"Palm Springs", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-116.544722,33.828899]}},
 {"type":"Feature","properties":{"name":"Joshua Tree", "name_en":"Joshua Tree", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-116.314779,34.136659]}},
 {"type":"Feature","properties":{"name":"Beverly Hills", "name_en":"Beverly Hills", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.400428,34.074768]}},
 {"type":"Feature","properties":{"name":"Hollywood", "name_en":"Hollywood", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.329049,34.093467]}},
 {"type":"Feature","properties":{"name":"Malibu", "name_en":"Malibu", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.779851,34.026102]}},
-{"type":"Feature","properties":{"name":"Indio", "name_en":"Indio", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-116.216485,33.719116]}},
-{"type":"Feature","properties":{"name":"Chino", "name_en":"Chino", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.688690,34.013233]}},
-{"type":"Feature","properties":{"name":"Temecula", "name_en":"Temecula", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-117.148460,33.494534]}},
-{"type":"Feature","properties":{"name":"Gardena", "name_en":"Gardena", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.309249,33.889214]}},
 {"type":"Feature","properties":{"name":"Calexico", "name_en":"Calexico", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-115.497684,32.679796]}},
 {"type":"Feature","properties":{"name":"Ventura", "name_en":"Ventura", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-119.294654,34.280904]}},
 {"type":"Feature","properties":{"name":"Marina Del Rey", "name_en":"Marina Del Rey", "country":"USA", "state":"California", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-118.451959,33.981385]}},
@@ -761,6 +759,7 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Jakarta", "name_en":"Jakarta", "country":"Indonesia","capitaltype":"national","state":"Jakarta"},"geometry":{"type":"Point","coordinates":[106.82749176247012,-6.172471846798885]}},
 {"type":"Feature","properties":{"name":"Semarang", "name_en":"Semarang", "country":"Indonesia", "capitaltype":"state", "state":"Jawa Tengah"},"geometry":{"type":"Point","coordinates":[110.4180736309741,-6.964671553833284]}},
 {"type":"Feature","properties":{"name":"Bandung", "name_en":"Bandung", "country":"Indonesia", "capitaltype":"state", "state":"Jawa Barat"},"geometry":{"type":"Point","coordinates":[107.56806671364507,-6.948083419067757]}},
+{"type":"Feature","properties":{"name":"Cimahi", "name_en":"Cimahi", "country":"Indonesia", "capitaltype":"none", "state":"Jawa Barat"},"geometry":{"type":"Point","coordinates":[107.542763, -6.872163]}},
 {"type":"Feature","properties":{"name":"Bogor", "name_en":"Bogor", "country":"Indonesia", "capitaltype":"none", "state":"Jawa Barat"},"geometry":{"type":"Point","coordinates":[106.74806508603763,-6.568054935993189]}},
 {"type":"Feature","properties":{"name":"Bekasi", "name_en":"Bekasi", "country":"Indonesia", "capitaltype":"none", "state":"Jawa Barat"},"geometry":{"type":"Point","coordinates":[106.97232295637002,-6.217257467781849]}},
 {"type":"Feature","properties":{"name":"Depok", "name_en":"Depok", "country":"Indonesia", "capitaltype":"none", "state":"Jawa Barat"},"geometry":{"type":"Point","coordinates":[106.794306,-6.401566]}},
@@ -772,8 +771,10 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Probolinggo", "name_en":"Probolinggo", "country":"Indonesia", "capitaltype":"none", "state":"Jawa Timur"},"geometry":{"type":"Point","coordinates":[113.1500337311345,-7.749618714532858]}},
 {"type":"Feature","properties":{"name":"Serang","name_en":"Serang","country":"Indonesia","capitaltype":"state","state":"Banten"},"geometry":{"type":"Point","coordinates":[106.149634,-6.109977]}},
 {"type":"Feature","properties":{"name":"Tangerang", "name_en":"Tangerang", "country":"Indonesia", "capitaltype":"none", "state":"Banten"},"geometry":{"type":"Point","coordinates":[106.634738,-6.177085]}},
+{"type":"Feature","properties":{"name":"Tangerang Selatan", "name_en":"South Tangerang", "country":"Indonesia", "capitaltype":"none", "state":"Banten"},"geometry":{"type":"Point","coordinates":[106.629664, -6.288551]}},
 {"type":"Feature","properties":{"name":"Yogyakarta","name_en":"Yogyakarta","country":"Indonesia","capitaltype":"state","state":"Yogyakarta"},"geometry":{"type":"Point","coordinates":[110.375009,-7.779953]}},
 //Kalimantan
+{"type":"Feature","properties":{"name":"Banjarmasin", "name_en":"Banjarmasin", "country":"Indonesia", "capitaltype":"none", "state":"Kalimantan Selatan"},"geometry":{"type":"Point","coordinates":[114.590111, -3.318606]}},
 {"type":"Feature","properties":{"name":"Palangka Raya","name_en":"Palangkaraya","country":"Indonesia","capitaltype":"state","state":"Kalimantan Tengah"},"geometry":{"type":"Point","coordinates":[113.909987,-2.209595]}},
 {"type":"Feature","properties":{"name":"Samarinda", "name_en":"Samarinda", "country":"Indonesia", "capitaltype":"state", "state":"Kalimantan Timur"},"geometry":{"type":"Point","coordinates":[117.14999629625447,-0.500035381170505]}},
 {"type":"Feature","properties":{"name":"Pontianak", "name_en":"Pontianak", "country":"Indonesia", "capitaltype":"state", "state":"Kalimantan Barat"},"geometry":{"type":"Point","coordinates":[109.31998327538992,-0.029986553043557]}},
@@ -793,6 +794,7 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Medan", "name_en":"Medan", "country":"Indonesia", "capitaltype":"state", "state":"Sumatra Utara"},"geometry":{"type":"Point","coordinates":[98.64809438288012,3.581919836182749]}},
 {"type":"Feature","properties":{"name":"Bandar Lampung", "name_en":"Bandar Lampung", "country":"Indonesia", "capitaltype":"state", "state":"Lampung"},"geometry":{"type":"Point","coordinates":[105.30002193097278,-5.449604066086067]}},
 {"type":"Feature","properties":{"name":"Tanjung Pinang","name_en":"Tanjungpinang","country":"Indonesia","capitaltype":"state","state":"Kepulauan Riau"},"geometry":{"type":"Point","coordinates":[104.471442,0.916829]}},
+{"type":"Feature","properties":{"name":"Batam", "name_en":"Batam", "country":"Indonesia", "capitaltype":"none", "state":"Kepulauan Riau"},"geometry":{"type":"Point","coordinates":[104.030453, 1.117447]}},
 {"type":"Feature","properties":{"name":"Pekanbaru", "name_en":"Pekanbaru", "country":"Indonesia", "capitaltype":"state", "state":"Riau"},"geometry":{"type":"Point","coordinates":[101.42306712052147,0.566910070545646]}},
 {"type":"Feature","properties":{"name":"Palembang", "name_en":"Palembang", "country":"Indonesia", "capitaltype":"state", "state":"Sumatra Selatan"},"geometry":{"type":"Point","coordinates":[104.74808380347753,-2.978093184676823]}},
 {"type":"Feature","properties":{"name":"Padang", "name_en":"Padang", "country":"Indonesia", "capitaltype":"state", "state":"Sumatra Barat"},"geometry":{"type":"Point","coordinates":[100.3580675274182,-0.958061446387489]}},
@@ -1182,11 +1184,23 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"الإسماعيلية", "name_en":"Ismailia", "country":"Egypt", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[32.2599840888837,30.59034079896685]}},
 
 
+{"type":"Feature","properties":{"name":"Brussels", "name_en":"Brussels", "country":"Belgium", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[4.33137074969045,50.83526293533032]}},
+{"type":"Feature","properties":{"name":"Liege", "name_en":"Liege", "country":"Belgium", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[5.571490,50.645138]}},
+{"type":"Feature","properties":{"name":"Charleroi", "name_en":"Charleroi", "country":"Belgium", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[4.444475,50.412033]}},
+{"type":"Feature","properties":{"name":"Mons", "name_en":"Mons", "country":"Belgium", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[3.956678,50.454241]}},
+{"type":"Feature","properties":{"name":"Ghent", "name_en":"Ghent", "country":"Belgium", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[3.730379,51.053828]}},
+{"type":"Feature","properties":{"name":"Antwerp", "name_en":"Antwerp", "country":"Belgium", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[4.402464,51.219448]}},
+{"type":"Feature","properties":{"name":"Kortrijk", "name_en":"Kortrijk", "country":"Belgium", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[3.264870,50.827141]}},
+{"type":"Feature","properties":{"name":"Bruges", "name_en":"Bruges", "country":"Belgium", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[3.224699,51.209348]}},
+
+
 //Netherlands
 {"type":"Feature","properties":{"name":"Den Haag", "name_en":"The Hague", "country":"Netherlands", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[4.269961302313448,52.08003684397488]}},
 {"type":"Feature","properties":{"name":"Rotterdam", "name_en":"Rotterdam", "country":"Netherlands", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[4.478028464534589,51.92191495356377]}},
 {"type":"Feature","properties":{"name":"Utrecht", "name_en":"Utrecht", "country":"Netherlands", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[5.120038613514794,52.10034568186552]}},
 {"type":"Feature","properties":{"name":"Amsterdam", "name_en":"Amsterdam", "country":"Netherlands", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[4.914694317400972,52.35191454666443]}},
+{"type":"Feature","properties":{"name":"Groningen", "name_en":"Groningen", "country":"Netherlands", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[6.566667,53.216667]}},
+{"type":"Feature","properties":{"name":"Zwolle", "name_en":"Zwolle", "country":"Netherlands", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[6.09444,52.5125]}},
 
 
 //Germany
@@ -1227,7 +1241,16 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Dubrovnik", "name_en":"Dubrovnik", "country":"Hrvatska", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[18.094424, 42.650661]}},
 
 
+//Austria
+{"type":"Feature","properties":{"name":"Salzburg", "name_en":"Salzburg", "country":"Austria", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[13.040778,47.80949]}},
+{"type":"Feature","properties":{"name":"Linz", "name_en":"Linz", "country":"Austria", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[14.28611,48.30639]}},
+{"type":"Feature","properties":{"name":"Graz", "name_en":"Graz", "country":"Austria", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[15.439504,47.070714]}},
+{"type":"Feature","properties":{"name":"Innsbruck", "name_en":"Innsbruck", "country":"Austria", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[11.404102,47.269212]}},
+{"type":"Feature","properties":{"name":"Wien", "name_en":"Vienna", "country":"Austria", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[16.364693096743736,48.20196113681686]}},
+
+
 //Czechia
+{"type":"Feature","properties":{"name":"Praha", "name_en":"Prague", "country":"Czechia", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[14.464033917048539,50.08528287347832]}},
 {"type":"Feature","properties":{"name":"Brno", "name_en":"Brno", "country":"Czechia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[16.60998327501909,49.20039349272622]}},
 {"type":"Feature","properties":{"name":"Ostrava", "name_en":"Ostrava", "country":"Czechia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[18.24998653023391,49.83035504058034]}},
 {"type":"Feature","properties":{"name":"Plzeň", "name_en":"Pilsen", "country":"Czechia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[13.3670962042731,49.74748489855137]}},
@@ -1325,6 +1348,12 @@ var geojson = {"type":"FeatureCollection","features":[
 //Ireland
 {"type":"Feature","properties":{"name":"Dublin", "name_en":"Dublin", "country":"Ireland", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[-6.250851540391068,53.335006994584944]}},
 {"type":"Feature","properties":{"name":"Cork", "name_en":"Cork", "country":"Ireland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-8.495771119612698,51.898600890198054]}},
+{"type":"Feature","properties":{"name":"Galway", "name_en":"Galway", "country":"Ireland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-9.048812,53.272707]}},
+{"type":"Feature","properties":{"name":"Limerick", "name_en":"Limerick", "country":"Ireland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-8.623050,52.661252]}},
+{"type":"Feature","properties":{"name":"Waterford", "name_en":"Waterford", "country":"Ireland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-7.111934,52.258320]}},
+{"type":"Feature","properties":{"name":"Drogheda", "name_en":"Drogheda", "country":"Ireland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-6.3488,53.7142]}},
+{"type":"Feature","properties":{"name":"Dundalk", "name_en":"Dundalk", "country":"Ireland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-6.416670,54.000000]}},
+{"type":"Feature","properties":{"name":"Bray", "name_en":"Bray", "country":"Ireland", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-6.108033,53.202778]}},
 
 
 //Algeria
@@ -1341,9 +1370,33 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"أزويگي", "name_en":"Azougui", "country":"موريتانيا", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-12.4755556,16.5225]}},
 
 
+//UAE
+{"type":"Feature","properties":{"name":"أَبُو ظَبْيٍ", "name_en":"Abu Dhabi", "country":"UAE", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[54.36659338259199,24.466683572379907]}},
+{"type":"Feature","properties":{"name":"دبي", "name_en":"Dubai", "country":"UAE", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[55.27802846473787,25.231942012376066]}},
+{"type":"Feature","properties":{"name":"الشارقة", "name_en":"Sharjah", "country":"UAE", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[55.392826,25.346255]}},
+{"type":"Feature","properties":{"name":"عجمان", "name_en":"Ajman", "country":"UAE", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[55.513643,25.405217]}},
+{"type":"Feature","properties":{"name":"العين", "name_en":"Al Ain", "country":"UAE", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[55.760417,24.191668]}},
+{"type":"Feature","properties":{"name":"رأس الخيمة", "name_en":"Ras Al Khaimah", "country":"UAE", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[55.943200,25.789534]}},
+{"type":"Feature","properties":{"name":"الفجيرة", "name_en":"Fujairah", "country":"UAE", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[56.326484,25.128809]}},
+{"type":"Feature","properties":{"name":"أم القيوين", "name_en":"Umm Al Quwain", "country":"UAE", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[55.567291,25.564710]}},
+
+
+
 //Chile
-{"type":"Feature","properties":{"name":"Valparaiso", "name_en":"Valparaiso", "country":"Chile", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-71.62295949149893,-33.045818607974184]}},
-{"type":"Feature","properties":{"name":"Santiago", "name_en":"Santiago", "country":"Chile", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[-70.66898671317483,-33.448067956934096]}},
+{"type":"Feature","properties":{"name":"Valparaiso", "name_en":"Valparaiso", "country":"Chile", "capitaltype":"none", "state":"Valparaíso"},"geometry":{"type":"Point","coordinates":[-71.62295949149893,-33.045818607974184]}},
+{"type":"Feature","properties":{"name":"Santiago", "name_en":"Santiago", "country":"Chile", "capitaltype":"national", "state":"Metropolitan Region"},"geometry":{"type":"Point","coordinates":[-70.66898671317483,-33.448067956934096]}},
+{"type":"Feature","properties":{"name":"Concepción", "name_en":"Concepcion", "country":"Chile", "capitaltype":"none", "state":"Biobío"},"geometry":{"type":"Point","coordinates":[-73.048851,-36.827014]}},
+{"type":"Feature","properties":{"name":"Antofagasta", "name_en":"Antofagasta", "country":"Chile", "capitaltype":"none", "state":"Antofagasta"},"geometry":{"type":"Point","coordinates":[-70.400021,-23.652361]}},
+{"type":"Feature","properties":{"name":"La Serena", "name_en":"La Serena", "country":"Chile", "capitaltype":"none", "state":"Coquimbo"},"geometry":{"type":"Point","coordinates":[-71.252013,-29.902669]}},
+{"type":"Feature","properties":{"name":"Puerto Montt", "name_en":"Puerto Montt", "country":"Chile", "capitaltype":"none", "state":"Los Lagos"},"geometry":{"type":"Point","coordinates":[-72.942890,-41.471700]}},
+{"type":"Feature","properties":{"name":"Arica", "name_en":"Arica", "country":"Chile", "capitaltype":"none", "state":"Arica and Parinacota"},"geometry":{"type":"Point","coordinates":[-70.312598,-18.478253]}},
+{"type":"Feature","properties":{"name":"Copiapó", "name_en":"Copiapo", "country":"Chile", "capitaltype":"none", "state":"Atacama"},"geometry":{"type":"Point","coordinates":[-70.332273,-27.366790]}},
+{"type":"Feature","properties":{"name":"Temuco", "name_en":"Temuco", "country":"Chile", "capitaltype":"none", "state":"Araucanía"},"geometry":{"type":"Point","coordinates":[-72.598419,-38.735902]}},
+{"type":"Feature","properties":{"name":"Punta Arenas", "name_en":"Punta Arenas", "country":"Chile", "capitaltype":"none", "state":"Magallanes and Chilean Antarctica"},"geometry":{"type":"Point","coordinates":[-70.917068,-53.163833]}},
+{"type":"Feature","properties":{"name":"Curicó", "name_en":"Curico", "country":"Chile", "capitaltype":"none", "state":"Maule"},"geometry":{"type":"Point","coordinates":[-71.232158,-34.983891]}},
+{"type":"Feature","properties":{"name":"Iquique", "name_en":"Iquique", "country":"Chile", "capitaltype":"none", "state":"Tarapacá"},"geometry":{"type":"Point","coordinates":[-70.143103,-20.214065]}},
+{"type":"Feature","properties":{"name":"Calama", "name_en":"Calama", "country":"Chile", "capitaltype":"none", "state":"Antofagasta"},"geometry":{"type":"Point","coordinates":[-68.923713,-22.454392]}},
+{"type":"Feature","properties":{"name":"Valdivia", "name_en":"Valdivia", "country":"Chile", "capitaltype":"none", "state":"Los Ríos"},"geometry":{"type":"Point","coordinates":[-73.245895,-39.819586]}},
 
 
 //Other
@@ -1354,9 +1407,7 @@ var geojson = {"type":"FeatureCollection","features":[
 {"type":"Feature","properties":{"name":"Timbuktu", "name_en":"Timbuktu", "country":"Mali", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-3.016596518353765,16.766585102296972]}},
 {"type":"Feature","properties":{"name":"Guayaquil", "name_en":"Guayaquil", "country":"Ecuador", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-79.92198781184453,-2.218087894960149]}},
 {"type":"Feature","properties":{"name":"Samarqand", "name_en":"Samarqand", "country":"Uzbekistan", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[66.94499873745991,39.6700191437298]}},
-{"type":"Feature","properties":{"name":"Tel Aviv-Yafo", "name_en":"Tel Aviv-Yafo", "country":"Israel", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[34.76806589955174,32.08193733304165]}},
 {"type":"Feature","properties":{"name":"Douala", "name_en":"Douala", "country":"Cameroon", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[9.708045147498297,4.062355627200191]}},
 {"type":"Feature","properties":{"name":"Abidjan", "name_en":"Abidjan", "country":"Cote d'Ivoire", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-4.041994118507091,5.321942826098564]}},
-{"type":"Feature","properties":{"name":"Beira", "name_en":"Beira", "country":"Mozambique", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[34.87000565464939,-19.820044739971706]}},
-{"type":"Feature","properties":{"name":"دبي", "name_en":"Dubai", "country":"UAE", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[55.27802846473787,25.231942012376066]}}
-]};
+{"type":"Feature","properties":{"name":"Beira", "name_en":"Beira", "country":"Mozambique", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[34.87000565464939,-19.820044739971706]}}
+]);
