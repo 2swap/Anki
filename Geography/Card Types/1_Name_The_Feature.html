@@ -89,14 +89,15 @@
         var ctx = canvas.getContext("2d");
         var crowdedness = 0;
 
+
         // Main render function
         var render = function () {
-            if (isCityQuestion) {
+            if (isCityQuestion && zoom.z == .5) {
                 drawShapes();
                 crowdedness -= zoom.m;
                 distToClosest = Math.sqrt(1 / crowdedness);
                 zoom.z = .1 * distToClosest;
-            } else {
+            } else if(zoom.z == .5) {
                 drawShape(feature);
             }
             var parentDims = canvas.parentElement.getBoundingClientRect();
@@ -107,19 +108,20 @@
             crowdedness = 0;
         }
 
-        var zoom = isCityQuestion ? { x: lonToX(feature.geometry.coordinates[0]), y: latToY(feature.geometry.coordinates[1]), z: .5 } : { x: 1, y: 1, z: .5 };
-        zoom.m = 0;
-
-        var maps = ['political', 'coastline', 'earth', 'night'];
-        var exts = ['.svg', '.jpg', '.jpg', '.jpg'];
+        var maps = ['political.svg', 'coastline.jpg', 'earth.jpg', 'night.jpg'];
         var mapNo = 0;
         var images = [];
         for (var i = 0; i < maps.length; i++) {
             images[i] = new Image;
             if (i == mapNo) images[i].onload = render;
-            images[i].src = "geog_" + maps[i] + exts[i];
+            images[i].src = "geog_" + maps[i];
         }
-        var image = images[mapNo];
+
+        var zoom = { x: 1, y: 1, m:0, z:.5};
+        if(isCityQuestion) {
+            zoom.x = lonToX(feature.geometry.coordinates[0]);
+            zoom.y = latToY(feature.geometry.coordinates[1]);
+        }
 
         // Function to draw shapes on the map
         function drawShapes() {
@@ -285,6 +287,7 @@
 
         // Function to draw the entire map
         function drawMap() {
+            var image = images[mapNo];
             for (let i = -1; i <= 1; i++) {
                 const tlx = goob(0 + i, true);
                 const tly = goob(0, false);
@@ -327,6 +330,26 @@
         });
         typeElement.addEventListener("keydown", function () {
             if (event.key == "Enter") typeElement.blur();
+        });
+
+        document.addEventListener("wheel", function(event) {
+            // Prevent the default scrolling behavior
+            event.preventDefault();
+
+            // Zoom in if the mouse wheel is scrolled up, zoom out if scrolled down
+            if (event.deltaY < 0) {
+                // Scrolling up, zoom in
+                zoom.z *= 2;
+            } else if (event.deltaY > 0) {
+                // Scrolling down, zoom out
+                zoom.z /= 2;
+            }
+            render();
+        });
+
+        document.addEventListener("click", function() {
+            mapNo = (mapNo+1)%maps.length;
+            render();
         });
 
     })();
