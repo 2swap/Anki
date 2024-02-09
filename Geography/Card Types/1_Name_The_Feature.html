@@ -92,20 +92,24 @@
 
         // Main render function
         var render = function () {
-            if (isCityQuestion && zoom.z == .5) {
-                drawShapes();
-                crowdedness -= zoom.m;
-                distToClosest = Math.sqrt(1 / crowdedness);
-                zoom.z = .1 * distToClosest;
-            } else if(zoom.z == .5) {
-                drawShape(feature);
-            }
             var parentDims = canvas.parentElement.getBoundingClientRect();
             canvas.width = parentDims.width;
             canvas.height = parentDims.height;
+
+            //first-pass: determine zoom
+            if(zoom.z == .5){
+                if (isCityQuestion) {
+                    drawShapes();
+                    crowdedness -= zoom.m;
+                    distToClosest = Math.sqrt(1 / crowdedness);
+                    zoom.z = .1 * distToClosest;
+                } else {
+                    drawShape(feature);
+                }
+            }
+
             drawMap();
             drawShapes();
-            crowdedness = 0;
         }
 
         var maps = ['political.svg', 'coastline.jpg', 'earth.jpg', 'night.jpg'];
@@ -128,9 +132,11 @@
             ctx.textAlign = "center"
             for (var i in countryjson.features) {
                 var shape = countryjson.features[i];
+                var prevzoom = zoom.z;
                 if(shape.geometry.type == "Point") drawTriplePoint(shape);
                 else if(shape.geometry.type == "LineString") drawLineString(shape);
                 else drawShape(shape);
+                zoom.z = prevzoom;
             }
         }
 
@@ -336,14 +342,7 @@
             // Prevent the default scrolling behavior
             event.preventDefault();
 
-            // Zoom in if the mouse wheel is scrolled up, zoom out if scrolled down
-            if (event.deltaY < 0) {
-                // Scrolling up, zoom in
-                zoom.z *= 2;
-            } else if (event.deltaY > 0) {
-                // Scrolling down, zoom out
-                zoom.z /= 2;
-            }
+            zoom.z *= event.deltaY > 0 ? 2 : .5;
             render();
         });
 
