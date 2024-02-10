@@ -27,7 +27,7 @@
             typeElement.remove();
         }
 
-        var nameField = ("{{Name}}".startsWith("(")) ? "Detroit::cities" : "{{Name}}";
+        var nameField = ("{{Name}}".startsWith("(")) ? "Perth::cities" : "{{Name}}";
         var splitName = nameField.split("::");
         var featureName = splitName[0];
         var countryName = splitName[1];
@@ -92,10 +92,6 @@
 
         // Main render function
         var render = function () {
-            var parentDims = canvas.parentElement.getBoundingClientRect();
-            canvas.width = parentDims.width;
-            canvas.height = parentDims.height;
-
             //first-pass: determine zoom
             if(zoom.z == .5){
                 if (isCityQuestion) {
@@ -107,6 +103,11 @@
                     drawShape(feature);
                 }
             }
+
+            //Wipe the canvas
+            var parentDims = canvas.parentElement.getBoundingClientRect();
+            canvas.width = parentDims.width;
+            canvas.height = parentDims.height;
 
             drawMap();
             drawShapes();
@@ -353,6 +354,4 @@
 
     })();
 </script>
-
-
 

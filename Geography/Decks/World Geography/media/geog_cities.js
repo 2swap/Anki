@@ -495,10 +495,6 @@ countryjson.features.push(...[
 {"type":"Feature","properties":{"name":"Syracuse", "name_en":"Syracuse", "country":"USA", "state":"New York", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-76.147424, 43.048122]}},
 {"type":"Feature","properties":{"name":"Utica", "name_en":"Utica", "country":"USA", "state":"New York", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-75.232664, 43.100903]}},
 {"type":"Feature","properties":{"name":"Oneonta", "name_en":"Oneonta", "country":"USA", "state":"New York", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-75.066736,42.452998]}},
-{"type":"Feature","properties":{"name":"Latham", "name_en":"Latham", "country":"USA", "state":"New York", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-73.758880,42.748596]}},
-{"type":"Feature","properties":{"name":"Troy", "name_en":"Troy", "country":"USA", "state":"New York", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-73.691785,42.728411]}},
-{"type":"Feature","properties":{"name":"Cohoes", "name_en":"Cohoes", "country":"USA", "state":"New York", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-73.700272,42.773733]}},
-{"type":"Feature","properties":{"name":"Rensselaer", "name_en":"Rensselaer", "country":"USA", "state":"New York", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-73.729682,42.641764]}},
 
 {"type":"Feature","properties":{"name":"Columbus, OH", "name_en":"Columbus, OH", "country":"USA", "state":"Ohio", "capitaltype":"state"},"geometry":{"type":"Point","coordinates":[-82.999069,39.961346]}},
 {"type":"Feature","properties":{"name":"Cleveland", "name_en":"Cleveland", "country":"USA", "state":"Ohio", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[-81.6943605,41.49932]}},
@@ -779,7 +775,6 @@ countryjson.features.push(...[
 {"type":"Feature","properties":{"name":"Samarinda", "name_en":"Samarinda", "country":"Indonesia", "capitaltype":"state", "state":"Kalimantan Timur"},"geometry":{"type":"Point","coordinates":[117.14999629625447,-0.500035381170505]}},
 {"type":"Feature","properties":{"name":"Pontianak", "name_en":"Pontianak", "country":"Indonesia", "capitaltype":"state", "state":"Kalimantan Barat"},"geometry":{"type":"Point","coordinates":[109.31998327538992,-0.029986553043557]}},
 {"type":"Feature","properties":{"name":"Balikpapan", "name_en":"Balikpapan", "country":"Indonesia", "capitaltype":"none", "state":"Kalimantan Timur"},"geometry":{"type":"Point","coordinates":[116.83001582750319,-1.250015443022335]}},
-{"type":"Feature","properties":{"name":"Bandjarmasin", "name_en":"Bandjarmasin", "country":"Indonesia", "capitaltype":"none", "state":"Kalimantan Selatan"},"geometry":{"type":"Point","coordinates":[114.58007564194736,-3.329991842770312]}},
 //Sulawesi
 {"type":"Feature","properties":{"name":"Palu","name_en":"Palu","country":"Indonesia","capitaltype":"state","state":"Sulawesi Tengah"},"geometry":{"type":"Point","coordinates":[119.833037,-0.907039]}},
 {"type":"Feature","properties":{"name":"Manado","name_en":"Manado","country":"Indonesia","capitaltype":"state","state":"Sulawesi Utara"},"geometry":{"type":"Point","coordinates":[124.849991,1.480025]}},
