@@ -1,7 +1,0 @@
-Audio
-Text
-Translation1
-Translation2
-Translation3
-Translation4
-Translation_Backup

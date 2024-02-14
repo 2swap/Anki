@@ -2,3 +2,5 @@ Audio
 Translation
 Pic1
 Pic2
+Text
+WordMap
