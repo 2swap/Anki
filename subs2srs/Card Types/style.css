@@ -1,18 +1,31 @@
 @import url("_2swap_anki.css");
 
-
 #subs2srs_pic{
   max-width: 70%;
   max-height: 100%;
 }
+
 .front{
   margin:10px;
   max-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: monospace; /* Apply monospaced font here */
 }
-.translation-wrapper {
-  max-width: 100%;
-  max-height: 100%;
+
+textarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  border: 0px;
+  width: 100%;
+  height: 100%;
+  font-size: 80px;
+  background: transparent;
+  caret-color: rgba(255,255,255,0.2); /* Makes the typing cursor not appear */
+  padding: 20px; /* Adds some padding inside the textbox */
+  box-sizing: border-box; /* Ensures padding does not affect the final size */
 }
+
