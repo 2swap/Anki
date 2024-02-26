@@ -1,0 +1,5 @@
+TextMapping
+TranslationMapping
+Pic1
+Pic2
+Audio
