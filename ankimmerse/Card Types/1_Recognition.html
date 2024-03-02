@@ -23,7 +23,7 @@ audioElement.style.display = "none";
 audioElement.setAttribute("autoplay", "true");
 
 // Set the source of the <audio> element
-var filename = "{{Audio}}".startsWith("(")?"nesimi_1.mp3":"{{Audio}}";
+var filename = "{{Audio}}".startsWith("(")?"nesimi1.mp3":"{{Audio}}";
 var sourceElement = document.createElement("source");
 sourceElement.setAttribute("src", filename);
 audioElement.appendChild(sourceElement);
@@ -67,7 +67,7 @@ function normalizeUserInput(input) {
 }
 
 function cleanupString(input) {
-    return input.replaceAll("ı", "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    return input.toLowerCase().replaceAll("ı", "i").replaceAll("þ", "t").replaceAll("æ", "e").replaceAll("ð", "d").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 var inAnkiEditor = `{{Text}}`.startsWith("(");
@@ -81,6 +81,8 @@ var guessedIndices = [];
 var quizCard = 0;
 
 function newQuizCard() {
+    if(!isTranslationCard)return;
+    guessedIndices.push(""+quizCard);
     // Convert wordMap keys to an array
     const keys = Object.keys(wordMap);
 
@@ -88,7 +90,7 @@ function newQuizCard() {
     const availableKeys = keys.filter((key, index) => !guessedIndices.includes(index.toString()));
 
     if (availableKeys.length === 0) {
-        console.log("No more keys to guess!");
+        quizCard = -1;
         return;
     }
 
@@ -132,15 +134,16 @@ function generateCensoredStringTranslationCard(mapping) {
                 let endIndex = startIndex + match[0].length;
 
                 // Replace in the original text based on calculated indices
-                text = originalText.substring(0, startIndex) + `<span style="color:#111">${originalText.substring(startIndex, endIndex)}</span>` + originalText.substring(endIndex);
+                text = originalText.substring(0, startIndex) + `<span style="color:#333">${originalText.substring(startIndex, endIndex)}</span>` + originalText.substring(endIndex);
 
                 // Adjust regex's lastIndex to account for added HTML tags' length in `text`
-                regex.lastIndex += ('<span style="color:#111"></span>'.length - match[0].length);
+                regex.lastIndex += ('<span style="color:#333"></span>'.length - match[0].length);
             }
             ret += `<span style="color:rgba(0,0,0,0)">${text}</span>: <span style="color:white">${value}</span><br/>`;
         }
         i++;
     });
+    if(ret == "")ret = "gg!"
     return ret;
 }
 
@@ -170,17 +173,16 @@ function generateCensoredStringListeningCard(mapping, highlight) {
                 let endIndex = startIndex + match[0].length;
 
                 // Replace in the original text based on calculated indices
-                text = originalText.substring(0, startIndex) + `<span style="color:#111">${originalText.substring(startIndex, endIndex)}</span>` + originalText.substring(endIndex);
+                text = originalText.substring(0, startIndex) + `<span style="color:#333">${originalText.substring(startIndex, endIndex)}</span>` + originalText.substring(endIndex);
 
                 // Adjust regex's lastIndex to account for added HTML tags' length in `text`
-                regex.lastIndex += ('<span style="color:#111"></span>'.length - match[0].length);
+                regex.lastIndex += ('<span style="color:#333"></span>'.length - match[0].length);
             }
         }
 
         var append = `<span style="color:${color}">${text}</span>`;
         ret += append;
     });
-    if(ret == "")ret = "gg!"
     return ret;
 }
 
@@ -241,12 +243,13 @@ typeElement.addEventListener("keydown", function (event) {
         audioElement.pause();
         newQuizCard();
     }
-});
-
-document.addEventListener("keydown", function (event) {
     if (event.key === "Shift") {
         replayAudio();
-    }else if("1234".includes(event.key)||event.key == Enter){
+        if(isTranslationCard){
+            newQuizCard();
+            updateShownText();
+        }
+    }else if("1234".includes(event.key) || event.key == Enter){
         audioElement.pause();
         textElement.focus();
     }
