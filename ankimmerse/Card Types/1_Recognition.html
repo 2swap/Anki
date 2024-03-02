@@ -245,6 +245,8 @@ typeElement.addEventListener("keydown", function (event) {
     }
     if (event.key === "Shift") {
         replayAudio();
+    }
+    if (event.key === "Alt") {
         if(isTranslationCard){
             newQuizCard();
             updateShownText();
