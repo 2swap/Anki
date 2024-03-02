@@ -1,23 +1,46 @@
 @import url("_2swap_anki.css");
 
 #subs2srs_pic{
-  max-width: 70%;
-  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%; /* Ensure it covers the full width of the .front container */
+  height: 100%; /* Ensure it covers the full height of the .front container */
+  display: flex; /* Use flex to center the image both vertically and horizontally */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+#text, #translation{
+  background-color: rgba(0,0,0,0.8);
+}
+
+img {
+  width: 100%; /* Ensure it covers the full width of the .front container */
+  height: 100%; /* Ensure it covers the full height of the .front container */
+  object-fit: cover; /* Cover the area without distorting the image */
+  display: block; /* Remove any default inline margins/paddings */
 }
 
 .front{
-  margin:10px;
-  max-height: 100%;
+  position: relative; /* Needed for absolute positioning of children */
+  margin:0px;
+  width: 100vw; /* viewport width */
+  height: 100vh; /* viewport height */
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: monospace; /* Apply monospaced font here */
+  font-family: monospace;
+  font-size:34px;
+  z-index: 1; /* Ensure the text and container are positioned above the background image */
 }
 
 textarea {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 8;
   color: white;
   border: 0px;
   width: 100%;
