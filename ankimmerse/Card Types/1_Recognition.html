@@ -1,7 +1,7 @@
 <textarea type="text" id="type_input"></textarea>
 
 <div class="front" id="front">
-  <div id="subs2srs_pic" style="display: none;">{{Pic1}}</div>
+  <div id="subs2srs_pic">{{Pic1}}</div>
   <div id="debug"></div>
   <div id="text" style="padding:10px"></div>
   <div id="translation"></div>
@@ -14,7 +14,7 @@ var translationElement = document.getElementById("translation");
 var typeElement = document.getElementById("type_input");
 var debugElement = document.getElementById("debug");
 var audioElement = document.querySelector(".soundLink, .replaybutton");
-var isTranslationCard = !!document.getElementById("translationcard");
+var isTranslationCard = !!document.getElementById("translationCard");
 
 // Create an <audio> element
 var audioElement = document.createElement("audio");
@@ -23,14 +23,14 @@ audioElement.style.display = "none";
 audioElement.setAttribute("autoplay", "true");
 
 // Set the source of the <audio> element
-var filename = "{{Audio}}".startsWith("(")?"_2swap_Sdio.mp3":"{{Audio}}";
+var filename = "{{Audio}}".startsWith("(")?"nesimi_1.mp3":"{{Audio}}";
 var sourceElement = document.createElement("source");
 sourceElement.setAttribute("src", filename);
 audioElement.appendChild(sourceElement);
 
 
 function debug(str){
-    debugElement.innerHTML += str;
+    debugElement.innerHTML = str;
 }
 
 function isAudioPlaying() {
@@ -63,20 +63,45 @@ function generateIndexedSentences(native, english, wordMap) {
 }
 
 function normalizeUserInput(input) {
-    return input.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[。　？！―･ー… .,\/#!$%\^\'\"&\*;:{}=\-_`~()\?]/g,"").trim().toLowerCase().replace(/ß/g, "ss");
+    return cleanupString(input).replace(/[。　？！―･ー… .,\/#!$%\^\'\"&\*;:{}=\-_`~()\?]/g,"").trim().replace(/ß/g, "ss");
+}
+
+function cleanupString(input) {
+    return input.replaceAll("ı", "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 
 var inAnkiEditor = `{{Text}}`.startsWith("(");
-var textOriginal = inAnkiEditor ? "Cada lunes, visito a mi hermano en la ciudad." : `{{Text}}`;
+var textOriginal = inAnkiEditor ? "William Shakespeare der ki; Şairler, hayatın sessiz melodisini duyabilen ve onu kelimelerle dans ettirebilen insanlardır." : `{{Text}}`;
 var textNorm = normalizeUserInput(textOriginal);
-var translationOriginal = inAnkiEditor ? "Every Monday, I visit my brother in the city." : `{{Translation}}`;
-var wordMap = inAnkiEditor ? {"Cada": "Every","lunes": "Monday","visito": "I visit","mi": "my","hermano": "brother","en":"in","la": "the","ciudad": "city"} : JSON.parse(`{{WordMap}}`);
+var translationOriginal = inAnkiEditor ? "William Shakespeare says; Poets are people who can hear the silent melody of life and make it dance with words." : `{{Translation}}`;
+var wordMap = inAnkiEditor ? {"William":"William", "Shakespeare":"Shakespeare", "der":"says", "ki":";", "Şairler":"Poets", "hayatın":"life", "sessiz":"silent", "melodisini":"melody", "duyabilen":"can hear", "ve":"and", "onu":"it", "kelimelerle":"with words", "dans":"dance", "ettirebilen":"make", "insanlardır":"people"} : JSON.parse(`{{WordMap}}`);
 var [textMapping, translationMapping] = generateIndexedSentences(textOriginal, translationOriginal, wordMap);
 
 var guessedIndices = [];
+var quizCard = 0;
+
+function newQuizCard() {
+    // Convert wordMap keys to an array
+    const keys = Object.keys(wordMap);
+
+    // Filter out the keys whose indices are already in guessedIndices
+    const availableKeys = keys.filter((key, index) => !guessedIndices.includes(index.toString()));
+
+    if (availableKeys.length === 0) {
+        console.log("No more keys to guess!");
+        return;
+    }
+
+    // Get a random key from the available keys
+    const randomKey = availableKeys[Math.floor(Math.random() * availableKeys.length)];
+
+    // Set quizCard to the index of the random key in the original keys array
+    quizCard = keys.indexOf(randomKey);
+}
+newQuizCard();
 
 function indexToColor(index) {
-    var hash = parseInt(index) * 123456789;
+    var hash = (parseInt(index) + textOriginal.charCodeAt(0)) * 23456789;
     var r = (hash & 0xFF0000) >> 16;
     var g = (hash & 0x00FF00) >> 8;
     var b = hash & 0x0000FF;
@@ -88,8 +113,32 @@ function generateCensoredStringTranslationCard(mapping) {
     // Iterate over each entry in the wordMap
     var i = 0;
     Object.entries(wordMap).forEach(([key, value]) => {
-        var color = guessedIndices.includes(""+i)?"white":"black";
-        ret += `<span style="color:${color}">${key}</span>: <span style="color:white">${value}</span><br/>`;
+        if(i==quizCard){
+            const substring = typeElement.value;
+            // Escape special characters in the substring for regex
+            const escapedSubstring = cleanupString(substring).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(escapedSubstring, 'g');
+
+            // Normalize text for comparison while keeping a copy of the original for rendering
+            var text = key;
+            const normalizedText = cleanupString(key);
+            const originalText = key;
+            let match;
+
+            // Find matches and adjust indices for original text
+            while ((match = regex.exec(normalizedText)) !== null) {
+                // Calculate start and end indices in the original text
+                let startIndex = match.index;
+                let endIndex = startIndex + match[0].length;
+
+                // Replace in the original text based on calculated indices
+                text = originalText.substring(0, startIndex) + `<span style="color:#111">${originalText.substring(startIndex, endIndex)}</span>` + originalText.substring(endIndex);
+
+                // Adjust regex's lastIndex to account for added HTML tags' length in `text`
+                regex.lastIndex += ('<span style="color:#111"></span>'.length - match[0].length);
+            }
+            ret += `<span style="color:rgba(0,0,0,0)">${text}</span>: <span style="color:white">${value}</span><br/>`;
+        }
         i++;
     });
     return ret;
@@ -101,18 +150,40 @@ function generateCensoredStringListeningCard(mapping, highlight) {
         let colonIndex = segment.indexOf(':');
         let index = segment.substring(0, colonIndex);
         var text = segment.substring(colonIndex + 1);
-        var color = guessedIndices.includes(index) ? indexToColor(index) : "black";
+        var color = guessedIndices.includes(index) ? indexToColor(index) : "rgba(0,0,0,0)";
         const substring = typeElement.value;
-        if(color == "black" && highlight && substring.length > 0){
-            const escapedSubstring = substring.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-            const regex = new RegExp(escapedSubstring, 'gi');
-            text = text.replace(regex, (match) => `<span style="color:#111">${match}</span>`);
+
+        if(color == "rgba(0,0,0,0)" && highlight && substring.length > 0){
+            // Escape special characters in the substring for regex
+            const escapedSubstring = cleanupString(substring).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(escapedSubstring, 'g');
+
+            // Normalize text for comparison while keeping a copy of the original for rendering
+            const normalizedText = cleanupString(text);
+            const originalText = text;
+            let match;
+
+            // Find matches and adjust indices for original text
+            while ((match = regex.exec(normalizedText)) !== null) {
+                // Calculate start and end indices in the original text
+                let startIndex = match.index;
+                let endIndex = startIndex + match[0].length;
+
+                // Replace in the original text based on calculated indices
+                text = originalText.substring(0, startIndex) + `<span style="color:#111">${originalText.substring(startIndex, endIndex)}</span>` + originalText.substring(endIndex);
+
+                // Adjust regex's lastIndex to account for added HTML tags' length in `text`
+                regex.lastIndex += ('<span style="color:#111"></span>'.length - match[0].length);
+            }
         }
+
         var append = `<span style="color:${color}">${text}</span>`;
         ret += append;
     });
+    if(ret == "")ret = "gg!"
     return ret;
 }
+
 
 function updateShownText() {
     if(isTranslationCard){
@@ -141,7 +212,10 @@ document.getElementById("type_input").addEventListener('input', function(event) 
         }
     });
 
-    if (matched) this.value = '';
+    if (matched) {
+        typeElement.value = '';
+        newQuizCard();
+    }
     updateShownText();
 });
 
@@ -151,7 +225,6 @@ while (id--) {
     window.clearTimeout(id); // will do nothing if no timeout with id is present
 }
 
-document.getElementById("subs2srs_pic").style.display = "block";
 setTimeout(function() {document.getElementById("subs2srs_pic").innerHTML = `{{Pic2}}`;}, 1800);
 if(document.getElementById("back")){
     document.getElementById('type_input').remove();
@@ -166,6 +239,7 @@ typeElement.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         typeElement.blur();
         audioElement.pause();
+        newQuizCard();
     }
 });
 
