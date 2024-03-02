@@ -1,5 +1,6 @@
-TextMapping
-TranslationMapping
+Text
+Translation
+WordMap
+Audio
 Pic1
 Pic2
-Audio
