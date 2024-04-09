@@ -23,7 +23,7 @@ var injectScript = (src) => {
     }
 
     var cardData = document.getElementById("card_data").innerHTML;
-    var nameField = (cardData.startsWith("(")) ? "Blitar::cities" : cardData;
+    var nameField = (cardData.startsWith("(")) ? "Zacatecas::México" : cardData;
     var splitName = nameField.split("::");
     var featureName = splitName[0];
     var countryName = splitName[1];
@@ -261,7 +261,7 @@ var injectScript = (src) => {
         if (fill) {
             zoom.x = centerX;
             zoom.y = centerY;
-            zoom.z = Math.pow(Math.max(maxx - minx, maxy - miny), .5) * .3;
+            zoom.z = Math.max(maxx - minx, maxy - miny) * 2;
         }
         if(onBack || typedCities.includes(obj.properties.name)){
             ctx.fillStyle = "#f66";

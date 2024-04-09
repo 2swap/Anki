@@ -57,6 +57,7 @@ Tripura::India
 Uttar Pradesh::India
 Uttaranchal::India
 West Bengal::India
+Telangana::India
 Andhra Pradesh::India
 Alaska::USA
 Alabama::USA
@@ -344,6 +345,22 @@ Zambales::Philippines
 Zamboanga del Norte::Philippines
 Zamboanga del Sur::Philippines
 Zamboanga Sibugay::Philippines
+Azcapotzalco::Delegaciones
+Coyoacán::Delegaciones
+Cuajimalpa de Morelos::Delegaciones
+Gustavo A. Madero::Delegaciones
+Iztacalco::Delegaciones
+Iztapalapa::Delegaciones
+La Magdalena Contreras::Delegaciones
+Milpa Alta::Delegaciones
+Álvaro Obregón::Delegaciones
+Tláhuac::Delegaciones
+Tlalpan::Delegaciones
+Xochimilco::Delegaciones
+Benito Juárez::Delegaciones
+Cuauhtémoc::Delegaciones
+Miguel Hidalgo::Delegaciones
+Venustiano Carranza::Delegaciones
 Belmopan::cities
 Port-of-Spain::cities
 Roseau::cities
@@ -493,12 +510,23 @@ Bishkek::cities
 Quito::cities
 Montevideo::cities
 Bogota::cities
-Brasilia::cities
 Asuncion::cities
 Sucre::cities
 La Paz (Bolivia)::cities
 Georgetown::cities
 Paramaribo::cities
+Brasilia::cities
+Rio de Janeiro::cities
+Sao Paulo::cities
+Recife::cities
+Goiania::cities
+Manaus::cities
+Salvador de Bahia::cities
+Fortaleza::cities
+Natal::cities
+Belo Horizonte::cities
+Curitiba::cities
+Porto Alegre::cities
 Chittagong::cities
 Khulna::cities
 Sylhet::cities
@@ -597,12 +625,7 @@ Mobile::cities
 Juneau::cities
 Anchorage::cities
 Phoenix::cities
-Chandler::cities
 Tucson::cities
-Mesa::cities
-Glendale, AZ::cities
-Gilbert::cities
-Scottsdale::cities
 Little Rock::cities
 Sacramento::cities
 Los Angeles::cities
@@ -610,11 +633,7 @@ San Diego::cities
 San Jose, CA::cities
 San Francisco::cities
 Fresno::cities
-Long Beach::cities
 Bakersfield::cities
-Anaheim::cities
-Santa Ana::cities
-Riverside::cities
 Oxnard::cities
 Fontana::cities
 Oakland::cities
@@ -622,34 +641,9 @@ Stockton::cities
 Chula Vista::cities
 Fremont::cities
 San Bernardino::cities
-Modesto::cities
-Moreno Valley::cities
-Huntington Beach::cities
 Irvine::cities
-Covina::cities
-Pasadena::cities
-Compton::cities
-Torrance::cities
-Lawndale::cities
-Hawthorne::cities
-Santa Monica::cities
-Culver City::cities
-El Segundo::cities
-Manhattan Beach::cities
-Hermosa Beach::cities
-Redondo Beach::cities
-Yucca Valley::cities
-Signal Hill::cities
-Santa Clarita::cities
-Palm Springs::cities
 Joshua Tree::cities
-Beverly Hills::cities
-Hollywood::cities
 Malibu::cities
-Indio::cities
-Chino::cities
-Temecula::cities
-Gardena::cities
 Calexico::cities
 Ventura::cities
 Marina Del Rey::cities
@@ -657,7 +651,6 @@ Santa Barbara::cities
 San Luis Obispo::cities
 Lompoc::cities
 Vandenberg::cities
-Glendale, CA::cities
 Denver::cities
 Aurora, CO::cities
 Colorado Springs::cities
@@ -757,10 +750,6 @@ Binghamton::cities
 Syracuse::cities
 Utica::cities
 Oneonta::cities
-Latham::cities
-Troy::cities
-Cohoes::cities
-Rensselaer::cities
 Columbus, OH::cities
 Cleveland::cities
 Cincinnati::cities
@@ -798,12 +787,9 @@ San Antonio::cities
 Dallas::cities
 Fort Worth::cities
 El Paso::cities
-Arlington::cities
 Corpus Christi::cities
 Laredo::cities
 Lubbock::cities
-Garland::cities
-Irving::cities
 Amarillo::cities
 Salt Lake City::cities
 Montpelier::cities
@@ -814,14 +800,6 @@ Chesapeake::cities
 Olympia::cities
 Seattle::cities
 Spokane::cities
-Tacoma::cities
-Redmond::cities
-Bellevue::cities
-Kirkland::cities
-Bothell::cities
-Sammamish::cities
-Renton::cities
-Issaquah::cities
 Charleston::cities
 Madison::cities
 Milwaukee::cities
@@ -984,7 +962,6 @@ Palangkaraya::cities
 Samarinda::cities
 Pontianak::cities
 Balikpapan::cities
-Bandjarmasin::cities
 Palu::cities
 Manado::cities
 Kendari::cities
@@ -1078,22 +1055,13 @@ Cancun::cities
 Merida (México)::cities
 Cabo San Lucas::cities
 Ometepec::cities
-Cuauhtemoc::cities
 Monterrey::cities
 Guadalajara (Mexico)::cities
 Puebla::cities
-Izatapalapa::cities
-Xochimilco::cities
-Chapultepec::cities
-Tepito::cities
 Tepoztlan::cities
 Texcoco::cities
-Ecatepec::cities
 Cuernavaca::cities
 Toluca::cities
-Chalco::cities
-Azcapotzalco::cities
-Atzacoalco::cities
 Chilpancingo::cities
 Tehuacán::cities
 Morelia::cities
@@ -1137,9 +1105,7 @@ Londonderry::cities
 Canberra::cities
 Sydney::cities
 Melbourne::cities
-Byron Bay::cities
 Coffs Harbour::cities
-Wagga Wagga::cities
 Rockhampton::cities
 Cairns::cities
 Mackay::cities
@@ -1151,7 +1117,6 @@ Hobart::cities
 Kingston (Australia)::cities
 Darwin::cities
 Perth::cities
-Innisfail::cities
 Gladstone::cities
 Gold Coast::cities
 Wellington::cities
@@ -1268,17 +1233,6 @@ Faro::cities
 Coimbra::cities
 Porto::cities
 Nazare::cities
-Rio de Janeiro::cities
-Sao Paulo::cities
-Recife::cities
-Goiania::cities
-Manaus::cities
-Salvador de Bahia::cities
-Fortaleza::cities
-Natal::cities
-Belo Horizonte::cities
-Curitiba::cities
-Porto Alegre::cities
 Bamian::cities
 Herat::cities
 Oslo::cities
@@ -1715,7 +1669,6 @@ Western Australia::Australia
 Tasmania::Australia
 Northern Territory::Australia
 Australian Capital Territory::Australia
-sa-provinces::South Africa
 Northern Cape::South Africa
 KwaZulu-Natal::South Africa
 Free State::South Africa
@@ -2070,12 +2023,6 @@ Papua::Islands
 Seram::Islands
 Buru::Islands
 Buton::Islands
-Banks Island::Islands
-Victoria Island::Islands
-Ellesmere Island::Islands
-Baffin Island::Islands
-Newfoundland::Islands
-Nova Scotia::Islands
 Palawan Island::Islands
 Luzon::Islands
 Masbate Island::Islands
@@ -2124,3 +2071,4 @@ Jambi::Indonesia
 Lampung::Indonesia
 Bengkulu::Indonesia
 Daerah Istimewa Aceh::Indonesia
+This card contains all map data for the deck - suspend it, but dont delete it!::[sound:geogaudio_Тюмень.mp3][sound:geogaudio_Baguio City.flac][sound:geogaudio_مشهد.mp3][sound:geogaudio_Bandung.mp3][sound:geogaudio_Новосиби́рск.mp3][sound:geogaudio_广州.mp3][sound:geog_countries.js][sound:geogaudio_泰州.mp3][sound:geogaudio_قم.mp3][sound:geogaudio_رام الله.mp3][sound:geogaudio_Zamboanga del Sur.flac][sound:geogaudio_京都.mp3][sound:geogaudio_陕西.mp3][sound:geogaudio_Wroclaw.mp3][sound:geogaudio_Wuppertal.mp3][sound:geogaudio_تونس.mp3][sound:geogaudio_Lampung.mp3][sound:geogaudio_बिलासपुर.flac][sound:geogaudio_济南.mp3][sound:geogaudio_Bahia.mp3][sound:geog_Egypt.js][sound:geogaudio_浜松.mp3][sound:geogaudio_Bonn.mp3][sound:geogaudio_Lanao del Norte.flac][sound:geogaudio_طنجة.mp3][sound:geogaudio_宿州.mp3][sound:geogaudio_تهران.mp3][sound:geogaudio_पंजाब क्षेत्र.mp3][sound:geogaudio_Roraima.mp3][sound:geogaudio_Jawa Barat.mp3][sound:geogaudio_السويس.mp3][sound:geogaudio_الإسماعيلية.mp3][sound:geogaudio_郑州.mp3][sound:geogaudio_Jayapura.mp3][sound:geogaudio_Sorsogon.flac][sound:geogaudio_Agusan del Sur.flac][sound:geogaudio_आगरा.flac][sound:geogaudio_Palawan.flac][sound:geogaudio_Medan.mp3][sound:geogaudio_अण्डमान और निकोबार द्वीपसमूह.mp3][sound:geogaudio_宁夏.mp3][sound:geogaudio_مقديشو.mp3][sound:geogaudio_Distrito Federal.mp3][sound:geogaudio_Lódz.mp3][sound:geog_India.js][sound:geogaudio_Depok.mp3][sound:geogaudio_Челябинск.mp3][sound:geogaudio_Tawi-Tawi.flac][sound:geogaudio_राँची.flac][sound:geogaudio_الخرطوم.mp3][sound:geogaudio_埼玉県.mp3][sound:geogaudio_असम.flac][sound:geogaudio_Hannover.mp3][sound:geogaudio_澳门.mp3][sound:geogaudio_Denpasar.mp3][sound:geogaudio_Bohol.flac][sound:geogaudio_लक्षद्वीप.flac][sound:geog_USA.js][sound:geogaudio_Guyane.mp3][sound:geogaudio_Essen.mp3][sound:geogaudio_Cabanatuan.flac][sound:geogaudio_बेंगलूरु.flac][sound:geogaudio_臺中.mp3][sound:geogaudio_Kalimantan Timur.mp3][sound:geogaudio_بَغْدَاد.mp3][sound:geogaudio_Romblon.flac][sound:geogaudio_Antique.flac][sound:geogaudio_Kuantan.mp3][sound:geogaudio_فیصل آباد.mp3][sound:geog_Japan.js][sound:geogaudio_Adana.mp3][sound:geogaudio_القاهرة.mp3][sound:geogaudio_अहमदाबाद.flac][sound:geogaudio_ईटानगर.flac][sound:geogaudio_जम्मू और कश्मीर.flac][sound:geogaudio_Уфa.mp3][sound:geogaudio_Batanes.flac][sound:geogaudio_Zamboanga.flac][sound:চিটাগং.mp3][sound:geogaudio_Nouvelle-Aquitaine.mp3][sound:geogaudio_خیبر پختونخوا.mp3][sound:geogaudio_पणजी.flac][sound:geogaudio_Schleswig-Holstein.mp3][sound:geogaudio_Östersund.mp3][sound:geog_France.js][sound:geogaudio_Cirebon.mp3][sound:geogaudio_Mountain Province.flac][sound:geogaudio_Espírito Santo.mp3][sound:geogaudio_香港.mp3][sound:geogaudio_南宁.mp3][sound:geogaudio_福岡県.mp3][sound:geogaudio_Jönköping.mp3][sound:geogaudio_山形県.mp3][sound:geogaudio_La Union.flac][sound:geogaudio_Kendari.mp3][sound:geogaudio_Schwerin.mp3][sound:geogaudio_Davao de Oro.flac][sound:geogaudio_बेलगाम.flac][sound:geogaudio_新潟県.mp3][sound:geogaudio_Paraná.mp3][sound:geogaudio_नासिक.flac][sound:geogaudio_Пермь.mp3][sound:geogaudio_أربيل.mp3][sound:geogaudio_مراكش.mp3][sound:geogaudio_Banda Aceh.mp3][sound:geogaudio_القليوبية.mp3][sound:geogaudio_Tampere.mp3][sound:geogaudio_Pontianak.mp3][sound:geogaudio_Naga.flac][sound:geogaudio_جِدَّة.mp3][sound:geogaudio_Bali.mp3][sound:geogaudio_三重県.mp3][sound:geogaudio_Fort-de-France.mp3][sound:geogaudio_जमशेदपुर.flac][sound:geogaudio_लुधियाना.flac][sound:geogaudio_济宁.mp3][sound:geogaudio_Pasay City.flac][sound:geogaudio_川崎.mp3][sound:geogaudio_महाराष्ट्र.flac][sound:geogaudio_उत्तर प्रदेश.flac][sound:geogaudio_広島県.mp3][sound:geogaudio_ओडिशा.flac][sound:geogaudio_高雄.mp3][sound:geogaudio_岩手県.mp3][sound:geogaudio_Jakarta.mp3][sound:geogaudio_Hessen.mp3][sound:geogaudio_المنوفية.mp3][sound:geogaudio_辽宁.mp3][sound:geog_Brazil.js][sound:geogaudio_पुदुच्चेरी.flac][sound:geogaudio_Laoag.flac][sound:geogaudio_Santa Catarina.mp3][sound:geog_earth.jpg][sound:geogaudio_Ilocos Sur.flac][sound:geogaudio_Dresden.mp3][sound:geogaudio_Calbayog.flac][sound:geogaudio_평양.mp3][sound:geogaudio_滋賀県.mp3][sound:geogaudio_Москва.mp3][sound:geogaudio_Ankara.mp3][sound:geogaudio_Southern Leyte.flac][sound:geog_National Parks.js][sound:geogaudio_Nantes.mp3][sound:geogaudio_Quezon.flac][sound:geogaudio_Ambon.mp3][sound:geogaudio_愛知県.mp3][sound:geogaudio_Cayenne.mp3][sound:geogaudio_Selangor.mp3][sound:geogaudio_Pekanbaru.mp3][sound:geog_Indonesia_Kabupaten.js][sound:geogaudio_Hauts-de-France.mp3][sound:geogaudio_البحر الأحمر.mp3][sound:geogaudio_江西.mp3][sound:geogaudio_無錫.mp3][sound:geogaudio_Masbate.flac][sound:geogaudio_대전.mp3][sound:geogaudio_بلۏچستان.mp3][sound:geogaudio_Basilan.flac][sound:geogaudio_شمال سيناء.mp3][sound:geogaudio_देहरादून.flac][sound:geogaudio_Batam.mp3][sound:geogaudio_أسيوط.mp3][sound:geogaudio_栃木県.mp3][sound:geogaudio_Nusa Tenggara Timur.mp3][sound:geogaudio_Putrajaya.mp3][sound:geogaudio_乌鲁木齐.mp3][sound:geogaudio_गान्तोक.flac][sound:geogaudio_Мурманск.mp3][sound:geogaudio_深圳.mp3][sound:geogaudio_Ajaccio.mp3][sound:geogaudio_大连.mp3][sound:geogaudio_गुवाहाटी.flac][sound:geogaudio_جِدَّة‎.mp3][sound:geogaudio_गुजरात.flac][sound:geogaudio_Montpellier.mp3][sound:geogaudio_東京都.mp3][sound:geogaudio_Perak.mp3][sound:geog_Malaysia.js][sound:geogaudio_Zamboanga Sibugay.flac][sound:شمال سيناء.mp3][sound:geogaudio_तेलंगाना.flac][sound:geogaudio_دمنهور.mp3][sound:geogaudio_Kalimantan Barat.mp3][sound:geogaudio_Eastern Samar.flac][sound:geogaudio_岡山県.mp3][sound:geogaudio_天津.mp3][sound:geogaudio_Isabela.flac][sound:geogaudio_甘肃.mp3][sound:geogaudio_केरल.flac][sound:geogaudio_Magdeburg.mp3][sound:geogaudio_Perlis.mp3][sound:geogaudio_आन्ध्र प्रदेश.mp3][sound:geogaudio_Occidental Mindoro.flac][sound:geogaudio_宁波.mp3][sound:geogaudio_سيوة.mp3][sound:geogaudio_دمياط.mp3][sound:geogaudio_طرابلس.mp3][sound:geogaudio_آزاد جموں و کشمیر‎.mp3][sound:geogaudio_Sarawak.mp3][sound:geogaudio_Sultan Kudarat.flac][sound:geogaudio_Нижний Новгород.mp3][sound:geogaudio_云南.mp3][sound:geogaudio_Davao del Norte.flac][sound:geogaudio_الدمّام.mp3][sound:geog_UK.js][sound:geogaudio_North Cotabato.flac][sound:geogaudio_الشرقية.mp3][sound:geogaudio_كفر الشيخ.mp3][sound:geogaudio_बिहार.flac][sound:geogaudio_Pahang.mp3][sound:geogaudio_शिलांग.flac][sound:geogaudio_انجمينا.mp3][sound:geogaudio_Malmö.mp3][sound:geogaudio_Manila.flac][sound:geogaudio_Cologne.mp3][sound:geogaudio_Kupang.mp3][sound:geogaudio_奈良県.mp3][sound:geogaudio_St.-Denis.mp3][sound:geogaudio_Guimaras.flac][sound:geogaudio_Butuan.flac][sound:geogaudio_ময়মনসিংহ.mp3][sound:geogaudio_沈阳.mp3][sound:geogaudio_浙江.mp3][sound:geogaudio_Catanduanes.flac][sound:geogaudio_मेघालय.flac][sound:geogaudio_أسوان.mp3][sound:geogaudio_الداخلة.mp3][sound:geogaudio_Gorontalo.mp3][sound:geogaudio_Kelantan.mp3][sound:geogaudio_台北.mp3][sound:geogaudio_अरुणाचल प्रदेश.flac][sound:geogaudio_秋田県.mp3][sound:geogaudio_Cimahi.mp3][sound:geogaudio_Cavite.flac][sound:geogaudio_मिर्ज़ापुर.flac][sound:geogaudio_Aklan.flac][sound:geogaudio_Hà Nội.mp3][sound:geogaudio_Nordrhein-Westfalen.mp3][sound:geog_Philippines.js][sound:geogaudio_हरियाणा.flac][sound:geogaudio_仙台.mp3][sound:geogaudio_เชียงราย.mp3][sound:geogaudio_大阪.mp3][sound:geogaudio_سوهاج.mp3][sound:geogaudio_Camiguin.flac][sound:geogaudio_宮城県.mp3][sound:geogaudio_Stuttgart.mp3][sound:geogaudio_Surigao del Norte.flac][sound:geogaudio_函館.mp3][sound:geogaudio_Lyon.mp3][sound:geogaudio_Tangerang Selatan.mp3][sound:geogaudio_अइज़ोल.flac][sound:geogaudio_گوادر.mp3][sound:geogaudio_Corse.mp3][sound:geogaudio_Alagoas.mp3][sound:geogaudio_Kalinga.flac][sound:geogaudio_Erfurt.mp3][sound:geogaudio_Martinique.mp3][sound:geogaudio_Gdansk.mp3][sound:geogaudio_Versailles.mp3][sound:geogaudio_রংপুর.mp3][sound:geogaudio_Kalimantan Tengah.mp3][sound:geogaudio_लखनऊ.flac][sound:geogaudio_الموصل.mp3][sound:geogaudio_Provence-Alpes-Côte d'Azur.mp3][sound:geogaudio_愛媛県.mp3][sound:geogaudio_صَنْعَاء.mp3][sound:geogaudio_वाराणसी.flac][sound:geogaudio_นครราชสีมา.mp3][sound:geog_Delegaciones.js][sound:geogaudio_Mayotte.mp3][sound:geogaudio_Екатеринбург.mp3][sound:geogaudio_烟台.mp3][sound:geogaudio_Hải Phòng.mp3][sound:geogaudio_茨城県.mp3][sound:geogaudio_Jawa Tengah.mp3][sound:geogaudio_पश्चिम बंगाल.flac][sound:খুলনা.mp3][sound:geogaudio_北海道.mp3][sound:geogaudio_Kedah.mp3][sound:geogaudio_福島県.mp3][sound:geogaudio_呼和浩特.mp3][sound:geogaudio_成都.mp3][sound:geogaudio_臺南.mp3][sound:geogaudio_Bursa.mp3][sound:geogaudio_湖北.mp3][sound:geogaudio_मैसूर.flac][sound:geogaudio_अमरावती.flac][sound:geogaudio_鳥取県.mp3][sound:geogaudio_Samarinda.mp3][sound:geogaudio_Владивосток.mp3][sound:geogaudio_Cagayan.flac][sound:geogaudio_Pernambuco.mp3][sound:ময়মনসিংহ.mp3][sound:geogaudio_Semarang.mp3][sound:geog_cities.js][sound:geogaudio_Amapá.mp3][sound:geogaudio_Sachsen.mp3][sound:geogaudio_Bandar Lampung.mp3][sound:geogaudio_青岛.mp3][sound:geogaudio_Benguet.flac][sound:geogaudio_제주.mp3][sound:geogaudio_Kuching.mp3][sound:geogaudio_गाँधीनगर.flac][sound:geogaudio_तिरुवनन्तपुरम.flac][sound:geogaudio_Tanjung Pinang.mp3][sound:geogaudio_Marseille.mp3][sound:geogaudio_कानपुर.flac][sound:geogaudio_大阪府.mp3][sound:geogaudio_부산.mp3][sound:geogaudio_मध्य प्रदेश.flac][sound:geogaudio_Niedersachsen.mp3][sound:geogaudio_Pampanga.flac][sound:geogaudio_Bataan.flac][sound:geogaudio_Lanao del Sur.flac][sound:geogaudio_Capiz.flac][sound:geogaudio_Goiás.mp3][sound:geogaudio_花蓮.mp3][sound:geogaudio_Maluku.mp3][sound:geogaudio_福州.mp3][sound:geog_Canada.js][sound:geogaudio_静岡県.mp3][sound:geogaudio_Papeete.mp3][sound:geogaudio_黑龙江.mp3][sound:geogaudio_湖南.mp3][sound:geog_China.js][sound:geogaudio_Serang.mp3][sound:geogaudio_जयपुर.flac][sound:geogaudio_La Réunion.mp3][sound:geogaudio_हिमाचल प्रदेश.flac][sound:geogaudio_Lublin.mp3][sound:geogaudio_Toulouse.mp3][sound:geogaudio_Northern Samar.flac][sound:geogaudio_Bourgogne-Franche-Comté.mp3][sound:geogaudio_Merauke.mp3][sound:geogaudio_İzmir.mp3][sound:geogaudio_Sulawesi Tenggara.mp3][sound:geogaudio_پشاور.mp3][sound:geogaudio_Jambi.mp3][sound:geogaudio_Pays de la Loire.mp3][sound:geogaudio_Metropolitan Manila.flac][sound:geogaudio_Palu.mp3][sound:geogaudio_Tarlac.flac][sound:geog_España.js][sound:geogaudio_山口県.mp3][sound:geogaudio_Göteborg.mp3][sound:geogaudio_Uppsala.mp3][sound:geogaudio_Караганда.mp3][sound:geogaudio_الدوحة.mp3][sound:geogaudio_Occitanie.mp3][sound:geogaudio_Strasbourg.mp3][sound:geogaudio_Albay.flac][sound:geogaudio_جيزة.mp3][sound:geogaudio_広島.mp3][sound:geogaudio_नागालैण्ड.flac][sound:geogaudio_রাজশাহী.mp3][sound:geogaudio_الدقهلية.mp3][sound:geogaudio_Tocantins.mp3][sound:geogaudio_Frankfurt.mp3][sound:geog_Deserts.js][sound:ঢাকা.mp3][sound:বরিশাল.mp3][sound:geogaudio_南通.mp3][sound:geogaudio_Balikpapan.mp3][sound:geogaudio_Bukittinggi.mp3][sound:geogaudio_广西.mp3][sound:geogaudio_जोधपुर.flac][sound:geogaudio_Minas Gerais.mp3][sound:geogaudio_長崎県.mp3][sound:geogaudio_Оймякон.mp3][sound:geogaudio_Terengganu.mp3][sound:geogaudio_Baden-Württemberg.mp3][sound:geogaudio_Nueva Vizcaya.flac][sound:geogaudio_福建.mp3][sound:geogaudio_کراچی.mp3][sound:geogaudio_Quirino.flac][sound:geogaudio_Genf.mp3][sound:geogaudio_दिसपुर.flac][sound:geogaudio_قنا.mp3][sound:geogaudio_Mecklenburg-Vorpommern.mp3][sound:geogaudio_熊本県.mp3][sound:geogaudio_上海.mp3][sound:geogaudio_Алматы.mp3][sound:geogaudio_전주.mp3][sound:geogaudio_नई दिल्ली.flac][sound:geogaudio_Rizal.flac][sound:geogaudio_البصرة.mp3][sound:geog_Bodies of Water.js][sound:geogaudio_Camarines Sur.flac][sound:geogaudio_Tours.mp3][sound:geogaudio_Abra.flac][sound:geogaudio_Sulawesi Utara.mp3][sound:geogaudio_Kuala Lumpur.mp3][sound:geogaudio_Acre.mp3][sound:geogaudio_عَمَّان.mp3][sound:geogaudio_Warszawa.mp3][sound:geogaudio_Surigao del Sur.flac][sound:geogaudio_Maluku Utara.mp3][sound:geogaudio_कर्नाटक.flac][sound:geogaudio_Sulawesi Selatan.mp3][sound:geogaudio_Tangerang.mp3][sound:geogaudio_Norrköping.mp3][sound:geogaudio_Bulacan.flac][sound:geogaudio_富山県.mp3][sound:geogaudio_Basse-terre.mp3][sound:geogaudio_राजस्थान.flac][sound:geogaudio_香川県.mp3][sound:geogaudio_河北.mp3][sound:geogaudio_Tacloban.flac][sound:geogaudio_Bern.mp3][sound:geogaudio_Иркутск.mp3][sound:geog_Pakistan.js][sound:geogaudio_الغربية.mp3][sound:geogaudio_Potsdam.mp3][sound:geogaudio_武汉.mp3][sound:geogaudio_Davao Oriental.flac][sound:geogaudio_चण्डीगढ़.flac][sound:geogaudio_광주.mp3][sound:geogaudio_ঢাকা.mp3][sound:geogaudio_الوادي الجديد.mp3][sound:geogaudio_札幌.mp3][sound:geogaudio_झारखण्ड.flac][sound:geogaudio_合肥.mp3][sound:geogaudio_मदुरई.flac][sound:geogaudio_Iloilo.flac][sound:geogaudio_长春.mp3][sound:geogaudio_Calais.mp3][sound:geogaudio_रायपुर.flac][sound:geogaudio_مدينة.mp3][sound:geogaudio_福岡.mp3][sound:geogaudio_Banten.mp3][sound:geogaudio_مَسْقَط.mp3][sound:geogaudio_Turku.mp3][sound:geogaudio_اصفهان.mp3][sound:geogaudio_Sulawesi Tengah.mp3][sound:geogaudio_Batangas.flac][sound:geogaudio_Misamis Occidental.flac][sound:geogaudio_धर्मशाला.flac][sound:geogaudio_Aceh.mp3][sound:geogaudio_हैदराबाद.flac][sound:geogaudio_青森県.mp3][sound:geogaudio_Sabah.mp3][sound:geogaudio_Davao.flac][sound:geogaudio_General Santos.flac][sound:geogaudio_شوم.mp3][sound:geogaudio_西安.mp3][sound:geogaudio_Leipzig.mp3][sound:geogaudio_佛山.mp3][sound:geogaudio_أطار.mp3][sound:geogaudio_ओडिशा.mp3][sound:geogaudio_杭州.mp3][sound:geogaudio_Mersin.mp3][sound:geogaudio_طنطا.mp3][sound:geogaudio_名古屋.mp3][sound:geogaudio_Berlin.mp3][sound:geogaudio_Palangka Raya.mp3][sound:geog_Australia.js][sound:geogaudio_Bangka Belitung.mp3][sound:geogaudio_Cebu.flac][sound:geogaudio_Thành phố Hồ Chí Minh.mp3][sound:geogaudio_Piauí.mp3][sound:geogaudio_Manokwari.mp3][sound:geogaudio_Iligan.flac][sound:geogaudio_Dinagat Islands.flac][sound:geogaudio_山梨県.mp3][sound:geogaudio_Melaka.mp3][sound:geogaudio_Pará.mp3][sound:geogaudio_北京.mp3][sound:geogaudio_الأقصر.mp3][sound:geogaudio_Legazpi.flac][sound:geogaudio_Probolinggo.mp3][sound:geogaudio_佐賀県.mp3][sound:geogaudio_São Paulo.mp3][sound:geogaudio_أَبُو ظَبْيٍ.mp3][sound:geogaudio_大分県.mp3][sound:geogaudio_和歌山県.mp3][sound:geogaudio_东莞.mp3][sound:geogaudio_کوئٹہ.mp3][sound:geogaudio_कोहिमा.flac][sound:geogaudio_चेन्‍नई.flac][sound:geogaudio_Kalimantan Selatan.mp3][sound:geogaudio_青海.mp3][sound:geogaudio_Kayseri.mp3][sound:geogaudio_भारत.flac][sound:geogaudio_Kuala Terengganu.mp3][sound:geogaudio_島根県.mp3][sound:geogaudio_Johor Bahru.mp3][sound:geogaudio_新竹.mp3][sound:geogaudio_Ceará.mp3][sound:geogaudio_तमिल नाडु.flac][sound:geogaudio_المنامة.mp3][sound:geogaudio_कोयम्बटूर.flac][sound:geogaudio_高知県.mp3][sound:geogaudio_广东.mp3][sound:geogaudio_Oriental Mindoro.flac][sound:geogaudio_मणिपुर.flac][sound:geogaudio_山西.mp3][sound:geogaudio_पोंडीचेरी.flac][sound:geogaudio_هرجيسا.mp3][sound:geogaudio_दिल्ली.flac][sound:.geog_Indonesia_Kabupaten.json.swp][sound:geogaudio_Омск.mp3][sound:geogaudio_Семей.mp3][sound:geogaudio_海南.mp3][sound:geogaudio_芜湖.mp3][sound:geogaudio_Ifugao.flac][sound:geogaudio_Bengkulu.mp3][sound:geogaudio_Sulu.flac][sound:geogaudio_प्रयागराज.flac][sound:geogaudio_الإسكندرية.mp3][sound:geogaudio_القُدس‎.mp3][sound:geogaudio_Dortmund.mp3][sound:geogaudio_سندھ.mp3][sound:geogaudio_長崎.mp3][sound:geogaudio_मिज़ोरम.flac][sound:geogaudio_Bukidnon.flac][sound:geogaudio_कटक.flac][sound:geogaudio_Cagayan de Oro.flac][sound:geogaudio_Marinduque.flac][sound:geogaudio_Maranhão.mp3][sound:geogaudio_इन्दौर.flac][sound:geogaudio_Aurora.flac][sound:geogaudio_بيروت.mp3][sound:geogaudio_भोपाल.flac][sound:geogaudio_Île-de-France.mp3][sound:geogaudio_Sumatra Barat.mp3][sound:geogaudio_Batman.mp3][sound:geogaudio_सिक्किम.flac][sound:geogaudio_अगरतला.flac][sound:geogaudio_Negros Occidental.flac][sound:geogaudio_Kota Kinabalu.mp3][sound:geogaudio_福井県.mp3][sound:geogaudio_Linköping.mp3][sound:geogaudio_Olongapo.flac][sound:geogaudio_兰州.mp3][sound:রংপুর.mp3][sound:geogaudio_神戸.mp3][sound:geog_South Africa.js][sound:geogaudio_Pangkal Pinang.mp3][sound:geogaudio_المدينة.mp3][sound:geogaudio_Blitar.mp3][sound:geogaudio_四川.mp3][sound:geogaudio_Münster.mp3][sound:geogaudio_Dagupan.flac][sound:geogaudio_Kraków.mp3][sound:geogaudio_Davao del Sur.flac][sound:geogaudio_兵庫県.mp3][sound:geogaudio_Балхаш.mp3][sound:geogaudio_Ilocos Norte.flac][sound:geogaudio_北九州.mp3][sound:geogaudio_Bekasi.mp3][sound:geogaudio_Rio Grande do Sul.mp3][sound:geogaudio_Mato Grosso do Sul.mp3][sound:geog_coastline.jpg][sound:geogaudio_शिमला.flac][sound:geogaudio_Amazonas.mp3][sound:geogaudio_پنجاب.mp3][sound:geogaudio_Van.mp3][sound:geogaudio_群馬県.mp3][sound:geogaudio_宮崎県.mp3][sound:geogaudio_Quezon City.flac][sound:geogaudio_Puerto Princesa.flac][sound:geogaudio_وفاق کے زیر انتظام قبائلی علاقہ جات.mp3][sound:geogaudio_Rio de Janeiro.mp3][sound:geogaudio_Apayao.flac][sound:geogaudio_گِلگِت بَلتِستان.mp3][sound:geogaudio_فاس.mp3][sound:geogaudio_.mp3][sound:geogaudio_Bielefeld.mp3][sound:الفيوم.mp3][sound:geogaudio_ວຽງຈັນ.mp3][sound:geogaudio_Surabaya.mp3][sound:geogaudio_Nueva Ecija.flac][sound:geogaudio_البحيرة.mp3][sound:geogaudio_সিলেট.mp3][sound:geogaudio_نواكشوط.mp3][sound:geogaudio_بني سويف.mp3][sound:geogaudio_Sarangani.flac][sound:geogaudio_Rondônia.mp3][sound:geogaudio_Maguindanao.flac][sound:geogaudio_厦门.mp3][sound:geogaudio_उत्तराखण्ड.flac][sound:أسيوط.mp3][sound:geogaudio_Palembang.mp3][sound:geogaudio_Manado.mp3][sound:geogaudio_Paraíba.mp3][sound:geogaudio_Guadeloupe.mp3][sound:geogaudio_서울.mp3][sound:geog_Nigeria.js][sound:geogaudio_西藏.mp3][sound:geogaudio_इम्फाल.flac][sound:geog_night.jpg][sound:geogaudio_Banjarmasin.mp3][sound:geogaudio_徳島県.mp3][sound:geogaudio_Seremban.mp3][sound:geogaudio_Казань.mp3][sound:geogaudio_Espoo.mp3][sound:geogaudio_Zamboanga del Norte.flac][sound:geogaudio_인천.mp3][sound:geogaudio_المنصورة.mp3][sound:geogaudio_Bogor.mp3][sound:geogaudio_Bayern.mp3][sound:geogaudio_Normandie.mp3][sound:geogaudio_Sachsen-Anhalt.mp3][sound:geog_political.svg][sound:geogaudio_सूरत.flac][sound:geogaudio_अण्डमान और निकोबार द्वीपसमूह.flac][sound:geogaudio_昆明.mp3][sound:geogaudio_鹿児島県.mp3][sound:geog_Chile.js][sound:geogaudio_Laguna.flac][sound:geogaudio_Bacolod.flac][sound:geogaudio_Maynila.mp3][sound:geogaudio_Oulu.mp3][sound:geogaudio_مُلتان.mp3][sound:geogaudio_कोच्चि.flac][sound:geogaudio_Bretagne.mp3][sound:geogaudio_Johor.mp3][sound:geogaudio_泉州.mp3][sound:geogaudio_ภูเก็ต.mp3][sound:geogaudio_بورسعيد.mp3][sound:geogaudio_الفيوم.mp3][sound:geogaudio_Mato Grosso.mp3][sound:geogaudio_दादरा और नगर हवेली एवं दमन और दीव.flac][sound:geogaudio_临沂.mp3][sound:geogaudio_Surigao.flac][sound:geogaudio_Riau.mp3][sound:geogaudio_Helsinki.mp3][sound:geogaudio_喀什.mp3][sound:geogaudio_Gaziantep.mp3][sound:geog_Argentina.js][sound:geog_México.js][sound:geogaudio_河南.mp3][sound:geogaudio_Mainz.mp3][sound:geogaudio_Antalya.mp3][sound:geogaudio_กรุงเทพมหานคร.mp3][sound:geog_Germany.js][sound:geogaudio_الجيزة.mp3][sound:geogaudio_대구.mp3][sound:geogaudio_तमिल नाडु.mp3][sound:geogaudio_石家莊.mp3][sound:geogaudio_Tuguegarao.flac][sound:geogaudio_मिज़ोरम.mp3][sound:geog_Peru.js][sound:geogaudio_İstanbul.mp3][sound:geogaudio_吉林.mp3][sound:geogaudio_沖縄県.mp3][sound:geogaudio_Eskişehir.mp3][sound:geogaudio_الرياض.mp3][sound:geogaudio_西宁.mp3][sound:geogaudio_छत्तीसगढ़.flac][sound:geogaudio_Tasikmalaya.mp3][sound:geog_Islands.js][sound:geogaudio_বরিশাল.mp3][sound:geogaudio_重庆.mp3][sound:geogaudio_Rheinland-Pfalz.mp3][sound:geogaudio_حيدرآباد.mp3][sound:geogaudio_कोलकाता.flac][sound:geogaudio_贵州.mp3][sound:geogaudio_金华.mp3][sound:geogaudio_Konya.mp3][sound:geogaudio_Padang.mp3][sound:geogaudio_Thüringen.mp3][sound:geogaudio_Brandenburg.mp3][sound:geogaudio_Saarland.mp3][sound:রাজশাহী.mp3][sound:geogaudio_Auvergne-Rhône-Alpes.mp3][sound:geogaudio_南京.mp3][sound:geogaudio_松山.mp3][sound:geogaudio_اسلام آباد.mp3][sound:geogaudio_Nürnberg.mp3][sound:geogaudio_Malang.mp3][sound:geogaudio_Pangasinan.flac][sound:geogaudio_لاہور.mp3][sound:geogaudio_भुवनेश्वर.flac][sound:القليوبية.mp3][sound:geogaudio_Красноярск.mp3][sound:geogaudio_長野県.mp3][sound:geogaudio_岐阜県.mp3][sound:geogaudio_पुदुच्चेरी.mp3][sound:geogaudio_Saarbrucken.mp3][sound:geogaudio_Agusan del Norte.flac][sound:geogaudio_神奈川県.mp3][sound:geogaudio_विशाखपटनम.flac][sound:geogaudio_Hamburg.mp3][sound:geogaudio_Sergipe.mp3][sound:geogaudio_Mataram.mp3][sound:geogaudio_गोवा.flac][sound:geogaudio_नागपुर.flac][sound:geogaudio_कोड़िकोड.flac][sound:geogaudio_दादरा और नगर हवेली एवं दमन और दीव.mp3][sound:geogaudio_Đà Nẵng.mp3][sound:geogaudio_Camarines Norte.flac][sound:geogaudio_Bremen.mp3][sound:geogaudio_पंजाब क्षेत्र.flac][sound:geogaudio_Wiesbaden.mp3][sound:geogaudio_খুলনা.mp3][sound:geog_Bangladesh.js][sound:geogaudio_Rio Grande do Norte.mp3][sound:geogaudio_Nice.mp3][sound:geogaudio_山东.mp3][sound:geogaudio_Nabire.mp3][sound:geogaudio_دمشق.mp3][sound:geogaudio_江苏.mp3][sound:geog_Indonesia.js][sound:geogaudio_横浜.mp3][sound:geogaudio_Samar.flac][sound:geogaudio_常州.mp3][sound:geogaudio_الجزائر.mp3][sound:geogaudio_एर्नाकुलम.flac][sound:geogaudio_চিটাগং.mp3][sound:geogaudio_Ormoc.flac][sound:geogaudio_مرسى مطروح.mp3][sound:geogaudio_Zambales.flac][sound:سوهاج.mp3][sound:geogaudio_温州.mp3][sound:geogaudio_哈尔滨.mp3][sound:geogaudio_Angeles.flac][sound:geogaudio_Makassar.mp3][sound:geogaudio_मुंबई.flac][sound:geogaudio_Cotabato.flac][sound:المنيا.mp3][sound:geogaudio_Negros Oriental.flac][sound:geogaudio_जबलपुर.flac][sound:بني سويف.mp3][sound:geogaudio_Misamis Oriental.flac][sound:geogaudio_长沙.mp3][sound:geogaudio_Leyte.flac][sound:geogaudio_पटना.flac][sound:geogaudio_安徽.mp3][sound:geogaudio_石川県.mp3][sound:geogaudio_مطروح.mp3][sound:geogaudio_पुणे.flac][sound:geogaudio_京都府.mp3][sound:সিলেট.mp3][sound:geogaudio_拉萨.mp3][sound:geogaudio_千葉県.mp3][sound:geogaudio_Yogyakarta.mp3][sound:geogaudio_Düsseldorf.mp3][sound:geogaudio_المنيا.mp3][sound:geogaudio_South Cotabato.flac][sound:geogaudio_内蒙古.mp3][sound:geogaudio_Biliran.flac][sound:geogaudio_潍坊.mp3][sound:geogaudio_Siquijor.flac][sound:geogaudio_مكة.mp3][sound:geogaudio_त्रिपुरा.flac][sound:geogaudio_新疆.mp3][sound:geogaudio_مدينة الكويت.mp3][sound:geogaudio_आन्ध्र प्रदेश.flac]
