@@ -23,11 +23,10 @@ var injectScript = (src) => {
     }
 
     var cardData = document.getElementById("card_data").innerHTML;
-    var nameField = (cardData.startsWith("(")) ? "Zacatecas::México" : cardData;
+    var nameField = (cardData.startsWith("(")) ? "Bekasi::Indonesia_Kabupaten" : cardData;
     var splitName = nameField.split("::");
     var featureName = splitName[0];
     var countryName = splitName[1];
-    var clicked = false;
     countryjson = {"type":"FeatureCollection","features":[]};
 
     if(cardType == "Click_The_Feature"){
@@ -38,6 +37,7 @@ var injectScript = (src) => {
 
     var feature = -1;
     var isCityQuestion = false;
+    var hasDeterminedZoom = false;
 
     for (var i = 0; i < countryjson.features.length; i++) {
         if (countryjson.features[i].properties.name == featureName || countryjson.features[i].properties.name_en == featureName) {
@@ -57,48 +57,48 @@ var injectScript = (src) => {
     }
 
     // Function to play feature audio when on back
-    var playFeatureIfOnBack = function () {
-        if (onBack || cardType == "Click_The_Feature") {
-            playAudio(feature.properties.name);
-        }
+    var playFeatureAudio = function () {
+        if (!onBack && cardType == "Name_The_Feature") return;
+        playAudio(feature.properties.name);
     }
 
-    playFeatureIfOnBack();
+    playFeatureAudio();
 
-    document.addEventListener("mousedown", playFeatureIfOnBack);
-    document.addEventListener("touchstart", playFeatureIfOnBack);
+    document.addEventListener("mousedown", playFeatureAudio);
+    document.addEventListener("touchstart", playFeatureAudio);
 
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
     var crowdedness = 0;
 
+    var computeZoom = function(){
+        if (isCityQuestion) {
+            drawFeatures();
+            crowdedness -= zoom.m;
+            distToClosest = Math.sqrt(1 / crowdedness);
+            zoom.z = .1 * distToClosest;
+        } else {
+            drawMultiPolygon(feature);
+        }
+        if(cardType == "Click_The_Feature"){
+            var delta = zoom.z/2;
+            zoom.y = Math.floor(zoom.y/delta) * delta;
+            zoom.x = Math.floor(zoom.x/delta) * delta;
+            zoom.z *= 2.;
+        }
+        hasDeterminedZoom = true;
+    }
 
     // Main render function
     var render = function () {
-        //first-pass: determine zoom
-        if(zoom.z == .5){
-            if (isCityQuestion) {
-                drawShapes();
-                crowdedness -= zoom.m;
-                distToClosest = Math.sqrt(1 / crowdedness);
-                zoom.z = .1 * distToClosest;
-            } else {
-                drawShape(feature);
-            }
-            if(cardType == "Click_The_Feature"){
-                var delta = zoom.z / 2;
-                zoom.y = Math.floor(zoom.y/delta) * delta;
-                zoom.x = Math.floor(zoom.x/delta) * delta;
-            }
-        }
-
+        if(!hasDeterminedZoom) computeZoom();
         //Wipe the canvas
         var parentDims = canvas.parentElement.getBoundingClientRect();
         canvas.width = parentDims.width;
         canvas.height = parentDims.height;
 
         drawMap();
-        drawShapes();
+        drawFeatures();
     }
 
     var maps = ['political.svg', 'coastline.jpg', 'earth.jpg', 'night.jpg'];
@@ -117,14 +117,14 @@ var injectScript = (src) => {
     }
 
     // Function to draw shapes on the map
-    function drawShapes() {
+    function drawFeatures() {
         ctx.textAlign = "center"
         for (var i in countryjson.features) {
             var shape = countryjson.features[i];
             var prevzoom = zoom.z;
             if(shape.geometry.type == "Point") drawTriplePoint(shape);
             else if(shape.geometry.type == "LineString") drawLineString(shape);
-            else drawShape(shape);
+            else drawMultiPolygon(shape);
             zoom.z = prevzoom;
         }
     }
@@ -149,18 +149,18 @@ var injectScript = (src) => {
             return;
         }
         var highlight = f == feature;
-        if(cardType == "Click_The_Feature") highlight = highlight && (onBack || clicked);
+        if(cardType == "Click_The_Feature") highlight &= onBack;
         var coords = f.geometry.coordinates;
-        drawParticle(coords[0], coords[1], highlight, f.properties.capitaltype);
-        drawParticle(coords[0] - 360, coords[1], highlight, f.properties.capitaltype);
-        drawParticle(coords[0] + 360, coords[1], highlight, f.properties.capitaltype);
+        drawPoint(coords[0], coords[1], highlight, f.properties.capitaltype);
+        drawPoint(coords[0] - 360, coords[1], highlight, f.properties.capitaltype);
+        drawPoint(coords[0] + 360, coords[1], highlight, f.properties.capitaltype);
 
         if ((onBack || typedCities.includes(f.properties.name_en) || typedCities.includes(f.properties.name)) && Math.hypot(coords[0] - feature.geometry.coordinates[0], coords[1] - feature.geometry.coordinates[1]) < zoom.z * 300) {
             if (highlight) {
                 ctx.fillStyle = "#f66";
                 ctx.font = "24px Trebuchet MS";
-                var x = goob(lonToX(coords[0]), true);
-                var y = goob(latToY(coords[1]), false);
+                var x = latOrLongToPixel(lonToX(coords[0]), true);
+                var y = latOrLongToPixel(latToY(coords[1]), false);
                 ctx.fillText(feature.properties.name, x, y + 34);
                 ctx.font = "16px Trebuchet MS";
                 var writeStateName = feature.properties.state !== "" && typeof feature.properties.state !== "undefined";
@@ -168,20 +168,20 @@ var injectScript = (src) => {
                 ctx.fillText(text, x, y+54);
             } else {
                 ctx.font = "16px Trebuchet MS";
-                var x = goob(lonToX(coords[0]), true);
-                var y = goob(latToY(coords[1]), false);
+                var x = latOrLongToPixel(lonToX(coords[0]), true);
+                var y = latOrLongToPixel(latToY(coords[1]), false);
                 ctx.fillText(f.properties.name, x, y + 18);
             }
         }
     }
 
-    // Function to draw a single particle on the map
-    function drawParticle(lon, lat, red, capitaltype) {
+    // Function to draw a single point on the map
+    function drawPoint(lon, lat, red, capitaltype) {
         ctx.lineWidth = 3;
         ctx.fillStyle = ctx.strokeStyle = red ? "#f66" : "#0aa";
         var shift = bound(1 / zoom.z, 2, 8);
-        var x = goob(lonToX(lon), true);
-        var y = goob(latToY(lat), false);
+        var x = latOrLongToPixel(lonToX(lon), true);
+        var y = latOrLongToPixel(latToY(lat), false);
         ctx.beginPath();
         if (capitaltype == "national") {
             ctx.arc(x, y, shift * .75, 0, 2 * Math.PI, false);
@@ -203,14 +203,15 @@ var injectScript = (src) => {
         }
     }
 
-
     // Function to draw a geographical shape on the map
-    function drawShape(obj) {
-        var fill = obj === feature;
-        if(cardType == "Click_The_Feature") fill = fill && (onBack || clicked);
+    function drawMultiPolygon(obj) {
+        var fill = (obj === feature) && (cardType == "Name_The_Feature" || onBack);
         var multi = obj.geometry.type == "MultiPolygon";
+
+        //Convert single-polygons to multis
         var multiShape = obj.geometry.coordinates;
         if (!multi) multiShape = [multiShape];
+
         ctx.lineWidth = fill ? .5 : .2;
         ctx.fillStyle = "red";
         ctx.strokeStyle = fill ? "red" : "black";
@@ -223,8 +224,8 @@ var injectScript = (src) => {
                 var point = shape[j];
                 var lon = point[0];
                 var lat = point[1];
-                var x = goob(lonToX(lon), true);
-                var y = goob(latToY(lat), false);
+                var x = latOrLongToPixel(lonToX(lon), true);
+                var y = latOrLongToPixel(latToY(lat), false);
                 maxx = Math.max(maxx, lonToX(lon));
                 maxy = Math.max(maxy, latToY(lat));
                 minx = Math.min(minx, lonToX(lon));
@@ -241,7 +242,7 @@ var injectScript = (src) => {
         }
         var centerX = (maxx + minx) / 2;
         var centerY = (maxy + miny) / 2;
-        if (fill) {
+        if (obj === feature && !hasDeterminedZoom) {
             zoom.x = centerX;
             zoom.y = centerY;
             zoom.z = Math.max(maxx - minx, maxy - miny) * 2;
@@ -249,7 +250,7 @@ var injectScript = (src) => {
         if(onBack || typedCities.includes(obj.properties.name)){
             ctx.fillStyle = "#f66";
             ctx.font = (obj === feature ? 18 : 14) + "px Trebuchet MS";
-            ctx.fillText(obj.properties.name, goob(centerX, true), goob(centerY, false) + 5);
+            ctx.fillText(obj.properties.name, latOrLongToPixel(centerX, true), latOrLongToPixel(centerY, false) + 5);
         }
     }
 
@@ -271,8 +272,8 @@ var injectScript = (src) => {
         for (var i = 0; i < coordinates.length; i++) {
             var lon = coordinates[i][0];
             var lat = coordinates[i][1];
-            var x = goob(lonToX(lon), true);
-            var y = goob(latToY(lat), false);
+            var x = latOrLongToPixel(lonToX(lon), true);
+            var y = latOrLongToPixel(latToY(lat), false);
 
             if (i === 0) {
                 ctx.moveTo(x, y); // Move to the starting point without drawing a line
@@ -288,16 +289,16 @@ var injectScript = (src) => {
     function drawMap() {
         var image = images[mapNo];
         for (let i = -1; i <= 1; i++) {
-            const tlx = goob(0 + i, true);
-            const tly = goob(0, false);
-            const brx = goob(1 + i, true);
-            const bry = goob(1, false);
+            const tlx = latOrLongToPixel(0 + i, true);
+            const tly = latOrLongToPixel(0, false);
+            const brx = latOrLongToPixel(1 + i, true);
+            const bry = latOrLongToPixel(1, false);
             ctx.drawImage(image, tlx, tly, brx - tlx, bry - tly);
         }
     }
 
     // Function to calculate position on canvas
-    function goob(point, isX) {
+    function latOrLongToPixel(point, isX) {
         const zoomCoordinate = isX ? zoom.x : zoom.y;
         const canvasDimension = isX ? canvas.width : canvas.height;
         const size = isX ? 600 : 300;
@@ -320,10 +321,12 @@ var injectScript = (src) => {
         for (i in countryjson.features) {
             var geo = countryjson.features[i];
             if (sanitizeString(geo.properties.name) === sanitizeString(currentInput) || sanitizeString(geo.properties.name_en) === sanitizeString(currentInput)) {
-                playAudio(geo.properties.name);
-                typedCities.push(geo.properties.name);
-                this.value = "";
-                render();
+                if(!typedCities.includes(geo.properties.name)){
+                    playAudio(geo.properties.name);
+                    typedCities.push(geo.properties.name);
+                    this.value = "";
+                    render();
+                }
             }
         }
     });
@@ -337,11 +340,6 @@ var injectScript = (src) => {
         event.preventDefault();
 
         zoom.z *= event.deltaY > 0 ? 2 : .5;
-        render();
-    });
-
-    document.addEventListener("click", function() {
-        clicked = true;
         render();
     });
 
