@@ -1,0 +1,55 @@
+<div class="front" id="front">
+  <div id="debug"></div>
+  <div id="text"></div>
+  <div id="translation"></div>
+</div>
+
+<script>
+
+var textElement = document.getElementById("text");
+var translationElement = document.getElementById("translation");
+var typeElement = document.getElementById("type_input");
+var debugElement = document.getElementById("debug");
+var audioElement = document.querySelector(".soundLink, .replaybutton");
+
+// Create an <audio> element
+var audioElement = document.createElement("audio");
+audioElement.setAttribute("controls", "");
+audioElement.style.display = "none";
+audioElement.setAttribute("autoplay", "true");
+
+// Set the source of the <audio> element
+var filename = "{{Audio}}".startsWith("(")?"nesimi1.mp3":"{{Audio}}";
+var sourceElement = document.createElement("source");
+sourceElement.setAttribute("src", filename);
+audioElement.appendChild(sourceElement);
+
+
+function debug(str){
+    debugElement.innerHTML = str;
+}
+
+function isAudioPlaying() {
+    return !audioElement.paused;
+}
+
+function replayAudio() {
+    if(isAudioPlaying()) return;
+    audioElement.currentTime = 0;
+    audioElement.play();
+}
+
+var inAnkiEditor = `{{Text}}`.startsWith("(");
+var text = inAnkiEditor ? "William Shakespeare der ki; Şairler, hayatın sessiz melodisini duyabilen ve onu kelimelerle dans ettirebilen insanlardır." : `{{Text}}`;
+var translation = inAnkiEditor ? "William Shakespeare says; Poets are people who can hear the silent melody of life and make it dance with words." : `{{Translation}}`;
+
+if(document.getElementById("back")){
+  textElement.innerHTML = text;
+  translationElement.innerHTML = translation;
+  audioElement.pause();
+}
+
+replayAudio();
+
+</script>
+
