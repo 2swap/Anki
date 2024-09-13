@@ -17,8 +17,8 @@ countryjson.features.push(...[
 
 
 
-
 //Malaysia
+{"type":"Feature","properties":{"name":"Kuala Lumpur", "name_en":"Kuala Lumpur", "country":"Malaysia", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[101.69803741674644,3.168611730712371]}},
 {"type":"Feature","properties":{"name":"Putrajaya", "name_en":"Putrajaya", "country":"Malaysia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[101.7019469797865,2.914019794624551]}},
 {"type":"Feature","properties":{"name":"George Town", "name_en":"George Town", "country":"Malaysia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[100.32936786727998,5.413613155584244]}},
 {"type":"Feature","properties":{"name":"Ipoh", "name_en":"Ipoh", "country":"Malaysia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[101.06498327535695,4.599989236362944]}},
@@ -31,6 +31,13 @@ countryjson.features.push(...[
 {"type":"Feature","properties":{"name":"Kuala Terengganu", "name_en":"Kuala Terengganu", "country":"Malaysia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[103.1199999583078,5.330409768592517]}},
 {"type":"Feature","properties":{"name":"Kuching", "name_en":"Kuching", "country":"Malaysia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[110.32999914453461,1.529969908551095]}},
 {"type":"Feature","properties":{"name":"Seremban", "name_en":"Seremban", "country":"Malaysia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[101.94002030335508,2.710492166042854]}},
-{"type":"Feature","properties":{"name":"Miri", "name_en":"Miri", "country":"Malaysia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[113.9845047597837,4.399923928744897]}}
+{"type":"Feature","properties":{"name":"Miri", "name_en":"Miri", "country":"Malaysia", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[113.9845047597837,4.399923928744897]}},
+
+//Brunei
+{"type":"Feature","properties":{"name":"Bandar Seri Begawan", "name_en":"Bandar Seri Begawan", "country":"Brunei", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[114.93328405666227,4.883331114619239]}},
+
+//Singapore
+{"type":"Feature","properties":{"name":"Singapura", "name_en":"Singapore", "country":"Singapore", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[103.85387481909902,1.294979325105942]}}
+
 
 ])

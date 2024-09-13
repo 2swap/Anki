@@ -19,7 +19,7 @@ countryjson.features.push(...[
 {"type":"Feature","properties":{"name":"Душанбе", "name_en":"Dushanbe", "country":"Tajikistan", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[68.77387935270173,38.56003521631658]}},
 {"type":"Feature","properties":{"name":"Aşgabat", "name_en":"Ashgabat", "country":"Turkmenistan", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[58.38329911177465,37.949994933110986]}},
 {"type":"Feature","properties":{"name":"Бишкек", "name_en":"Bishkek", "country":"Kyrgyzstan", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[74.58325836390367,42.875025305090105]}},
-
+{"type":"Feature","properties":{"name":"Улаанбаатар", "name_en":"Ulaanbaatar", "country":"Mongolia", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[106.91466990374653,47.91861925856074]}},
 
 //Uzbekistan
 {"type":"Feature","properties":{"name":"Тошкент", "name_en":"Tashkent", "country":"Uzbekistan", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[69.29298696088779,41.31364774160721]}},
