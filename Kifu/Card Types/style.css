@@ -1,0 +1,23 @@
+@import url("_2swap_anki.css");
+
+#game_name, #players, #whenwhere{
+    padding-top: 10px;
+    font-size: 12px;
+}
+
+.flashcard {
+    position: absolute;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 400px;
+    background-color: rgb(242, 176, 109);
+}
+
+#players {
+    position: absolute;
+    bottom: 20px; /* Distance from the bottom */
+    width: 100%; /* Center horizontally */
+}

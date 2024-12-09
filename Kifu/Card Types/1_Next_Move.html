@@ -1,0 +1,191 @@
+<div id="game_name"></div>
+<div id="whenwhere"></div>
+<div id="txt"></div>
+<div class="flashcard">
+    <canvas id="canvas" width="400px" height="400px"/>
+</div>
+<div id="players">
+    <span id="black_player"></span>
+    <span id="separator"> | </span>
+    <span id="white_player"></span>
+</div>
+
+<script>
+var txt = document.getElementById("txt");
+//txt.innerHTML = "A";
+var dataset = '{{Dataset}}';
+if(dataset.startsWith("(")) dataset = "shuusaku.js";
+var injectScript = (src) => {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+};
+
+(async () => {
+
+if (typeof sgf === 'undefined') {
+    await injectScript(dataset);
+}
+
+// Populate when and where
+// Populate players
+document.getElementById("game_name").innerText = game;
+document.getElementById("black_player").style.color = "grey";
+document.getElementById("black_player").innerText = black;
+document.getElementById("white_player").style.color = "white";
+document.getElementById("white_player").innerText = white;
+document.getElementById("whenwhere").innerText = when + ", " + where;
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+var back = document.getElementById("back");
+
+var sz = 19;
+var squareSize = canvas.width / (sz+1);
+var prepostview = 5;
+var backgroundColor = "black";
+
+function renderEmptyBoard(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = backgroundColor;
+    for(var i = 0; i < sz; i++){
+        ctx.beginPath();
+        ctx.moveTo((1+i)*squareSize, 1*squareSize);
+        ctx.lineTo((1+i)*squareSize, sz*squareSize);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(1*squareSize, (1+i)*squareSize);
+        ctx.lineTo(sz*squareSize, (1+i)*squareSize);
+        ctx.stroke();
+    }
+}
+
+var grid = Array.from(Array(sz), () => new Array(sz));
+for(var x = 0; x < sz; x++) for(var y = 0; y < sz; y++) grid[x][y]=0;
+
+var markedPiece = -1;
+
+function move(x, y, col){
+    grid[x][y] = col;
+    var otherCol = col=="white"?"black":"white";
+    if(x+1 < sz && otherCol==grid[x+1][y]) startFloodAndDelete(x+1, y);
+    if(x-1 >= 0 && otherCol==grid[x-1][y]) startFloodAndDelete(x-1, y);
+    if(y+1 < sz && otherCol==grid[x][y+1]) startFloodAndDelete(x, y+1);
+    if(y-1 >= 0 && otherCol==grid[x][y-1]) startFloodAndDelete(x, y-1);
+}
+function startFloodAndDelete(x, y){
+    var floodgrid = Array.from(Array(sz), () => new Array(sz));
+    for(var i = 0; i < sz; i++) for(var j = 0; j < sz; j++) floodgrid[x][y]=0;
+    group = flood(x, y, floodgrid);
+    if(!hasLiberties(group)) erase(group);
+}
+function flood(x, y, floodgrid){
+    var col = grid[x][y];
+    floodgrid[x][y] = true;
+    if(x+1 < sz && col==grid[x+1][y] && floodgrid[x+1][y]!==true) floodgrid = flood(x+1, y, floodgrid);
+    if(x-1 >= 0 && col==grid[x-1][y] && floodgrid[x-1][y]!==true) floodgrid = flood(x-1, y, floodgrid);
+    if(y+1 < sz && col==grid[x][y+1] && floodgrid[x][y+1]!==true) floodgrid = flood(x, y+1, floodgrid);
+    if(y-1 >= 0 && col==grid[x][y-1] && floodgrid[x][y-1]!==true) floodgrid = flood(x, y-1, floodgrid);
+    return floodgrid;
+}
+function hasLiberties(group){
+    for(var x = 0; x < sz; x++) for(var y = 0; y < sz; y++){
+        if(group[x][y] !== true) continue;
+        if(x+1 < sz && grid[x+1][y] == 0) return true;
+        if(x-1 >= 0 && grid[x-1][y] == 0) return true;
+        if(y+1 < sz && grid[x][y+1] == 0) return true;
+        if(y-1 >= 0 && grid[x][y-1] == 0) return true;
+    }
+    return false;
+}
+function erase(group){
+    for(var x = 0; x < sz; x++) for(var y = 0; y < sz; y++){
+        if(group[x][y] !== true) continue;
+        grid[x][y] = 0;
+    }
+}
+
+
+var move_no = ("{{Move}}".startsWith("(")) ? 68 : parseInt("{{Move}}");
+var currmove = 0;
+nextmove = function (){
+    var substr = sgf.substring(currmove*6, (currmove+1)*6);
+    var x = substr.charAt(2).charCodeAt(0) - 'a'.charCodeAt(0);
+    var y = substr.charAt(3).charCodeAt(0) - 'a'.charCodeAt(0);
+    var isBlack = substr.charAt(0) == 'B';
+    var col = isBlack?"black":"white";
+    move(x, y, col);
+    markedPiece = x+y*sz;
+    currmove++;
+}
+var frontTimerLoop = function(){
+    nextmove();
+    render();
+}
+var render = function(){
+    renderEmptyBoard();
+    for(var x = 0; x < sz; x++) for(var y = 0; y < sz; y++) drawStone(x, y, grid[x][y] );
+}
+var startmoves = back ? move_no+prepostview : move_no-prepostview;
+for(var i = 0; i < startmoves; i++) nextmove();
+render();
+if(!back) {
+    var timer = 0;
+    for(var j = Math.max(0, move_no - prepostview); j < move_no; j++) {
+        setTimeout(frontTimerLoop, timer*600);
+        timer++;
+    }
+}
+
+function onClick(rect, e) {
+    if(currmove < move_no || backgroundColor == "red") return;
+    var substr = sgf.substring(currmove*6, (currmove+1)*6);
+    var corrx = substr.charAt(2).charCodeAt(0) - 'a'.charCodeAt(0);
+    var corry = substr.charAt(3).charCodeAt(0) - 'a'.charCodeAt(0);
+    var col = substr.charAt(0) == 'B' ? "black" : "white";
+    move(corrx, corry, col);
+    markedPiece = corrx+corry*sz;
+    currmove++;
+    let x = Math.floor((e.clientX - rect.left) / squareSize - .5);
+    let y = Math.floor((e.clientY - rect.top) / squareSize - .5);
+    if(x == corrx && y == corry){
+        if(currmove >= move_no + prepostview) backgroundColor = "lime";
+        setTimeout(frontTimerLoop, 1000);
+    } else {
+        backgroundColor = "red";
+    }
+    render();
+}
+
+canvas.addEventListener("mousedown", function(e){ onClick(canvas.getBoundingClientRect(), e); });
+
+function drawStone(x, y, col) {
+    if(col === 0) return;
+    var shouldMark = markedPiece == x+y*sz;
+    x+=1;y+=1;
+    x *= squareSize;
+    y *= squareSize;
+
+    ctx.fillStyle = col;
+    ctx.beginPath();
+    ctx.arc(x, y, squareSize/2-1, 0, 2*Math.PI, false);
+    ctx.fill();
+
+    if(shouldMark){
+        var markCol = col == "black" ? "white" : "black";
+        if(backgroundColor != "black") markCol = backgroundColor;
+        ctx.fillStyle = markCol;
+        ctx.beginPath();
+        ctx.arc(x, y, 3, 0, 2*Math.PI, false);
+        ctx.fill();
+    }
+}
+
+})();
+</script>
