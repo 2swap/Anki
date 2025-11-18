@@ -16,7 +16,9 @@ def main():
     subject = " ".join(sys.argv[1:]).strip()
 
     # Ensure the OpenAI API key is set.
-    openai_api_key = os.getenv("OPENAI_API_KEY")
+    keyFile = open('/home/swap/openaikey', 'r')
+    openai_api_key = keyFile.readline().rstrip()
+    keyFile.close()
     if not openai_api_key:
         print("Error: OPENAI_API_KEY environment variable not set.")
         sys.exit(1)
@@ -35,7 +37,7 @@ def main():
                                                "Provide the flashcards as a JSON object where each key is a question and each value is the answer. "
                                                "Do not include any additional text or formatting. "
                                                "Questions should stick to the core technical details of a subject, and avoid non-technical trivia. "
-                                               "Answer fields should be as brief as possible, favoring single words or lists over english sentences. "
+                                               "Answer fields should be as brief as possible, favoring single words or lists over english sentences. Questions should have one unambiguously correct answer. "
                                                "Questions should construct an overall story or convey a coherent perspective. "
                                                "Use examples when appropriate. "
                                                "For foreign names, places, or concepts, include foreign language text as well as romanized text wherever possible. "},
