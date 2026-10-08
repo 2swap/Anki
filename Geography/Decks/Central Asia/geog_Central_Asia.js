@@ -27,7 +27,7 @@ countryjson.features.push(...[
 
 
 //Kazakhstan
-{"type":"Feature","properties":{"name":"Нұр-Сұлтан", "name_en":"Nur-Sultan", "country":"Kazakhstan", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[71.427774209483,51.18112530425759]}},
+{"type":"Feature","properties":{"name":"Астана", "name_en":"Astana", "country":"Kazakhstan", "capitaltype":"national"},"geometry":{"type":"Point","coordinates":[71.427774209483,51.18112530425759]}},
 {"type":"Feature","properties":{"name":"Семей", "name_en":"Semey", "country":"Kazakhstan", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[80.27503780001331,50.43499513661152]}},
 {"type":"Feature","properties":{"name":"Балхаш", "name_en":"Balqash", "country":"Kazakhstan", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[74.95024654022632,46.85322409981325]}},
 {"type":"Feature","properties":{"name":"Караганда", "name_en":"karagandy", "country":"Kazakhstan", "capitaltype":"none"},"geometry":{"type":"Point","coordinates":[73.61911332082008,46.11954795234942]}},
