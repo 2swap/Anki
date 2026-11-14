@@ -11,15 +11,18 @@ Anki/
 ├── anki_sync.py          check / push / build a deck folder
 ├── list_decks.py         print every live deck with its card counts
 ├── Collection/           one folder per synced deck; the path IS the deck name
-│   ├── Go/                                    -> deck "Go"
-│   ├── Humanities/Geography/                  -> deck "Humanities::Geography"
-│   └── Natural Sciences/Standard Model/       -> deck "Natural Sciences::Standard Model"
+│   ├── Go/                                    -> deck "[Go]"
+│   ├── Humanities/Geography/                  -> deck "[Humanities]::Geography"
+│   └── Natural Sciences/Standard Model/       -> deck "[Natural Sciences]::Standard Model"
 ├── Note Types/           note types shared by several decks (symlinked into their Card Types/)
 ├── In Development/       decks not in the live collection yet (History, Life)
 └── Vocab/                card-making tools for the language decks (not mirrored)
 ```
 
-The Indonesian, Spanish, Chinese and Connect 4 decks live only in Anki.
+A synced deck's top-level name is in [brackets] in Anki (`anki_sync.py` adds
+them; the folders don't have them), marking it as managed from this repo. The
+unbracketed decks (Indonesian, Spanish, Chinese, Connect 4) live only in Anki;
+the tutor may propose cards for those (see `tutor/CLAUDE.md`).
 
 A deck folder:
 

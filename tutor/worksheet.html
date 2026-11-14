@@ -17,7 +17,7 @@
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink);
          font: 16px/1.55 system-ui, -apple-system, sans-serif; }
-  main { max-width: 1500px; margin: 0 auto; padding: 40px 20px 120px;
+  main { max-width: 1500px; margin: 0 auto; padding: 56px 20px 120px;
          display: grid; gap: 20px; align-items: start;
          /* A column is never narrower than its widest code line, so code doesn't scroll;
             the other columns shrink to make room. */
@@ -40,6 +40,13 @@
   .status { margin-top: 10px; }
   .status:empty { display: none; }
   .pending { color: var(--muted); font-style: italic; }
+  .card:empty { display: none; }
+  .card { margin-top: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+          font-size: .9rem; color: var(--muted); }
+  .card button { padding: 5px 12px; font-size: .85rem; }
+  .card .label { color: var(--ink); }
+  .card .done { color: var(--full); }
+  .card .failed { color: var(--none); }
   .explainer:empty { display: none; }
   .explainer { margin-top: 10px; }
   .explainer video { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
@@ -49,10 +56,43 @@
   .feedback.none { border-left: 3px solid var(--none); padding-left: 10px; }
   #offline { position: fixed; bottom: 12px; right: 12px; background: var(--none); color: #fff;
              padding: 6px 12px; border-radius: 6px; font-size: .85rem; display: none; }
+  #loading { position: fixed; inset: 0; pointer-events: none;
+             display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 20px; color: var(--muted); font-style: italic; text-align: center; }
+  #loading[hidden] { display: none; }
+  #loading .spinner { width: 18px; height: 18px; flex: none; border-radius: 50%;
+                      border: 2px solid var(--line); border-top-color: var(--accent);
+                      animation: spin .9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { #loading .spinner { animation: none; } }
+  #suggest { position: fixed; top: 12px; right: 12px; z-index: 10;
+             display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+  #suggest-toggle { padding: 6px 12px; font-size: .85rem; }
+  #suggest-panel { width: min(360px, calc(100vw - 24px)); background: var(--card);
+                   border: 1px solid var(--line); border-radius: 10px; padding: 12px;
+                   box-shadow: 0 6px 24px rgba(0,0,0,.12); }
+  #suggest-panel[hidden] { display: none; }
+  #suggest-panel form { flex-direction: column; margin-top: 0; }
+  #suggest-panel textarea { width: 100%; min-height: 110px; resize: vertical; padding: 8px 10px;
+                            border: 1px solid var(--line); border-radius: 6px; background: var(--bg);
+                            color: var(--ink); font: inherit; font-size: .9rem; }
+  #suggest-panel button { align-self: flex-end; }
+  #suggest-note { font-size: .85rem; color: var(--muted); min-height: 1.2em; }
 </style>
 </head>
 <body>
+<div id="loading" role="status"><span class="spinner"></span>The tutor is writing your first questions…</div>
 <main id="questions"></main>
+<div id="suggest">
+  <button id="suggest-toggle" type="button" aria-expanded="false" aria-controls="suggest-panel">Suggest</button>
+  <div id="suggest-panel" hidden>
+    <form id="suggest-form">
+      <textarea id="suggest-text" maxlength="2000" aria-label="Suggestion for the tutor"
+        placeholder="Type here to make suggestions to the tutor. For example, 'Please teach me Arabic!' or 'Within Biology, assume I am a complete beginner, and focus on phylogenetics.'"></textarea>
+      <div id="suggest-note"></div>
+      <button>Send</button>
+    </form>
+  </div>
+</div>
 <div id="offline">Can't reach tutor server</div>
 <script>
 const rendered = new Map();   // question id -> { el, sig }
@@ -71,6 +111,7 @@ function buildQuestion(q) {
   el.innerHTML = `<div class="prompt"></div>
                   <form><input autocomplete="off"><button>Submit</button></form>
                   <div class="status"></div>
+                  <div class="card"></div>
                   <div class="explainer"></div>`;
   md(el.querySelector(".prompt"), q.prompt);
   el.querySelector("form").addEventListener("submit", e => { e.preventDefault(); submit(q, el); });
@@ -103,6 +144,38 @@ function updateStatus(q, el, answer) {
   md(status.firstChild, q.feedback);
 }
 
+// An Anki card proposal on a graded question. The tutor names the deck and what the
+// cards are about; their contents are only written after "Add to Anki" is clicked.
+function updateCard(q, el, card) {
+  const box = el.querySelector(".card");
+  const p = q.card_proposal;
+  if (!p || !q.credit) { box.innerHTML = ""; return; }
+  const label = document.createElement("span");
+  label.className = "label";
+  label.textContent = `Anki · ${p.deck}: ${p.label}`;
+  box.replaceChildren(label);
+  const note = text => { const s = document.createElement("span"); s.textContent = text; box.append(s); return s; };
+  if (!card) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = "Add to Anki";
+    btn.addEventListener("click", async () => {
+      btn.disabled = true;
+      try {
+        const res = await fetch("/cards/accept", { method: "POST", body: JSON.stringify({ id: q.id }) });
+        if (!res.ok) throw new Error((await res.json()).error);
+        poll();
+      } catch (e) {
+        btn.disabled = false;
+        note(`Couldn't add: ${e.message || "server unreachable"}`).className = "failed";
+      }
+    });
+    box.append(btn);
+  } else if (card.state === "writing") note("Writing cards…").className = "pending";
+  else if (card.state === "adding") note("Adding to Anki…").className = "pending";
+  else note(card.summary).className = card.state === "done" ? "done" : "failed";
+}
+
 function updateExplainer(q, el, state) {
   const box = el.querySelector(".explainer");
   if (state === "rendering") box.innerHTML = `<div class="pending">Rendering animation…</div>`;
@@ -111,7 +184,9 @@ function updateExplainer(q, el, state) {
   else box.innerHTML = "";   // none yet, or the render failed
 }
 
-function render({ worksheet, answers, explainers = {} }) {
+function render({ worksheet, answers, explainers = {}, cards = {} }) {
+  // Shown from page load until the tutor has posted its first question.
+  document.getElementById("loading").hidden = (worksheet.questions || []).length > 0;
   const main = document.getElementById("questions");
   if (!main.children.length) {
     for (const t of THREADS) {
@@ -135,6 +210,11 @@ function render({ worksheet, answers, explainers = {} }) {
       entry.sig = sig;
       updateStatus(q, entry.el, answers[q.id]);
     }
+    const cardSig = JSON.stringify([q.credit, q.card_proposal, cards[q.id]]);
+    if (cardSig !== entry.cardSig) {
+      entry.cardSig = cardSig;
+      updateCard(q, entry.el, cards[q.id]);
+    }
     if (explainers[q.id] !== entry.explainer) {
       entry.explainer = explainers[q.id];
       updateExplainer(q, entry.el, entry.explainer);
@@ -151,6 +231,41 @@ async function poll() {
     document.getElementById("offline").style.display = "block";
   }
 }
+
+const suggestToggle = document.getElementById("suggest-toggle");
+const suggestPanel = document.getElementById("suggest-panel");
+const suggestText = document.getElementById("suggest-text");
+const suggestNote = document.getElementById("suggest-note");
+
+suggestToggle.addEventListener("click", () => {
+  suggestPanel.hidden = !suggestPanel.hidden;
+  suggestToggle.setAttribute("aria-expanded", String(!suggestPanel.hidden));
+  if (!suggestPanel.hidden) suggestText.focus();
+});
+
+document.getElementById("suggest-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const text = suggestText.value.trim();
+  if (!text) return;
+  const btn = e.target.querySelector("button");
+  btn.disabled = true;
+  try {
+    const res = await fetch("/suggest", { method: "POST", body: JSON.stringify({ text }) });
+    if (!res.ok) throw new Error();
+    suggestText.value = "";
+    suggestNote.textContent = "Sent. The tutor will take it into account.";
+  } catch {
+    suggestNote.textContent = "Couldn't send. Is the server running?";
+  }
+  btn.disabled = false;
+});
+
+// Ctrl/Cmd+Enter sends; plain Enter makes a new line.
+suggestText.addEventListener("keydown", e => {
+  if (e.key === "Enter" && (e.ctrlKey || e.metaKey)) document.getElementById("suggest-form").requestSubmit();
+  if (e.key === "Escape") suggestToggle.click();
+});
+suggestText.addEventListener("input", () => { suggestNote.textContent = ""; });
 
 poll();
 setInterval(poll, 2000);

@@ -3,8 +3,9 @@
 The repo is the source of truth; Anki (via AnkiConnect) is downstream.
 
 Every deck folder lives under Collection/, and its path there IS the Anki deck
-name, with '/' for '::': Collection/Natural Sciences/Night Sky/ mirrors the deck
-"Natural Sciences::Night Sky". A folder whose deck has subdecks holds them as
+name, with '/' for '::' and the top-level part in [brackets] (which marks the
+deck as managed by this repo): Collection/Natural Sciences/Night Sky/ mirrors the
+deck "[Natural Sciences]::Night Sky". A folder whose deck has subdecks holds them as
 subfolders, each with its own manifest.
 
 Folder layout (see Collection/Natural Sciences/Night Sky/ and .../Periodic Table/
@@ -91,11 +92,14 @@ COLLECTION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Colle
 
 
 def deck_name_for(folder):
-    """The Anki deck a folder mirrors: its path under Collection/, '/' -> '::'."""
+    """The Anki deck a folder mirrors: its path under Collection/, '/' -> '::', with
+    the top-level part in [brackets] to mark the deck as managed by this repo
+    (Collection/Humanities/Geography -> "[Humanities]::Geography")."""
     rel = os.path.relpath(os.path.abspath(folder), COLLECTION_DIR)
     if rel == "." or rel.startswith(".."):
         raise SystemExit(f"{folder}: not inside {COLLECTION_DIR}; the folder path names the deck")
-    return "::".join(rel.split(os.sep))
+    top, *rest = rel.split(os.sep)
+    return "::".join([f"[{top}]", *rest])
 
 
 def load_manifest(folder):

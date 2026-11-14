@@ -18,6 +18,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from anki_cards import Cards
 from explainer.renderer import Explainers
 
 ROOT = Path(__file__).resolve().parent
@@ -32,6 +33,9 @@ TUTOR_CMD = [
     "--input-format", "stream-json", "--output-format", "stream-json", "--verbose",
     "--permission-mode", "acceptEdits",
     "--allowedTools", "Read", "Edit", "Write", "Glob", "Grep",
+    # Read access to the card makers' guides (e.g. Vocab/CLAUDE.md); the tutor only
+    # writes card specs, and the server runs the makers.
+    "--add-dir", str(ROOT.parent / "Vocab"),
 ]
 START_MESSAGE = (
     "The worksheet server is running and the student has the page open. "
@@ -40,10 +44,12 @@ START_MESSAGE = (
 )
 
 SWITCH_PROBABILITY = 0.15  # per submission; switches the subject of that question's thread
+MAX_SUGGESTION = 2000      # characters
 
 submit_lock = threading.Lock()
 inbox = queue.Queue()   # messages for the tutor
 explainers = Explainers(LIVE, inbox.put)
+cards = Cards(LIVE, inbox.put)
 
 
 def read_answers():
@@ -107,7 +113,7 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(503, '{"error": "worksheet not ready"}')
                 return
             self.send(200, json.dumps({"worksheet": worksheet, "answers": read_answers(),
-                                       "explainers": explainers.states()}))
+                                       "explainers": explainers.states(), "cards": cards.states()}))
         elif self.path.startswith("/explainers/") and self.path.endswith(".mp4"):
             video = explainers.video(self.path[len("/explainers/"):-len(".mp4")])
             if video:
@@ -118,10 +124,47 @@ class Handler(BaseHTTPRequestHandler):
             self.send(404, '{"error": "not found"}')
 
     def do_POST(self):
-        if self.path != "/submit":
+        if self.path not in ("/submit", "/suggest", "/cards/accept"):
             self.send(404, '{"error": "not found"}')
             return
-        body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+        try:
+            body = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+        except (TypeError, ValueError):
+            self.send(400, '{"error": "bad request"}')
+            return
+        if self.path == "/suggest":
+            self.suggest(body)
+        elif self.path == "/cards/accept":
+            self.accept_cards(body)
+        else:
+            self.submit(body)
+
+    def accept_cards(self, body):
+        """The student accepted a question's card proposal: only now are cards written."""
+        qid = body.get("id")
+        try:
+            questions = json.loads(WORKSHEET.read_text()).get("questions", [])
+        except (OSError, json.JSONDecodeError):
+            self.send(503, '{"error": "worksheet not ready"}')
+            return
+        q = next((q for q in questions if q.get("id") == qid), None)
+        error = cards.accept(qid, q.get("card_proposal") if q else None)
+        if error:
+            self.send(400, json.dumps({"error": error}))
+        else:
+            self.send(200, '{"ok": true}')
+
+    def suggest(self, body):
+        """A free-text request from the student: a new subject, a goal, a preference."""
+        text = str(body.get("text", "")).strip()
+        if not text or len(text) > MAX_SUGGESTION:
+            self.send(400, '{"error": "empty or too long"}')
+            return
+        log(f"suggestion: {text}")
+        inbox.put(json.dumps({"suggestion": text}))
+        self.send(200, '{"ok": true}')
+
+    def submit(self, body):
         qid, answer = body.get("id"), body.get("answer", "")
         with submit_lock:
             if not qid or qid in read_answers():
@@ -148,7 +191,8 @@ if __name__ == "__main__":
     WORKSHEET.write_text(json.dumps({"questions": []}, indent=2))
     ANSWERS.write_text("")
     explainers.start()
-    inbox.put(START_MESSAGE)
+    cards.start()
+    inbox.put(START_MESSAGE + "\n\n" + cards.catalog_text())
     tutor = subprocess.Popen(TUTOR_CMD, cwd=ROOT, text=True,
                              stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     threading.Thread(target=run_tutor, args=(tutor,), daemon=True).start()
