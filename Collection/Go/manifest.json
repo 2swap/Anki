@@ -1,0 +1,13 @@
+{
+  "models": {
+    "Tsumego": {
+      "modelName": "Go Tsumego",
+      "keyField": [
+        "Board",
+        "ToPlay"
+      ],
+      "templateName": "Card 1"
+    }
+  },
+  "media": {}
+}

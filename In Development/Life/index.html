@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tree of Life Visualizer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: black;
+      color: #888;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="tree-canvas"></canvas>
+
+<script>
+    // TODO add common name / scientific name for each node
+    // TODO add a "taxonomic rank" field for each node
+    // TODO add a "significant developments" field
+    // TODO add a "time period" field for each node
+  const canvas = document.getElementById('tree-canvas');
+  const ctx = canvas.getContext('2d');
+  // Resize canvas to fill window
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // Data structures
+  let nodes = [];
+  let links = [];
+
+  // Simulation params
+  const damping = 0.98;
+  const nodeRadius = 6;
+  const margin = 60;
+
+  let time = 0;
+  let draggingNode = null;
+  let hoverNode = null;
+  let mouse = {x:0,y:0,down:false};
+  let labels = true; // toggle labels on/off
+
+  function buildGraph(obj) {
+    nodes = [];
+    links = [];
+    let idCounter = 0;
+    const nameToId = Object.create(null);
+
+    // First, create a node entry for every key in the object.
+    for (const name of Object.keys(obj)) {
+      const val = obj[name];
+      const node = {
+        id: idCounter,
+        name: name,
+        parentName: (val && typeof val === 'object' && 'parent' in val) ? val.parent : null,
+        depth: null,
+        x: Math.random() * (canvas.width - margin*2) + margin,
+        y: Math.random() * (canvas.height - margin*2) + margin,
+      };
+      nameToId[name] = idCounter;
+      nodes.push(node);
+      idCounter++;
+    }
+
+    // Build links based on parentName
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
+      if (node.parentName !== null) {
+        const pid = nameToId[node.parentName];
+        if (pid !== undefined) {
+          links.push({source: pid, target: node.id});
+        }
+      }
+    }
+  }
+
+  // Simple force-directed simulation
+  function stepSimulation() {
+    const n = nodes.length;
+
+    // Reset forces by using velocities integration step
+    // Apply repulsion (O(n^2))
+    for (let i = 0; i < n; i++) {
+      const a = nodes[i];
+      for (let j = i + 1; j < n; j++) {
+        const b = nodes[j];
+        let dx = a.x - b.x;
+        let dy = a.y - b.y;
+        let dist2 = dx*dx + dy*dy + 100;
+        let dist = Math.sqrt(dist2);
+        let force = 1000 / dist2;
+        // normalize
+        const nx = dx * force / dist;
+        const ny = dy * force / dist;
+        a.x += nx;
+        a.y += ny;
+        b.x -= nx;
+        b.y -= ny;
+      }
+    }
+
+    // Spring forces for links
+    for (let k = 0; k < links.length; k++) {
+      const L = links[k];
+      const s = nodes[L.source];
+      const t = nodes[L.target];
+      let dx = t.x - s.x;
+      let dy = t.y - s.y;
+      let dist = Math.sqrt(dx*dx + dy*dy) + 0.01;
+      let f = .2 * dist;
+      let nx = dx / dist;
+      let ny = dy / dist;
+      // Apply to both (pull/push)
+      s.x += nx * f;
+      s.y += ny * f;
+      t.x -= nx * f;
+      t.y -= ny * f;
+      // Enforce child nodes being right of their parents
+      const rightness = margin * .3;
+      if (t.x < s.x + rightness) {
+        let correction = (s.x + rightness) - t.x;
+        s.x -= correction;
+        t.x += correction;
+      }
+    }
+
+    const w = canvas.width;
+    const h = canvas.height;
+    // Integration and bounds
+    for (let i = 0; i < n; i++) {
+      const node = nodes[i];
+      // Pin a few nodes
+      if(time < 300) {
+      if (node.name === 'Life') {
+        node.x = w * 0.05;
+        node.y = h * 0.5;
+      } else if (node.name === 'Eukarya') {
+        node.x = w * 0.08;
+        node.y = h * 0.5;
+      } else if (node.name === 'Mesangiospermae') {
+        node.x = w * 0.2;
+        node.y = h * 0.9;
+      } else if (node.name === 'Hominina') {
+        node.x = w * 0.95;
+        node.y = h * 0.5;
+      } else if (node.name === 'Ophiuroidea') {
+        node.x = w * 0.4;
+        node.y = h * 0.1;
+      } else if (node.name === 'Mollusca') {
+        node.x = w * 0.4;
+        node.y = h * 0.9;
+      } else if (node.name === 'Mandibulata') {
+        node.x = w * 0.4;
+        node.y = h * 0.6;
+      } else if (node.name === 'Nephrozoa') {
+        node.x = w * 0.3;
+        node.y = h * 0.5;
+      } else if (node.name === 'Amniota') {
+        node.x = w * 0.7;
+        node.y = h * 0.3;
+      } else if (node.name === 'Dikarya') {
+        node.x = w * 0.2;
+        node.y = h * 0.1;
+      } else if (node.name === 'Artiodactyla') {
+        node.x = w * 0.9;
+        node.y = h * 0.1;
+      } else if (node.name === 'Aves') {
+        node.x = w * 0.7;
+        node.y = h * 0.1;
+      } else if (node.name === 'Homininae') {
+        node.x = w * 0.9;
+        node.y = h * 0.9;
+      } else if (draggingNode === node) {
+        node.x = mouse.x;
+        node.y = mouse.y;
+      }
+      }
+      // Repel nodes from edges increasingly strongly
+      if (node.x < 0) node.x = 10;
+      if (node.x > w) node.x = w - 10;
+      if (node.y < 0) node.y = 10;
+      if (node.y > h) node.y = h - 10;
+      node.x += 1 / (node.x / margin);
+      node.y += 1 / (node.y / margin);
+      node.x -= 1 / ((w - node.x) / margin);
+      node.y -= 1 / ((h - node.y) / margin);
+    }
+    time++;
+  }
+
+  function draw() {
+    const w = canvas.width;
+    const h = canvas.height;
+    ctx.clearRect(0,0,w,h);
+    // background
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0,0,w,h);
+
+    // draw links
+    ctx.lineWidth = .3;
+    ctx.strokeStyle = 'rgba(255,255,255,1)';
+    ctx.beginPath();
+    for (let i = 0; i < links.length; i++) {
+      const L = links[i];
+      const s = nodes[L.source];
+      const t = nodes[L.target];
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(t.x, t.y);
+    }
+    ctx.stroke();
+
+    // draw nodes
+    for (let i = 0; i < nodes.length; i++) {
+      const n = nodes[i];
+      const hue = (n.depth * 30) % 360;
+      const fill = (hoverNode === n) ? `hsl(${hue} 70% 55%)` : `hsl(${hue} 60% 50%)`;
+      ctx.beginPath();
+      ctx.fillStyle = fill;
+      ctx.strokeStyle = 'rgba(0,0,0,0.6)';
+      ctx.lineWidth = 1;
+      ctx.arc(n.x, n.y, nodeRadius, 0, Math.PI*2);
+      ctx.fill();
+      ctx.stroke();
+
+      // label underneath the node
+      ctx.font = '10px Arial';
+      ctx.fillStyle = (hoverNode === n) ? '#fff' : '#888';
+      // If node is a leaf, write label to the right
+      // If node is on the top half of the screen, write label above
+      // Else write label below
+      let isLeaf = !links.some(L => L.source === n.id);
+      let write_full = labels ? n.name : n.name.substring(0,2);
+      if (isLeaf) {
+        // leaf
+        ctx.textAlign = 'left';
+        ctx.fillText(write_full, n.x + nodeRadius + 2, n.y + 3);
+      } else {
+        ctx.textAlign = 'right';
+        ctx.fillText(write_full, n.x - nodeRadius - 2, n.y + 3);
+      }
+    }
+  }
+
+  // Interaction
+  function getNodeAt(x,y) {
+    for (let i = nodes.length - 1; i >= 0; i--) {
+      const n = nodes[i];
+      const dx = n.x - x;
+      const dy = n.y - y;
+      if (dx*dx + dy*dy <= nodeRadius*nodeRadius*1.8) return n;
+    }
+    return null;
+  }
+
+  canvas.addEventListener('mousemove', function(e){
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left);
+    const y = (e.clientY - rect.top);
+    mouse.x = x;
+    mouse.y = y;
+    if (draggingNode) {
+      draggingNode.x = x;
+      draggingNode.y = y;
+    }
+    const found = getNodeAt(x,y);
+    if (found !== hoverNode) {
+      hoverNode = found;
+      if (hoverNode && hoverNode.image) {
+      }
+    }
+  });
+
+  canvas.addEventListener('mousedown', function(e){
+    mouse.down = true;
+    const rect = canvas.getBoundingClientRect();
+    const x = (e.clientX - rect.left);
+    const y = (e.clientY - rect.top);
+    const found = getNodeAt(x,y);
+    if (found) {
+      draggingNode = found;
+    }
+    else { labels = !labels; } // toggle labels if clicked on empty space
+  });
+
+  window.addEventListener('mouseup', function(){
+    mouse.down = false;
+    draggingNode = null;
+  });
+
+  // Main loop
+  function tick(now) {
+    if (nodes.length)
+      for (let i = 0; i < 3; i++)
+        stepSimulation();
+    draw();
+    requestAnimationFrame(tick);
+  }
+
+  // Fetch JSON and start
+  fetch('shared_media/tree_of_life.json')
+    .then(r => r.json())
+    .then(data => {
+      buildGraph(data);
+      // place nodes initially by depth in columns to reduce overlap
+      const levels = {};
+      nodes.forEach(n => {
+        if (!levels[n.depth]) levels[n.depth] = [];
+        levels[n.depth].push(n);
+      });
+
+      requestAnimationFrame(tick);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+</script>
+
+</body>
+</html>

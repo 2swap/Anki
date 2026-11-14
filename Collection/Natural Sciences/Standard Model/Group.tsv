@@ -1,0 +1,28 @@
+Group	Question	Members	Ask Set	Tags
+Fermions	Where are the fermions?	0,0 0,1 0,2 1,0 1,1 1,2 2,0 2,1 2,2 3,0 3,1 3,2	yes	
+Bosons	Where are the bosons?	0,3 1,3 2,3 3,3 0,4	yes	
+Quarks	Where are the quarks?	0,0 0,1 0,2 1,0 1,1 1,2	yes	
+Leptons	Where are the leptons?	2,0 2,1 2,2 3,0 3,1 3,2	yes	
+Charged leptons	Where are the charged leptons?	2,0 2,1 2,2	yes	
+Neutrinos	Where are the neutrinos?	3,0 3,1 3,2	yes	
+Gauge bosons	Where are the gauge bosons?	0,3 1,3 2,3 3,3	yes	
+Scalar bosons	Where are the scalar bosons?	0,4		
+Feel the strong force	Which particles feel the strong force?	0,0 0,1 0,2 1,0 1,1 1,2 0,3	yes	
+Feel the electromagnetic force	Which particles feel the electromagnetic force?	0,0 0,1 0,2 1,0 1,1 1,2 2,0 2,1 2,2 3,3	yes	
+Feel the weak force	Which particles feel the weak force?	0,0 0,1 0,2 1,0 1,1 1,2 2,0 2,1 2,2 3,0 3,1 3,2 3,3 2,3 0,4	yes	
+Feel gravity	Which particles feel gravity?	0,0 0,1 0,2 1,0 1,1 1,2 2,0 2,1 2,2 3,0 3,1 3,2 0,3 1,3 2,3 3,3 0,4		
+Electric charge +2/3	Which particles have electric charge +2/3?	0,0 0,1 0,2	yes	
+Electric charge −1/3	Which particles have electric charge −1/3?	1,0 1,1 1,2	yes	
+Electric charge −1	Which particles have electric charge −1?	2,0 2,1 2,2		
+Electric charge ±1	Which particles have electric charge ±1?	3,3		
+Electrically neutral	Which particles are electrically neutral?	3,0 3,1 3,2 0,3 1,3 2,3 0,4	yes	
+Spin 1/2	Which particles have spin 1/2?	0,0 0,1 0,2 1,0 1,1 1,2 2,0 2,1 2,2 3,0 3,1 3,2		
+Spin 1	Which particles have spin 1?	0,3 1,3 2,3 3,3		
+Spin 0	Which particles have spin 0?	0,4		
+Carry color charge	Which particles carry color charge?	0,0 0,1 0,2 1,0 1,1 1,2 0,3		
+Massless	Which particles are massless?	0,3 1,3	yes	
+Mass < 1 eV/c²	Which particles have a mass under 1 eV/c²?	3,0 3,1 3,2		
+Mass 0.5–5 MeV/c²	Which particles have a mass of 0.5–5 MeV/c²?	2,0 0,0 1,0	yes	
+Mass 90–110 MeV/c²	Which particles have a mass of 90–110 MeV/c²?	1,1 2,1	yes	
+Mass 1–5 GeV/c²	Which particles have a mass of 1–5 GeV/c²?	0,1 2,2 1,2	yes	
+Mass 80–175 GeV/c²	Which particles have a mass of 80–175 GeV/c²?	3,3 2,3 0,4 0,2	yes	

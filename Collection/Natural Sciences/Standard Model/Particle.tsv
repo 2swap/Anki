@@ -1,0 +1,18 @@
+Name	Symbol	Position	Charge	Spin	Color Charge	Mass	Identify	Products	Channels	Tags
+Up quark	u	0,0	+2/3	1/2	Yes: red, green or blue	≈2.2 MeV/c²			Does not decay<br>The lightest quark: there is nothing lighter for it to turn into.	
+Charm quark	c	0,1	+2/3	1/2	Yes: red, green or blue	≈1.27 GeV/c²		1,1 3,3	c → s W<sup>+</sup>* (≈95%; c → d is CKM-suppressed)	
+Top quark	t	0,2	+2/3	1/2	Yes: red, green or blue	≈172.6 GeV/c²		1,2 3,3	t → b W<sup>+</sup> (≈100%, a real W)	
+Down quark	d	1,0	−1/3	1/2	Yes: red, green or blue	≈4.7 MeV/c²		0,0 3,3	"d → u W<sup>−</sup>*<br>W<sup>−</sup>* → e<sup>−</sup> <span class=""bar"">ν<sub>e</sub></span> (neutron beta decay)"	
+Strange quark	s	1,1	−1/3	1/2	Yes: red, green or blue	≈93 MeV/c²		0,0 3,3	s → u W<sup>−</sup>* (inside kaons and hyperons)	
+Bottom quark	b	1,2	−1/3	1/2	Yes: red, green or blue	≈4.18 GeV/c²		0,1 3,3	b → c W<sup>−</sup>* (≈98%; b → u is CKM-suppressed)	
+Electron	e	2,0	−1	1/2	None	≈0.511 MeV/c²			Does not decay<br>The lightest charged particle, so charge conservation forbids it.	
+Muon	μ	2,1	−1	1/2	None	≈105.7 MeV/c²		3,1 3,3	"μ<sup>−</sup> → ν<sub>μ</sub> W<sup>−</sup>*<br>W<sup>−</sup>* → e<sup>−</sup> <span class=""bar"">ν<sub>e</sub></span> (≈100%)"	
+Tau	τ	2,2	−1	1/2	None	≈1.777 GeV/c²		3,2 3,3	"τ<sup>−</sup> → ν<sub>τ</sub> W<sup>−</sup>*<br>W<sup>−</sup>* → d <span class=""bar"">u</span> (hadrons, ≈65%)<br>W<sup>−</sup>* → e<sup>−</sup> <span class=""bar"">ν<sub>e</sub></span> (≈18%)<br>W<sup>−</sup>* → μ<sup>−</sup> <span class=""bar"">ν<sub>μ</sub></span> (≈17%)"	
+Electron neutrino	ν<sub>e</sub>	3,0	0	1/2	None	< 1 eV/c² (nonzero, exact value unknown)			Does not decay<br>Neutrinos oscillate between flavors, but they don't decay.	
+Muon neutrino	ν<sub>μ</sub>	3,1	0	1/2	None	< 1 eV/c² (nonzero, exact value unknown)			Does not decay<br>Neutrinos oscillate between flavors, but they don't decay.	
+Tau neutrino	ν<sub>τ</sub>	3,2	0	1/2	None	< 1 eV/c² (nonzero, exact value unknown)			Does not decay<br>Neutrinos oscillate between flavors, but they don't decay.	
+Gluon	g	0,3	0	1	Yes: a color and an anticolor	0 (massless)	Electric charge: 0<br>Spin: 1<br>Color charge: Yes: a color and an anticolor<br>Massless		Does not decay<br>Massless, so it has no energy at rest to decay with (and it is confined inside hadrons).	
+Photon	γ	1,3	0	1	None	0 (massless)	Electric charge: 0<br>Spin: 1<br>Color charge: None<br>Massless		Does not decay<br>Massless, so it has no energy at rest to decay with.	
+Z boson	Z<sup>0</sup>	2,3	0	1	None	≈91.19 GeV/c²	Electric charge: 0<br>Spin: 1<br>Color charge: None<br>Massive	0,0 0,1 1,0 1,1 1,2 2,0 2,1 2,2 3,0 3,1 3,2	"Z → q <span class=""bar"">q</span> (≈70%: any quark but t, which is too heavy)<br>Z → ν <span class=""bar"">ν</span> (≈20%, all three flavors)<br>Z → e<sup>+</sup>e<sup>−</sup>, μ<sup>+</sup>μ<sup>−</sup>, τ<sup>+</sup>τ<sup>−</sup> (≈3.4% each)"	
+W boson	W<sup>±</sup>	3,3	±1	1	None	≈80.37 GeV/c²	Electric charge: ±1<br>Spin: 1<br>Color charge: None<br>Massive	0,0 1,0 0,1 1,1 2,0 2,1 2,2 3,0 3,1 3,2	"W<sup>+</sup> → quark pair (≈67%: mainly u <span class=""bar"">d</span>, c <span class=""bar"">s</span>)<br>W<sup>+</sup> → e<sup>+</sup> ν<sub>e</sub>, μ<sup>+</sup> ν<sub>μ</sub>, τ<sup>+</sup> ν<sub>τ</sub> (≈11% each)"	
+Higgs boson	H	0,4	0	0	None	≈125.2 GeV/c²	Electric charge: 0<br>Spin: 0<br>Color charge: None<br>Massive	1,2 3,3 0,3 2,2 0,1 2,3 1,3	"H → b <span class=""bar"">b</span> (≈58%)<br>H → W W* (≈21%)<br>H → g g (≈8%, via a top-quark loop)<br>H → τ<sup>+</sup>τ<sup>−</sup> (≈6%)<br>H → c <span class=""bar"">c</span> (≈3%)<br>H → Z Z* (≈3%)<br>H → γγ (≈0.2%), Zγ (≈0.15%), via loops"	

@@ -1,0 +1,572 @@
+<div id="event" style="display:none">{{Event}}</div>
+<div style="display:none">{{Media}}</div>
+<div class="container">
+    <canvas id="canvas" data-src="history.js"></canvas>
+</div>
+
+<script>
+var injectScript = (src) => {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.async = true;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+};
+(async () => {
+
+await injectScript('history.js');
+
+// Times are stored as years relative to NOW (negative = in the past).
+const NOW = new Date().getFullYear();
+const BOX = 11;         // horizontal layout: row thickness
+const GUTTER = 46;      // vertical layout: width of the time-label column
+const MIN_LANE = 64;    // vertical layout: narrowest lane before groups get dropped
+
+const event_name = document.getElementById("event").textContent.trim();
+const back = document.getElementById("back");
+const canvas = document.getElementById("canvas");
+const container = document.getElementsByClassName("container")[0];
+const ctx = canvas.getContext("2d");
+const dpr = window.devicePixelRatio || 1;
+const blurb = document.getElementById("blurb");
+let topInset = 18;      // vertical layout: height of the column headers, recomputed each render
+
+const timeStrToInt = (time) => {
+  if (time === "present") return 0;
+  if (time.endsWith("BC") || time.endsWith("BCE")) {
+    return -parseInt(time) - NOW;
+  }
+  if (time.endsWith("AD") || time.endsWith("CE")) {
+    return parseInt(time) - NOW;
+  }
+  if (time.includes("/")) {
+    time = time.split("/");
+    return (parseInt(time[0]) - 1) / 12 + (parseInt(time[1]) - 1) / 365 + parseInt(time[2]) - NOW;
+  }
+  return parseInt(time);
+};
+
+const rainbow = (hash) => {
+  const r = Math.floor((Math.sin(hash + Math.PI * 0 / 3) + 2) * 256 / 3.);
+  const g = Math.floor((Math.sin(hash + Math.PI * 1 / 3) + 2) * 256 / 3.);
+  const b = Math.floor((Math.sin(hash + Math.PI * 2 / 3) + 2) * 256 / 3.);
+  return `rgb(${r}, ${g}, ${b})`;
+};
+
+const yearToBlurb = (t) => {
+  const years = Math.floor(NOW + t);
+  if (years >= 0) return "" + years;
+  if (years <= -1000000000) return -Math.floor(years / 100000000) / 10 + " BYA";
+  if (years <= -100000) return -Math.floor(years / 100000) / 10 + " MYA";
+  return -years + " BC";
+};
+
+const rangeBlurb = (e) => {
+  const a = yearToBlurb(e.t0), b = yearToBlurb(e.t1);
+  return a === b ? a : a + " - " + b;
+};
+
+// Axis tick label, with as many decimals as the tick spacing needs.
+const tickLabel = (t, step) => {
+  const ago = -t;
+  const dec = (unit) => Math.min(3, Math.max(0, Math.ceil(-Math.log10(step / unit))));
+  if (ago >= 1e9 && step >= 1e6) return (ago / 1e9).toFixed(dec(1e9)) + " BYA";
+  if (ago >= 1e5 && step >= 1e3) return (ago / 1e6).toFixed(dec(1e6)) + " MYA";
+  const y = Math.round(t + NOW);
+  return y < 0 ? -y + " BC" : "" + y;
+};
+
+const groups = hist.map((g, gi) => {
+  const events = g.events.map((e) => ({
+    name: e.name,
+    t0: timeStrToInt(e.start),
+    t1: timeStrToInt(e.end),
+    marks: Object.entries(e.important_events || {}).map(([k, v]) => ({ t: timeStrToInt(k), name: v })),
+  }));
+  return {
+    name: g.group_name,
+    color: rainbow(2 * gi),
+    events,
+    max_duration: Math.max(...events.map((e) => e.t1 - e.t0)),
+    target: events.find((e) => e.name === event_name),
+  };
+});
+const targetGroup = groups.find((g) => g.target);
+const target = targetGroup ? targetGroup.target : null;
+// The target's group is always drawn first so it can't be pushed off-screen.
+const ordered = targetGroup ? [targetGroup, ...groups.filter((g) => g !== targetGroup)] : groups;
+
+// ---- View state: `center` is the time at the middle of the time axis, `zoom` is px per year.
+let W = 0, H = 0, vertical = false;
+let center = -2e9, zoom = 1e-7;
+const axisLen = () => (vertical ? H : W);
+const pos = (t) => axisLen() / 2 + zoom * (t - center);
+const timeAt = (p) => center + (p - axisLen() / 2) / zoom;
+
+function resize() {
+  if (blurb) container.style.bottom = (blurb.offsetHeight + parseFloat(getComputedStyle(blurb).bottom) + 6) + "px";
+  const r = container.getBoundingClientRect();
+  W = r.width || window.innerWidth;
+  H = r.height >= 50 ? r.height : window.innerHeight - r.top - 4;
+  canvas.style.width = W + "px";
+  canvas.style.height = H + "px";
+  canvas.width = Math.round(W * dpr);
+  canvas.height = Math.round(H * dpr);
+  vertical = H > W;
+}
+
+function clampView() {
+  const L = axisLen();
+  zoom = Math.min(Math.max(zoom, L / 1e10), L / 0.2);
+  // Keep the view from drifting more than 10% of a screen past today or before Earth formed.
+  const lo = -4.6e9 + 0.4 * L / zoom, hi = -0.4 * L / zoom;
+  center = lo > hi ? (lo + hi) / 2 : Math.min(Math.max(center, lo), hi);
+}
+
+function initView() {
+  if (target) {
+    // Point-in-time events (start == end) get a window proportional to how long ago they were.
+    const span = Math.max(target.t1 - target.t0, 0.05 * Math.abs(target.t0), 10);
+    zoom = 200 / span;
+    center = (target.t0 + target.t1) / 2;
+  } else {
+    zoom = axisLen() / 5e9;
+    center = -2.3e9;
+  }
+  clampView();
+}
+
+// ---- Text helpers
+const fitText = (s, maxW) => {
+  if (ctx.measureText(s).width <= maxW) return s;
+  while (s.length && ctx.measureText(s + "…").width > maxW) s = s.slice(0, -1);
+  return s ? s + "…" : "";
+};
+
+const wrapText = (text, maxW, maxLines) => {
+  const lines = [];
+  let cur = "";
+  for (const word of text.split(" ")) {
+    const test = cur ? cur + " " + word : word;
+    if (!cur || ctx.measureText(test).width <= maxW) cur = test;
+    else { lines.push(cur); cur = word; }
+  }
+  if (cur) lines.push(cur);
+  if (lines.length > maxLines) {
+    lines.length = Math.max(maxLines, 1);
+    lines[lines.length - 1] += "…";
+  }
+  return lines.map((l) => fitText(l, maxW));
+};
+
+const renderTextAtPosition = (text, x, y, align = 'center', backing = false) => {
+  const textWidth = ctx.measureText(text).width;
+  if (align === 'right') {
+    x -= textWidth / 2;
+  }
+  let left = Math.max(textWidth / 2, Math.min(x, W - textWidth / 2));
+  if (backing) {
+    const fill = ctx.fillStyle;
+    ctx.fillStyle = "black";
+    ctx.globalAlpha = 0.7;
+    ctx.fillRect(left - textWidth / 2 - 3, y - 1, textWidth + 6, BOX + 2);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = fill;
+  }
+  ctx.textAlign = "center";
+  ctx.fillText(text, left, y + BOX / 2 + 3);
+};
+
+// Non-target events are hidden when too short to see, off-screen, or engulfing the whole view.
+const visible = (e, minLen) => {
+  if (e === target) return true;
+  const p0 = pos(e.t0), p1 = pos(e.t1), L = axisLen();
+  if (p0 < 0 && p1 > L) return false;
+  if (p1 - p0 < minLen) return false;
+  if (p1 < 40 || p0 > L - 40) return false;
+  return true;
+};
+
+// Every box gets an outline so events that directly border each other stay distinguishable:
+// a brighter line in the group color on the faded boxes, black on the solid target box.
+function outline(x, y, w, h, color, isTarget) {
+  if (w < 3 || h < 3) return;
+  ctx.strokeStyle = isTarget ? "black" : color;
+  ctx.globalAlpha = isTarget ? 1 : 0.85;
+  ctx.lineWidth = 1;
+  ctx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
+  ctx.globalAlpha = 1;
+}
+
+const groupShown = (g) => g === targetGroup || g.max_duration * zoom >= 50;
+
+// Tick times at a "nice" calendar-year spacing at least minSpacing px apart.
+function ticks(minSpacing) {
+  const raw = minSpacing / zoom;
+  const p10 = Math.pow(10, Math.floor(Math.log10(raw)));
+  const step = Math.max(1, [1, 2, 5, 10].map((m) => m * p10).find((s) => s >= raw));
+  const y0 = timeAt(0) + NOW, y1 = timeAt(axisLen()) + NOW;
+  const out = [];
+  for (let k = Math.ceil(y0 / step); k <= Math.floor(y1 / step); k++) out.push(k * step - NOW);
+  return { out, step };
+}
+
+// ---- Horizontal layout (landscape): time runs left to right, one row per event.
+function renderLinesH() {
+  const { out, step } = ticks(70);
+  ctx.strokeStyle = ctx.fillStyle = "white";
+  ctx.textAlign = "center";
+  ctx.lineWidth = 1;
+  for (const t of out) {
+    const x = pos(t);
+    ctx.globalAlpha = 0.12;
+    ctx.fillRect(x, 40, 1, H - 40);
+    ctx.globalAlpha = 0.6;
+    ctx.fillRect(x, 26, 1, 14);
+    ctx.fillText(tickLabel(t, step), x, 20);
+  }
+  ctx.globalAlpha = 1;
+}
+
+function renderEventH(y, e, color) {
+  const isTarget = e === target;
+  const startX = pos(e.t0), endX = pos(e.t1);
+  const eventWidth = isTarget ? Math.max(endX - startX, 3) : endX - startX;
+
+  ctx.fillStyle = color;
+  ctx.globalAlpha = isTarget ? 1 : 0.3;
+  ctx.fillRect(startX, y, eventWidth, BOX);
+  ctx.globalAlpha = 1;
+  outline(startX, y, eventWidth, BOX, color, isTarget);
+
+  if (isTarget || back) {
+    const text = isTarget ? (back ? e.name : "???") + ": " + rangeBlurb(e) : e.name;
+    // Black text sits on the box; if the box is too narrow to hold it, use white on a dark backing.
+    const narrow = isTarget && eventWidth <= ctx.measureText(text).width + 10;
+    if (isTarget) ctx.fillStyle = narrow ? "white" : "black";
+    renderTextAtPosition(text, startX + eventWidth / 2, y, 'center', narrow);
+  }
+
+  ctx.fillStyle = "red";
+  e.marks.forEach((m, i) => {
+    const x = pos(m.t);
+    ctx.fillRect(x, y, 1, BOX * (isTarget ? i + 1.8 : 1));
+    if (back && isTarget) renderTextAtPosition(m.name, x, y + (i + 1) * BOX, 'right');
+  });
+}
+
+function renderGroupH(y, g) {
+  if (!groupShown(g)) return y;
+  const evs = g.events.filter((e) => visible(e, 25));
+  if (!evs.length) return y;
+  const top = y;
+  for (const e of evs) {
+    renderEventH(y, e, g.color);
+    y += BOX + 1;
+  }
+  ctx.fillStyle = g.color;
+  ctx.textAlign = 'left';
+  ctx.globalAlpha = 0.1;
+  ctx.fillRect(0, top - 10, W, y - top + 20);
+  ctx.font = `${Math.min(50, y - top + 10)}px sans-serif`;
+  ctx.fillText(g.name, 10, y);
+  ctx.font = '10px sans-serif';
+  ctx.globalAlpha = 1;
+  return y + 30;
+}
+
+function renderH() {
+  renderLinesH();
+  let y = 50;
+  for (const g of ordered) y = renderGroupH(y, g);
+}
+
+// ---- Vertical layout (portrait): time runs top to bottom, one column per group,
+// events packed into lanes within their column with labels inside the bars.
+function renderLinesV() {
+  const { out, step } = ticks(40);
+  ctx.fillStyle = "white";
+  ctx.textAlign = "right";
+  for (const t of out) {
+    const y = pos(t);
+    ctx.globalAlpha = 0.12;
+    ctx.fillRect(GUTTER, y, W - GUTTER, 1);
+    ctx.globalAlpha = 0.6;
+    ctx.fillText(tickLabel(t, step), GUTTER - 4, y + 3);
+  }
+  ctx.globalAlpha = 1;
+}
+
+function layoutColumnsV() {
+  const cols = [];
+  for (const g of ordered) {
+    if (!groupShown(g)) continue;
+    const evs = g.events.filter((e) => visible(e, 14)).sort((a, b) => a.t0 - b.t0);
+    if (!evs.length) continue;
+    const laneEnd = [];
+    const placed = evs.map((e) => {
+      const p0 = pos(e.t0), p1 = Math.max(pos(e.t1), p0 + 3);
+      let lane = laneEnd.findIndex((end) => end <= p0 + 0.5);
+      if (lane < 0) { lane = laneEnd.length; laneEnd.push(0); }
+      laneEnd[lane] = p1;
+      return { e, lane, p0, p1 };
+    });
+    cols.push({ g, placed, lanes: laneEnd.length });
+  }
+  // Drop trailing groups until every lane is at least MIN_LANE wide (the target group always stays).
+  const avail = W - GUTTER - 2;
+  while (cols.length > 1 && cols.reduce((n, c) => n + c.lanes, 0) * MIN_LANE > avail) cols.pop();
+  const laneW = avail / Math.max(1, cols.reduce((n, c) => n + c.lanes, 0));
+  let x = GUTTER + 2;
+  for (const c of cols) {
+    c.x = x;
+    c.w = c.lanes * laneW;
+    c.laneW = laneW;
+    x += c.w;
+  }
+  return cols;
+}
+
+function renderV() {
+  renderLinesV();
+  ctx.font = '10px sans-serif';
+  const cols = layoutColumnsV();
+  let targetBox = null;
+
+  // Column headers wrap onto as many lines as they need; the tallest sets the header band.
+  ctx.font = 'bold 10px sans-serif';
+  for (const c of cols) c.header = wrapText(c.g.name, c.w - 8, Infinity);
+  topInset = Math.max(18, ...cols.map((c) => c.header.length * 11 + 6));
+  ctx.font = '10px sans-serif';
+
+  for (const c of cols) {
+    ctx.fillStyle = c.g.color;
+    ctx.globalAlpha = 0.08;
+    ctx.fillRect(c.x, 0, c.w - 2, H);
+    ctx.globalAlpha = 1;
+
+    for (const { e, lane, p0, p1 } of c.placed) {
+      const isTarget = e === target;
+      const x = c.x + lane * c.laneW + 1, w = c.laneW - 3;
+      ctx.fillStyle = c.g.color;
+      ctx.globalAlpha = isTarget ? 1 : 0.3;
+      ctx.fillRect(x, p0, w, p1 - p0);
+      ctx.globalAlpha = 1;
+      outline(x, p0, w, p1 - p0, c.g.color, isTarget);
+
+      ctx.fillStyle = "red";
+      for (const m of e.marks) ctx.fillRect(x, pos(m.t), w, 1);
+
+      if (isTarget) {
+        targetBox = { e, x, w, p0, p1 };
+      } else if (back) {
+        // Label centered on the on-screen part of the bar.
+        const top = Math.max(p0, topInset), bot = Math.min(p1, H);
+        const lines = wrapText(e.name, w - 4, Math.max(1, Math.floor((bot - top) / 11)));
+        ctx.fillStyle = c.g.color;
+        ctx.textAlign = "center";
+        const y0 = (top + bot) / 2 - (lines.length - 1) * 5.5 + 3;
+        lines.forEach((l, i) => ctx.fillText(l, x + w / 2, y0 + i * 11));
+      }
+    }
+
+    // Group header
+    ctx.globalAlpha = 0.7;
+    ctx.fillStyle = "black";
+    ctx.fillRect(c.x, 0, c.w - 2, topInset - 2);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = c.g.color;
+    ctx.textAlign = "left";
+    ctx.font = 'bold 10px sans-serif';
+    c.header.forEach((l, i) => ctx.fillText(l, c.x + 3, 12 + i * 11));
+    ctx.font = '10px sans-serif';
+  }
+
+  if (targetBox) renderTargetV(targetBox, targetGroup.color);
+}
+
+// Draws a dark pill with lines of text, horizontally centered on cx (clamped to the canvas).
+function pill(lines, cx, cy, textColor, borderColor) {
+  const lh = 13;
+  const w = Math.max(...lines.map((l) => ctx.measureText(l).width)) + 10;
+  const h = lines.length * lh + 6;
+  const x = Math.min(Math.max(cx - w / 2, GUTTER), W - w);
+  const y = Math.min(Math.max(cy - h / 2, topInset), H - h);
+  if (!textColor) return { x, y, w, h };  // measure only
+  ctx.globalAlpha = 0.8;
+  ctx.fillStyle = "black";
+  ctx.fillRect(x, y, w, h);
+  ctx.globalAlpha = 1;
+  if (borderColor) {
+    ctx.strokeStyle = borderColor;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
+  }
+  ctx.fillStyle = textColor;
+  ctx.textAlign = "center";
+  lines.forEach((l, i) => ctx.fillText(l, x + w / 2, y + 3 + (i + 1) * lh - 3));
+  return { x, y, w, h };
+}
+
+function renderTargetV({ e, x, w, p0, p1 }, color) {
+  // The name pill is measured first so the important-event labels can steer around it, and drawn last.
+  ctx.font = 'bold 12px sans-serif';
+  const text = (back ? e.name : "???") + ": " + rangeBlurb(e);
+  const nameLines = wrapText(text, Math.min(240, W - GUTTER - 12), 4);
+  const nameY = (Math.max(p0, topInset) + Math.min(p1, H)) / 2;
+  const R = pill(nameLines, x + w / 2, nameY);
+
+  if (back) {
+    // Important-event labels beside the bar, pushed apart so they don't overlap, with a leader line.
+    ctx.font = '10px sans-serif';
+    let prevBottom = -Infinity;
+    const labels = e.marks.map((m) => {
+      const lines = wrapText(m.name, 140, 3);
+      return { m, lines, y: pos(m.t), h: lines.length * 13 + 6,
+               w: Math.max(...lines.map((l) => ctx.measureText(l).width)) + 10 };
+    }).sort((a, b) => a.y - b.y);
+    for (const l of labels) {
+      l.cy = Math.max(l.y, prevBottom + l.h / 2 + 2);
+      prevBottom = l.cy + l.h / 2;
+    }
+    for (const l of labels) {
+      const hitsName = l.cy + l.h / 2 > R.y && l.cy - l.h / 2 < R.y + R.h;
+      const rightEdge = (hitsName ? Math.max(x + w, R.x + R.w) : x + w) + 8;
+      const leftEdge = (hitsName ? Math.min(x, R.x) : x) - 8;
+      const right = rightEdge + l.w <= W || leftEdge - l.w < GUTTER;
+      const edge = right ? rightEdge : leftEdge;
+      ctx.strokeStyle = "red";
+      ctx.globalAlpha = 0.7;
+      ctx.beginPath();
+      ctx.moveTo(right ? x + w : x, l.y);
+      ctx.lineTo(edge, l.cy);
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+      pill(l.lines, right ? edge + l.w / 2 : edge - l.w / 2, l.cy, "#ff6060");
+    }
+  }
+  ctx.font = 'bold 12px sans-serif';
+  pill(nameLines, x + w / 2, nameY, "white", color);
+  ctx.font = '10px sans-serif';
+}
+
+function render() {
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+  ctx.font = '10px sans-serif';
+  if (vertical) renderV(); else renderH();
+}
+
+let frameQueued = false;
+function requestRender() {
+  if (frameQueued) return;
+  frameQueued = true;
+  requestAnimationFrame(() => { frameQueued = false; render(); });
+}
+
+resize();
+initView();
+render();
+
+// ---- Interaction. Everything pans/zooms along the time axis, whichever way it points.
+const axisCoord = (clientX, clientY) => {
+  const r = canvas.getBoundingClientRect();
+  return vertical ? clientY - r.top : clientX - r.left;
+};
+
+function zoomAround(p, factor) {
+  const t = timeAt(p);
+  zoom *= factor;
+  clampView();
+  center = t - (p - axisLen() / 2) / zoom;
+  clampView();
+  requestRender();
+}
+
+function panBy(dp) {
+  center -= dp / zoom;
+  clampView();
+  requestRender();
+}
+
+canvas.addEventListener('wheel', (event) => {
+  event.preventDefault();
+  zoomAround(axisCoord(event.clientX, event.clientY), event.deltaY > 0 ? 0.8 : 1.25);
+}, { passive: false });
+
+let dragging = false, lastP = 0;
+canvas.addEventListener('mousedown', (event) => {
+  if (event.button === 0) { dragging = true; lastP = axisCoord(event.clientX, event.clientY); }
+});
+canvas.addEventListener('mousemove', (event) => {
+  if (!dragging) return;
+  const p = axisCoord(event.clientX, event.clientY);
+  panBy(p - lastP);
+  lastP = p;
+});
+canvas.addEventListener('mouseup', () => { dragging = false; });
+canvas.addEventListener('mouseleave', () => { dragging = false; });
+
+// Touch: one finger pans, two fingers pinch-zoom around their midpoint (and pan with it).
+// The gesture is re-anchored whenever the number of fingers changes so nothing jumps.
+let gesture = null;
+function startGesture(touches) {
+  if (touches.length === 1) {
+    gesture = { kind: "pan", last: axisCoord(touches[0].clientX, touches[0].clientY) };
+  } else if (touches.length >= 2) {
+    const [a, b] = touches;
+    const mid = axisCoord((a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2);
+    gesture = {
+      kind: "pinch",
+      dist0: Math.max(10, Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY)),
+      zoom0: zoom,
+      tMid: timeAt(mid),
+    };
+  } else {
+    gesture = null;
+  }
+}
+canvas.addEventListener('touchstart', (event) => startGesture(event.touches), { passive: true });
+canvas.addEventListener('touchend', (event) => startGesture(event.touches), { passive: true });
+canvas.addEventListener('touchcancel', (event) => startGesture(event.touches), { passive: true });
+canvas.addEventListener('touchmove', (event) => {
+  event.preventDefault();
+  const touches = event.touches;
+  if (!gesture) return;
+  if (gesture.kind === "pan" && touches.length === 1) {
+    const p = axisCoord(touches[0].clientX, touches[0].clientY);
+    panBy(p - gesture.last);
+    gesture.last = p;
+  } else if (gesture.kind === "pinch" && touches.length >= 2) {
+    const [a, b] = touches;
+    const dist = Math.max(10, Math.hypot(a.clientX - b.clientX, a.clientY - b.clientY));
+    const mid = axisCoord((a.clientX + b.clientX) / 2, (a.clientY + b.clientY) / 2);
+    zoom = gesture.zoom0 * dist / gesture.dist0;
+    clampView();
+    center = gesture.tMid - (mid - axisLen() / 2) / zoom;
+    clampView();
+    requestRender();
+  }
+}, { passive: false });
+
+// Window-level listeners outlive the card on desktop (the webview is reused), so they detach themselves.
+const onKey = (event) => {
+  if (!canvas.isConnected) return window.removeEventListener('keypress', onKey);
+  if (event.keyCode == 97) panBy(20);
+  if (event.keyCode == 100) panBy(-20);
+};
+const onResize = () => {
+  if (!canvas.isConnected) return window.removeEventListener('resize', onResize);
+  const wasVertical = vertical;
+  resize();
+  if (vertical !== wasVertical) initView();
+  render();
+};
+window.addEventListener('keypress', onKey);
+window.addEventListener('resize', onResize);
+
+})();
+</script>

@@ -1,0 +1,148 @@
+Water,H2O,O
+Ammonia,NH3,N
+Table Salt,NaCl,[Na+].[Cl-]
+Carbon Dioxide,CO2,O=C=O
+Methane,CH4,C
+Ethane,C2H6,CC
+Propane,C3H8,CCC
+Butane,C4H10,CCCC
+Pentane,C5H12,CCCCC
+Methanol,CH3OH,CO
+Ethanol,C2H6O,CCO
+Propanol,C3H8O,CCCO
+Butanol,C4H10O,CCCCO
+Pentanol,C5H12O,CCCCC(O)
+Benzene,C6H6,c1ccccc1
+Glucose,C6H12O6,C(C1C(C(C(C(O1)O)O)O)O)O
+Acetic Acid,C2H4O2,CC(=O)O
+Sulfuric Acid,H2SO4,OS(=O)(=O)O
+Hydrochloric Acid,HCl,Cl
+Sodium Hydroxide,NaOH,[Na+].[OH-]
+Calcium Carbonate,CaCO3,[Ca+2].[O-2].[O-2].[C+4]
+Sodium Bicarbonate,NaHCO3,[Na+].[H+].[O-2].[C+4].[O-2]
+Lithium Fluoride,LiF,[Li+].[F-]
+Hydrogen Peroxide,H2O2,OO
+Calcium Sulfate,CaSO4,[Ca+2].[S+6].[O-2].[O-2].[O-2].[O-2]
+Zinc Oxide,ZnO,[Zn+2].[O-2]
+Iron(III) Oxide,Fe2O3,[Fe+3].[Fe+3].[O-2].[O-2].[O-2]
+Lead(II) Sulfide,PbS,[Pb+2].[S-2]
+Copper(II) Sulfate,Copper(II) Sulfate,[Cu+2].[S+6].[O-2].[O-2].[O-2].[O-2]
+Boron Trifluoride,BF3,[B+3].[F-].[F-].[F-]
+Xylene,C8H10,c1cc(ccc1C)C
+Xenon Difluoride,XeF2,[Xe+2].[F-].[F-]
+Nitrogen,N2,N#N
+Oxygen,O2,OO
+Ozone,O3,O=O[O]
+Hydrogen,H2,[H][H]
+Carbon Monoxide,CO,[C-]#[O+]
+Nitric Oxide,NO,N=O
+Nitrogen Dioxide,NO2,O=[N]=O
+Sulfur Dioxide,SO2,O=S=O
+Sulfur Trioxide,SO3,O=S(=O)=O
+Phosphine,PH3,[PH3]
+Hydrogen Sulfide,H2S,SS
+Chlorine,Cl2,ClCl
+Fluorine,F2,FF
+Bromine,Br2,BrBr
+Iodine,I2,II
+Ammonium Chloride,NH4Cl,[NH4+].[Cl-]
+Sodium Nitrate,NaNO3,[Na+].[N+](=O)[O-]
+Potassium Nitrate,KNO3,[K+].[N+](=O)[O-]
+Calcium Chloride,CaCl2,[Ca+2].[Cl-].[Cl-]
+Magnesium Chloride,MgCl2,[Mg+2].[Cl-].[Cl-]
+Aluminum Oxide,Al2O3,[Al+3].[Al+3].[O-2].[O-2].[O-2]
+Silver Nitrate,AgNO3,[Ag+].[N+](=O)[O-]
+Copper(II) Oxide,CuO,[Cu+2].[O-2]
+Sodium Carbonate,Na2CO3,[Na+].[Na+].[O-2].[O-2].[C+4]
+Potassium Chloride,KCl,[K+].[Cl-]
+Ethanol, C2H6O, CCO
+Acetone,C3H6O,CC(=O)C
+Formaldehyde,CH2O,C=O
+Formic Acid,CH2O2,O=CO
+Propionic Acid,C3H6O2,CCC(=O)O
+Butyric Acid,C4H8O2,CCCC(=O)O
+Lactic Acid,C3H6O3,CC(O)C(=O)O
+Citric Acid,C6H8O7,C(C(=O)O)C(CC(=O)O)(C(=O)O)O
+Urea,CH4N2O,NC(=O)N
+Glycine,C2H5NO2,NCC(=O)O
+Alanine,C3H7NO2,CC(C(=O)O)N
+Serine,C3H7NO3,NCC(O)C(=O)O
+Glycerol,C3H8O3,CC(O)CO
+Sucrose,C12H22O11,C(C1C(C(C(C(O1)O)O)O)O)OCOC2C(C(C(C(O2)O)O)O)O
+Fructose,C6H12O6,C(C(C1(C(C(C(O1)O)O)O)O)O)O
+Ribose,C5H10O5,C(C(C(CO)O)O)O
+Cellulose,C6H10O5,(C6H10O5)n
+Starch,C6H10O5,(C6H10O5)n
+Aspirin,C9H8O4,CC(=O)Oc1ccccc1C(=O)O
+Caffeine,C8H10N4O2,CN1C(=O)N(C)c2ncn(C)c2C1=O
+Nicotine,C10H14N2,C1=CN2CCC1CC2C3=CN=CC=C3
+Morphine,C17H19NO3,C[C@H]1CN2CCC1C4=C2C=C(C=C4)O
+Paracetamol,C8H9NO2,CC(=O)NC1=CC=C(O)C=C1
+Ibuprofen,C13H18O2,CC(C)CC1=CC=C(C=C1)C(C)C(=O)O
+Citral,C10H16O,CC(=CCC=C(C)C)C=O
+Limonene,C10H16,C=C1CCC(CC1)C(=C)C
+Vanillin,C8H8O3,COC1=CC=C(C=C1O)C=O
+Toluene,C7H8,CC1=CC=CC=C1
+Styrene,C8H8,C=Cc1ccccc1
+Phenol,C6H6O,c1ccc(cc1)O
+Aniline,C6H7N,c1ccccc1N
+Pyridine,C5H5N,n1ccccc1
+Pyrrole,C4H5N,[nH]1cccc1
+Imidazole,C3H4N2,c1ncc[nH]1
+Uracil,C4H4N2O2,O=C1NC=CC(=O)N1
+Thymine,C5H6N2O2,CC1=CNC(=O)NC1=O
+Cytosine,C4H5N3O,NC1=NC=CC(=O)N1
+Adenine,C5H5N5,Nc1ncnc2ncnc12
+Guanine,C5H5N5O,NC1=NC2=C(N1)NC(=O)N2
+ATP,C10H16N5O13P3,NC1=NC2=C(N1)N=C(N2)N
+ADP,C10H15N5O10P2,NC1=NC2=C(N1)N=C(N2)N
+NADH,C21H27N7O14P2,NC1=NC2=C(N1)N=C(N2)N
+Carbonic Acid,H2CO3,O=C(O)O
+Nitrous Oxide,N2O,N#N[O]
+Sulfuric Acid,H2SO4,OS(=O)(=O)O
+Propene,C3H6,CC=C
+Butene,C4H8,CCC=C
+2-Butene,C4H8,CC/C=C/C
+Ethyne,C2H2,C#C
+Propyne,C3H4,CC#C
+Isopropanol,C3H8O,CC(O)C
+Diethyl Ether,C4H10O,CCOCC
+Dimethyl Ether,C2H6O,COC
+Ethylene,C2H4,C=C
+Cyclohexane,C6H12,C1CCCCC1
+Cyclohexene,C6H10,C1CCC=CC1
+Cyclopropane,C3H6,C1CC1
+Acetaldehyde,C2H4O,CC=O
+Acetone,C3H6O,CC(=O)C
+Benzaldehyde,C7H6O,O=CC1=CC=CC=C1
+Benzoic Acid,C7H6O2,O=C(O)c1ccccc1
+Chloroform,CHCl3,ClC(Cl)Cl
+Carbon Tetrachloride,CCl4,ClC(Cl)(Cl)Cl
+Ethyl Chloride,C2H5Cl,CCCl
+Methylamine,CH5N,CN
+Dimethylamine,C2H7N,CN(C)
+Trimethylamine,C3H9N,CN(C)C
+Ethanamide,C2H5NO,CC(=O)N
+Acetamide,C2H5NO,CC(=O)N
+Nitrile,CH3CN,CC#N
+Sodium Acetate,C2H3NaO2,CC(=O)[O-].[Na+]
+Potassium Acetate,C2H3KO2,CC(=O)[O-].[K+]
+Calcium Hydroxide,Ca(OH)2,[Ca+2].[OH-].[OH-]
+Sulfuric Acid,H2SO4,OS(=O)(=O)O
+Formaldehyde,CH2O,C=O
+Acetaldehyde,C2H4O,CC=O
+Acetone,C3H6O,CC(=O)C
+Methanethiol,CH4S,CS
+Ethanethiol,C2H6S,CCS
+Diethylamine,C4H11N,CCNCC
+Triethylamine,C6H15N,CCN(CC)CC
+Phenylalanine,C9H11NO2,NCC(c1ccccc1)C(=O)O
+Aspartic Acid,C4H7NO4,NCC(C(=O)O)C(=O)O
+Glutamic Acid,C5H9NO4,NCCC(C(=O)O)C(=O)O
+Piperidine,C5H11N,N1CCCCC1
+Pyrimidine,C4H4N2,n1cccnc1
+Pyridazine,C4H4N2,n1nccc1
+Pyrazine,C4H4N2,n1ccncc1
+Furan,C4H4O,o1cccc1
+Thiophene,C4H4S,s1cccc1
+Cyclohexanol,C6H12O,C1CCCCC1O

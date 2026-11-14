@@ -1,0 +1,28 @@
+{
+  "models": {
+    "Basic": {
+      "modelName": "Basic",
+      "keyField": "Front",
+      "templateName": "Card 1"
+    }
+  },
+  "build": [
+    "build.py"
+  ],
+  "media": {},
+  "renames": {
+    "F<sub>2</sub>": "What is the Fibonacci number after 5?",
+    "F<sub>3</sub>": "What is the Fibonacci number after 2?",
+    "F<sub>4</sub>": "What is the Fibonacci number after 3?",
+    "F<sub>6</sub>": "What is the Fibonacci number after 8?",
+    "F<sub>7</sub>": "What is the Fibonacci number after 13?",
+    "F<sub>8</sub>": "What is the Fibonacci number after 21?",
+    "F<sub>9</sub>": "What is the Fibonacci number after 34?",
+    "F<sub>10</sub>": "What is the Fibonacci number after 55?",
+    "F<sub>11</sub>": "What is the Fibonacci number after 89?",
+    "F<sub>12</sub>": "What is the Fibonacci number after 144?",
+    "F<sub>13</sub>": "What is the Fibonacci number after 233?",
+    "F<sub>14</sub>": "What is the Fibonacci number after 377?",
+    "F<sub>15</sub>": "What is the Fibonacci number after 610?"
+  }
+}

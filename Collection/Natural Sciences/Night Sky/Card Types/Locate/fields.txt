@@ -1,0 +1,7 @@
+Name
+Note
+RA
+Dec
+Const
+Slug
+Media

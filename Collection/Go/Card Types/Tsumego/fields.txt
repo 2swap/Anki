@@ -1,0 +1,6 @@
+Board
+Edges
+ToPlay
+Solution
+Prompt
+Notes

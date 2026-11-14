@@ -1,0 +1,11 @@
+<div id="prompt">Name the highlighted clade.</div>
+<canvas id="tol-canvas" data-src="tree_of_life.json"></canvas>
+<script src="life.js"></script>
+<script>
+(function wait() {
+  if (typeof lifeRenderLocal === "undefined") { setTimeout(wait, 20); return; }
+  var clade = "{{Clade}}";
+  if (clade.charAt(0) === "(") clade = "Australaves";  // Anki editor preview
+  lifeRenderLocal("tol-canvas", clade, "clade", !!document.getElementById("back"));
+})();
+</script>

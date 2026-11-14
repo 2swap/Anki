@@ -1,0 +1,17 @@
+.card, .card.nightMode { font-family: arial; font-size: 18px; text-align: center; color: #eee; background: #000; }
+
+.title  { font-size: 22px; font-weight: bold; }
+.author { font-size: 14px; color: #aaa; margin-top: 2px; }
+
+.poem {
+  display: inline-block;
+  text-align: left;
+  margin: 18px auto 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.video { margin: 24px auto 12px; }
+.video iframe { width: 100%; max-width: 560px; aspect-ratio: 16 / 9; height: auto; border-radius: 8px; }
+.video a { font-size: 14px; color: #aaa; }

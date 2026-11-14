@@ -1,0 +1,13 @@
+Front	Back	Tags
+[sound:music_interval_01.mp3]	Minor 2nd	music::interval
+[sound:music_interval_02.mp3]	Major 2nd	music::interval
+[sound:music_interval_03.mp3]	Minor 3rd	music::interval
+[sound:music_interval_04.mp3]	Major 3rd	music::interval
+[sound:music_interval_05.mp3]	Perfect 4th	music::interval
+[sound:music_interval_06.mp3]	Tritone	music::interval
+[sound:music_interval_07.mp3]	Perfect 5th	music::interval
+[sound:music_interval_08.mp3]	Minor 6th	music::interval
+[sound:music_interval_09.mp3]	Major 6th	music::interval
+[sound:music_interval_10.mp3]	Minor 7th	music::interval
+[sound:music_interval_11.mp3]	Major 7th	music::interval
+[sound:music_interval_12.mp3]	Octave	music::interval

@@ -1,0 +1,9 @@
+{
+  "models": {
+    "Periodic Table": {
+      "modelName": "Periodic Table",
+      "keyField": "Atomic Number"
+    }
+  },
+  "media": {}
+}

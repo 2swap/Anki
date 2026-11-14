@@ -1,0 +1,7310 @@
+{
+"10101": {
+"hs4": "Horses",
+"hs2": "Live animals",
+"section": "Animal Products",
+"section_id": 1
+},
+"10102": {
+"hs4": "Bovine",
+"hs2": "Live animals",
+"section": "Animal Products",
+"section_id": 1
+},
+"10103": {
+"hs4": "Pigs",
+"hs2": "Live animals",
+"section": "Animal Products",
+"section_id": 1
+},
+"10104": {
+"hs4": "Sheep and Goats",
+"hs2": "Live animals",
+"section": "Animal Products",
+"section_id": 1
+},
+"10105": {
+"hs4": "Poultry",
+"hs2": "Live animals",
+"section": "Animal Products",
+"section_id": 1
+},
+"10106": {
+"hs4": "Other Animals",
+"hs2": "Live animals",
+"section": "Animal Products",
+"section_id": 1
+},
+"10201": {
+"hs4": "Bovine Meat",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10202": {
+"hs4": "Frozen Bovine Meat",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10203": {
+"hs4": "Pig Meat",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10204": {
+"hs4": "Sheep and Goat Meat",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10205": {
+"hs4": "Horse Meat",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10206": {
+"hs4": "Edible Offal",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10207": {
+"hs4": "Poultry Meat",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10208": {
+"hs4": "Other Meat",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10209": {
+"hs4": "Animal Fat",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10210": {
+"hs4": "Preserved Meat",
+"hs2": "Meat & edible offal",
+"section": "Animal Products",
+"section_id": 1
+},
+"10301": {
+"hs4": "Live Fish",
+"hs2": "Fish, Crustaceans & Molluscs",
+"section": "Animal Products",
+"section_id": 1
+},
+"10302": {
+"hs4": "Non-fillet Fresh Fish",
+"hs2": "Fish, Crustaceans & Molluscs",
+"section": "Animal Products",
+"section_id": 1
+},
+"10303": {
+"hs4": "Non-fillet Frozen Fish",
+"hs2": "Fish, Crustaceans & Molluscs",
+"section": "Animal Products",
+"section_id": 1
+},
+"10304": {
+"hs4": "Fish Fillets",
+"hs2": "Fish, Crustaceans & Molluscs",
+"section": "Animal Products",
+"section_id": 1
+},
+"10305": {
+"hs4": "Dried/Salted/Smoked/Brined Fish",
+"hs2": "Fish, Crustaceans & Molluscs",
+"section": "Animal Products",
+"section_id": 1
+},
+"10306": {
+"hs4": "Crustaceans",
+"hs2": "Fish, Crustaceans & Molluscs",
+"section": "Animal Products",
+"section_id": 1
+},
+"10307": {
+"hs4": "Molluscs",
+"hs2": "Fish, Crustaceans & Molluscs",
+"section": "Animal Products",
+"section_id": 1
+},
+"10401": {
+"hs4": "Milk",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10402": {
+"hs4": "Concentrated Milk",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10403": {
+"hs4": "Fermented Milk Products",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10404": {
+"hs4": "Whey and other milk products",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10405": {
+"hs4": "Butter",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10406": {
+"hs4": "Cheese",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10407": {
+"hs4": "Eggs",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10408": {
+"hs4": "Processed Egg Products",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10409": {
+"hs4": "Honey",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10410": {
+"hs4": "Other Edible Animal Products",
+"hs2": "Edible products of animal origin, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10501": {
+"hs4": "Human Hair",
+"hs2": "Animal originated products, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10502": {
+"hs4": "Pig Hair",
+"hs2": "Animal originated products, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10504": {
+"hs4": "Animal Organs",
+"hs2": "Animal originated products, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10505": {
+"hs4": "Bird Feathers and Skins",
+"hs2": "Animal originated products, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10506": {
+"hs4": "Processed Bones",
+"hs2": "Animal originated products, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10507": {
+"hs4": "Raw Bones",
+"hs2": "Animal originated products, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10508": {
+"hs4": "Coral and Shells",
+"hs2": "Animal originated products, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10510": {
+"hs4": "Pharmaceutical Animal Products",
+"hs2": "Animal originated products, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"10511": {
+"hs4": "Other Inedible Animal Products",
+"hs2": "Animal originated products, n.e.s.",
+"section": "Animal Products",
+"section_id": 1
+},
+"20601": {
+"hs4": "Bulbs and Roots",
+"hs2": "Live trees, plants, bulbs, cut flowers, & ornamental foliage",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20602": {
+"hs4": "Other live plants, cuttings and slips; mushroom spawn",
+"hs2": "Live trees, plants, bulbs, cut flowers, & ornamental foliage",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20603": {
+"hs4": "Cut Flowers",
+"hs2": "Live trees, plants, bulbs, cut flowers, & ornamental foliage",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20604": {
+"hs4": "Plant foliage",
+"hs2": "Live trees, plants, bulbs, cut flowers, & ornamental foliage",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20701": {
+"hs4": "Potatoes",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20702": {
+"hs4": "Tomatoes",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20703": {
+"hs4": "Onions",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20704": {
+"hs4": "Cabbages",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20705": {
+"hs4": "Lettuce",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20706": {
+"hs4": "Root Vegetables",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20707": {
+"hs4": "Cucumbers",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20708": {
+"hs4": "Legumes",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20709": {
+"hs4": "Other Vegetables",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20710": {
+"hs4": "Frozen Vegetables",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20711": {
+"hs4": "Preserved Vegetables",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20712": {
+"hs4": "Dried Vegetables",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20713": {
+"hs4": "Dried Legumes",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20714": {
+"hs4": "Cassava",
+"hs2": "Edible vegetables, roots, & tubers",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20801": {
+"hs4": "Coconuts, Brazil Nuts, and Cashews",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20802": {
+"hs4": "Other Nuts",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20803": {
+"hs4": "Bananas",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20804": {
+"hs4": "Tropical Fruits",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20805": {
+"hs4": "Citrus",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20806": {
+"hs4": "Grapes",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20807": {
+"hs4": "Melons",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20808": {
+"hs4": "Apples and Pears",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20809": {
+"hs4": "Pitted Fruits",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20810": {
+"hs4": "Other Fruits",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20811": {
+"hs4": "Frozen Fruits and Nuts",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20812": {
+"hs4": "Preserved Fruits and Nuts",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20813": {
+"hs4": "Dried Fruits",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20814": {
+"hs4": "Citrus and Melon Peels",
+"hs2": "Edible fruits, nuts & fruit peels",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20901": {
+"hs4": "Coffee",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20902": {
+"hs4": "Tea",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20903": {
+"hs4": "Mate",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20904": {
+"hs4": "Pepper",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20905": {
+"hs4": "Vanilla",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20906": {
+"hs4": "Cinnamon",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20907": {
+"hs4": "Cloves",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20908": {
+"hs4": "Nutmeg, mace and cardamons",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20909": {
+"hs4": "Spice Seeds",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"20910": {
+"hs4": "Spices",
+"hs2": "Coffee, tea, mate & spices",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21001": {
+"hs4": "Wheat",
+"hs2": "Cereals",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21002": {
+"hs4": "Rye",
+"hs2": "Cereals",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21003": {
+"hs4": "Barley",
+"hs2": "Cereals",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21004": {
+"hs4": "Oats",
+"hs2": "Cereals",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21005": {
+"hs4": "Corn",
+"hs2": "Cereals",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21006": {
+"hs4": "Rice",
+"hs2": "Cereals",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21007": {
+"hs4": "Sorghum",
+"hs2": "Cereals",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21008": {
+"hs4": "Buckwheat",
+"hs2": "Cereals",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21101": {
+"hs4": "Wheat Flours",
+"hs2": "Products of the milling industry",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21102": {
+"hs4": "Cereal Flours",
+"hs2": "Products of the milling industry",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21103": {
+"hs4": "Cereal Meal and Pellets",
+"hs2": "Products of the milling industry",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21104": {
+"hs4": "Processed Cereals",
+"hs2": "Products of the milling industry",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21105": {
+"hs4": "Potato Flours",
+"hs2": "Products of the milling industry",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21106": {
+"hs4": "Legume Flours",
+"hs2": "Products of the milling industry",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21107": {
+"hs4": "Malt",
+"hs2": "Products of the milling industry",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21108": {
+"hs4": "Starches",
+"hs2": "Products of the milling industry",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21109": {
+"hs4": "Wheat Gluten",
+"hs2": "Products of the milling industry",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21201": {
+"hs4": "Soybeans",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21202": {
+"hs4": "Ground Nuts",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21203": {
+"hs4": "Copra",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21204": {
+"hs4": "Linseed",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21205": {
+"hs4": "Rapeseed",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21206": {
+"hs4": "Sunflower Seeds",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21207": {
+"hs4": "Other Oily Seeds",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21208": {
+"hs4": "Oil Seed Flower",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21209": {
+"hs4": "Sowing Seeds",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21210": {
+"hs4": "Hops",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21211": {
+"hs4": "Perfume Plants",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21212": {
+"hs4": "Locust beans, seaweed, sugar beet, cane, for food",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21213": {
+"hs4": "Cereal Straws",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21214": {
+"hs4": "Forage Crops",
+"hs2": "Oils seeds, oleaginous fruits, grains, straw & fodder",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21301": {
+"hs4": "Insect Resins",
+"hs2": "Natural gums, resins & other vegetable extracts",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21302": {
+"hs4": "Vegetable Saps",
+"hs2": "Natural gums, resins & other vegetable extracts",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21401": {
+"hs4": "Vegetable Plaiting Materials",
+"hs2": "Vegetable plaiting materials & products, n.e.s.",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"21404": {
+"hs4": "Other Vegetable Products",
+"hs2": "Vegetable plaiting materials & products, n.e.s.",
+"section": "Vegetable Products",
+"section_id": 2
+},
+"31501": {
+"hs4": "Pig and Poultry Fat",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31502": {
+"hs4": "Bovine, Sheep, and Goat Fat",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31503": {
+"hs4": "Lard stearin and oils",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31504": {
+"hs4": "Fish Oil",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31505": {
+"hs4": "Wool Grease",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31506": {
+"hs4": "Other Animal Fats",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31507": {
+"hs4": "Soybean Oil",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31508": {
+"hs4": "Ground Nut Oil",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31509": {
+"hs4": "Pure Olive Oil",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31510": {
+"hs4": "Olive Oil",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31511": {
+"hs4": "Palm Oil",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31512": {
+"hs4": "Seed Oils",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31513": {
+"hs4": "Coconut Oil",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31514": {
+"hs4": "Rapeseed Oil",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31515": {
+"hs4": "Other Pure Vegetable Oils",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31516": {
+"hs4": "Other Vegetable Oils",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31517": {
+"hs4": "Margarine",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31518": {
+"hs4": "Inedible Fats and Oils",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31519": {
+"hs4": "Stearic Acid",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31520": {
+"hs4": "Glycerol",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31521": {
+"hs4": "Vegetable waxes and beeswax",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"31522": {
+"hs4": "Fat and Oil Residues",
+"hs2": "Animal or vegetable fats, oils, & waxes",
+"section": "Animal and Vegetable Bi-Products",
+"section_id": 3
+},
+"41601": {
+"hs4": "Sausages",
+"hs2": "Preparations of fish, crustacenas, & molluscs",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41602": {
+"hs4": "Other Prepared Meat",
+"hs2": "Preparations of fish, crustacenas, & molluscs",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41603": {
+"hs4": "Animal Extracts",
+"hs2": "Preparations of fish, crustacenas, & molluscs",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41604": {
+"hs4": "Processed Fish",
+"hs2": "Preparations of fish, crustacenas, & molluscs",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41605": {
+"hs4": "Processed Crustaceans",
+"hs2": "Preparations of fish, crustacenas, & molluscs",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41701": {
+"hs4": "Raw Sugar",
+"hs2": "Sugars & confectioneries",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41702": {
+"hs4": "Other Sugars",
+"hs2": "Sugars & confectioneries",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41703": {
+"hs4": "Molasses",
+"hs2": "Sugars & confectioneries",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41704": {
+"hs4": "Confectionery Sugar",
+"hs2": "Sugars & confectioneries",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41801": {
+"hs4": "Cocoa Beans",
+"hs2": "Cocoa & cocoa preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41802": {
+"hs4": "Cocoa Shells",
+"hs2": "Cocoa & cocoa preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41803": {
+"hs4": "Cocoa Paste",
+"hs2": "Cocoa & cocoa preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41804": {
+"hs4": "Cocoa Butter",
+"hs2": "Cocoa & cocoa preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41805": {
+"hs4": "Cocoa Powder",
+"hs2": "Cocoa & cocoa preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41806": {
+"hs4": "Chocolate",
+"hs2": "Cocoa & cocoa preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41901": {
+"hs4": "Malt Extract",
+"hs2": "Preparations of cereals, flour, starch or milk",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41902": {
+"hs4": "Pasta",
+"hs2": "Preparations of cereals, flour, starch or milk",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41903": {
+"hs4": "Tapioca",
+"hs2": "Preparations of cereals, flour, starch or milk",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41904": {
+"hs4": "Prepared Cereals",
+"hs2": "Preparations of cereals, flour, starch or milk",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"41905": {
+"hs4": "Baked Goods",
+"hs2": "Preparations of cereals, flour, starch or milk",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42001": {
+"hs4": "Pickled Foods",
+"hs2": "Preparations of vegetables, fruit, nuts or other plant parts",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42002": {
+"hs4": "Processed Tomatoes",
+"hs2": "Preparations of vegetables, fruit, nuts or other plant parts",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42003": {
+"hs4": "Processed Mushrooms",
+"hs2": "Preparations of vegetables, fruit, nuts or other plant parts",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42004": {
+"hs4": "Other Frozen Vegetables",
+"hs2": "Preparations of vegetables, fruit, nuts or other plant parts",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42005": {
+"hs4": "Other Processed Vegetables",
+"hs2": "Preparations of vegetables, fruit, nuts or other plant parts",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42006": {
+"hs4": "Sugar Preserved Foods",
+"hs2": "Preparations of vegetables, fruit, nuts or other plant parts",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42007": {
+"hs4": "Jams",
+"hs2": "Preparations of vegetables, fruit, nuts or other plant parts",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42008": {
+"hs4": "Other Processed Fruits and Nuts",
+"hs2": "Preparations of vegetables, fruit, nuts or other plant parts",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42009": {
+"hs4": "Fruit Juice",
+"hs2": "Preparations of vegetables, fruit, nuts or other plant parts",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42101": {
+"hs4": "Coffee and Tea Extracts",
+"hs2": "Miscellaneous edible preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42102": {
+"hs4": "Yeast",
+"hs2": "Miscellaneous edible preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42103": {
+"hs4": "Sauces and Seasonings",
+"hs2": "Miscellaneous edible preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42104": {
+"hs4": "Soups and Broths",
+"hs2": "Miscellaneous edible preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42105": {
+"hs4": "Ice Cream",
+"hs2": "Miscellaneous edible preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42106": {
+"hs4": "Other Edible Preparations",
+"hs2": "Miscellaneous edible preparations",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42201": {
+"hs4": "Water",
+"hs2": "Beverages, spirits, & vinegar",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42202": {
+"hs4": "Flavored Water",
+"hs2": "Beverages, spirits, & vinegar",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42203": {
+"hs4": "Beer",
+"hs2": "Beverages, spirits, & vinegar",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42204": {
+"hs4": "Wine",
+"hs2": "Beverages, spirits, & vinegar",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42205": {
+"hs4": "Vermouth",
+"hs2": "Beverages, spirits, & vinegar",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42206": {
+"hs4": "Other Fermented Beverages",
+"hs2": "Beverages, spirits, & vinegar",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42207": {
+"hs4": "Alcohol > 80% ABV",
+"hs2": "Beverages, spirits, & vinegar",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42208": {
+"hs4": "Hard Liquor",
+"hs2": "Beverages, spirits, & vinegar",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42209": {
+"hs4": "Vinegar",
+"hs2": "Beverages, spirits, & vinegar",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42301": {
+"hs4": "Animal Meal and Pellets",
+"hs2": "Food residues & wastes; animal fodder",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42302": {
+"hs4": "Bran",
+"hs2": "Food residues & wastes; animal fodder",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42303": {
+"hs4": "Starch Residue",
+"hs2": "Food residues & wastes; animal fodder",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42304": {
+"hs4": "Soybean Meal",
+"hs2": "Food residues & wastes; animal fodder",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42305": {
+"hs4": "Ground Nut Meal",
+"hs2": "Food residues & wastes; animal fodder",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42306": {
+"hs4": "Other Vegetable Residues",
+"hs2": "Food residues & wastes; animal fodder",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42307": {
+"hs4": "Wine Lees",
+"hs2": "Food residues & wastes; animal fodder",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42308": {
+"hs4": "Other Vegetable Residues and Waste",
+"hs2": "Food residues & wastes; animal fodder",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42309": {
+"hs4": "Animal Food",
+"hs2": "Food residues & wastes; animal fodder",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42401": {
+"hs4": "Raw Tobacco",
+"hs2": "Tobacco & substitutes",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42402": {
+"hs4": "Rolled Tobacco",
+"hs2": "Tobacco & substitutes",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"42403": {
+"hs4": "Processed Tobacco",
+"hs2": "Tobacco & substitutes",
+"section": "Foodstuffs",
+"section_id": 4
+},
+"52501": {
+"hs4": "Salt",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52502": {
+"hs4": "Iron Pyrites",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52503": {
+"hs4": "Sulphur",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52504": {
+"hs4": "Graphite",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52505": {
+"hs4": "Sand",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52506": {
+"hs4": "Quartz",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52507": {
+"hs4": "Kaolin",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52508": {
+"hs4": "Clays",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52509": {
+"hs4": "Chalk",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52510": {
+"hs4": "Calcium Phosphates",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52511": {
+"hs4": "Barium Sulphate",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52512": {
+"hs4": "Siliceous Fossil Meals",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52513": {
+"hs4": "Pumice",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52514": {
+"hs4": "Slate",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52515": {
+"hs4": "Marble, Travertine and Alabaster",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52516": {
+"hs4": "Granite",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52517": {
+"hs4": "Gravel and Crushed Stone",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52518": {
+"hs4": "Dolomite",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52519": {
+"hs4": "Magnesium Carbonate",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52520": {
+"hs4": "Gypsum",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52521": {
+"hs4": "Limestone",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52522": {
+"hs4": "Quicklime",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52523": {
+"hs4": "Cement",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52524": {
+"hs4": "Asbestos",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52525": {
+"hs4": "Mica",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52526": {
+"hs4": "Soapstone",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52528": {
+"hs4": "Borax",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52529": {
+"hs4": "Feldspar",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52530": {
+"hs4": "Other Mineral",
+"hs2": "Salt, sulphur, cement, lime, stone, & plaster",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52601": {
+"hs4": "Iron Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52602": {
+"hs4": "Manganese Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52603": {
+"hs4": "Copper Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52604": {
+"hs4": "Nickel Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52605": {
+"hs4": "Cobalt Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52606": {
+"hs4": "Aluminium Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52607": {
+"hs4": "Lead Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52608": {
+"hs4": "Zinc Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52609": {
+"hs4": "Tin Ores",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52610": {
+"hs4": "Chromium Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52611": {
+"hs4": "Tungsten Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52612": {
+"hs4": "Uranium and Thorium Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52613": {
+"hs4": "Molybdenum Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52614": {
+"hs4": "Titanium Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52615": {
+"hs4": "Niobium, Tantalum, Vanadium and Zirconium Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52616": {
+"hs4": "Precious Metal Ore",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52617": {
+"hs4": "Other Ores",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52618": {
+"hs4": "Granulated Slag",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52619": {
+"hs4": "Slag Dross",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52620": {
+"hs4": "Slag, Ash and Residues Containing Heavy Metals, not from Ferrous Metallurgy",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52621": {
+"hs4": "Other Slag and Ash",
+"hs2": "Ores, Slag and Ash",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52701": {
+"hs4": "Coal, Briquettes and Similar Manufactured Solid Fuels",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52702": {
+"hs4": "Lignite",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52703": {
+"hs4": "Peat",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52704": {
+"hs4": "Coke",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52705": {
+"hs4": "Non-Petroleum Gas",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52706": {
+"hs4": "Tar from mineral fuels",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52707": {
+"hs4": "Coal Tar Oil",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52708": {
+"hs4": "Pitch Coke",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52709": {
+"hs4": "Crude Petroleum",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52710": {
+"hs4": "Refined Petroleum",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52711": {
+"hs4": "Petroleum Gas",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52712": {
+"hs4": "Petroleum Jelly",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52713": {
+"hs4": "Petroleum Coke",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52714": {
+"hs4": "Bitumen and asphalt",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52715": {
+"hs4": "Asphalt Mixtures",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"52716": {
+"hs4": "Electricity",
+"hs2": "Mineral Fuels, Oils, Waxes, and its Distillated Derivatives",
+"section": "Mineral Products",
+"section_id": 5
+},
+"62801": {
+"hs4": "Halogens",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62802": {
+"hs4": "Sulfur",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62803": {
+"hs4": "Carbon",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62804": {
+"hs4": "Hydrogen, rare gases and other non-metals",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62805": {
+"hs4": "Alkali, alkaline-earth, rare-earth metals, scandium, yttrium, and mercury",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62806": {
+"hs4": "Hydrochloric Acid",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62807": {
+"hs4": "Sulfuric Acid",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62808": {
+"hs4": "Nitric Acids",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62809": {
+"hs4": "Phosphoric Acid",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62810": {
+"hs4": "Boron",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62811": {
+"hs4": "Other Inorganic Acids",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62812": {
+"hs4": "Halides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62813": {
+"hs4": "Nonmetal Sulfides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62814": {
+"hs4": "Ammonia",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62815": {
+"hs4": "Sodium or Potassium Peroxides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62816": {
+"hs4": "Magnesium Hydroxide and Peroxide",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62817": {
+"hs4": "Zinc Oxide and Peroxide",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62818": {
+"hs4": "Aluminium Oxide",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62819": {
+"hs4": "Chromium Oxides and Hydroxides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62820": {
+"hs4": "Manganese Oxides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62821": {
+"hs4": "Iron Oxides and Hydroxides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62822": {
+"hs4": "Cobalt Oxides and Hydroxides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62823": {
+"hs4": "Titanium Oxides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62824": {
+"hs4": "Lead Oxides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62825": {
+"hs4": "Inorganic Salts",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62826": {
+"hs4": "Fluorides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62827": {
+"hs4": "Chlorides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62828": {
+"hs4": "Hypochlorites",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62829": {
+"hs4": "Chlorates and Perchlorates",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62830": {
+"hs4": "Sulfides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62831": {
+"hs4": "Dithionites and Sulfoxylates",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62832": {
+"hs4": "Sulfites",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62833": {
+"hs4": "Sulfates",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62834": {
+"hs4": "Nitrites and Nitrates",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62835": {
+"hs4": "Phosphinates (hypophosphites) and phosphonates (phosphites)",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62836": {
+"hs4": "Carbonates",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62837": {
+"hs4": "Cyanides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62839": {
+"hs4": "Silicates",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62840": {
+"hs4": "Borates",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62841": {
+"hs4": "Oxometallic or Peroxometallic Acid Salts",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62842": {
+"hs4": "Other Inorganic Acids Salts",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62843": {
+"hs4": "Precious Metal Compounds",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62844": {
+"hs4": "Radioactive Chemicals",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62845": {
+"hs4": "Other Isotopes",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62846": {
+"hs4": "Rare-Earth Metal Compounds",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62847": {
+"hs4": "Hydrogen peroxide",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62848": {
+"hs4": "Phosphides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62849": {
+"hs4": "Carbides",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62850": {
+"hs4": "Hydrides and other anions",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62851": {
+"hs4": "Inorganic Compounds",
+"hs2": "Inorganic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62901": {
+"hs4": "Acyclic Hydrocarbons",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62902": {
+"hs4": "Cyclic Hydrocarbons",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62903": {
+"hs4": "Halogenated Hydrocarbons",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62904": {
+"hs4": "Sulfonated, Nitrated or Nitrosated Hydrocarbons",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62905": {
+"hs4": "Acyclic alcohol derivatives (halogenated, sulphonated, nitrated)",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62906": {
+"hs4": "Cyclic Alcohols",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62907": {
+"hs4": "Phenols",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62908": {
+"hs4": "Phenol Derivatives",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62909": {
+"hs4": "Ethers",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62910": {
+"hs4": "Epoxides",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62911": {
+"hs4": "Acetals and Hemiacetals",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62912": {
+"hs4": "Aldehydes, cyclic polymers, and paraformaldehyde",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62913": {
+"hs4": "Halogenated aldehyde derivatives (heading 2912)",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62914": {
+"hs4": "Ketones and Quinones",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62915": {
+"hs4": "Saturated Acyclic Monocarboxylic Acids",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62916": {
+"hs4": "Unsaturated Acyclic Monocarboxylic Acids",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62917": {
+"hs4": "Polycarboxylic Acids",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62918": {
+"hs4": "Carboxylic Acids",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62919": {
+"hs4": "Phosphoric Esters and Salts",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62920": {
+"hs4": "Other Esters",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62921": {
+"hs4": "Amine Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62922": {
+"hs4": "Oxygen Amino Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62923": {
+"hs4": "Quaternary Ammonium Salts and Hydroxides",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62924": {
+"hs4": "Carboxyamide Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62925": {
+"hs4": "Carboxyimide Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62926": {
+"hs4": "Nitrile Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62927": {
+"hs4": "Diazo, Azo or Aoxy Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62928": {
+"hs4": "Hydrazine or Hydroxylamine Derivatives",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62929": {
+"hs4": "Other Nitrogen Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62930": {
+"hs4": "Organo-Sulfur Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62931": {
+"hs4": "Other Organo-Inorganic Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62932": {
+"hs4": "Oxygen Heterocyclic Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62933": {
+"hs4": "Nitrogen Heterocyclic Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62934": {
+"hs4": "Nucleic Acids",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62935": {
+"hs4": "Sulfonamides",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62936": {
+"hs4": "Vitamins",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62937": {
+"hs4": "Hormones",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62938": {
+"hs4": "Glycosides",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62939": {
+"hs4": "Vegetable Alkaloids",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62940": {
+"hs4": "Chemically Pure Sugars",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62941": {
+"hs4": "Antibiotics",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"62942": {
+"hs4": "Other Organic Compounds",
+"hs2": "Organic chemicals",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63001": {
+"hs4": "Glands and Other Organs",
+"hs2": "Pharmaceutical products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63002": {
+"hs4": "Vaccines, blood, antisera, toxins and cultures",
+"hs2": "Pharmaceutical products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63003": {
+"hs4": "Unpackaged Medicaments",
+"hs2": "Pharmaceutical products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63004": {
+"hs4": "Packaged Medicaments",
+"hs2": "Pharmaceutical products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63005": {
+"hs4": "Bandages",
+"hs2": "Pharmaceutical products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63006": {
+"hs4": "Special Pharmaceuticals",
+"hs2": "Pharmaceutical products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63101": {
+"hs4": "Animal or Vegetable Fertilizers",
+"hs2": "Fertilizers",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63102": {
+"hs4": "Nitrogenous Fertilizers",
+"hs2": "Fertilizers",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63103": {
+"hs4": "Phosphatic Fertilizers",
+"hs2": "Fertilizers",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63104": {
+"hs4": "Potassic Fertilizers",
+"hs2": "Fertilizers",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63105": {
+"hs4": "Mixed Mineral or Chemical Fertilizers",
+"hs2": "Fertilizers",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63201": {
+"hs4": "Vegetable Tanning Extracts",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63202": {
+"hs4": "Synthetic Tanning Extracts",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63203": {
+"hs4": "Vegetable or Animal Dyes",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63204": {
+"hs4": "Synthetic Coloring Matter",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63205": {
+"hs4": "Lake Pigments",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63206": {
+"hs4": "Other Coloring Matter",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63207": {
+"hs4": "Prepared Pigments",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63208": {
+"hs4": "Nonaqueous Paints",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63209": {
+"hs4": "Aqueous Paints",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63210": {
+"hs4": "Other Paints",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63211": {
+"hs4": "Prepared Paint Driers",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63212": {
+"hs4": "Nonaqueous Pigments",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63213": {
+"hs4": "Artistry Paints",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63214": {
+"hs4": "Glaziers Putty",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63215": {
+"hs4": "Ink",
+"hs2": "Paints, dyes, & varnishes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63301": {
+"hs4": "Essential Oils",
+"hs2": "Perfumery & cosmetics",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63302": {
+"hs4": "Scented Mixtures",
+"hs2": "Perfumery & cosmetics",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63303": {
+"hs4": "Perfumes",
+"hs2": "Perfumery & cosmetics",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63304": {
+"hs4": "Beauty Products",
+"hs2": "Perfumery & cosmetics",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63305": {
+"hs4": "Hair Products",
+"hs2": "Perfumery & cosmetics",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63306": {
+"hs4": "Dental Products",
+"hs2": "Perfumery & cosmetics",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63307": {
+"hs4": "Shaving Products",
+"hs2": "Perfumery & cosmetics",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63401": {
+"hs4": "Soap",
+"hs2": "Soap, cleaners, candles, dental, modelling pastes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63402": {
+"hs4": "Cleaning Products",
+"hs2": "Soap, cleaners, candles, dental, modelling pastes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63403": {
+"hs4": "Lubricating Products",
+"hs2": "Soap, cleaners, candles, dental, modelling pastes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63404": {
+"hs4": "Waxes",
+"hs2": "Soap, cleaners, candles, dental, modelling pastes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63405": {
+"hs4": "Polishes and Creams",
+"hs2": "Soap, cleaners, candles, dental, modelling pastes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63406": {
+"hs4": "Candles",
+"hs2": "Soap, cleaners, candles, dental, modelling pastes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63407": {
+"hs4": "Pastes and Waxes",
+"hs2": "Soap, cleaners, candles, dental, modelling pastes",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63501": {
+"hs4": "Casein",
+"hs2": "Glues, starches, & albuminoid products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63502": {
+"hs4": "Water Soluble Proteins",
+"hs2": "Glues, starches, & albuminoid products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63503": {
+"hs4": "Gelatin",
+"hs2": "Glues, starches, & albuminoid products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63504": {
+"hs4": "Peptones",
+"hs2": "Glues, starches, & albuminoid products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63505": {
+"hs4": "Dextrins",
+"hs2": "Glues, starches, & albuminoid products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63506": {
+"hs4": "Glues",
+"hs2": "Glues, starches, & albuminoid products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63507": {
+"hs4": "Enzymes",
+"hs2": "Glues, starches, & albuminoid products",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63601": {
+"hs4": "Propellant Powders",
+"hs2": "Explosives, matches, & fireworks",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63602": {
+"hs4": "Prepared Explosives",
+"hs2": "Explosives, matches, & fireworks",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63603": {
+"hs4": "Detonating Fuses",
+"hs2": "Explosives, matches, & fireworks",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63604": {
+"hs4": "Fireworks",
+"hs2": "Explosives, matches, & fireworks",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63605": {
+"hs4": "Matches",
+"hs2": "Explosives, matches, & fireworks",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63606": {
+"hs4": "Pyrophoric Alloys",
+"hs2": "Explosives, matches, & fireworks",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63701": {
+"hs4": "Photographic Plates",
+"hs2": "Photo & movie goods",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63702": {
+"hs4": "Photographic Film",
+"hs2": "Photo & movie goods",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63703": {
+"hs4": "Photographic Paper",
+"hs2": "Photo & movie goods",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63704": {
+"hs4": "Undeveloped Exposed Photographic Material",
+"hs2": "Photo & movie goods",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63705": {
+"hs4": "Developed Exposed Photographic Material",
+"hs2": "Photo & movie goods",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63706": {
+"hs4": "Motion-picture film, exposed and developed",
+"hs2": "Photo & movie goods",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63707": {
+"hs4": "Photographic Chemicals",
+"hs2": "Photo & movie goods",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63801": {
+"hs4": "Artificial Graphite",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63802": {
+"hs4": "Activated Carbon",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63803": {
+"hs4": "Tall Oil",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63804": {
+"hs4": "Wood Pulp Lyes",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63805": {
+"hs4": "Turpentine",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63806": {
+"hs4": "Rosin",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63807": {
+"hs4": "Wood Tar, Oils and Pitch",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63808": {
+"hs4": "Pesticides",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63809": {
+"hs4": "Dyeing Finishing Agents",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63810": {
+"hs4": "Metal Pickling Preparations",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63811": {
+"hs4": "Antiknock",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63812": {
+"hs4": "Prepared Rubber Accelerators",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63813": {
+"hs4": "Fire Extinguishers Preparations",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63814": {
+"hs4": "Organic Composite Solvents",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63815": {
+"hs4": "Reaction and Catalytic Products",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63816": {
+"hs4": "Refractory Cements",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63817": {
+"hs4": "Alkylbenzenes and Alkylnaphthalenes",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63818": {
+"hs4": "Disc Chemicals for Electronics",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63819": {
+"hs4": "Hydraulic Brake Fluid",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63820": {
+"hs4": "Antifreeze",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63821": {
+"hs4": "Micro-Organism Culture Preparations",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63822": {
+"hs4": "Laboratory Reagents",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"63823": {
+"hs4": "Industrial Fatty Acids, Oils and Alcohols",
+"hs2": "Chemical products n.e.s.",
+"section": "Chemical Products",
+"section_id": 6
+},
+"73901": {
+"hs4": "Ethylene Polymers",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73902": {
+"hs4": "Propylene Polymers",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73903": {
+"hs4": "Styrene Polymers",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73904": {
+"hs4": "Vinyl Chloride Polymers",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73905": {
+"hs4": "Other Vinyl Polymers",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73906": {
+"hs4": "Acrylic Polymers",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73907": {
+"hs4": "Polyacetals",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73908": {
+"hs4": "Polyamides",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73909": {
+"hs4": "Amino-resins",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73910": {
+"hs4": "Silicone",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73911": {
+"hs4": "Petroleum Resins",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73912": {
+"hs4": "Cellulose",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73913": {
+"hs4": "Natural Polymers",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73914": {
+"hs4": "Polymer Ion-Exchangers",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73915": {
+"hs4": "Scrap Plastic",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73916": {
+"hs4": "Monofilament",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73917": {
+"hs4": "Plastic Pipes",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73918": {
+"hs4": "Plastic Floor Coverings",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73919": {
+"hs4": "Self-adhesive Plastics",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73920": {
+"hs4": "Raw Plastic Sheeting",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73921": {
+"hs4": "Other Plastic Sheetings",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73922": {
+"hs4": "Plastic Wash Basins",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73923": {
+"hs4": "Plastic Lids",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73924": {
+"hs4": "Plastic Housewares",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73925": {
+"hs4": "Plastic Building Materials",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"73926": {
+"hs4": "Other Plastic Products",
+"hs2": "Plastics & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74001": {
+"hs4": "Rubber",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74002": {
+"hs4": "Synthetic Rubber",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74003": {
+"hs4": "Reclaimed Rubber",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74004": {
+"hs4": "Scrap Rubber",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74005": {
+"hs4": "Compounded Unvulcanised Rubber",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74006": {
+"hs4": "Unvulcanised Rubber Products",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74007": {
+"hs4": "Rubber Thread",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74008": {
+"hs4": "Rubber Sheets",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74009": {
+"hs4": "Rubber Pipes",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74010": {
+"hs4": "Rubber Belting",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74011": {
+"hs4": "Rubber Tires",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74012": {
+"hs4": "Used Rubber Tires",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74013": {
+"hs4": "Rubber Inner Tubes",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74014": {
+"hs4": "Pharmaceutical Rubber Products",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74015": {
+"hs4": "Rubber Apparel",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74016": {
+"hs4": "Other Rubber Products",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"74017": {
+"hs4": "Hard Rubber",
+"hs2": "Rubber & articles thereof",
+"section": "Plastics and Rubbers",
+"section_id": 7
+},
+"84101": {
+"hs4": "Equine and Bovine Hides",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84102": {
+"hs4": "Sheep Hides",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84103": {
+"hs4": "Other Hides and Skins",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84104": {
+"hs4": "Tanned Equine and Bovine Hides",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84105": {
+"hs4": "Tanned Sheep Hides",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84106": {
+"hs4": "Tanned Goat Hides",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84107": {
+"hs4": "Leather of Other Animals",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84108": {
+"hs4": "Chamois Leather",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84109": {
+"hs4": "Patent Leather",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84110": {
+"hs4": "Leather Waste",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84111": {
+"hs4": "Leather Sheets",
+"hs2": "Raw hides & skin (non-fur)",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84201": {
+"hs4": "Saddlery",
+"hs2": "Leather articles",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84202": {
+"hs4": "Trunks and Cases",
+"hs2": "Leather articles",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84203": {
+"hs4": "Leather Apparel",
+"hs2": "Leather articles",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84205": {
+"hs4": "Other Leather Articles",
+"hs2": "Leather articles",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84206": {
+"hs4": "Articles of Gut",
+"hs2": "Leather articles",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84301": {
+"hs4": "Raw Furskins",
+"hs2": "Furskins, articifial fur, & articles",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84302": {
+"hs4": "Tanned Furskins",
+"hs2": "Furskins, articifial fur, & articles",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84303": {
+"hs4": "Furskin Apparel",
+"hs2": "Furskins, articifial fur, & articles",
+"section": "Animal Hides",
+"section_id": 8
+},
+"84304": {
+"hs4": "Artificial Fur",
+"hs2": "Furskins, articifial fur, & articles",
+"section": "Animal Hides",
+"section_id": 8
+},
+"94401": {
+"hs4": "Fuel Wood",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94402": {
+"hs4": "Wood Charcoal",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94403": {
+"hs4": "Rough Wood",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94404": {
+"hs4": "Wood Stakes",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94405": {
+"hs4": "Wood Wool",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94406": {
+"hs4": "Railroad Ties",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94407": {
+"hs4": "Sawn Wood",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94408": {
+"hs4": "Veneer Sheets",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94409": {
+"hs4": "Shaped Wood",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94410": {
+"hs4": "Particle Board",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94411": {
+"hs4": "Wood Fiberboard",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94412": {
+"hs4": "Plywood",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94413": {
+"hs4": "Densified Wood",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94414": {
+"hs4": "Wood Frames",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94415": {
+"hs4": "Wood Crates",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94416": {
+"hs4": "Wood Barrels",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94417": {
+"hs4": "Wooden Tool Handles",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94418": {
+"hs4": "Wood Carpentry",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94419": {
+"hs4": "Wood Kitchenware",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94420": {
+"hs4": "Wood Ornaments",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94421": {
+"hs4": "Other Wood Articles",
+"hs2": "Wood, wood articles, & charcoal",
+"section": "Wood Products",
+"section_id": 9
+},
+"94501": {
+"hs4": "Raw Cork",
+"hs2": "Cork & cork articles",
+"section": "Wood Products",
+"section_id": 9
+},
+"94502": {
+"hs4": "Debacked Cork",
+"hs2": "Cork & cork articles",
+"section": "Wood Products",
+"section_id": 9
+},
+"94503": {
+"hs4": "Natural Cork Articles",
+"hs2": "Cork & cork articles",
+"section": "Wood Products",
+"section_id": 9
+},
+"94504": {
+"hs4": "Agglomerated Cork",
+"hs2": "Cork & cork articles",
+"section": "Wood Products",
+"section_id": 9
+},
+"94601": {
+"hs4": "Plaiting Products",
+"hs2": "Straw & esparto manufactures",
+"section": "Wood Products",
+"section_id": 9
+},
+"94602": {
+"hs4": "Basketwork",
+"hs2": "Straw & esparto manufactures",
+"section": "Wood Products",
+"section_id": 9
+},
+"104701": {
+"hs4": "Mechanical Wood Pulp",
+"hs2": "Wood pulp & paper scrap",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104702": {
+"hs4": "Dissolving Grades Chemical Woodpulp",
+"hs2": "Wood pulp & paper scrap",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104703": {
+"hs4": "Sulfate Chemical Woodpulp",
+"hs2": "Wood pulp & paper scrap",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104704": {
+"hs4": "Sulfite Chemical Woodpulp",
+"hs2": "Wood pulp & paper scrap",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104705": {
+"hs4": "Semi chemical Woodpulp",
+"hs2": "Wood pulp & paper scrap",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104706": {
+"hs4": "Recovered Paper Pulp",
+"hs2": "Wood pulp & paper scrap",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104707": {
+"hs4": "Recovered Paper",
+"hs2": "Wood pulp & paper scrap",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104801": {
+"hs4": "Newsprint",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104802": {
+"hs4": "Uncoated Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104803": {
+"hs4": "Tissue",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104804": {
+"hs4": "Kraft Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104805": {
+"hs4": "Other Uncoated Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104806": {
+"hs4": "Vegetable Parchment",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104807": {
+"hs4": "Composite Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104808": {
+"hs4": "Corrugated Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104809": {
+"hs4": "Carbon Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104810": {
+"hs4": "Kaolin Coated Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104811": {
+"hs4": "Cellulose Fibers Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104812": {
+"hs4": "Paper Pulp Filter Blocks",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104813": {
+"hs4": "Cigarette Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104814": {
+"hs4": "Wallpaper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104816": {
+"hs4": "Other Carbon Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104817": {
+"hs4": "Letter Stock",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104818": {
+"hs4": "Toilet Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104819": {
+"hs4": "Paper Containers",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104820": {
+"hs4": "Paper Notebooks",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104821": {
+"hs4": "Paper Labels",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104822": {
+"hs4": "Paper Spools",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104823": {
+"hs4": "Shaped Paper",
+"hs2": "Paper articles",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104901": {
+"hs4": "Brochures",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104902": {
+"hs4": "Newspapers",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104903": {
+"hs4": "Children's Picture Books",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104904": {
+"hs4": "Sheet Music",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104905": {
+"hs4": "Maps",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104906": {
+"hs4": "Architectural Plans",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104907": {
+"hs4": "Documents of title (bonds etc) and unused stamps",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104908": {
+"hs4": "Decals",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104909": {
+"hs4": "Postcards",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104910": {
+"hs4": "Calendars",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"104911": {
+"hs4": "Other Printed Material",
+"hs2": "Books, newspapers, & other prints",
+"section": "Paper Goods",
+"section_id": 10
+},
+"115001": {
+"hs4": "Silk-worm Cocoons",
+"hs2": "Silk",
+"section": "Textiles",
+"section_id": 11
+},
+"115002": {
+"hs4": "Raw Silk",
+"hs2": "Silk",
+"section": "Textiles",
+"section_id": 11
+},
+"115003": {
+"hs4": "Silk Waste",
+"hs2": "Silk",
+"section": "Textiles",
+"section_id": 11
+},
+"115004": {
+"hs4": "Non-Retail Silk Yarn",
+"hs2": "Silk",
+"section": "Textiles",
+"section_id": 11
+},
+"115005": {
+"hs4": "Silk Waste Yarn",
+"hs2": "Silk",
+"section": "Textiles",
+"section_id": 11
+},
+"115006": {
+"hs4": "Retail Silk Yarn",
+"hs2": "Silk",
+"section": "Textiles",
+"section_id": 11
+},
+"115007": {
+"hs4": "Silk Fabrics",
+"hs2": "Silk",
+"section": "Textiles",
+"section_id": 11
+},
+"115101": {
+"hs4": "Wool",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115102": {
+"hs4": "Animal Hair",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115103": {
+"hs4": "Wool or Animal Hair Waste",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115104": {
+"hs4": "Garnetted Wool or Animal Hair",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115105": {
+"hs4": "Prepared Wool or Animal Hair",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115106": {
+"hs4": "Non-Retail Carded Wool Yarn",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115107": {
+"hs4": "Non-Retail Combed Wool Yarn",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115108": {
+"hs4": "Non-Retail Animal Hair Yarn",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115109": {
+"hs4": "Retail Wool or Animal Hair Yarn",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115110": {
+"hs4": "Horsehair Yarn",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115111": {
+"hs4": "Carded Wool or Animal Hair Fabric",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115112": {
+"hs4": "Combed Wool or Animal Hair Fabric",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115113": {
+"hs4": "Horsehair Fabric",
+"hs2": "Wool & animal hair",
+"section": "Textiles",
+"section_id": 11
+},
+"115201": {
+"hs4": "Raw Cotton",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115202": {
+"hs4": "Cotton Waste",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115203": {
+"hs4": "Prepared Cotton",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115204": {
+"hs4": "Cotton Sewing Thread",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115205": {
+"hs4": "Non-Retail Pure Cotton Yarn",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115206": {
+"hs4": "Non-Retail Mixed Cotton Yarn",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115207": {
+"hs4": "Retail Cotton Yarn",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115208": {
+"hs4": "Light Pure Woven Cotton",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115209": {
+"hs4": "Heavy Pure Woven Cotton",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115210": {
+"hs4": "Light Mixed Woven Cotton",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115211": {
+"hs4": "Heavy Mixed Woven Cotton",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115212": {
+"hs4": "Other Cotton Fabrics",
+"hs2": "Cotton",
+"section": "Textiles",
+"section_id": 11
+},
+"115301": {
+"hs4": "Flax Fibers",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115302": {
+"hs4": "Hemp Fibers",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115303": {
+"hs4": "Jute and Other Textile Fibers",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115305": {
+"hs4": "Coconut and Other Vegetable Fibers",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115306": {
+"hs4": "Flax Yarn",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115307": {
+"hs4": "Jute Yarn",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115308": {
+"hs4": "Other Vegetable Fibers Yarn",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115309": {
+"hs4": "Flax Woven Fabric",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115310": {
+"hs4": "Jute Woven Fabric",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115311": {
+"hs4": "Other Vegetable Fibers Fabric",
+"hs2": "Vegetable textile fibers, paper yarn & fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"115401": {
+"hs4": "Artificial Filament Sewing Thread",
+"hs2": "Man-made filaments",
+"section": "Textiles",
+"section_id": 11
+},
+"115402": {
+"hs4": "Non-Retail Synthetic Filament Yarn",
+"hs2": "Man-made filaments",
+"section": "Textiles",
+"section_id": 11
+},
+"115403": {
+"hs4": "Non-Retail Artificial Filament Yarn",
+"hs2": "Man-made filaments",
+"section": "Textiles",
+"section_id": 11
+},
+"115404": {
+"hs4": "Synthetic Monofilament",
+"hs2": "Man-made filaments",
+"section": "Textiles",
+"section_id": 11
+},
+"115405": {
+"hs4": "Artificial Monofilament",
+"hs2": "Man-made filaments",
+"section": "Textiles",
+"section_id": 11
+},
+"115406": {
+"hs4": "Retail Artificial Filament Yarn",
+"hs2": "Man-made filaments",
+"section": "Textiles",
+"section_id": 11
+},
+"115407": {
+"hs4": "Synthetic Filament Yarn Woven Fabric",
+"hs2": "Man-made filaments",
+"section": "Textiles",
+"section_id": 11
+},
+"115408": {
+"hs4": "Artificial Filament Yarn Woven Fabric",
+"hs2": "Man-made filaments",
+"section": "Textiles",
+"section_id": 11
+},
+"115501": {
+"hs4": "Synthetic Filament Tow",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115502": {
+"hs4": "Artificial Filament Tow",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115503": {
+"hs4": "Unprocessed Synthetic Staple Fibers",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115504": {
+"hs4": "Unprocessed Artificial Staple Fibers",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115505": {
+"hs4": "Artificial Fibers Waste",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115506": {
+"hs4": "Processed Synthetic Staple Fibers",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115507": {
+"hs4": "Processed Artificial Staple Fibers",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115508": {
+"hs4": "Non-Retail Artificial Staple Fibers Sewing Thread",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115509": {
+"hs4": "Non-Retail Synthetic Staple Fibers Yarn",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115510": {
+"hs4": "Non-Retail Artificial Staple Fibers Yarn",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115511": {
+"hs4": "Retail Artificial Staple Fibers Yarn",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115512": {
+"hs4": "Synthetic Fabrics",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115513": {
+"hs4": "Light Synthetic Cotton Fabrics",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115514": {
+"hs4": "Heavy Synthetic Cotton Fabrics",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115515": {
+"hs4": "Other Synthetic Fabrics",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115516": {
+"hs4": "Woven Fabric of Synthetic Staple Fibers",
+"hs2": "Man-made staple fibres",
+"section": "Textiles",
+"section_id": 11
+},
+"115601": {
+"hs4": "Wadding",
+"hs2": "Wadding, felt, nonwovens, twin, ropes, & articles thereof",
+"section": "Textiles",
+"section_id": 11
+},
+"115602": {
+"hs4": "Felt",
+"hs2": "Wadding, felt, nonwovens, twin, ropes, & articles thereof",
+"section": "Textiles",
+"section_id": 11
+},
+"115603": {
+"hs4": "Non-woven Textiles",
+"hs2": "Wadding, felt, nonwovens, twin, ropes, & articles thereof",
+"section": "Textiles",
+"section_id": 11
+},
+"115604": {
+"hs4": "Rubber Textiles",
+"hs2": "Wadding, felt, nonwovens, twin, ropes, & articles thereof",
+"section": "Textiles",
+"section_id": 11
+},
+"115605": {
+"hs4": "Metallic Yarn",
+"hs2": "Wadding, felt, nonwovens, twin, ropes, & articles thereof",
+"section": "Textiles",
+"section_id": 11
+},
+"115606": {
+"hs4": "Gimp Yarn",
+"hs2": "Wadding, felt, nonwovens, twin, ropes, & articles thereof",
+"section": "Textiles",
+"section_id": 11
+},
+"115607": {
+"hs4": "Twine and Rope",
+"hs2": "Wadding, felt, nonwovens, twin, ropes, & articles thereof",
+"section": "Textiles",
+"section_id": 11
+},
+"115608": {
+"hs4": "Twine, cordage or rope; knotted netting, made up fishing nets and other made up nets, of textile materials",
+"hs2": "Wadding, felt, nonwovens, twin, ropes, & articles thereof",
+"section": "Textiles",
+"section_id": 11
+},
+"115609": {
+"hs4": "Other Articles of Twine and Rope",
+"hs2": "Wadding, felt, nonwovens, twin, ropes, & articles thereof",
+"section": "Textiles",
+"section_id": 11
+},
+"115701": {
+"hs4": "Knotted Carpets",
+"hs2": "Carpets & textile floor covers",
+"section": "Textiles",
+"section_id": 11
+},
+"115702": {
+"hs4": "Hand-Woven Rugs",
+"hs2": "Carpets & textile floor covers",
+"section": "Textiles",
+"section_id": 11
+},
+"115703": {
+"hs4": "Tufted Carpets",
+"hs2": "Carpets & textile floor covers",
+"section": "Textiles",
+"section_id": 11
+},
+"115704": {
+"hs4": "Felt Carpets",
+"hs2": "Carpets & textile floor covers",
+"section": "Textiles",
+"section_id": 11
+},
+"115705": {
+"hs4": "Other Carpets",
+"hs2": "Carpets & textile floor covers",
+"section": "Textiles",
+"section_id": 11
+},
+"115801": {
+"hs4": "Woven Fabrics",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115802": {
+"hs4": "Terry Fabric",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115803": {
+"hs4": "Gauze",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115804": {
+"hs4": "Tulles and Net Fabric",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115805": {
+"hs4": "Hand-Woven Tapestries",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115806": {
+"hs4": "Narrow Woven Fabric",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115807": {
+"hs4": "Labels",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115808": {
+"hs4": "Ornamental Trimmings",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115809": {
+"hs4": "Metallic Fabric",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115810": {
+"hs4": "Embroidery",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115811": {
+"hs4": "Quilted Textiles",
+"hs2": "Special woven fabrics and tapestries",
+"section": "Textiles",
+"section_id": 11
+},
+"115901": {
+"hs4": "Gum Coated Textile Fabric",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115902": {
+"hs4": "Polyamide Fabric",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115903": {
+"hs4": "Plastic Coated Textile Fabric",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115904": {
+"hs4": "Linoleum",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115905": {
+"hs4": "Textile Wall Coverings",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115906": {
+"hs4": "Rubber Textile Fabric",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115907": {
+"hs4": "Coated Textile Fabric",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115908": {
+"hs4": "Textile Wicks",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115909": {
+"hs4": "Hose Piping Textiles",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115910": {
+"hs4": "Conveyor Belt Textiles",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"115911": {
+"hs4": "Textiles for technical uses",
+"hs2": "Coated, covered, & laminated fabrics for industrial use",
+"section": "Textiles",
+"section_id": 11
+},
+"116001": {
+"hs4": "Pile Fabric",
+"hs2": "Knitted fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"116002": {
+"hs4": "Light Rubberized Knitted Fabric",
+"hs2": "Knitted fabrics",
+"section": "Textiles",
+"section_id": 11
+},
+"116101": {
+"hs4": "Knit Men's Coats",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116102": {
+"hs4": "Knit Women's Coats",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116103": {
+"hs4": "Knit Men's Suits",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116104": {
+"hs4": "Knit Women's Suits",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116105": {
+"hs4": "Knit Men's Shirts",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116106": {
+"hs4": "Knit Women's Shirts",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116107": {
+"hs4": "Knit Men's Undergarments",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116108": {
+"hs4": "Knit Women's Undergarments",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116109": {
+"hs4": "Knit T-shirts",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116110": {
+"hs4": "Knit Sweaters",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116111": {
+"hs4": "Knit Babies' Garments",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116112": {
+"hs4": "Knit Active Wear",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116113": {
+"hs4": "Garments of Impregnated Fabric",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116114": {
+"hs4": "Other Knit Garments",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116115": {
+"hs4": "Knit Socks and Hosiery",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116116": {
+"hs4": "Knit Gloves",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116117": {
+"hs4": "Other Knit Clothing Accessories",
+"hs2": "Knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116201": {
+"hs4": "Non-Knit Men's Coats",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116202": {
+"hs4": "Non-Knit Women's Coats",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116203": {
+"hs4": "Non-Knit Men's Suits",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116204": {
+"hs4": "Non-Knit Women's Suits",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116205": {
+"hs4": "Non-Knit Men's Shirts",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116206": {
+"hs4": "Non-Knit Women's Shirts",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116207": {
+"hs4": "Non-Knit Men's Undergarments",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116208": {
+"hs4": "Non-Knit Women's Undergarments",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116209": {
+"hs4": "Non-Knit Babies' Garments",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116210": {
+"hs4": "Felt or Coated Fabric Garments",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116211": {
+"hs4": "Non-Knit Active Wear",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116212": {
+"hs4": "Other Women's Undergarments",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116213": {
+"hs4": "Handkerchiefs",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116214": {
+"hs4": "Scarves",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116215": {
+"hs4": "Neck Ties",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116216": {
+"hs4": "Non-Knit Gloves",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116217": {
+"hs4": "Other Non-Knit Clothing Accessories",
+"hs2": "Non-knitted clothing accesories",
+"section": "Textiles",
+"section_id": 11
+},
+"116301": {
+"hs4": "Blankets",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"116302": {
+"hs4": "House Linens",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"116303": {
+"hs4": "Window Dressings",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"116304": {
+"hs4": "Bedspreads",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"116305": {
+"hs4": "Packing Bags",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"116306": {
+"hs4": "Awnings, Tents, and Sails",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"116307": {
+"hs4": "Other Cloth Articles",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"116308": {
+"hs4": "Packaged Sewing Sets",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"116309": {
+"hs4": "Used Clothing",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"116310": {
+"hs4": "Textile Scraps",
+"hs2": "Used clothes & textile articles",
+"section": "Textiles",
+"section_id": 11
+},
+"126401": {
+"hs4": "Waterproof Footwear",
+"hs2": "Footwear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126402": {
+"hs4": "Rubber Footwear",
+"hs2": "Footwear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126403": {
+"hs4": "Leather Footwear",
+"hs2": "Footwear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126404": {
+"hs4": "Textile Footwear",
+"hs2": "Footwear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126405": {
+"hs4": "Other Footwear",
+"hs2": "Footwear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126406": {
+"hs4": "Footwear Parts",
+"hs2": "Footwear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126501": {
+"hs4": "Hat Forms",
+"hs2": "Headgear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126502": {
+"hs4": "Hat Shapes",
+"hs2": "Headgear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126504": {
+"hs4": "Hats",
+"hs2": "Headgear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126505": {
+"hs4": "Knitted Hats",
+"hs2": "Headgear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126506": {
+"hs4": "Other Headwear",
+"hs2": "Headgear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126507": {
+"hs4": "Headbands and Linings",
+"hs2": "Headgear",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126601": {
+"hs4": "Umbrellas",
+"hs2": "Umbrellas, walking sticks, & whips",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126602": {
+"hs4": "Walking Sticks",
+"hs2": "Umbrellas, walking sticks, & whips",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126603": {
+"hs4": "Umbrella and Walking Stick Accessories",
+"hs2": "Umbrellas, walking sticks, & whips",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126701": {
+"hs4": "Bird Skins and Feathers",
+"hs2": "Feather articles, feathers, artificial flowers, & articles of human hair",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126702": {
+"hs4": "Artificial Vegetation",
+"hs2": "Feather articles, feathers, artificial flowers, & articles of human hair",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126703": {
+"hs4": "Processed Hair",
+"hs2": "Feather articles, feathers, artificial flowers, & articles of human hair",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"126704": {
+"hs4": "Fake Hair",
+"hs2": "Feather articles, feathers, artificial flowers, & articles of human hair",
+"section": "Footwear and Headwear",
+"section_id": 12
+},
+"136801": {
+"hs4": "Curbstones",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136802": {
+"hs4": "Building Stone",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136803": {
+"hs4": "Worked Slate",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136804": {
+"hs4": "Milling Stones",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136805": {
+"hs4": "Abrasive Powder",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136806": {
+"hs4": "Rock Wool",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136807": {
+"hs4": "Asphalt",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136808": {
+"hs4": "Vegetable Fiber",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136809": {
+"hs4": "Plaster Articles",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136810": {
+"hs4": "Cement Articles",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136811": {
+"hs4": "Asbestos Cement Articles",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136812": {
+"hs4": "Asbestos Fibres",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136813": {
+"hs4": "Friction Material",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136814": {
+"hs4": "Processed Mica",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136815": {
+"hs4": "Other Stone Articles",
+"hs2": "Stone, plaster, cement, asbestos, mica.",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136901": {
+"hs4": "Bricks",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136902": {
+"hs4": "Refractory Bricks",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136903": {
+"hs4": "Refractory Ceramics",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136904": {
+"hs4": "Ceramic Bricks",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136905": {
+"hs4": "Roofing Tiles",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136906": {
+"hs4": "Ceramic Pipes",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136907": {
+"hs4": "Unglazed Ceramics",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136908": {
+"hs4": "Glazed Ceramics",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136909": {
+"hs4": "Laboratory Ceramic Ware",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136910": {
+"hs4": "Bathroom Ceramics",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136911": {
+"hs4": "Porcelain Tableware",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136912": {
+"hs4": "Ceramic Tableware",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136913": {
+"hs4": "Ornamental Ceramics",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"136914": {
+"hs4": "Other Ceramic Articles",
+"hs2": "Ceramic products",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137001": {
+"hs4": "Glass Scraps",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137002": {
+"hs4": "Glass Balls",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137003": {
+"hs4": "Cast or Rolled Glass",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137004": {
+"hs4": "Blown Glass",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137005": {
+"hs4": "Float Glass",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137006": {
+"hs4": "Glass with Edge Workings",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137007": {
+"hs4": "Safety Glass",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137008": {
+"hs4": "Insulating Glass",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137009": {
+"hs4": "Glass Mirrors",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137010": {
+"hs4": "Glass Bottles",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137011": {
+"hs4": "Glass Bulbs",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137013": {
+"hs4": "Interior Decorative Glassware",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137014": {
+"hs4": "Signaling Glassware",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137015": {
+"hs4": "Eyewear and Clock Glass",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137016": {
+"hs4": "Glass Bricks",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137017": {
+"hs4": "Laboratory Glassware",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137018": {
+"hs4": "Glass Beads",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137019": {
+"hs4": "Glass Fibers",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"137020": {
+"hs4": "Other Glass Articles",
+"hs2": "Glass & glassware",
+"section": "Stone And Glass",
+"section_id": 13
+},
+"147101": {
+"hs4": "Pearls",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147102": {
+"hs4": "Diamonds",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147103": {
+"hs4": "Precious Stones",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147104": {
+"hs4": "Synthetic Reconstructed Jewellery Stones",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147105": {
+"hs4": "Precious Stone Dust",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147106": {
+"hs4": "Silver",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147107": {
+"hs4": "Silver Clad Metals",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147108": {
+"hs4": "Gold",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147109": {
+"hs4": "Gold Clad Metals",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147110": {
+"hs4": "Platinum",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147111": {
+"hs4": "Platinum Clad Metals",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147112": {
+"hs4": "Precious Metal Scraps",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147113": {
+"hs4": "Jewellery",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147114": {
+"hs4": "Metal-Clad Products",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147115": {
+"hs4": "Other Precious Metal Products",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147116": {
+"hs4": "Pearl Products",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147117": {
+"hs4": "Imitation Jewellery",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"147118": {
+"hs4": "Coin",
+"hs2": "Precious stones, metals, & pearls",
+"section": "Precious Metals",
+"section_id": 14
+},
+"157201": {
+"hs4": "Pig Iron",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157202": {
+"hs4": "Ferroalloys",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157203": {
+"hs4": "Iron Reductions",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157204": {
+"hs4": "Scrap Iron",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157205": {
+"hs4": "Iron Powder",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157206": {
+"hs4": "Iron Ingots",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157207": {
+"hs4": "Semi-Finished Iron",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157208": {
+"hs4": "Hot-Rolled Iron",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157209": {
+"hs4": "Cold-Rolled Iron",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157210": {
+"hs4": "Coated Flat-Rolled Iron",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157211": {
+"hs4": "Large Flat-Rolled Iron",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157212": {
+"hs4": "Large Coated Flat-Rolled Iron",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157213": {
+"hs4": "Hot-Rolled Iron Bars",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157214": {
+"hs4": "Raw Iron Bars",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157215": {
+"hs4": "Other Iron Bars",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157216": {
+"hs4": "Iron Blocks",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157217": {
+"hs4": "Iron Wire",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157218": {
+"hs4": "Stainless Steel Ingots",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157219": {
+"hs4": "Large Flat-Rolled Stainless Steel",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157220": {
+"hs4": "Flat-Rolled Stainless Steel",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157221": {
+"hs4": "Hot-Rolled Stainless Steel Bars",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157222": {
+"hs4": "Other Stainless Steel Bars",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157223": {
+"hs4": "Stainless Steel Wire",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157224": {
+"hs4": "Steel Ingots",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157225": {
+"hs4": "Flat Flat-Rolled Steel",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157226": {
+"hs4": "Flat-Rolled Iron",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157227": {
+"hs4": "Steel Bars",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157228": {
+"hs4": "Other Steel Bars",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157229": {
+"hs4": "Steel Wire",
+"hs2": "Iron & steel",
+"section": "Metals",
+"section_id": 15
+},
+"157301": {
+"hs4": "Iron Sheet Piling",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157302": {
+"hs4": "Iron Railway Products",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157303": {
+"hs4": "Cast Iron Pipes",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157304": {
+"hs4": "Iron Pipes",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157305": {
+"hs4": "Other Large Iron Pipes",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157306": {
+"hs4": "Other Small Iron Pipes",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157307": {
+"hs4": "Iron Pipe Fittings",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157308": {
+"hs4": "Iron Structures",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157309": {
+"hs4": "Large Iron Containers",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157310": {
+"hs4": "Small Iron Containers",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157311": {
+"hs4": "Iron Gas Containers",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157312": {
+"hs4": "Stranded Iron Wire",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157313": {
+"hs4": "Barbed Wire",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157314": {
+"hs4": "Iron Cloth",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157315": {
+"hs4": "Iron Chains",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157316": {
+"hs4": "Iron Anchors",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157317": {
+"hs4": "Iron Nails",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157318": {
+"hs4": "Iron Fasteners",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157319": {
+"hs4": "Iron Sewing Needles",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157320": {
+"hs4": "Iron Springs",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157321": {
+"hs4": "Iron Stovetops",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157322": {
+"hs4": "Iron Radiators",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157323": {
+"hs4": "Iron Housewares",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157324": {
+"hs4": "Iron Toiletry",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157325": {
+"hs4": "Other Cast Iron Products",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157326": {
+"hs4": "Other Iron Products",
+"hs2": "Iron/Steel Articles",
+"section": "Metals",
+"section_id": 15
+},
+"157401": {
+"hs4": "Precipitated Copper",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157402": {
+"hs4": "Raw Copper",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157403": {
+"hs4": "Refined Copper",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157404": {
+"hs4": "Scrap Copper",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157405": {
+"hs4": "Copper Alloys",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157406": {
+"hs4": "Copper Powder",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157407": {
+"hs4": "Copper Bars",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157408": {
+"hs4": "Copper Wire",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157409": {
+"hs4": "Copper Plating",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157410": {
+"hs4": "Copper Foil",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157411": {
+"hs4": "Copper Pipes",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157412": {
+"hs4": "Copper Pipe Fittings",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157413": {
+"hs4": "Stranded Copper Wire",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157415": {
+"hs4": "Copper Fasteners",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157416": {
+"hs4": "Copper Springs",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157418": {
+"hs4": "Copper Housewares",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157419": {
+"hs4": "Other Copper Products",
+"hs2": "Copper articles",
+"section": "Metals",
+"section_id": 15
+},
+"157501": {
+"hs4": "Nickel Mattes",
+"hs2": "Nickel articles",
+"section": "Metals",
+"section_id": 15
+},
+"157502": {
+"hs4": "Raw Nickel",
+"hs2": "Nickel articles",
+"section": "Metals",
+"section_id": 15
+},
+"157503": {
+"hs4": "Scrap Nickel",
+"hs2": "Nickel articles",
+"section": "Metals",
+"section_id": 15
+},
+"157504": {
+"hs4": "Nickel Powder",
+"hs2": "Nickel articles",
+"section": "Metals",
+"section_id": 15
+},
+"157505": {
+"hs4": "Nickel Bars",
+"hs2": "Nickel articles",
+"section": "Metals",
+"section_id": 15
+},
+"157506": {
+"hs4": "Nickel Sheets",
+"hs2": "Nickel articles",
+"section": "Metals",
+"section_id": 15
+},
+"157507": {
+"hs4": "Nickel Pipes",
+"hs2": "Nickel articles",
+"section": "Metals",
+"section_id": 15
+},
+"157508": {
+"hs4": "Other Nickel Products",
+"hs2": "Nickel articles",
+"section": "Metals",
+"section_id": 15
+},
+"157601": {
+"hs4": "Raw Aluminium",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157602": {
+"hs4": "Scrap Aluminium",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157603": {
+"hs4": "Aluminium Powder",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157604": {
+"hs4": "Aluminium Bars",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157605": {
+"hs4": "Aluminium Wire",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157606": {
+"hs4": "Aluminium Plating",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157607": {
+"hs4": "Aluminium Foil",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157608": {
+"hs4": "Aluminium Pipes",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157609": {
+"hs4": "Aluminium Pipe Fittings",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157610": {
+"hs4": "Aluminium Structures",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157611": {
+"hs4": "Large Aluminium Containers",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157612": {
+"hs4": "Aluminium Cans",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157613": {
+"hs4": "Aluminium Gas Containers",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157614": {
+"hs4": "Stranded Aluminium Wire",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157615": {
+"hs4": "Aluminium Housewares",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157616": {
+"hs4": "Other Aluminium Products",
+"hs2": "Aluminum articles",
+"section": "Metals",
+"section_id": 15
+},
+"157801": {
+"hs4": "Raw Lead",
+"hs2": "Lead articles",
+"section": "Metals",
+"section_id": 15
+},
+"157802": {
+"hs4": "Scrap Lead",
+"hs2": "Lead articles",
+"section": "Metals",
+"section_id": 15
+},
+"157804": {
+"hs4": "Lead Sheets",
+"hs2": "Lead articles",
+"section": "Metals",
+"section_id": 15
+},
+"157806": {
+"hs4": "Other Lead Products",
+"hs2": "Lead articles",
+"section": "Metals",
+"section_id": 15
+},
+"157901": {
+"hs4": "Raw Zinc",
+"hs2": "Zinc articles",
+"section": "Metals",
+"section_id": 15
+},
+"157902": {
+"hs4": "Scrap Waste",
+"hs2": "Zinc articles",
+"section": "Metals",
+"section_id": 15
+},
+"157903": {
+"hs4": "Zinc Powder",
+"hs2": "Zinc articles",
+"section": "Metals",
+"section_id": 15
+},
+"157904": {
+"hs4": "Zinc Bars",
+"hs2": "Zinc articles",
+"section": "Metals",
+"section_id": 15
+},
+"157905": {
+"hs4": "Zinc Sheets",
+"hs2": "Zinc articles",
+"section": "Metals",
+"section_id": 15
+},
+"157907": {
+"hs4": "Other Zinc Products",
+"hs2": "Zinc articles",
+"section": "Metals",
+"section_id": 15
+},
+"158001": {
+"hs4": "Raw Tin",
+"hs2": "Tin articles",
+"section": "Metals",
+"section_id": 15
+},
+"158002": {
+"hs4": "Scrap Tin",
+"hs2": "Tin articles",
+"section": "Metals",
+"section_id": 15
+},
+"158003": {
+"hs4": "Tin Bars",
+"hs2": "Tin articles",
+"section": "Metals",
+"section_id": 15
+},
+"158007": {
+"hs4": "Other Tin Products",
+"hs2": "Tin articles",
+"section": "Metals",
+"section_id": 15
+},
+"158101": {
+"hs4": "Tungsten",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158102": {
+"hs4": "Molybdenum",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158103": {
+"hs4": "Tantalum",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158104": {
+"hs4": "Magnesium",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158105": {
+"hs4": "Cobalt",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158106": {
+"hs4": "Bismuth",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158107": {
+"hs4": "Cadmium",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158108": {
+"hs4": "Titanium",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158109": {
+"hs4": "Zirconium",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158110": {
+"hs4": "Antimony",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158111": {
+"hs4": "Manganese",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158112": {
+"hs4": "Other Metals",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158113": {
+"hs4": "Cermets",
+"hs2": "Cermet articles",
+"section": "Metals",
+"section_id": 15
+},
+"158201": {
+"hs4": "Garden Tools",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158202": {
+"hs4": "Hand Saws",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158203": {
+"hs4": "Hand Tools",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158204": {
+"hs4": "Wrenches",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158205": {
+"hs4": "Other Hand Tools",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158206": {
+"hs4": "Tool Sets",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158207": {
+"hs4": "Interchangeable Tool Parts",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158208": {
+"hs4": "Cutting Blades",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158209": {
+"hs4": "Tool Plates",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158210": {
+"hs4": "Cooking Hand Tools",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158211": {
+"hs4": "Knives",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158212": {
+"hs4": "Razor Blades",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158213": {
+"hs4": "Scissors",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158214": {
+"hs4": "Other Cutlery",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158215": {
+"hs4": "Cutlery Sets",
+"hs2": "Tools & cutlery",
+"section": "Metals",
+"section_id": 15
+},
+"158301": {
+"hs4": "Padlocks",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158302": {
+"hs4": "Metal Mountings",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158303": {
+"hs4": "Safes",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158304": {
+"hs4": "Filing Cabinets",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158305": {
+"hs4": "Metal Office Supplies",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158306": {
+"hs4": "Bells and Other Metal Ornaments",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158307": {
+"hs4": "Flexible Metal Tubing",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158308": {
+"hs4": "Other Metal Fasteners",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158309": {
+"hs4": "Metal Stoppers",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158310": {
+"hs4": "Metal Signs",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"158311": {
+"hs4": "Coated Metal Soldering Products",
+"hs2": "Miscellaneous metal products",
+"section": "Metals",
+"section_id": 15
+},
+"168401": {
+"hs4": "Nuclear Reactors",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168402": {
+"hs4": "Steam Boilers",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168403": {
+"hs4": "Central Heating Boilers",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168404": {
+"hs4": "Boiler Plants",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168405": {
+"hs4": "Water and Gas Generators",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168406": {
+"hs4": "Steam Turbines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168407": {
+"hs4": "Spark-Ignition Engines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168408": {
+"hs4": "Combustion Engines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168409": {
+"hs4": "Engine Parts",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168410": {
+"hs4": "Hydraulic Turbines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168411": {
+"hs4": "Gas Turbines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168412": {
+"hs4": "Other Engines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168413": {
+"hs4": "Liquid Pumps",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168414": {
+"hs4": "Air Pumps",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168415": {
+"hs4": "Air Conditioners",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168416": {
+"hs4": "Liquid Fuel Furnaces",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168417": {
+"hs4": "Industrial Furnaces",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168418": {
+"hs4": "Refrigerators",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168419": {
+"hs4": "Other Heating Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168420": {
+"hs4": "Rolling Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168421": {
+"hs4": "Centrifuges",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168422": {
+"hs4": "Washing and Bottling Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168423": {
+"hs4": "Scales",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168424": {
+"hs4": "Liquid Dispersing Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168425": {
+"hs4": "Pulley Systems",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168426": {
+"hs4": "Cranes",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168427": {
+"hs4": "Fork-Lifts",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168428": {
+"hs4": "Lifting Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168429": {
+"hs4": "Large Construction Vehicles",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168430": {
+"hs4": "Other Construction Vehicles",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168431": {
+"hs4": "Excavation Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168432": {
+"hs4": "Soil Preparation Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168433": {
+"hs4": "Harvesting Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168434": {
+"hs4": "Dairy Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168435": {
+"hs4": "Fruit Pressing Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168436": {
+"hs4": "Other Agricultural Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168437": {
+"hs4": "Mill Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168438": {
+"hs4": "Industrial Food Preperation Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168439": {
+"hs4": "Papermaking Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168440": {
+"hs4": "Book-binding Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168441": {
+"hs4": "Other Paper Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168442": {
+"hs4": "Print Production Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168443": {
+"hs4": "Industrial Printers",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168444": {
+"hs4": "Artificial Textile Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168445": {
+"hs4": "Textile Fiber Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168446": {
+"hs4": "Looms",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168447": {
+"hs4": "Knitting Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168448": {
+"hs4": "Knitting Machine Accessories",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168449": {
+"hs4": "Felt Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168450": {
+"hs4": "Household Washing Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168451": {
+"hs4": "Textile Processing Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168452": {
+"hs4": "Sewing Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168453": {
+"hs4": "Leather Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168454": {
+"hs4": "Casting Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168455": {
+"hs4": "Metal-Rolling Mills",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168456": {
+"hs4": "Non-Mechanical Removal Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168457": {
+"hs4": "Metalworking Transfer Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168458": {
+"hs4": "Metal Lathes",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168459": {
+"hs4": "Drilling Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168460": {
+"hs4": "Metal Finishing Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168461": {
+"hs4": "Metalworking Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168462": {
+"hs4": "Forging Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168463": {
+"hs4": "Other Non-Metal Removal Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168464": {
+"hs4": "Stone Working Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168465": {
+"hs4": "Woodworking machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168466": {
+"hs4": "Metalworking Machine Parts",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168467": {
+"hs4": "Motor-working Tools",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168468": {
+"hs4": "Soldering and Welding Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168469": {
+"hs4": "Typewriters",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168470": {
+"hs4": "Calculators",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168471": {
+"hs4": "Computers",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168472": {
+"hs4": "Other Office Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168473": {
+"hs4": "Office Machine Parts",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168474": {
+"hs4": "Stone Processing Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168475": {
+"hs4": "Glass Working Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168476": {
+"hs4": "Vending Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168477": {
+"hs4": "Rubberworking Machinery",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168478": {
+"hs4": "Tobacco Processing Machines",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168479": {
+"hs4": "Machinery Having Individual Functions",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168480": {
+"hs4": "Metal Molds",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168481": {
+"hs4": "Valves",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168482": {
+"hs4": "Ball Bearings",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168483": {
+"hs4": "Transmissions",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168484": {
+"hs4": "Gaskets",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168485": {
+"hs4": "Boat Propellers",
+"hs2": "Machinery, mechanical appliances, & parts",
+"section": "Machines",
+"section_id": 16
+},
+"168501": {
+"hs4": "Electric Motors",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168502": {
+"hs4": "Electric Generating Sets",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168503": {
+"hs4": "Electric Motor Parts",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168504": {
+"hs4": "Electrical Transformers",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168505": {
+"hs4": "Electromagnets",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168506": {
+"hs4": "Batteries",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168507": {
+"hs4": "Electric Batteries",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168508": {
+"hs4": "Vacuum Cleaners",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168509": {
+"hs4": "Other Domestic Electric Housewares",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168510": {
+"hs4": "Hair Trimmers",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168511": {
+"hs4": "Electrical Ignitions",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168512": {
+"hs4": "Electrical Lighting and Signalling Equipment",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168513": {
+"hs4": "Portable Lighting",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168514": {
+"hs4": "Electric Furnaces",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168515": {
+"hs4": "Electric Soldering Equipment",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168516": {
+"hs4": "Electric Heaters",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168517": {
+"hs4": "Telephones",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168518": {
+"hs4": "Microphones and Headphones",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168519": {
+"hs4": "Sound Recording Equipment",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168520": {
+"hs4": "Dictation Machines",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168521": {
+"hs4": "Video Recording Equipment",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168522": {
+"hs4": "Audio and Video Recording Accessories",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168523": {
+"hs4": "Blank Audio Media",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168524": {
+"hs4": "Sound Recordings",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168525": {
+"hs4": "Broadcasting Equipment",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168526": {
+"hs4": "Navigation Equipment",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168527": {
+"hs4": "Radio Receivers",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168528": {
+"hs4": "Video Displays",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168529": {
+"hs4": "Broadcasting Accessories",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168530": {
+"hs4": "Traffic Signals",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168531": {
+"hs4": "Audio Alarms",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168532": {
+"hs4": "Electrical Capacitors",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168533": {
+"hs4": "Electrical Resistors",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168534": {
+"hs4": "Printed Circuit Boards",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168535": {
+"hs4": "High-voltage Protection Equipment",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168536": {
+"hs4": "Low-voltage Protection Equipment",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168537": {
+"hs4": "Electrical Control Boards",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168538": {
+"hs4": "Electrical Power Accessories",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168539": {
+"hs4": "Electric Filament",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168540": {
+"hs4": "Cathode Tubes",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168541": {
+"hs4": "Semiconductor Devices",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168542": {
+"hs4": "Integrated Circuits",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168543": {
+"hs4": "Other Electrical Machinery",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168544": {
+"hs4": "Insulated Wire",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168545": {
+"hs4": "Carbon-based Electronics",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168546": {
+"hs4": "Electrical Insulators",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168547": {
+"hs4": "Metal Insulating Fittings",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"168548": {
+"hs4": "Electrical Parts",
+"hs2": "Electrical machinery and electronics",
+"section": "Machines",
+"section_id": 16
+},
+"178601": {
+"hs4": "Electric Locomotives",
+"hs2": "Railway and trams",
+"section": "Transportation",
+"section_id": 17
+},
+"178602": {
+"hs4": "Other Locomotives (N.E.S.)",
+"hs2": "Railway and trams",
+"section": "Transportation",
+"section_id": 17
+},
+"178603": {
+"hs4": "Self-Propelled Rail Transport",
+"hs2": "Railway and trams",
+"section": "Transportation",
+"section_id": 17
+},
+"178604": {
+"hs4": "Railway Maintenance Vehicles",
+"hs2": "Railway and trams",
+"section": "Transportation",
+"section_id": 17
+},
+"178605": {
+"hs4": "Railway Passenger Cars",
+"hs2": "Railway and trams",
+"section": "Transportation",
+"section_id": 17
+},
+"178606": {
+"hs4": "Railway Freight Cars",
+"hs2": "Railway and trams",
+"section": "Transportation",
+"section_id": 17
+},
+"178607": {
+"hs4": "Locomotive Parts",
+"hs2": "Railway and trams",
+"section": "Transportation",
+"section_id": 17
+},
+"178608": {
+"hs4": "Railway Track Fixtures",
+"hs2": "Railway and trams",
+"section": "Transportation",
+"section_id": 17
+},
+"178609": {
+"hs4": "Railway Cargo Containers",
+"hs2": "Railway and trams",
+"section": "Transportation",
+"section_id": 17
+},
+"178701": {
+"hs4": "Tractors",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178702": {
+"hs4": "Buses",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178703": {
+"hs4": "Cars",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178704": {
+"hs4": "Delivery Trucks",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178705": {
+"hs4": "Special purpose motor vehicles",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178706": {
+"hs4": "Motor vehicle (8701 to 8705) chassis fitted with engine",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178707": {
+"hs4": "Vehicle Bodies (including cabs) for the motor vehicles (8701 to 8705)",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178708": {
+"hs4": "Motor vehicles; parts and accessories (8701 to 8705)",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178709": {
+"hs4": "Work Trucks",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178710": {
+"hs4": "Tanks and Armored vehicles",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178711": {
+"hs4": "Motorcycles and cycles",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178712": {
+"hs4": "Bicycles, delivery tricycles, other cycles",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178713": {
+"hs4": "Wheelchairs",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178714": {
+"hs4": "Bi-Wheel Vehicle Parts",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178715": {
+"hs4": "Baby Carriages",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178716": {
+"hs4": "Trailers and semi-trailers, not mechanically propelled vehicles",
+"hs2": "Cars, tractors, trucks & parts thereof.",
+"section": "Transportation",
+"section_id": 17
+},
+"178801": {
+"hs4": "Non-powered Aircraft",
+"hs2": "Aircraft and Spacecraft",
+"section": "Transportation",
+"section_id": 17
+},
+"178802": {
+"hs4": "Planes, Helicopters, and/or Spacecraft",
+"hs2": "Aircraft and Spacecraft",
+"section": "Transportation",
+"section_id": 17
+},
+"178803": {
+"hs4": "Aircraft parts (gliders, balloons, and powered aircraft)",
+"hs2": "Aircraft and Spacecraft",
+"section": "Transportation",
+"section_id": 17
+},
+"178804": {
+"hs4": "Parachutes",
+"hs2": "Aircraft and Spacecraft",
+"section": "Transportation",
+"section_id": 17
+},
+"178805": {
+"hs4": "Aircraft Launch Gear",
+"hs2": "Aircraft and Spacecraft",
+"section": "Transportation",
+"section_id": 17
+},
+"178901": {
+"hs4": "Passenger and Cargo Ships",
+"hs2": "Ships, boats, & floating structures",
+"section": "Transportation",
+"section_id": 17
+},
+"178902": {
+"hs4": "Fishing Ships",
+"hs2": "Ships, boats, & floating structures",
+"section": "Transportation",
+"section_id": 17
+},
+"178903": {
+"hs4": "Recreational Boats",
+"hs2": "Ships, boats, & floating structures",
+"section": "Transportation",
+"section_id": 17
+},
+"178904": {
+"hs4": "Tug Boats",
+"hs2": "Ships, boats, & floating structures",
+"section": "Transportation",
+"section_id": 17
+},
+"178905": {
+"hs4": "Special Purpose Ships",
+"hs2": "Ships, boats, & floating structures",
+"section": "Transportation",
+"section_id": 17
+},
+"178906": {
+"hs4": "Other Sea Vessels",
+"hs2": "Ships, boats, & floating structures",
+"section": "Transportation",
+"section_id": 17
+},
+"178907": {
+"hs4": "Other Floating Structures",
+"hs2": "Ships, boats, & floating structures",
+"section": "Transportation",
+"section_id": 17
+},
+"178908": {
+"hs4": "Scrap Vessels",
+"hs2": "Ships, boats, & floating structures",
+"section": "Transportation",
+"section_id": 17
+},
+"189001": {
+"hs4": "Optical Fibers and optical fibre bundles",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189002": {
+"hs4": "Mirrors and Lenses",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189003": {
+"hs4": "Eyewear Frames",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189004": {
+"hs4": "Eyewear",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189005": {
+"hs4": "Binoculars and Telescopes",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189006": {
+"hs4": "Cameras",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189007": {
+"hs4": "Video Cameras",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189008": {
+"hs4": "Image Projectors",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189009": {
+"hs4": "Photocopiers",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189010": {
+"hs4": "Photo Lab Equipment",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189011": {
+"hs4": "Microscopes",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189012": {
+"hs4": "Non-optical Microscopes",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189013": {
+"hs4": "LCDs",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189014": {
+"hs4": "Compasses",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189015": {
+"hs4": "Surveying Equipment",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189016": {
+"hs4": "Balances",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189017": {
+"hs4": "Drafting Tools",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189018": {
+"hs4": "Medical Instruments",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189019": {
+"hs4": "Therapeutic Appliances",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189020": {
+"hs4": "Breathing Appliances",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189021": {
+"hs4": "Orthopedic Appliances",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189022": {
+"hs4": "X-Ray Equipment",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189023": {
+"hs4": "Instructional Models",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189024": {
+"hs4": "Tensile Testing Machines",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189025": {
+"hs4": "Hydrometers",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189026": {
+"hs4": "Gas and Liquid Flow Measuring Instruments",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189027": {
+"hs4": "Chemical Analysis Instruments",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189028": {
+"hs4": "Utility Meters",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189029": {
+"hs4": "Revolution Counters",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189030": {
+"hs4": "Oscilloscopes",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189031": {
+"hs4": "Other Measuring Instruments",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189032": {
+"hs4": "Thermostats",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189033": {
+"hs4": "Opto-Electric Instrument Parts",
+"hs2": "Optical, photo, & film equipment; medical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189101": {
+"hs4": "Precious Metal Watches",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189102": {
+"hs4": "Base Metal Watches",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189103": {
+"hs4": "Clocks with Watch Movements",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189104": {
+"hs4": "Dashboard Clocks",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189105": {
+"hs4": "Other Clocks",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189106": {
+"hs4": "Time Recording Instruments",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189107": {
+"hs4": "Time Switches",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189108": {
+"hs4": "Watch Movements",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189109": {
+"hs4": "Clock Movements",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189110": {
+"hs4": "Incomplete Movement Sets",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189111": {
+"hs4": "Watch Cases and Parts",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189112": {
+"hs4": "Clock Cases and Parts",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189113": {
+"hs4": "Watch Straps",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189114": {
+"hs4": "Other Clocks and Watches",
+"hs2": "Clocks, watches, & parts",
+"section": "Instruments",
+"section_id": 18
+},
+"189201": {
+"hs4": "Pianos",
+"hs2": "Musical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189202": {
+"hs4": "String Instruments",
+"hs2": "Musical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189205": {
+"hs4": "Wind Instruments",
+"hs2": "Musical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189206": {
+"hs4": "Percussion",
+"hs2": "Musical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189207": {
+"hs4": "Electric Musical Instruments",
+"hs2": "Musical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189208": {
+"hs4": "Other Musical Instruments",
+"hs2": "Musical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"189209": {
+"hs4": "Musical Instrument Parts",
+"hs2": "Musical instruments",
+"section": "Instruments",
+"section_id": 18
+},
+"199301": {
+"hs4": "Military Weapons",
+"hs2": "Weapons",
+"section": "Weapons",
+"section_id": 19
+},
+"199302": {
+"hs4": "Handguns",
+"hs2": "Weapons",
+"section": "Weapons",
+"section_id": 19
+},
+"199303": {
+"hs4": "Other Firearms",
+"hs2": "Weapons",
+"section": "Weapons",
+"section_id": 19
+},
+"199304": {
+"hs4": "Spring, Air, and Gas Guns",
+"hs2": "Weapons",
+"section": "Weapons",
+"section_id": 19
+},
+"199305": {
+"hs4": "Weapons Parts and Accessories",
+"hs2": "Weapons",
+"section": "Weapons",
+"section_id": 19
+},
+"199306": {
+"hs4": "Explosive Ammunition",
+"hs2": "Weapons",
+"section": "Weapons",
+"section_id": 19
+},
+"199307": {
+"hs4": "Bladed Weapons and Accessories",
+"hs2": "Weapons",
+"section": "Weapons",
+"section_id": 19
+},
+"209401": {
+"hs4": "Seats",
+"hs2": "Furniture, bedding, lamps, & prefab buildings",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209402": {
+"hs4": "Medical Furniture",
+"hs2": "Furniture, bedding, lamps, & prefab buildings",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209403": {
+"hs4": "Other Furniture",
+"hs2": "Furniture, bedding, lamps, & prefab buildings",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209404": {
+"hs4": "Mattresses",
+"hs2": "Furniture, bedding, lamps, & prefab buildings",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209405": {
+"hs4": "Light Fixtures",
+"hs2": "Furniture, bedding, lamps, & prefab buildings",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209406": {
+"hs4": "Prefabricated Buildings",
+"hs2": "Furniture, bedding, lamps, & prefab buildings",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209503": {
+"hs4": "Other toys",
+"hs2": "Toys, games, & sports",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209504": {
+"hs4": "Video and Card Games",
+"hs2": "Toys, games, & sports",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209505": {
+"hs4": "Party Decorations",
+"hs2": "Toys, games, & sports",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209506": {
+"hs4": "Sports Equipment",
+"hs2": "Toys, games, & sports",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209507": {
+"hs4": "Fishing and Hunting Equipment",
+"hs2": "Toys, games, & sports",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209508": {
+"hs4": "Fairground Amusements",
+"hs2": "Toys, games, & sports",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209601": {
+"hs4": "Worked Ivory and Bone",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209602": {
+"hs4": "Vegetable and Mineral Carvings",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209603": {
+"hs4": "Brooms",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209604": {
+"hs4": "Hand Sifters",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209605": {
+"hs4": "Travel Kits",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209606": {
+"hs4": "Buttons",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209607": {
+"hs4": "Zippers",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209608": {
+"hs4": "Pens",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209609": {
+"hs4": "Pencils and Crayons",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209610": {
+"hs4": "Chalkboards",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209611": {
+"hs4": "Rubber Stamps",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209612": {
+"hs4": "Ink Ribbons",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209613": {
+"hs4": "Lighters",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209614": {
+"hs4": "Smoking Pipes",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209615": {
+"hs4": "Combs",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209616": {
+"hs4": "Scent Sprays",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209617": {
+"hs4": "Vacuum Flask",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"209618": {
+"hs4": "Mannequins",
+"hs2": "Misc. manufactures",
+"section": "Miscellaneous",
+"section_id": 20
+},
+"219701": {
+"hs4": "Paintings",
+"hs2": "Art & antiques",
+"section": "Arts and Antiques",
+"section_id": 21
+},
+"219702": {
+"hs4": "Prints",
+"hs2": "Art & antiques",
+"section": "Arts and Antiques",
+"section_id": 21
+},
+"219703": {
+"hs4": "Sculptures",
+"hs2": "Art & antiques",
+"section": "Arts and Antiques",
+"section_id": 21
+},
+"219704": {
+"hs4": "Revenue Stamps",
+"hs2": "Art & antiques",
+"section": "Arts and Antiques",
+"section_id": 21
+},
+"219705": {
+"hs4": "Collector's Items",
+"hs2": "Art & antiques",
+"section": "Arts and Antiques",
+"section_id": 21
+},
+"219706": {
+"hs4": "Antiques",
+"hs2": "Art & antiques",
+"section": "Arts and Antiques",
+"section_id": 21
+}
+}

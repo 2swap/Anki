@@ -1,0 +1,26 @@
+<div class="prompt">What does the highlighted particle decay into?</div>
+<div class="smgrid" id="grid"></div>
+<div class="channels answer">{{Channels}}</div>
+<script>
+function smGrid(el, highlight, products) {
+  var S = [["u", "c", "t", "g", "H"],
+           ["d", "s", "b", "&gamma;", ""],
+           ["e", "&mu;", "&tau;", "Z<sup>0</sup>", ""],
+           ["&nu;<sub>e</sub>", "&nu;<sub>&mu;</sub>", "&nu;<sub>&tau;</sub>", "W<sup>&plusmn;</sup>", ""]];
+  var html = "";
+  for (var r = 0; r < 4; r++) {
+    for (var c = 0; c < 5; c++) {
+      var pos = r + "," + c;
+      var cls = "cell" + (S[r][c] ? "" : " empty") + (c == 3 ? " bosons" : "") +
+                (highlight.indexOf(pos) >= 0 ? " hl" : products.indexOf(pos) >= 0 ? " prod" : "");
+      html += '<div class="' + cls + '">' + S[r][c] + "</div>";
+    }
+  }
+  el.innerHTML = html;
+}
+(function () {
+  var back = !!document.getElementById("back");
+  var products = back ? "{{Products}}".split(" ") : [];
+  smGrid(document.getElementById("grid"), ["{{Position}}"], products);
+})();
+</script>

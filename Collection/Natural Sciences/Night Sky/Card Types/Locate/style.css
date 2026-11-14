@@ -1,0 +1,13 @@
+.card, .card.nightMode { font-family: arial; font-size: 18px; text-align: center; color: #eee; background: #000; }
+    canvas {
+        display: block; margin: 0 auto; background: #000; border-radius: 50%;
+        touch-action: none;
+        /* Width and height are both set directly from JS (sizeCanvas in
+           sky.js), always to the same pixel value, so the element is a
+           square by construction. No CSS sizing here to avoid fighting
+           with that. */
+    }
+    .hint { font-size: 13px; color: #999; margin-top: 6px; }
+    hr#answer { margin: 14px 0; border-color: #444; }
+    b.answer { font-size: 22px; }
+    i { font-size: 14px; color: #aaa; }

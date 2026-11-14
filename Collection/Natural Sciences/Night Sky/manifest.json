@@ -1,0 +1,11 @@
+{
+  "models": {
+    "Locate": {
+      "modelName": "Night Sky - Locate",
+      "keyField": "Slug"
+    }
+  },
+  "media": {
+    "sky.js": "media/sky.js"
+  }
+}

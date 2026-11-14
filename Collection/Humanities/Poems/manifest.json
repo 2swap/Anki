@@ -1,0 +1,9 @@
+{
+  "models": {
+    "Poem": {
+      "modelName": "Full Poem",
+      "keyField": "Slug"
+    }
+  },
+  "media": {}
+}

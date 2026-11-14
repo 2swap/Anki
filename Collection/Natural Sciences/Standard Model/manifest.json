@@ -1,0 +1,16 @@
+{
+  "models": {
+    "Particle": {
+      "modelName": "Standard Model - Particle",
+      "keyField": "Name"
+    },
+    "Group": {
+      "modelName": "Standard Model - Group",
+      "keyField": "Group"
+    }
+  },
+  "build": [
+    "build.py"
+  ],
+  "media": {}
+}

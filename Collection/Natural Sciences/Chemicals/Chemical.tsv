@@ -1,0 +1,178 @@
+Name	Formula	SMILES	Structure	Tags
+Water	H<sub>2</sub>O	O	"<img src=""chem_water.svg"">"	chemicals
+Carbon dioxide	CO<sub>2</sub>	O=C=O	"<img src=""chem_carbon_dioxide.svg"">"	chemicals
+Carbon monoxide	CO	[C-]#[O+]	"<img src=""chem_carbon_monoxide.svg"">"	chemicals
+Ozone	O<sub>3</sub>	[O-][O+]=O	"<img src=""chem_ozone.svg"">"	chemicals
+Ammonia	NH<sub>3</sub>	N	"<img src=""chem_ammonia.svg"">"	chemicals
+Methane	CH<sub>4</sub>	C	"<img src=""chem_methane.svg"">"	chemicals
+Sodium chloride (table salt)	NaCl	[Na+].[Cl-]	"<img src=""chem_sodium_chloride.svg"">"	chemicals
+Sulfuric acid	H<sub>2</sub>SO<sub>4</sub>	OS(=O)(=O)O	"<img src=""chem_sulfuric_acid.svg"">"	chemicals
+Hydrogen chloride (hydrochloric acid)	HCl	Cl	"<img src=""chem_hydrogen_chloride.svg"">"	chemicals
+Nitric acid	HNO<sub>3</sub>	O[N+](=O)[O-]	"<img src=""chem_nitric_acid.svg"">"	chemicals
+Hydrogen peroxide	H<sub>2</sub>O<sub>2</sub>	OO	"<img src=""chem_hydrogen_peroxide.svg"">"	chemicals
+Sodium hydroxide (lye, caustic soda)	NaOH	[Na+].[OH-]	"<img src=""chem_sodium_hydroxide.svg"">"	chemicals
+Calcium carbonate (limestone, chalk)	CaCO<sub>3</sub>	[Ca+2].[O-]C([O-])=O	"<img src=""chem_calcium_carbonate.svg"">"	chemicals
+Sodium bicarbonate (baking soda)	NaHCO<sub>3</sub>	[Na+].OC([O-])=O	"<img src=""chem_sodium_bicarbonate.svg"">"	chemicals
+Sodium carbonate (washing soda)	Na<sub>2</sub>CO<sub>3</sub>	[Na+].[Na+].[O-]C([O-])=O	"<img src=""chem_sodium_carbonate.svg"">"	chemicals
+Phosphoric acid	H<sub>3</sub>PO<sub>4</sub>	OP(=O)(O)O	"<img src=""chem_phosphoric_acid.svg"">"	chemicals
+Nitrous oxide (laughing gas)	N<sub>2</sub>O	[N-]=[N+]=O	"<img src=""chem_nitrous_oxide.svg"">"	chemicals
+Nitrogen dioxide	NO<sub>2</sub>	[O]N=O	"<img src=""chem_nitrogen_dioxide.svg"">"	chemicals
+Nitric oxide	NO	[N]=O	"<img src=""chem_nitric_oxide.svg"">"	chemicals
+Sulfur dioxide	SO<sub>2</sub>	O=S=O	"<img src=""chem_sulfur_dioxide.svg"">"	chemicals
+Hydrogen sulfide	H<sub>2</sub>S	S	"<img src=""chem_hydrogen_sulfide.svg"">"	chemicals
+Calcium oxide (quicklime)	CaO	[Ca+2].[O-2]	"<img src=""chem_calcium_oxide.svg"">"	chemicals
+Calcium hydroxide (slaked lime)	Ca(OH)<sub>2</sub>	[Ca+2].[OH-].[OH-]	"<img src=""chem_calcium_hydroxide.svg"">"	chemicals
+Silicon dioxide (silica, quartz)	SiO<sub>2</sub>	O=[Si]=O	"<img src=""chem_silicon_dioxide.svg"">"	chemicals
+Potassium chloride	KCl	[K+].[Cl-]	"<img src=""chem_potassium_chloride.svg"">"	chemicals
+Potassium nitrate (saltpetre)	KNO<sub>3</sub>	[K+].[O-][N+](=O)[O-]	"<img src=""chem_potassium_nitrate.svg"">"	chemicals
+Ammonium nitrate	NH<sub>4</sub>NO<sub>3</sub>	[NH4+].[O-][N+](=O)[O-]	"<img src=""chem_ammonium_nitrate.svg"">"	chemicals
+Calcium sulfate (gypsum, plaster)	CaSO<sub>4</sub>	[Ca+2].[O-]S(=O)(=O)[O-]	"<img src=""chem_calcium_sulfate.svg"">"	chemicals
+Iron(III) oxide (rust, hematite)	Fe<sub>2</sub>O<sub>3</sub>	[Fe+3].[Fe+3].[O-2].[O-2].[O-2]	"<img src=""chem_iron_iii_oxide.svg"">"	chemicals
+Aluminium oxide (alumina, corundum)	Al<sub>2</sub>O<sub>3</sub>	[Al+3].[Al+3].[O-2].[O-2].[O-2]	"<img src=""chem_aluminium_oxide.svg"">"	chemicals
+Titanium dioxide	TiO<sub>2</sub>	O=[Ti]=O	"<img src=""chem_titanium_dioxide.svg"">"	chemicals
+Sodium hypochlorite (bleach)	NaOCl	[Na+].[O-]Cl	"<img src=""chem_sodium_hypochlorite.svg"">"	chemicals
+Hydrogen cyanide	HCN	C#N	"<img src=""chem_hydrogen_cyanide.svg"">"	chemicals
+Hydrogen fluoride (hydrofluoric acid)	HF	F	"<img src=""chem_hydrogen_fluoride.svg"">"	chemicals
+Copper(II) sulfate	CuSO<sub>4</sub>	[Cu+2].[O-]S(=O)(=O)[O-]	"<img src=""chem_copper_ii_sulfate.svg"">"	chemicals
+Potassium permanganate	KMnO<sub>4</sub>	[K+].[O-][Mn](=O)(=O)=O	"<img src=""chem_potassium_permanganate.svg"">"	chemicals
+Calcium phosphate	Ca<sub>3</sub>(PO<sub>4</sub>)<sub>2</sub>	[Ca+2].[Ca+2].[Ca+2].[O-]P([O-])([O-])=O.[O-]P([O-])([O-])=O	"<img src=""chem_calcium_phosphate.svg"">"	chemicals
+Ethane	C<sub>2</sub>H<sub>6</sub>	CC	"<img src=""chem_ethane.svg"">"	chemicals
+Propane	C<sub>3</sub>H<sub>8</sub>	CCC	"<img src=""chem_propane.svg"">"	chemicals
+Butane	C<sub>4</sub>H<sub>10</sub>	CCCC	"<img src=""chem_butane.svg"">"	chemicals
+Octane	C<sub>8</sub>H<sub>18</sub>	CCCCCCCC	"<img src=""chem_octane.svg"">"	chemicals
+Ethylene (ethene)	C<sub>2</sub>H<sub>4</sub>	C=C	"<img src=""chem_ethylene.svg"">"	chemicals
+Propylene (propene)	C<sub>3</sub>H<sub>6</sub>	CC=C	"<img src=""chem_propylene.svg"">"	chemicals
+Acetylene (ethyne)	C<sub>2</sub>H<sub>2</sub>	C#C	"<img src=""chem_acetylene.svg"">"	chemicals
+1,3-Butadiene	C<sub>4</sub>H<sub>6</sub>	C=CC=C	"<img src=""chem_1_3_butadiene.svg"">"	chemicals
+Benzene	C<sub>6</sub>H<sub>6</sub>	C1=CC=CC=C1	"<img src=""chem_benzene.svg"">"	chemicals
+Toluene	C<sub>7</sub>H<sub>8</sub>	CC1=CC=CC=C1	"<img src=""chem_toluene.svg"">"	chemicals
+Styrene	C<sub>8</sub>H<sub>8</sub>	C=CC1=CC=CC=C1	"<img src=""chem_styrene.svg"">"	chemicals
+Naphthalene	C<sub>10</sub>H<sub>8</sub>	C1=CC=C2C=CC=CC2=C1	"<img src=""chem_naphthalene.svg"">"	chemicals
+Methanol	CH<sub>4</sub>O	CO	"<img src=""chem_methanol.svg"">"	chemicals
+Ethanol	C<sub>2</sub>H<sub>6</sub>O	CCO	"<img src=""chem_ethanol.svg"">"	chemicals
+Isopropanol (rubbing alcohol)	C<sub>3</sub>H<sub>8</sub>O	CC(C)O	"<img src=""chem_isopropanol.svg"">"	chemicals
+Ethylene glycol (antifreeze)	C<sub>2</sub>H<sub>6</sub>O<sub>2</sub>	C(CO)O	"<img src=""chem_ethylene_glycol.svg"">"	chemicals
+Glycerol	C<sub>3</sub>H<sub>8</sub>O<sub>3</sub>	C(C(CO)O)O	"<img src=""chem_glycerol.svg"">"	chemicals
+Phenol	C<sub>6</sub>H<sub>6</sub>O	C1=CC=C(C=C1)O	"<img src=""chem_phenol.svg"">"	chemicals
+Formaldehyde (methanal)	CH<sub>2</sub>O	C=O	"<img src=""chem_formaldehyde.svg"">"	chemicals
+Acetaldehyde (ethanal)	C<sub>2</sub>H<sub>4</sub>O	CC=O	"<img src=""chem_acetaldehyde.svg"">"	chemicals
+Acetone	C<sub>3</sub>H<sub>6</sub>O	CC(=O)C	"<img src=""chem_acetone.svg"">"	chemicals
+Formic acid	CH<sub>2</sub>O<sub>2</sub>	C(=O)O	"<img src=""chem_formic_acid.svg"">"	chemicals
+Acetic acid	C<sub>2</sub>H<sub>4</sub>O<sub>2</sub>	CC(=O)O	"<img src=""chem_acetic_acid.svg"">"	chemicals
+Ethyl acetate	C<sub>4</sub>H<sub>8</sub>O<sub>2</sub>	CCOC(=O)C	"<img src=""chem_ethyl_acetate.svg"">"	chemicals
+Diethyl ether	C<sub>4</sub>H<sub>10</sub>O	CCOCC	"<img src=""chem_diethyl_ether.svg"">"	chemicals
+Ethylene oxide	C<sub>2</sub>H<sub>4</sub>O	C1CO1	"<img src=""chem_ethylene_oxide.svg"">"	chemicals
+Vinyl chloride	C<sub>2</sub>H<sub>3</sub>Cl	C=CCl	"<img src=""chem_vinyl_chloride.svg"">"	chemicals
+Chloroform	CHCl<sub>3</sub>	C(Cl)(Cl)Cl	"<img src=""chem_chloroform.svg"">"	chemicals
+Dichloromethane	CH<sub>2</sub>Cl<sub>2</sub>	C(Cl)Cl	"<img src=""chem_dichloromethane.svg"">"	chemicals
+Dichlorodifluoromethane (Freon-12)	CCl<sub>2</sub>F<sub>2</sub>	C(F)(F)(Cl)Cl	"<img src=""chem_dichlorodifluoromethane.svg"">"	chemicals
+Aniline	C<sub>6</sub>H<sub>7</sub>N	C1=CC=C(C=C1)N	"<img src=""chem_aniline.svg"">"	chemicals
+Terephthalic acid	C<sub>8</sub>H<sub>6</sub>O<sub>4</sub>	C1=CC(=CC=C1C(=O)O)C(=O)O	"<img src=""chem_terephthalic_acid.svg"">"	chemicals
+Bisphenol A	C<sub>15</sub>H<sub>16</sub>O<sub>2</sub>	CC(C)(C1=CC=C(C=C1)O)C2=CC=C(C=C2)O	"<img src=""chem_bisphenol_a.svg"">"	chemicals
+Urea	CH<sub>4</sub>N<sub>2</sub>O	C(=O)(N)N	"<img src=""chem_urea.svg"">"	chemicals
+Glucose	C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>	C([C@@H]1[C@H]([C@@H]([C@H](C(O1)O)O)O)O)O	"<img src=""chem_glucose.svg"">"	chemicals
+Sucrose (table sugar)	C<sub>12</sub>H<sub>22</sub>O<sub>11</sub>	C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O[C@]2([C@H]([C@@H]([C@H](O2)CO)O)O)CO)O)O)O)O	"<img src=""chem_sucrose.svg"">"	chemicals
+Lactic acid	C<sub>3</sub>H<sub>6</sub>O<sub>3</sub>	CC(C(=O)O)O	"<img src=""chem_lactic_acid.svg"">"	chemicals
+Citric acid	C<sub>6</sub>H<sub>8</sub>O<sub>7</sub>	C(C(=O)O)C(CC(=O)O)(C(=O)O)O	"<img src=""chem_citric_acid.svg"">"	chemicals
+Ascorbic acid (vitamin C)	C<sub>6</sub>H<sub>8</sub>O<sub>6</sub>	C([C@@H]([C@@H]1C(=C(C(=O)O1)O)O)O)O	"<img src=""chem_ascorbic_acid.svg"">"	chemicals
+Glycine (Gly, G)	C<sub>2</sub>H<sub>5</sub>NO<sub>2</sub>	C(C(=O)O)N	"<img src=""chem_glycine.svg"">"	amino_acid chemicals
+Monosodium glutamate (MSG)	C<sub>5</sub>H<sub>8</sub>NNaO<sub>4</sub>	C(CC(=O)[O-])[C@@H](C(=O)O)N.[Na+]	"<img src=""chem_monosodium_glutamate.svg"">"	chemicals
+Adenosine triphosphate (ATP)	C<sub>10</sub>H<sub>16</sub>N<sub>5</sub>O<sub>13</sub>P<sub>3</sub>	C1=NC(=C2C(=N1)N(C=N2)[C@H]3[C@@H]([C@@H]([C@H](O3)COP(=O)(O)OP(=O)(O)OP(=O)(O)O)O)O)N	"<img src=""chem_adenosine_triphosphate.svg"">"	chemicals
+Cholesterol	C<sub>27</sub>H<sub>46</sub>O	C[C@H](CCCC(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C	"<img src=""chem_cholesterol.svg"">"	chemicals
+Testosterone	C<sub>19</sub>H<sub>28</sub>O<sub>2</sub>	C[C@]12CC[C@H]3[C@H]([C@@H]1CC[C@@H]2O)CCC4=CC(=O)CC[C@]34C	"<img src=""chem_testosterone.svg"">"	chemicals
+Estradiol	C<sub>18</sub>H<sub>24</sub>O<sub>2</sub>	C[C@]12CC[C@H]3[C@H]([C@@H]1CC[C@@H]2O)CCC4=C3C=CC(=C4)O	"<img src=""chem_estradiol.svg"">"	chemicals
+Adrenaline (epinephrine)	C<sub>9</sub>H<sub>13</sub>NO<sub>3</sub>	CNC[C@@H](C1=CC(=C(C=C1)O)O)O	"<img src=""chem_adrenaline.svg"">"	chemicals
+Dopamine	C<sub>8</sub>H<sub>11</sub>NO<sub>2</sub>	C1=CC(=C(C=C1CCN)O)O	"<img src=""chem_dopamine.svg"">"	chemicals
+Serotonin	C<sub>10</sub>H<sub>12</sub>N<sub>2</sub>O	C1=CC2=C(C=C1O)C(=CN2)CCN	"<img src=""chem_serotonin.svg"">"	chemicals
+Caffeine	C<sub>8</sub>H<sub>10</sub>N<sub>4</sub>O<sub>2</sub>	CN1C=NC2=C1C(=O)N(C(=O)N2C)C	"<img src=""chem_caffeine.svg"">"	chemicals
+Nicotine	C<sub>10</sub>H<sub>14</sub>N<sub>2</sub>	CN1CCC[C@H]1C2=CN=CC=C2	"<img src=""chem_nicotine.svg"">"	chemicals
+Aspirin (acetylsalicylic acid)	C<sub>9</sub>H<sub>8</sub>O<sub>4</sub>	CC(=O)OC1=CC=CC=C1C(=O)O	"<img src=""chem_aspirin.svg"">"	chemicals
+Paracetamol (acetaminophen)	C<sub>8</sub>H<sub>9</sub>NO<sub>2</sub>	CC(=O)NC1=CC=C(C=C1)O	"<img src=""chem_paracetamol.svg"">"	chemicals
+Ibuprofen	C<sub>13</sub>H<sub>18</sub>O<sub>2</sub>	CC(C)CC1=CC=C(C=C1)C(C)C(=O)O	"<img src=""chem_ibuprofen.svg"">"	chemicals
+Morphine	C<sub>17</sub>H<sub>19</sub>NO<sub>3</sub>	CN1CC[C@]23[C@@H]4[C@H]1CC5=C2C(=C(C=C5)O)O[C@H]3[C@H](C=C4)O	"<img src=""chem_morphine.svg"">"	chemicals
+Penicillin G	C<sub>16</sub>H<sub>18</sub>N<sub>2</sub>O<sub>4</sub>S	CC1([C@@H](N2[C@H](S1)[C@@H](C2=O)NC(=O)CC3=CC=CC=C3)C(=O)O)C	"<img src=""chem_penicillin_g.svg"">"	chemicals
+Capsaicin	C<sub>18</sub>H<sub>27</sub>NO<sub>3</sub>	CC(C)/C=C/CCCCC(=O)NCC1=CC(=C(C=C1)O)OC	"<img src=""chem_capsaicin.svg"">"	chemicals
+Vanillin	C<sub>8</sub>H<sub>8</sub>O<sub>3</sub>	COC1=C(C=CC(=C1)C=O)O	"<img src=""chem_vanillin.svg"">"	chemicals
+TNT (trinitrotoluene)	C<sub>7</sub>H<sub>5</sub>N<sub>3</sub>O<sub>6</sub>	CC1=C(C=C(C=C1[N+](=O)[O-])[N+](=O)[O-])[N+](=O)[O-]	"<img src=""chem_tnt.svg"">"	chemicals
+Nitroglycerin	C<sub>3</sub>H<sub>5</sub>N<sub>3</sub>O<sub>9</sub>	C(C(CO[N+](=O)[O-])O[N+](=O)[O-])O[N+](=O)[O-]	"<img src=""chem_nitroglycerin.svg"">"	chemicals
+Menthol	C<sub>10</sub>H<sub>20</sub>O	C[C@@H]1CC[C@H]([C@@H](C1)O)C(C)C	"<img src=""chem_menthol.svg"">"	chemicals
+DDT	C<sub>14</sub>H<sub>9</sub>Cl<sub>5</sub>	C1=CC(=CC=C1C(C2=CC=C(C=C2)Cl)C(Cl)(Cl)Cl)Cl	"<img src=""chem_ddt.svg"">"	chemicals
+Glyphosate	C<sub>3</sub>H<sub>8</sub>NO<sub>5</sub>P	C(C(=O)O)NCP(=O)(O)O	"<img src=""chem_glyphosate.svg"">"	chemicals
+THC (tetrahydrocannabinol)	C<sub>21</sub>H<sub>30</sub>O<sub>2</sub>	CCCCCC1=CC(=C2[C@@H]3C=C(CC[C@H]3C(OC2=C1)(C)C)C)O	"<img src=""chem_thc.svg"">"	chemicals
+Cocaine	C<sub>17</sub>H<sub>21</sub>NO<sub>4</sub>	CN1[C@H]2CC[C@@H]1[C@H]([C@H](C2)OC(=O)C3=CC=CC=C3)C(=O)OC	"<img src=""chem_cocaine.svg"">"	chemicals
+Quinine	C<sub>20</sub>H<sub>24</sub>N<sub>2</sub>O<sub>2</sub>	COC1=CC2=C(C=CN=C2C=C1)[C@H]([C@@H]3C[C@@H]4CCN3C[C@@H]4C=C)O	"<img src=""chem_quinine.svg"">"	chemicals
+Beta-carotene	C<sub>40</sub>H<sub>56</sub>	CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(/C=C/C=C(/C=C/C2=C(CCCC2(C)C)C)\C)\C)/C)/C	"<img src=""chem_beta_carotene.svg"">"	chemicals
+Chlorophyll a	C<sub>55</sub>H<sub>72</sub>MgN<sub>4</sub>O<sub>5</sub>	CCC1=C(C2=NC1=CC3=C(C4=C([N-]3)C(=C5[C@H]([C@@H](C(=N5)C=C6C(=C(C(=C2)[N-]6)C=C)C)C)CCC(=O)OC/C=C(\C)/CCC[C@H](C)CCC[C@H](C)CCCC(C)C)[C@H](C4=O)C(=O)OC)C)C.[Mg+2]	"<img src=""chem_chlorophyll_a.svg"">"	chemicals
+Salicylic acid	C<sub>7</sub>H<sub>6</sub>O<sub>3</sub>	C1=CC=C(C(=C1)C(=O)O)O	"<img src=""chem_salicylic_acid.svg"">"	chemicals
+Oleic acid	C<sub>18</sub>H<sub>34</sub>O<sub>2</sub>	CCCCCCCC/C=C\CCCCCCCC(=O)O	"<img src=""chem_oleic_acid.svg"">"	chemicals
+p-Xylene	C<sub>8</sub>H<sub>10</sub>	CC1=CC=C(C=C1)C	"<img src=""chem_p_xylene.svg"">"	chemicals
+Magnesium sulfate (Epsom salt)	MgSO<sub>4</sub>	[Mg+2].[O-]S(=O)(=O)[O-]	"<img src=""chem_magnesium_sulfate.svg"">"	chemicals
+Alanine (Ala, A)	C<sub>3</sub>H<sub>7</sub>NO<sub>2</sub>	C[C@@H](C(=O)O)N	"<img src=""chem_alanine.svg"">"	amino_acid chemicals
+Arginine (Arg, R)	C<sub>6</sub>H<sub>14</sub>N<sub>4</sub>O<sub>2</sub>	C(C[C@@H](C(=O)O)N)CN=C(N)N	"<img src=""chem_arginine.svg"">"	amino_acid chemicals
+Asparagine (Asn, N)	C<sub>4</sub>H<sub>8</sub>N<sub>2</sub>O<sub>3</sub>	C([C@@H](C(=O)O)N)C(=O)N	"<img src=""chem_asparagine.svg"">"	amino_acid chemicals
+Aspartic acid (Asp, D)	C<sub>4</sub>H<sub>7</sub>NO<sub>4</sub>	C([C@@H](C(=O)O)N)C(=O)O	"<img src=""chem_aspartic_acid.svg"">"	amino_acid chemicals
+Cysteine (Cys, C)	C<sub>3</sub>H<sub>7</sub>NO<sub>2</sub>S	C([C@@H](C(=O)O)N)S	"<img src=""chem_cysteine.svg"">"	amino_acid chemicals
+Glutamic acid (Glu, E)	C<sub>5</sub>H<sub>9</sub>NO<sub>4</sub>	C(CC(=O)O)[C@@H](C(=O)O)N	"<img src=""chem_glutamic_acid.svg"">"	amino_acid chemicals
+Glutamine (Gln, Q)	C<sub>5</sub>H<sub>10</sub>N<sub>2</sub>O<sub>3</sub>	C(CC(=O)N)[C@@H](C(=O)O)N	"<img src=""chem_glutamine.svg"">"	amino_acid chemicals
+Histidine (His, H)	C<sub>6</sub>H<sub>9</sub>N<sub>3</sub>O<sub>2</sub>	C1=C(NC=N1)C[C@@H](C(=O)O)N	"<img src=""chem_histidine.svg"">"	amino_acid chemicals
+Isoleucine (Ile, I)	C<sub>6</sub>H<sub>13</sub>NO<sub>2</sub>	CC[C@H](C)[C@@H](C(=O)O)N	"<img src=""chem_isoleucine.svg"">"	amino_acid chemicals
+Leucine (Leu, L)	C<sub>6</sub>H<sub>13</sub>NO<sub>2</sub>	CC(C)C[C@@H](C(=O)O)N	"<img src=""chem_leucine.svg"">"	amino_acid chemicals
+Lysine (Lys, K)	C<sub>6</sub>H<sub>14</sub>N<sub>2</sub>O<sub>2</sub>	C(CCN)C[C@@H](C(=O)O)N	"<img src=""chem_lysine.svg"">"	amino_acid chemicals
+Methionine (Met, M)	C<sub>5</sub>H<sub>11</sub>NO<sub>2</sub>S	CSCC[C@@H](C(=O)O)N	"<img src=""chem_methionine.svg"">"	amino_acid chemicals
+Phenylalanine (Phe, F)	C<sub>9</sub>H<sub>11</sub>NO<sub>2</sub>	C1=CC=C(C=C1)C[C@@H](C(=O)O)N	"<img src=""chem_phenylalanine.svg"">"	amino_acid chemicals
+Proline (Pro, P)	C<sub>5</sub>H<sub>9</sub>NO<sub>2</sub>	C1C[C@H](NC1)C(=O)O	"<img src=""chem_proline.svg"">"	amino_acid chemicals
+Serine (Ser, S)	C<sub>3</sub>H<sub>7</sub>NO<sub>3</sub>	C([C@@H](C(=O)O)N)O	"<img src=""chem_serine.svg"">"	amino_acid chemicals
+Threonine (Thr, T)	C<sub>4</sub>H<sub>9</sub>NO<sub>3</sub>	C[C@H]([C@@H](C(=O)O)N)O	"<img src=""chem_threonine.svg"">"	amino_acid chemicals
+Tryptophan (Trp, W)	C<sub>11</sub>H<sub>12</sub>N<sub>2</sub>O<sub>2</sub>	C1=CC=C2C(=C1)C(=CN2)C[C@@H](C(=O)O)N	"<img src=""chem_tryptophan.svg"">"	amino_acid chemicals
+Tyrosine (Tyr, Y)	C<sub>9</sub>H<sub>11</sub>NO<sub>3</sub>	C1=CC(=CC=C1C[C@@H](C(=O)O)N)O	"<img src=""chem_tyrosine.svg"">"	amino_acid chemicals
+Valine (Val, V)	C<sub>5</sub>H<sub>11</sub>NO<sub>2</sub>	CC(C)[C@@H](C(=O)O)N	"<img src=""chem_valine.svg"">"	amino_acid chemicals
+Selenocysteine (Sec, U)	C<sub>3</sub>H<sub>7</sub>NO<sub>2</sub>Se	C([C@@H](C(=O)O)N)[SeH]	"<img src=""chem_selenocysteine.svg"">"	amino_acid chemicals
+Pyrrolysine (Pyl, O)	C<sub>12</sub>H<sub>21</sub>N<sub>3</sub>O<sub>3</sub>	C[C@@H]1CC=N[C@H]1C(=O)NCCCC[C@@H](C(=O)O)N	"<img src=""chem_pyrrolysine.svg"">"	amino_acid chemicals
+Hydroxyproline (Hyp)	C<sub>5</sub>H<sub>9</sub>NO<sub>3</sub>	C1[C@H](CN[C@@H]1C(=O)O)O	"<img src=""chem_hydroxyproline.svg"">"	amino_acid chemicals
+Indole	C<sub>8</sub>H<sub>7</sub>N	C1=CC=C2C(=C1)C=CN2	"<img src=""chem_indole.svg"">"	chemicals
+Pyrrole	C<sub>4</sub>H<sub>5</sub>N	C1=CNC=C1	"<img src=""chem_pyrrole.svg"">"	chemicals
+Pyrimidine	C<sub>4</sub>H<sub>4</sub>N<sub>2</sub>	C1=CN=CN=C1	"<img src=""chem_pyrimidine.svg"">"	chemicals
+Purine	C<sub>5</sub>H<sub>4</sub>N<sub>4</sub>	C1=C2C(=NC=N1)N=CN2	"<img src=""chem_purine.svg"">"	chemicals
+Uracil	C<sub>4</sub>H<sub>4</sub>N<sub>2</sub>O<sub>2</sub>	C1=CNC(=O)NC1=O	"<img src=""chem_uracil.svg"">"	chemicals
+Cytosine	C<sub>4</sub>H<sub>5</sub>N<sub>3</sub>O	C1=C(NC(=O)N=C1)N	"<img src=""chem_cytosine.svg"">"	chemicals
+Thymine	C<sub>5</sub>H<sub>6</sub>N<sub>2</sub>O<sub>2</sub>	CC1=CNC(=O)NC1=O	"<img src=""chem_thymine.svg"">"	chemicals
+Adenine	C<sub>5</sub>H<sub>5</sub>N<sub>5</sub>	C1=NC2=NC=NC(=C2N1)N	"<img src=""chem_adenine.svg"">"	chemicals
+Guanine	C<sub>5</sub>H<sub>5</sub>N<sub>5</sub>O	C1=NC2=C(N1)C(=O)NC(=N2)N	"<img src=""chem_guanine.svg"">"	chemicals
+Xanthine	C<sub>5</sub>H<sub>4</sub>N<sub>4</sub>O<sub>2</sub>	C1=NC2=C(N1)C(=O)NC(=O)N2	"<img src=""chem_xanthine.svg"">"	chemicals
+Fructose	C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>	C1[C@H]([C@H]([C@@H](C(O1)(CO)O)O)O)O	"<img src=""chem_fructose.svg"">"	chemicals
+Progesterone	C<sub>21</sub>H<sub>30</sub>O<sub>2</sub>	CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C	"<img src=""chem_progesterone.svg"">"	chemicals
+Cortisol (hydrocortisone)	C<sub>21</sub>H<sub>30</sub>O<sub>5</sub>	C[C@]12CCC(=O)C=C1CC[C@@H]3[C@@H]2[C@H](C[C@]4([C@H]3CC[C@@]4(C(=O)CO)O)C)O	"<img src=""chem_cortisol.svg"">"	chemicals
+1-Propanol	C<sub>3</sub>H<sub>8</sub>O	CCCO	"<img src=""chem_1_propanol.svg"">"	chemicals
+Ephedrine	C<sub>10</sub>H<sub>15</sub>NO	C[C@@H]([C@@H](C1=CC=CC=C1)O)NC	"<img src=""chem_ephedrine.svg"">"	chemicals
+Pseudoephedrine	C<sub>10</sub>H<sub>15</sub>NO	C[C@@H]([C@H](C1=CC=CC=C1)O)NC	"<img src=""chem_pseudoephedrine.svg"">"	chemicals
+Tryptamine	C<sub>10</sub>H<sub>12</sub>N<sub>2</sub>	C1=CC=C2C(=C1)C(=CN2)CCN	"<img src=""chem_tryptamine.svg"">"	chemicals
+DMT (dimethyltryptamine)	C<sub>12</sub>H<sub>16</sub>N<sub>2</sub>	CN(C)CCC1=CNC2=CC=CC=C21	"<img src=""chem_dmt.svg"">"	chemicals
+5-MeO-DMT	C<sub>13</sub>H<sub>18</sub>N<sub>2</sub>O	CN(C)CCC1=CNC2=C1C=C(C=C2)OC	"<img src=""chem_5_meo_dmt.svg"">"	chemicals
+Bufotenin	C<sub>12</sub>H<sub>16</sub>N<sub>2</sub>O	CN(C)CCC1=CNC2=C1C=C(C=C2)O	"<img src=""chem_bufotenin.svg"">"	chemicals
+Psilocybin	C<sub>12</sub>H<sub>17</sub>N<sub>2</sub>O<sub>4</sub>P	CN(C)CCC1=CNC2=C1C(=CC=C2)OP(=O)(O)O	"<img src=""chem_psilocybin.svg"">"	chemicals
+Psilocin	C<sub>12</sub>H<sub>16</sub>N<sub>2</sub>O	CN(C)CCC1=CNC2=C1C(=CC=C2)O	"<img src=""chem_psilocin.svg"">"	chemicals
+Baeocystin	C<sub>11</sub>H<sub>15</sub>N<sub>2</sub>O<sub>4</sub>P	CNCCC1=CNC2=C1C(=CC=C2)OP(=O)(O)O	"<img src=""chem_baeocystin.svg"">"	chemicals
+4-AcO-DMT (psilacetin)	C<sub>14</sub>H<sub>18</sub>N<sub>2</sub>O<sub>2</sub>	CC(=O)OC1=CC=CC2=C1C(=CN2)CCN(C)C	"<img src=""chem_4_aco_dmt.svg"">"	chemicals
+Melatonin	C<sub>13</sub>H<sub>16</sub>N<sub>2</sub>O<sub>2</sub>	CC(=O)NCCC1=CNC2=C1C=C(C=C2)OC	"<img src=""chem_melatonin.svg"">"	chemicals
+LSD (lysergic acid diethylamide)	C<sub>20</sub>H<sub>25</sub>N<sub>3</sub>O	CCN(CC)C(=O)[C@H]1CN([C@@H]2CC3=CNC4=CC=CC(=C34)C2=C1)C	"<img src=""chem_lsd.svg"">"	chemicals
+1P-LSD	C<sub>23</sub>H<sub>29</sub>N<sub>3</sub>O<sub>2</sub>	CCC(=O)N1C=C2C[C@@H]3C(=C[C@H](CN3C)C(=O)N(CC)CC)C4=C2C1=CC=C4	"<img src=""chem_1p_lsd.svg"">"	chemicals
+Phenethylamine	C<sub>8</sub>H<sub>11</sub>N	C1=CC=C(C=C1)CCN	"<img src=""chem_phenethylamine.svg"">"	chemicals
+Norepinephrine (noradrenaline)	C<sub>8</sub>H<sub>11</sub>NO<sub>3</sub>	C1=CC(=C(C=C1[C@H](CN)O)O)O	"<img src=""chem_norepinephrine.svg"">"	chemicals
+Methamphetamine	C<sub>10</sub>H<sub>15</sub>N	C[C@@H](CC1=CC=CC=C1)NC	"<img src=""chem_methamphetamine.svg"">"	chemicals
+MDMA (3,4-methylenedioxymethamphetamine)	C<sub>11</sub>H<sub>15</sub>NO<sub>2</sub>	CC(CC1=CC2=C(C=C1)OCO2)NC	"<img src=""chem_mdma.svg"">"	chemicals
+Mescaline	C<sub>11</sub>H<sub>17</sub>NO<sub>3</sub>	COC1=CC(=CC(=C1OC)OC)CCN	"<img src=""chem_mescaline.svg"">"	chemicals
+Codeine	C<sub>18</sub>H<sub>21</sub>NO<sub>3</sub>	CN1CC[C@]23[C@@H]4[C@H]1CC5=C2C(=C(C=C5)OC)O[C@H]3[C@H](C=C4)O	"<img src=""chem_codeine.svg"">"	chemicals
+Oxycodone	C<sub>18</sub>H<sub>21</sub>NO<sub>4</sub>	CN1CC[C@]23[C@@H]4C(=O)CC[C@]2([C@H]1CC5=C3C(=C(C=C5)OC)O4)O	"<img src=""chem_oxycodone.svg"">"	chemicals
+Hydromorphone	C<sub>17</sub>H<sub>19</sub>NO<sub>3</sub>	CN1CC[C@]23[C@@H]4[C@H]1CC5=C2C(=C(C=C5)O)O[C@H]3C(=O)CC4	"<img src=""chem_hydromorphone.svg"">"	chemicals
+Heroin (diacetylmorphine)	C<sub>21</sub>H<sub>23</sub>NO<sub>5</sub>	CC(=O)O[C@H]1C=C[C@H]2[C@H]3CC4=C5[C@]2([C@H]1OC5=C(C=C4)OC(=O)C)CCN3C	"<img src=""chem_heroin.svg"">"	chemicals
+Thebaine	C<sub>19</sub>H<sub>21</sub>NO<sub>3</sub>	CN1CC[C@]23[C@@H]4C(=CC=C2[C@H]1CC5=C3C(=C(C=C5)OC)O4)OC	"<img src=""chem_thebaine.svg"">"	chemicals
+Oxymorphone	C<sub>17</sub>H<sub>19</sub>NO<sub>4</sub>	CN1CC[C@]23[C@@H]4C(=O)CC[C@]2([C@H]1CC5=C3C(=C(C=C5)O)O4)O	"<img src=""chem_oxymorphone.svg"">"	chemicals
+Hydrocodone	C<sub>18</sub>H<sub>21</sub>NO<sub>3</sub>	CN1CC[C@]23[C@@H]4[C@H]1CC5=C2C(=C(C=C5)OC)O[C@H]3C(=O)CC4	"<img src=""chem_hydrocodone.svg"">"	chemicals
+Scopolamine	C<sub>17</sub>H<sub>21</sub>NO<sub>4</sub>	CN1[C@@H]2CC(C[C@H]1[C@H]3[C@@H]2O3)OC(=O)[C@H](CO)C4=CC=CC=C4	"<img src=""chem_scopolamine.svg"">"	chemicals
+Ketamine	C<sub>13</sub>H<sub>16</sub>ClNO	CNC1(CCCCC1=O)C2=CC=CC=C2Cl	"<img src=""chem_ketamine.svg"">"	chemicals
+Dextromethorphan	C<sub>18</sub>H<sub>25</sub>NO	CN1CC[C@@]23CCCC[C@@H]2[C@@H]1CC4=C3C=C(C=C4)OC	"<img src=""chem_dextromethorphan.svg"">"	chemicals
+Muscimol	C<sub>4</sub>H<sub>6</sub>N<sub>2</sub>O<sub>2</sub>	C1=C(ONC1=O)CN	"<img src=""chem_muscimol.svg"">"	chemicals
+Ibotenic acid	C<sub>5</sub>H<sub>6</sub>N<sub>2</sub>O<sub>4</sub>	C1=C(ONC1=O)C(C(=O)O)N	"<img src=""chem_ibotenic_acid.svg"">"	chemicals
+Diphenhydramine	C<sub>17</sub>H<sub>21</sub>NO	CN(C)CCOC(C1=CC=CC=C1)C2=CC=CC=C2	"<img src=""chem_diphenhydramine.svg"">"	chemicals
+Choline	C<sub>5</sub>H<sub>14</sub>NO<sup>+</sup>	C[N+](C)(C)CCO	"<img src=""chem_choline.svg"">"	chemicals
+Acetylcholine	C<sub>7</sub>H<sub>16</sub>NO<sub>2</sub><sup>+</sup>	CC(=O)OCC[N+](C)(C)C	"<img src=""chem_acetylcholine.svg"">"	chemicals

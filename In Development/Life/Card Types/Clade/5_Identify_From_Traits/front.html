@@ -1,0 +1,24 @@
+{{#Traits}}
+<div id="prompt">Which clade is defined by these traits?</div>
+<div id="qtext">{{Traits}}</div>
+<canvas id="tol-canvas" data-src="tree_of_life.json"></canvas>
+<div id="reveal">{{Clade}}</div>
+<script src="life.js"></script>
+<script>
+(function wait() {
+  if (typeof lifeRenderLocal === "undefined") { setTimeout(wait, 20); return; }
+  var clade = "{{Clade}}";
+  if (clade.charAt(0) === "(") clade = "Strigiformes";  // Anki editor preview
+  var reveal = !!document.getElementById("back");
+  var canvas = document.getElementById("tol-canvas");
+  var box = document.getElementById("reveal");
+  // The local tree would give the answer away, so only draw it once revealed.
+  if (reveal) {
+    lifeRenderLocal("tol-canvas", clade, "clade", true);
+    if (box) box.style.display = "block";
+  } else if (canvas) {
+    canvas.style.display = "none";
+  }
+})();
+</script>
+{{/Traits}}

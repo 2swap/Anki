@@ -1,0 +1,51 @@
+.card.nightMode, .card {
+    background-color: black;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    position: absolute;
+    top: 30px;
+    bottom: 30px;
+    left: 30px;
+    right: 30px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* Back side: context blurb pinned under the timeline (the card's script shrinks the timeline to fit it). */
+#blurb {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    right: 30px;
+    color: #ddd;
+    font-family: sans-serif;
+    font-size: 15px;
+    line-height: 1.35;
+    text-align: left;
+}
+
+/* Phones: use (nearly) the whole screen. */
+@media (max-width: 600px), (max-height: 500px) {
+    .container {
+        top: 4px;
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+    }
+    #blurb {
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        font-size: 14px;
+    }
+}
+
+#canvas {
+    display: block;
+    /* The card handles its own pinch/pan; stop the webview from scrolling or zooming the page. */
+    touch-action: none;
+}

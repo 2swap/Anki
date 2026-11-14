@@ -1,0 +1,126 @@
+.card, .card.nightMode {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    padding: 0;
+    margin: 0;
+    font-size: 26px;
+    font-weight: 900;
+    align-items: center;
+}
+
+.card, .card.nightMode, a:link {
+    color:rgb(255, 255, 255);
+}
+
+.body {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+.replay-button svg circle {
+    display: none;
+    fill: transparent;
+    stroke-width: 0;
+}
+
+.replay-button svg path {
+    display: none;
+    fill: rgb(255, 255, 255); 
+    transform: scale(0.6) translate(20px, 20px);
+}
+
+
+
+
+#pic {
+    margin-top: 24px;
+    max-height: 400px;
+    max-width: 300px;
+}
+
+
+
+
+.canvas {
+    padding: 0;
+    margin: 0;
+}
+
+/* periodic table */
+.bigelement {
+    width:200px;
+    min-height:220px;
+    margin: 100px auto 0 auto; /* Center horizontally and add a margin of 100px above */
+    padding: 6px;
+    border: 2px solid rgb(255, 255, 255); /* Border style and color */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.periodictable {
+    height: 300px;
+    width: 540px;
+    max-width: 100%;
+}
+
+#symbol {
+    font-size: 72px;
+    margin: 32px;
+    text-align: center;
+}
+
+#name {
+    font-size: 22px;
+    text-align: center;
+    padding: 0 6px;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+#number {
+    font-size: 32px;
+    text-align: left;
+}
+
+.periodictablerow {
+    height: 30px;
+}
+
+.elementsquare {
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    width: 5%;
+    height: 28px;
+    margin: 1px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 10px;
+}
+
+.element {
+    background-color: rgb(20, 20, 20);
+    border: 1px solid rgb(255, 255, 255);
+}
+
+.origin {
+    max-width: 600px;
+    margin: 32px auto 0 auto;
+    padding: 0 16px;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.5;
+}
+
+.keyphrase {
+    margin: 24px auto 0 auto;
+    padding: 0 16px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}

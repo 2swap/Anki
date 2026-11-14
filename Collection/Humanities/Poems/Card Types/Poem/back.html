@@ -1,0 +1,10 @@
+<div class="title">{{Title}}</div>
+{{#Author}}<div class="author">{{Author}}</div>{{/Author}}
+<div class="poem">{{Poem}}</div>
+
+{{#YouTube}}
+<div class="video">
+  <iframe src="https://www.youtube.com/embed/{{YouTube}}" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div><a href="https://www.youtube.com/watch?v={{YouTube}}">Watch on YouTube</a></div>
+</div>
+{{/YouTube}}

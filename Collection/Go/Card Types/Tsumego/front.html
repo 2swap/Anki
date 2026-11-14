@@ -1,0 +1,213 @@
+<div class="front" id="front">
+    <canvas id="canvas"></canvas>
+    <h4 id="text"></h4>
+</div>
+
+<script>
+(function() {
+// Fields:
+//   Board    rows top to bottom, comma separated: X black, O white, . empty
+//   Edges    which crop sides are real board edges, any of T B L R (e.g. "TL")
+//   ToPlay   B or W: the colour the player controls
+//   Solution tree of correct lines. Moves are sgf-style "xy" letters within the
+//            crop (aa = top-left). Grammar: node = alt ('|' alt)*,
+//            alt = playerMove ['-' reply] ['(' node ')']. The first alt is the main line.
+//            A leading "-xx(...)" means the computer opens at xx.
+//   Prompt   text shown above the problem
+var rawBoard = "{{Board}}";
+var edges = "{{Edges}}".toUpperCase();
+var toPlay = "{{ToPlay}}".trim().toUpperCase() === 'W' ? 'O' : 'X';
+var rawSolution = "{{Solution}}".replace(/\s+/g, '');
+var prompt = "{{Prompt}}";
+var back = document.getElementById('back');
+
+var rows = rawBoard.replace(/\s+/g, '').split(',');
+var H = rows.length, W = rows[0].length;
+var S = 44, PAD = 26;
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+canvas.width = W * S + 2 * PAD - S;
+canvas.height = H * S + 2 * PAD - S;
+canvas.style.maxWidth = '100%';
+var text = document.getElementById('text');
+var opp = (c) => c === 'X' ? 'O' : 'X';
+
+// ---- solution tree ----
+var parse = (s) => {
+    var i = 0;
+    var node = () => {
+        var alts = [];
+        do {
+            var a = { move: '', reply: null, next: [] };
+            if (s[i] !== '-') { a.move = s.substr(i, 2); i += 2; }
+            if (s[i] === '-') { a.reply = s.substr(i + 1, 2); i += 3; }
+            if (s[i] === '(') { i++; a.next = node(); i++; }
+            alts.push(a);
+        } while (s[i] === '|' && ++i);
+        return alts;
+    };
+    return s ? node() : [];
+};
+var tree = parse(rawSolution);
+var toXY = (m) => [m.charCodeAt(0) - 97, m.charCodeAt(1) - 97];
+
+// ---- rules ----
+var board = rows.map((r) => r.split(''));
+var numbers = rows.map((r) => r.split('').map(() => 0));
+var openOutside = (x, y) =>
+    (x < 0 && !edges.includes('L')) || (x >= W && !edges.includes('R')) ||
+    (y < 0 && !edges.includes('T')) || (y >= H && !edges.includes('B'));
+var inside = (x, y) => x >= 0 && y >= 0 && x < W && y < H;
+var nbrs = (x, y) => [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]];
+
+// Group at (x,y) and whether it has a liberty. Off-crop points on open sides count as liberties.
+var groupOf = (x, y) => {
+    var c = board[y][x], seen = {}, stack = [[x, y]], stones = [], libs = 0;
+    seen[x + ',' + y] = 1;
+    while (stack.length) {
+        var p = stack.pop();
+        stones.push(p);
+        nbrs(p[0], p[1]).forEach((q) => {
+            if (!inside(q[0], q[1])) { if (openOutside(q[0], q[1])) libs++; return; }
+            var v = board[q[1]][q[0]];
+            if (v === '.') libs++;
+            else if (v === c && !seen[q[0] + ',' + q[1]]) { seen[q[0] + ',' + q[1]] = 1; stack.push(q); }
+        });
+    }
+    return { stones: stones, libs: libs };
+};
+
+var place = (x, y, c, num) => {
+    if (!inside(x, y) || board[y][x] !== '.') return false;
+    board[y][x] = c;
+    var captured = 0;
+    nbrs(x, y).forEach((q) => {
+        if (inside(q[0], q[1]) && board[q[1]][q[0]] === opp(c)) {
+            var g = groupOf(q[0], q[1]);
+            if (g.libs === 0) g.stones.forEach((s) => { board[s[1]][s[0]] = '.'; numbers[s[1]][s[0]] = 0; captured++; });
+        }
+    });
+    if (!captured && groupOf(x, y).libs === 0) { board[y][x] = '.'; return false; }  // suicide
+    numbers[y][x] = num || 0;
+    return true;
+};
+
+// ---- drawing ----
+var px = (i) => PAD + i * S;
+var hover = null;
+var render = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#dcb35c';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = '#000';
+    for (var x = 0; x < W; x++) {
+        ctx.lineWidth = (x === 0 && edges.includes('L')) || (x === W - 1 && edges.includes('R')) ? 2 : 1;
+        ctx.beginPath();
+        ctx.moveTo(px(x), edges.includes('T') ? px(0) : 0);
+        ctx.lineTo(px(x), edges.includes('B') ? px(H - 1) : canvas.height);
+        ctx.stroke();
+    }
+    for (var y = 0; y < H; y++) {
+        ctx.lineWidth = (y === 0 && edges.includes('T')) || (y === H - 1 && edges.includes('B')) ? 2 : 1;
+        ctx.beginPath();
+        ctx.moveTo(edges.includes('L') ? px(0) : 0, px(y));
+        ctx.lineTo(edges.includes('R') ? px(W - 1) : canvas.width, px(y));
+        ctx.stroke();
+    }
+    var stone = (x, y, c, alpha) => {
+        ctx.globalAlpha = alpha;
+        ctx.beginPath();
+        ctx.arc(px(x), px(y), S / 2 - 1.5, 0, 2 * Math.PI);
+        ctx.fillStyle = c === 'X' ? '#111' : '#f4f4f4';
+        ctx.fill();
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#000';
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+    };
+    for (var y = 0; y < H; y++) for (var x = 0; x < W; x++) {
+        var c = board[y][x];
+        if (c === '.') continue;
+        stone(x, y, c, 1);
+        if (numbers[y][x]) {
+            ctx.fillStyle = c === 'X' ? '#fff' : '#000';
+            ctx.font = 'bold 20px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(numbers[y][x], px(x), px(y) + 1);
+        }
+    }
+    if (hover && board[hover[1]][hover[0]] === '.') stone(hover[0], hover[1], toPlay, 0.4);
+};
+
+var flash = (color) => {
+    var el = document.body, prev = el.style.backgroundColor || '';
+    el.style.transition = 'background-color 100ms';
+    el.style.backgroundColor = color;
+    setTimeout(() => { el.style.backgroundColor = prev; }, 300);
+};
+
+// ---- play ----
+if (back) {
+    // Show the main line with move numbers.
+    var n = 1, node = tree;
+    while (node.length) {
+        var a = node[0];
+        if (a.move) { var m = toXY(a.move); place(m[0], m[1], toPlay, n++); }
+        if (a.reply) { var r = toXY(a.reply); place(r[0], r[1], opp(toPlay), n++); }
+        node = a.next;
+    }
+    text.textContent = '';
+    render();
+} else {
+    text.textContent = prompt || ((toPlay === 'X' ? 'Black' : 'White') + ' to play');
+    var node = tree, busy = false, moveNo = 1;
+    var pointFromEvent = (e) => {
+        var rect = canvas.getBoundingClientRect();
+        var x = Math.round(((e.clientX - rect.left) * canvas.width / rect.width - PAD) / S);
+        var y = Math.round(((e.clientY - rect.top) * canvas.height / rect.height - PAD) / S);
+        return inside(x, y) ? [x, y] : null;
+    };
+    canvas.addEventListener('mousemove', (e) => { hover = (busy || !node.length) ? null : pointFromEvent(e); render(); });
+    canvas.addEventListener('mouseout', () => { hover = null; render(); });
+    canvas.addEventListener('click', (e) => {
+        if (busy || !node.length) return;
+        var p = pointFromEvent(e);
+        if (!p || board[p[1]][p[0]] !== '.') return;
+        var name = String.fromCharCode(97 + p[0]) + String.fromCharCode(97 + p[1]);
+        var alt = node.filter((a) => a.move === name)[0];
+        if (!alt) { flash('rgba(255,127,127,0.25)'); text.textContent = 'Not that one, try again'; return; }
+        place(p[0], p[1], toPlay, moveNo++);
+        hover = null;
+        text.textContent = '';
+        render();
+        node = alt.next;
+        var finish = () => {
+            if (!node.length) { flash('rgba(127,255,127,0.25)'); text.textContent = 'Well done!'; }
+        };
+        if (alt.reply) {
+            busy = true;
+            setTimeout(() => {
+                var r = toXY(alt.reply);
+                place(r[0], r[1], opp(toPlay), moveNo++);
+                busy = false;
+                render();
+                finish();
+            }, 350);
+        } else finish();
+    });
+    render();
+    if (tree.length && !tree[0].move) {
+        // The computer opens.
+        busy = true;
+        setTimeout(() => {
+            var r = toXY(tree[0].reply);
+            place(r[0], r[1], opp(toPlay), moveNo++);
+            node = tree[0].next;
+            busy = false;
+            render();
+        }, 500);
+    }
+}
+})();
+</script>

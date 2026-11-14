@@ -1,0 +1,23 @@
+{
+  "models": {
+    "Event": {
+      "modelName": "History - Event",
+      "keyField": "Event",
+      "templateName": "1_Name_The_Event"
+    }
+  },
+  "decks": {
+    "World History": {
+      "ankiDeck": "History",
+      "models": [
+        "Event"
+      ]
+    }
+  },
+  "build": [
+    "build.py"
+  ],
+  "media": {
+    "history.js": "Decks/World History/media/history.js"
+  }
+}

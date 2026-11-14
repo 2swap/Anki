@@ -1,0 +1,82 @@
+.card, .card.nightMode {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    color: rgb(160, 160, 160);
+    padding: 0 12px;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+/* Answer-only / front-only parts: the back template is <div id="back"></div>{{FrontSide}}. */
+.answer { display: none; }
+#back ~ .answer { display: block; }
+#back ~ .front-only { display: none; }
+
+.prompt, .question {
+    margin: 32px auto 16px auto;
+    max-width: 560px;
+}
+
+.symbol sub, .bigsymbol sub, .cell sub { font-size: 0.6em; }
+.symbol sup, .bigsymbol sup, .cell sup { font-size: 0.6em; }
+
+/* The particle grid: 4 rows x 5 columns, gap before the boson column. */
+.smgrid {
+    display: grid;
+    grid-template-columns: repeat(5, min(16vw, 64px));
+    grid-auto-rows: min(16vw, 64px);
+    gap: 6px;
+    justify-content: center;
+    margin: 16px auto;
+}
+
+.cell {
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: rgb(20, 20, 20);
+    border: 1px solid rgb(160, 160, 160);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: min(6vw, 24px);
+}
+
+.cell.bosons { margin-left: 8px; }
+.cell.empty { visibility: hidden; }
+.cell.hl { background-color: rgb(160, 160, 160); color: rgb(0, 0, 0); }
+
+/* Property cards */
+.bigparticle {
+    width: 200px;
+    min-height: 200px;
+    margin: 60px auto 0 auto;
+    padding: 6px;
+    border: 2px solid rgb(100, 100, 100);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.bigsymbol {
+    font-size: 72px;
+    margin: 24px 0 16px 0;
+}
+
+.bigname {
+    font-size: 22px;
+    padding: 0 6px;
+    overflow-wrap: break-word;
+}
+
+.value {
+    color: rgb(230, 230, 230);
+    margin: 8px auto 24px auto;
+    max-width: 560px;
+}
+
+.props {
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 0 auto 24px auto;
+}

@@ -1,0 +1,74 @@
+{
+  "models": {
+    "Clade": {
+      "modelName": "Life - Clade",
+      "keyField": "Clade"
+    }
+  },
+  "decks": {
+    "Life": {
+      "ankiDeck": "Life",
+      "models": [
+        "Clade"
+      ]
+    }
+  },
+  "media": {
+    "life.js": "shared_media/life.js",
+    "tree_of_life.json": "shared_media/tree_of_life.json"
+  },
+  "renames": {
+    "Mammals": "Mammalia",
+    "Amphibians": "Lissamphibia",
+    "Lampreys": "Petromyzontiformes",
+    "Hagfishes": "Myxiniformes",
+    "Crocodiles": "Crocodylia",
+    "Platypus": "Ornithorhynchidae",
+    "Echidnas": "Tachyglossidae",
+    "Rodents": "Rodentia",
+    "Lagomorphs": "Lagomorpha",
+    "Lemurs": "Lemuriformes",
+    "Lorises": "Lorisiformes",
+    "Tarsiers": "Tarsiiformes",
+    "Capuchins": "Cebinae",
+    "Squirrel Monkeys": "Saimiriinae",
+    "Howler Monkeys": "Alouattinae",
+    "Spider Monkeys": "Atelinae",
+    "Titis": "Callicebinae",
+    "Chimpanzees": "Pan troglodytes",
+    "Bonobos": "Pan paniscus",
+    "Ungulates": "Euungulata",
+    "Canoidea": "Caniformia",
+    "Feloidea": "Feliformia",
+    "Lancelets": "Cephalochordata",
+    "Tunicates": "Tunicata",
+    "Earthworms": "Crassiclitellata",
+    "Leeches": "Hirudinea",
+    "Centipedes": "Chilopoda",
+    "Millipedes": "Diplopoda",
+    "Horseshoe Crabs": "Xiphosura",
+    "Arachnids": "Arachnida",
+    "Scorpions": "Scorpiones",
+    "Crustaceans": "Crustacea",
+    "Cephalopods": "Cephalopoda",
+    "Octopuses": "Octopodiformes",
+    "Squids": "Decapodiformes",
+    "Ferns": "Polypodiopsida",
+    "Polypodiopsida": "Polypodiidae",
+    "Equisetopsida": "Equisetidae",
+    "Marattiopsida": "Marattiidae",
+    "Psilotopsida": "Ophioglossidae",
+    "Grasses": "Poaceae",
+    "Lilies": "Liliales",
+    "Orchids": "Orchidaceae",
+    "Conifers": "Pinophyta",
+    "Cycads": "Cycadophyta",
+    "Ginkgo": "Ginkgophyta",
+    "Gnetophytes": "Gnetophyta",
+    "Mosses": "Bryopsida",
+    "Liverworts": "Marchantiophyta",
+    "Hornworts": "Anthocerotophyta",
+    "Gymnosperms": "Acrogymnospermae",
+    "Streptophyte Algae": "Charophyta"
+  }
+}

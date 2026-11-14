@@ -1,0 +1,25 @@
+<div class="prompt">{{Question}}</div>
+<div class="smgrid" id="grid"></div>
+<script>
+function smGrid(el, highlight, showSymbols) {
+  var S = [["u", "c", "t", "g", "H"],
+           ["d", "s", "b", "&gamma;", ""],
+           ["e", "&mu;", "&tau;", "Z<sup>0</sup>", ""],
+           ["&nu;<sub>e</sub>", "&nu;<sub>&mu;</sub>", "&nu;<sub>&tau;</sub>", "W<sup>&plusmn;</sup>", ""]];
+  var html = "";
+  for (var r = 0; r < 4; r++) {
+    for (var c = 0; c < 5; c++) {
+      var cls = "cell" + (S[r][c] ? "" : " empty") + (c == 3 ? " bosons" : "") +
+                (highlight.indexOf(r + "," + c) >= 0 ? " hl" : "");
+      html += '<div class="' + cls + '">' + (showSymbols ? S[r][c] : "") + "</div>";
+    }
+  }
+  el.innerHTML = html;
+}
+(function () {
+  var back = !!document.getElementById("back");
+  var raw = "{{Members}}";
+  var positions = raw.charAt(0) == "(" ? [] : raw.split(" ");
+  smGrid(document.getElementById("grid"), back ? positions : [], back);
+})();
+</script>

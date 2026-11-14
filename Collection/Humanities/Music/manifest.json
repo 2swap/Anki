@@ -1,0 +1,26 @@
+{
+  "models": {
+    "Basic": {
+      "modelName": "Basic",
+      "keyField": "Front",
+      "templateName": "Card 1"
+    }
+  },
+  "build": [
+    "build.py"
+  ],
+  "media": {
+    "music_interval_01.mp3": "media/music_interval_01.mp3",
+    "music_interval_02.mp3": "media/music_interval_02.mp3",
+    "music_interval_03.mp3": "media/music_interval_03.mp3",
+    "music_interval_04.mp3": "media/music_interval_04.mp3",
+    "music_interval_05.mp3": "media/music_interval_05.mp3",
+    "music_interval_06.mp3": "media/music_interval_06.mp3",
+    "music_interval_07.mp3": "media/music_interval_07.mp3",
+    "music_interval_08.mp3": "media/music_interval_08.mp3",
+    "music_interval_09.mp3": "media/music_interval_09.mp3",
+    "music_interval_10.mp3": "media/music_interval_10.mp3",
+    "music_interval_11.mp3": "media/music_interval_11.mp3",
+    "music_interval_12.mp3": "media/music_interval_12.mp3"
+  }
+}

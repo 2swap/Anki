@@ -1,0 +1,1 @@
+{{#Const}}<script src="sky.js"></script><div style="display:none">{{Media}}</div><div>Which constellation is missing from this view of the sky?</div><canvas id="miss-{{Slug}}"></canvas><script>(function w(){if(typeof skyRenderLocked==='undefined'){setTimeout(w,20);return;}skyRenderMissing("miss-{{Slug}}", {{RA}}, {{Dec}}, "{{Const}}");})();</script>{{/Const}}

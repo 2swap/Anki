@@ -1,0 +1,17 @@
+{{#Children}}
+<div id="prompt">Name the immediate children of <b>{{Clade}}</b>.</div>
+<canvas id="tol-canvas" data-src="tree_of_life.json"></canvas>
+<div id="reveal">{{Children}}</div>
+<script src="life.js"></script>
+<script>
+(function wait() {
+  if (typeof lifeRenderLocal === "undefined") { setTimeout(wait, 20); return; }
+  var clade = "{{Clade}}";
+  if (clade.charAt(0) === "(") clade = "Telluraves";  // Anki editor preview
+  var reveal = !!document.getElementById("back");
+  lifeRenderLocal("tol-canvas", clade, "children", reveal);
+  var box = document.getElementById("reveal");
+  if (box && reveal) box.style.display = "block";
+})();
+</script>
+{{/Children}}

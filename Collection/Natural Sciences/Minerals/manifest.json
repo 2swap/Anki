@@ -1,0 +1,62 @@
+{
+  "models": {
+    "Mineral": {
+      "modelName": "Minerals - Mineral",
+      "keyField": "Name"
+    }
+  },
+  "build": [
+    "build.py"
+  ],
+  "media": {
+    "mineral_talc.jpg": "media/mineral_talc.jpg",
+    "mineral_gypsum.jpg": "media/mineral_gypsum.jpg",
+    "mineral_calcite.jpg": "media/mineral_calcite.jpg",
+    "mineral_fluorite.jpg": "media/mineral_fluorite.jpg",
+    "mineral_apatite.jpg": "media/mineral_apatite.jpg",
+    "mineral_orthoclase.jpg": "media/mineral_orthoclase.jpg",
+    "mineral_quartz.jpg": "media/mineral_quartz.jpg",
+    "mineral_topaz.jpg": "media/mineral_topaz.jpg",
+    "mineral_corundum.jpg": "media/mineral_corundum.jpg",
+    "mineral_diamond.jpg": "media/mineral_diamond.jpg",
+    "mineral_graphite.jpg": "media/mineral_graphite.jpg",
+    "mineral_gold.jpg": "media/mineral_gold.jpg",
+    "mineral_silver.jpg": "media/mineral_silver.jpg",
+    "mineral_copper.jpg": "media/mineral_copper.jpg",
+    "mineral_sulfur.jpg": "media/mineral_sulfur.jpg",
+    "mineral_pyrite.jpg": "media/mineral_pyrite.jpg",
+    "mineral_marcasite.jpg": "media/mineral_marcasite.jpg",
+    "mineral_galena.jpg": "media/mineral_galena.jpg",
+    "mineral_sphalerite.jpg": "media/mineral_sphalerite.jpg",
+    "mineral_chalcopyrite.jpg": "media/mineral_chalcopyrite.jpg",
+    "mineral_cinnabar.jpg": "media/mineral_cinnabar.jpg",
+    "mineral_molybdenite.jpg": "media/mineral_molybdenite.jpg",
+    "mineral_stibnite.jpg": "media/mineral_stibnite.jpg",
+    "mineral_halite.jpg": "media/mineral_halite.jpg",
+    "mineral_sylvite.jpg": "media/mineral_sylvite.jpg",
+    "mineral_hematite.jpg": "media/mineral_hematite.jpg",
+    "mineral_magnetite.jpg": "media/mineral_magnetite.jpg",
+    "mineral_ilmenite.jpg": "media/mineral_ilmenite.jpg",
+    "mineral_chromite.jpg": "media/mineral_chromite.jpg",
+    "mineral_spinel.jpg": "media/mineral_spinel.jpg",
+    "mineral_cassiterite.jpg": "media/mineral_cassiterite.jpg",
+    "mineral_goethite.jpg": "media/mineral_goethite.jpg",
+    "mineral_aragonite.jpg": "media/mineral_aragonite.jpg",
+    "mineral_dolomite.jpg": "media/mineral_dolomite.jpg",
+    "mineral_siderite.jpg": "media/mineral_siderite.jpg",
+    "mineral_rhodochrosite.jpg": "media/mineral_rhodochrosite.jpg",
+    "mineral_azurite.jpg": "media/mineral_azurite.jpg",
+    "mineral_barite.jpg": "media/mineral_barite.jpg",
+    "mineral_anhydrite.jpg": "media/mineral_anhydrite.jpg",
+    "mineral_olivine.jpg": "media/mineral_olivine.jpg",
+    "mineral_garnet.jpg": "media/mineral_garnet.jpg",
+    "mineral_zircon.jpg": "media/mineral_zircon.jpg",
+    "mineral_beryl.jpg": "media/mineral_beryl.jpg",
+    "mineral_tourmaline.jpg": "media/mineral_tourmaline.jpg",
+    "mineral_hornblende.jpg": "media/mineral_hornblende.jpg",
+    "mineral_muscovite.jpg": "media/mineral_muscovite.jpg",
+    "mineral_kaolinite.jpg": "media/mineral_kaolinite.jpg",
+    "mineral_serpentine.jpg": "media/mineral_serpentine.jpg",
+    "mineral_microcline.jpg": "media/mineral_microcline.jpg"
+  }
+}

@@ -1,0 +1,6 @@
+.card, .card.nightMode { font-family: sans-serif; text-align: center; font-size: 24px; color: white; background: black; }
+.structure img { max-width: 90%; max-height: 300px; }
+.formula { font-size: 36px; margin-top: 8px; }
+.chemname { font-size: 32px; font-weight: bold; margin-top: 16px; }
+
+.structure img { filter: invert(1) hue-rotate(180deg); }

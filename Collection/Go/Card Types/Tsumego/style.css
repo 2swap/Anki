@@ -1,0 +1,8 @@
+.card, .card.nightMode {
+    font-family: arial;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+.notes { font-size: 18px; margin-top: 8px; }
