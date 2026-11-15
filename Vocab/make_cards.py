@@ -7,6 +7,7 @@ cards.json:
   "deck": "Spanish",
   "front_lang": "Spanish",      # language of Word / Front (see tts.py)
   "back_lang": "Indonesian",    # language of Translation / Back
+  "tags": ["tutor"],            # optional: tags for every note added
   "cards": [["V", word, translation], ["V", word, translation, pronunciation],
             ["S", sentence, translation], ...]
 }
@@ -25,6 +26,7 @@ def main(spec_path):
     with open(spec_path) as f:
         spec = json.load(f)
     deck, fl, bl = spec['deck'], spec['front_lang'], spec['back_lang']
+    tags = spec.get('tags', [])
     ac('createDeck', deck=deck)
     added, skipped, failed = 0, [], []
     for kind, front, back, *rest in spec['cards']:
@@ -34,9 +36,9 @@ def main(spec_path):
             continue
         try:
             if kind == 'V':
-                nid = add_vocab(deck, front, back, fl, bl, pronunciation=rest[0] if rest else '')
+                nid = add_vocab(deck, front, back, fl, bl, pronunciation=rest[0] if rest else '', tags=tags)
             else:
-                nid = add_sentence(deck, front, back, fl, bl)
+                nid = add_sentence(deck, front, back, fl, bl, tags=tags)
         except RuntimeError as e:
             failed.append(front)
             print(kind, front, '-> FAILED:', e, flush=True)

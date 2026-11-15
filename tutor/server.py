@@ -6,8 +6,10 @@ to live/answers.jsonl and forwarded to the tutor. Both files are wiped on
 startup — sessions are not kept. Student notes in notes/ persist.
 """
 import json
+import os
 import queue
 import random
+import re
 import signal
 import subprocess
 import sys
@@ -25,6 +27,8 @@ ROOT = Path(__file__).resolve().parent
 LIVE = ROOT / "live"
 WORKSHEET = LIVE / "worksheet.json"
 ANSWERS = LIVE / "answers.jsonl"
+NOTES = ROOT / "notes"
+COUNTS = NOTES / "question_counts.json"  # questions answered per subject, across sessions
 PAGE = ROOT / "worksheet.html"
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8770  # 8765 is taken by AnkiConnect
 
@@ -39,7 +43,8 @@ TUTOR_CMD = [
 ]
 START_MESSAGE = (
     "The worksheet server is running and the student has the page open. "
-    "Read notes/, then write 3 questions to live/worksheet.json, one per thread. "
+    "Read notes/, then write 3 questions to live/worksheet.json, one per thread: "
+    "thread 1 on {}, thread 2 on {}, thread 3 on {} (the least-asked subjects). "
     "From now on, each message I send is one or more student submissions."
 )
 
@@ -60,6 +65,50 @@ def read_answers():
                 entry = json.loads(line)
                 answers[entry["id"]] = entry
     return answers
+
+
+def subjects():
+    return sorted(p.stem for p in NOTES.glob("*.md") if p.stem != "index")
+
+
+def read_counts():
+    """Questions answered per subject. Seeded once from the "(N pts)" in notes/index.md;
+    a subject the index lists without a count starts at the median."""
+    try:
+        return json.loads(COUNTS.read_text())
+    except (OSError, json.JSONDecodeError):
+        pass
+    counts, uncounted = {}, []
+    index = NOTES / "index.md"
+    if index.exists():
+        for line in index.read_text().splitlines():
+            name = re.search(r"\]\(([\w-]+)\.md\)", line)
+            pts = re.search(r"\((\d+) pts?\)", line)  # the first count on the line
+            if name and pts:
+                counts[name[1]] = int(pts[1])
+            elif name:
+                uncounted.append(name[1])
+    median = sorted(counts.values())[len(counts) // 2] if counts else 0
+    return counts | {s: median for s in uncounted}
+
+
+def write_counts(counts):
+    tmp = COUNTS.with_suffix(".tmp")
+    tmp.write_text(json.dumps(dict(sorted(counts.items())), indent=2) + "\n")
+    os.replace(tmp, COUNTS)
+
+
+def least_asked(exclude=(), n=1):
+    """The n least-asked subjects not in exclude, ties broken at random."""
+    counts = read_counts()
+    pool = [s for s in subjects() if s not in exclude]
+    random.shuffle(pool)
+    return sorted(pool, key=lambda s: counts.get(s, 0))[:n]
+
+
+def thread_topics(questions):
+    """The current subject of each thread: the topic of its latest question."""
+    return {q.get("thread"): q.get("topic") for q in questions}
 
 
 def log(msg):
@@ -166,6 +215,11 @@ class Handler(BaseHTTPRequestHandler):
 
     def submit(self, body):
         qid, answer = body.get("id"), body.get("answer", "")
+        try:
+            questions = json.loads(WORKSHEET.read_text()).get("questions", [])
+        except (OSError, json.JSONDecodeError):
+            questions = []
+        q = next((q for q in questions if q.get("id") == qid), {})
         with submit_lock:
             if not qid or qid in read_answers():
                 self.send(400, '{"error": "unknown or already answered"}')
@@ -174,9 +228,17 @@ class Handler(BaseHTTPRequestHandler):
                      "time": datetime.now(timezone.utc).isoformat(timespec="seconds")}
             with ANSWERS.open("a") as f:
                 f.write(json.dumps(entry) + "\n")
+            if q.get("topic"):
+                counts = read_counts()
+                counts[q["topic"]] = counts.get(q["topic"], 0) + 1
+                write_counts(counts)
         message = {"submission": {"id": qid, "answer": answer}}
         if random.random() < SWITCH_PROBABILITY:
+            # Load balancing: the thread moves to the least-asked subject that no
+            # thread is on now.
+            busy = set(thread_topics(questions).values())
             message["switch_subject"] = True
+            message["switch_to"] = least_asked(exclude=busy)[0]
         inbox.put(json.dumps(message))
         self.send(200, '{"ok": true}')
 
@@ -192,7 +254,9 @@ if __name__ == "__main__":
     ANSWERS.write_text("")
     explainers.start()
     cards.start()
-    inbox.put(START_MESSAGE + "\n\n" + cards.catalog_text())
+    if not COUNTS.exists():
+        write_counts(read_counts())
+    inbox.put(START_MESSAGE.format(*least_asked(n=3)) + "\n\n" + cards.catalog_text())
     tutor = subprocess.Popen(TUTOR_CMD, cwd=ROOT, text=True,
                              stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     threading.Thread(target=run_tutor, args=(tutor,), daemon=True).start()

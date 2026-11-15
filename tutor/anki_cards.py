@@ -1,21 +1,23 @@
 """Anki card proposals: the tutor proposes, the student accepts, then cards are made.
 
 Flow for one question (qid):
-1. At session start, catalog_text() tells the tutor which Anki decks exist. Decks
-   this repo manages (Collection/, synced by anki_sync.py) have a [bracketed]
-   top-level name in Anki ("[Humanities]::Geography") and are off limits. Each other deck lists the note
-   types its notes use, and the card maker that can add notes of exactly those
-   types, if any. A deck is eligible only if one maker covers all its note types,
-   so a deck never gets a note type it doesn't already use.
+1. At session start, catalog_text() tells the tutor which Anki decks and note types
+   exist. Every deck is eligible, including those synced from Collection/ by
+   anki_sync.py. A deck whose notes all use the vocab note types gets the vocab
+   maker (TTS audio); every other deck gets the notes maker, which adds notes of
+   any existing note type or of a new one the tutor defines.
 2. The tutor may put "card_proposal": {"deck", "label", "search"} on a graded
    question. It names what the cards would be about, not their contents.
 3. The student clicks "Add to Anki" -> accept(): the server looks up existing
    notes matching `search` in that deck and sends the tutor a "card_accept"
    message. Nothing is generated or spent before this click.
 4. The tutor writes live/cards/<qid>.json in the maker's spec format. A worker
-   thread validates it and runs the maker (for the language decks,
-   Vocab/make_cards.py: ElevenLabs TTS + AnkiConnect addNote). The result shows
+   thread validates it, adds the "tutor" tag, and runs the maker (Vocab/make_cards.py:
+   ElevenLabs TTS + AnkiConnect addNote; or tutor/make_notes.py). The result shows
    on the page through states().
+
+Every note added this way is tagged "tutor". anki_sync.py ignores such notes, so
+they can live in synced decks without being reported as drift or pruned by a push.
 """
 import json
 import re
@@ -27,26 +29,37 @@ import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-COLLECTION = REPO / "Collection"
+TUTOR_TAG = "tutor"     # anki_sync.py skips notes with this tag; keep the two in sync
 ANKI_URL = "http://localhost:8765"
 QID = re.compile(r"^[A-Za-z0-9_-]+$")
 SCAN_INTERVAL = 1.0
 SETTLE = 1.0            # wait until a spec file hasn't changed for this long
 MAX_ATTEMPTS = 2        # a spec that fails validation goes back to the tutor once
-MAX_CARDS = 6           # per accepted proposal: caps the ElevenLabs credits one click can spend
+MAX_CARDS = 6           # notes per accepted proposal: caps the ElevenLabs credits one click can spend
 RUN_TIMEOUT = 300       # seconds for one make_cards.py run
-SAMPLES = 2             # example notes per eligible deck, so the tutor sees its direction and style
+SAMPLES = 2             # example notes per deck and note type, so the tutor sees its direction and style
+SAMPLE_CHARS = 100      # a sample field is cut to this length (some decks hold long data fields)
 EXISTING_LIMIT = 20     # existing-note matches sent to the tutor on accept
 
-# Card makers: the only ways cards get added. A deck is eligible for a maker if
-# every note in it uses one of the maker's note types.
+# Card makers: the only ways cards get added. A deck whose notes all use the vocab
+# note types gets "vocab", so its new notes get audio like the rest; every other deck
+# (including empty ones) gets "notes".
 MAKERS = {
     "vocab": {
         "script": REPO / "Vocab" / "make_cards.py",
         "guide": REPO / "Vocab" / "CLAUDE.md",
         "note_types": {"VocabCard", "BasicWithTTS"},
     },
+    "notes": {
+        "script": REPO / "tutor" / "make_notes.py",
+        "guide": REPO / "tutor" / "CLAUDE.md",   # section "The notes maker"
+    },
 }
+
+
+def maker_for(note_types):
+    vocab = MAKERS["vocab"]["note_types"]
+    return "vocab" if note_types and set(note_types) <= vocab else "notes"
 
 
 def ac(action, **params):
@@ -69,21 +82,8 @@ def plain(field):
     return re.sub(r"\s+", " ", text).strip()
 
 
-def managed_decks():
-    """Deck names anki_sync.py manages: each Collection/ folder with a manifest, named
-    like anki_sync.deck_name_for() does ("[Humanities]::Geography")."""
-    names = set()
-    for p in COLLECTION.rglob("manifest.json"):
-        top, *rest = p.parent.relative_to(COLLECTION).parts
-        names.add("::".join([f"[{top}]", *rest]))
-    return names
-
-
-def is_managed(deck, managed):
-    """Managed decks have a [bracketed] top-level name; this also covers their parent
-    decks ("[Humanities]") and any deck synced from Collection/."""
-    top = deck.split("::")[0]
-    return (top.startswith("[") and top.endswith("]")) or deck in managed
+def clip(text):
+    return text if len(text) <= SAMPLE_CHARS else text[:SAMPLE_CHARS] + "…"
 
 
 def tts_languages():
@@ -93,26 +93,27 @@ def tts_languages():
 
 
 def build_catalog():
-    """[{name, managed, note_types: {type: count}, maker, samples}] for every deck."""
-    managed = managed_decks()
-    by_type = {m: set(ac("findNotes", query=f'"note:{quote(m)}"')) for m in ac("modelNames")}
-    catalog = []
+    """{"decks": [{name, note_types: {type: count}, maker, samples}],
+        "note_types": {type: [fields]}} for the whole collection."""
+    models = ac("modelNames")
+    by_type = {m: set(ac("findNotes", query=f'"note:{quote(m)}"')) for m in models}
+    decks = []
     for deck in sorted(ac("deckNames")):
         ids = set(ac("findNotes", query=f'"deck:{quote(deck)}" -"deck:{quote(deck)}::*"'))
         types = {m: len(ids & s) for m, s in by_type.items() if ids & s}
-        managed_deck = is_managed(deck, managed)
-        maker = None
-        if not managed_deck and types:
-            maker = next((name for name, mk in MAKERS.items() if set(types) <= mk["note_types"]), None)
+        maker = maker_for(types)
         samples = []
-        if maker:
-            for info in ac("notesInfo", notes=sorted(ids)[:SAMPLES]):
-                samples.append({"type": info["modelName"],
-                                "fields": {k: plain(v["value"]) for k, v in info["fields"].items()
+        # A few notes of each type in the deck (the tutor's own left out), to show its style.
+        for m in types:
+            own = sorted(ids & by_type[m])[:SAMPLES * 3]
+            infos = [i for i in ac("notesInfo", notes=own) if TUTOR_TAG not in i["tags"]][:SAMPLES]
+            for info in infos:
+                samples.append({"type": m,
+                                "fields": {k: clip(plain(v["value"])) for k, v in info["fields"].items()
                                            if plain(v["value"])}})
-        catalog.append({"name": deck, "managed": managed_deck, "note_types": types,
-                        "maker": maker, "samples": samples})
-    return catalog
+        decks.append({"name": deck, "note_types": types, "maker": maker, "samples": samples})
+    return {"decks": decks,
+            "note_types": {m: ac("modelFieldNames", modelName=m) for m in sorted(models)}}
 
 
 def catalog_text(catalog):
@@ -120,20 +121,17 @@ def catalog_text(catalog):
     if catalog is None:
         return ("Anki isn't reachable (AnkiConnect at localhost:8765), so don't propose Anki "
                 "cards this session.")
-    lines = ["Anki decks (see 'Anki card proposals' in CLAUDE.md). Decks whose top-level "
-             "name is in [brackets] are managed by another tool: never propose cards for them."]
-    for d in catalog:
-        if d["managed"]:
-            lines.append(f"- {d['name']} (managed)")
-            continue
+    lines = ["Anki decks (see 'Anki card proposals' in CLAUDE.md). Any deck may get cards; "
+             "each names the maker that adds them."]
+    for d in catalog["decks"]:
         types = ", ".join(f"{t} ({n})" for t, n in d["note_types"].items()) or "empty"
-        if d["maker"]:
-            lines.append(f"- {d['name']}: {types}. Eligible: maker '{d['maker']}' "
-                         f"(guide: {MAKERS[d['maker']]['guide']}).")
-            for s in d["samples"]:
-                lines.append(f"    example {s['type']}: {json.dumps(s['fields'], ensure_ascii=False)}")
-        else:
-            lines.append(f"- {d['name']}: {types}. Not eligible: no maker for these note types.")
+        lines.append(f"- {d['name']}: {types}. Maker '{d['maker']}' "
+                     f"(guide: {MAKERS[d['maker']]['guide']}).")
+        for s in d["samples"]:
+            lines.append(f"    example {s['type']}: {json.dumps(s['fields'], ensure_ascii=False)}")
+    lines.append("Note types and their fields (for the notes maker):")
+    for m, fields in catalog["note_types"].items():
+        lines.append(f"- {m}: {', '.join(fields)}")
     return "\n".join(lines)
 
 
@@ -163,9 +161,9 @@ class Cards:
         return catalog_text(self.catalog)
 
     def eligible(self, deck):
-        """The maker for `deck`, or None if the tutor may not add cards to it."""
-        for d in self.catalog or []:
-            if d["name"] == deck and not d["managed"]:
+        """The maker for `deck`, or None if there is no such deck."""
+        for d in (self.catalog or {}).get("decks", []):
+            if d["name"] == deck:
                 return d["maker"]
         return None
 
@@ -201,16 +199,20 @@ class Cards:
         return None
 
     def _existing(self, deck, maker, search):
-        """Notes in `deck` whose first field contains `search`: one query per note type."""
+        """Notes in `deck` matching `search`: for vocab decks, in the first field (one
+        query per note type); otherwise anywhere in the note."""
         ids = set()
-        for note_type in MAKERS[maker]["note_types"]:
-            first = ac("modelFieldNames", modelName=note_type)[0]
-            ids |= set(ac("findNotes", query=f'"deck:{quote(deck)}" "note:{quote(note_type)}" '
-                                             f'"{quote(first)}:*{quote(search)}*"'))
+        if maker == "vocab":
+            for note_type in MAKERS[maker]["note_types"]:
+                first = ac("modelFieldNames", modelName=note_type)[0]
+                ids |= set(ac("findNotes", query=f'"deck:{quote(deck)}" "note:{quote(note_type)}" '
+                                                 f'"{quote(first)}:*{quote(search)}*"'))
+        else:
+            ids = set(ac("findNotes", query=f'"deck:{quote(deck)}" "{quote(search)}"'))
         found = []
         for info in ac("notesInfo", notes=sorted(ids)[:EXISTING_LIMIT]):
             values = [plain(v["value"]) for v in info["fields"].values()]
-            found.append(" | ".join(v for v in values if v))
+            found.append(clip(" | ".join(v for v in values if v)))
         return found
 
     # ---------------------------------------------------------------- worker
@@ -241,6 +243,11 @@ class Cards:
             return "the spec must be a JSON object"
         if spec.get("deck") != s["deck"]:
             return f'"deck" must be {s["deck"]!r}, the deck the student accepted'
+        if s["maker"] == "vocab":
+            return self._validate_vocab(spec)
+        return self._validate_notes(spec)
+
+    def _validate_vocab(self, spec):
         for key in ("front_lang", "back_lang"):
             if spec.get(key) not in self.languages:
                 return f'"{key}" must be one of: {", ".join(sorted(self.languages))}'
@@ -254,6 +261,50 @@ class Cards:
                 return f'bad card {json.dumps(card, ensure_ascii=False)}: use ["V"|"S", front, back] (+ optional pronunciation)'
         return None
 
+    def _validate_notes(self, spec):
+        existing = ac("modelNames")
+        name, new = spec.get("note_type"), spec.get("new_note_type")
+        if (name is None) == (new is None):
+            return 'give exactly one of "note_type" (an existing one) or "new_note_type"'
+        if name is not None:
+            if name not in existing:
+                return f'note type {name!r} doesn\'t exist; use one listed, or "new_note_type"'
+            fields = ac("modelFieldNames", modelName=name)
+        else:
+            if not isinstance(new, dict):
+                return '"new_note_type" must be an object'
+            if new.get("name") in existing:
+                return f'note type {new.get("name")!r} already exists: use "note_type" instead'
+            if not isinstance(new.get("name"), str) or not new["name"].strip():
+                return '"new_note_type.name" must be a non-empty string'
+            fields = new.get("fields")
+            if (not isinstance(fields, list) or not fields
+                    or not all(isinstance(f, str) and f.strip() for f in fields)
+                    or len(set(fields)) != len(fields)):
+                return '"new_note_type.fields" must be a list of distinct field names'
+            templates = new.get("templates")
+            if (not isinstance(templates, list) or not templates
+                    or not all(isinstance(t, dict) and all(isinstance(t.get(k), str) and t[k].strip()
+                                                           for k in ("name", "front", "back"))
+                               for t in templates)):
+                return '"new_note_type.templates" must be a list of {"name", "front", "back"}'
+            if new.get("cloze") and len(templates) != 1:
+                return "a cloze note type has exactly one template"
+            if not isinstance(new.get("css", ""), str):
+                return '"new_note_type.css" must be a string'
+        notes = spec.get("notes")
+        if not isinstance(notes, list) or not 1 <= len(notes) <= MAX_CARDS:
+            return f'"notes" must be a list of 1 to {MAX_CARDS} notes'
+        for note in notes:
+            if not isinstance(note, dict) or not all(isinstance(v, str) for v in note.values()):
+                return 'each note must be an object of field name -> string'
+            unknown = set(note) - set(fields)
+            if unknown:
+                return f'unknown fields {sorted(unknown)}; the fields are {fields}'
+            if not note.get(fields[0], "").strip():
+                return f'every note needs its first field, {fields[0]!r}'
+        return None
+
     def _make(self, qid):
         path = self.dir / f"{qid}.json"
         with self.lock:
@@ -264,6 +315,8 @@ class Cards:
             error = self._validate(spec, s)
         except (OSError, json.JSONDecodeError) as e:
             error = f"couldn't read the spec as JSON: {e}"
+        except RuntimeError as e:   # AnkiConnect, while checking note types
+            error = f"couldn't check the spec against Anki: {e}"
         if error:
             with self.lock:
                 give_up = s["attempts"] >= MAX_ATTEMPTS
@@ -277,16 +330,21 @@ class Cards:
         with self.lock:
             s["state"] = "adding"
         script = MAKERS[s["maker"]]["script"]
+        # The maker runs a copy of the spec tagged "tutor" (and nothing else), so every note
+        # the tutor adds is one anki_sync.py knows to ignore.
+        spec["tags"] = [TUTOR_TAG]
+        run = self.dir / f"{qid}.run"
+        run.write_text(json.dumps(spec, ensure_ascii=False, indent=2))
         try:
-            result = subprocess.run([sys.executable, str(script), str(path)], cwd=REPO,
+            result = subprocess.run([sys.executable, str(script), str(run)], cwd=REPO,
                                     capture_output=True, text=True, timeout=RUN_TIMEOUT)
             out = result.stdout + result.stderr
         except subprocess.TimeoutExpired:
             result, out = None, f"timed out after {RUN_TIMEOUT}s"
         (self.dir / f"{qid}.log").write_text(out)
-        added = [m.group(2) for m in re.finditer(r"^([VS]) (.+) -> \d+$", out, re.M)]
-        skipped = [m.group(2) for m in re.finditer(r"^([VS]) (.+) -> SKIPPED", out, re.M)]
-        failed = [m.group(2) for m in re.finditer(r"^([VS]) (.+) -> FAILED", out, re.M)]
+        added = [m.group(2) for m in re.finditer(r"^([VSN]) (.+) -> \d+$", out, re.M)]
+        skipped = [m.group(2) for m in re.finditer(r"^([VSN]) (.+) -> SKIPPED", out, re.M)]
+        failed = [m.group(2) for m in re.finditer(r"^([VSN]) (.+) -> FAILED", out, re.M)]
         parts = []
         if added:
             parts.append(f"Added to {s['deck']}: " + ", ".join(added))

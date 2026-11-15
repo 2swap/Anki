@@ -3,10 +3,13 @@
 The repo is the source of truth; Anki (via AnkiConnect) is downstream.
 
 Every deck folder lives under Collection/, and its path there IS the Anki deck
-name, with '/' for '::' and the top-level part in [brackets] (which marks the
-deck as managed by this repo): Collection/Natural Sciences/Night Sky/ mirrors the
-deck "[Natural Sciences]::Night Sky". A folder whose deck has subdecks holds them as
+name, with '/' for '::': Collection/Natural Sciences/Night Sky/ mirrors the deck
+"Natural Sciences::Night Sky". A folder whose deck has subdecks holds them as
 subfolders, each with its own manifest.
+
+Notes tagged "tutor" were added straight to Anki by the tutor (tutor/anki_cards.py)
+and aren't in the repo. check and push ignore them: never reported as drift, never
+updated, renamed or pruned.
 
 Folder layout (see Collection/Natural Sciences/Night Sky/ and .../Periodic Table/
 for worked examples):
@@ -92,14 +95,12 @@ COLLECTION_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Colle
 
 
 def deck_name_for(folder):
-    """The Anki deck a folder mirrors: its path under Collection/, '/' -> '::', with
-    the top-level part in [brackets] to mark the deck as managed by this repo
-    (Collection/Humanities/Geography -> "[Humanities]::Geography")."""
+    """The Anki deck a folder mirrors: its path under Collection/, '/' -> '::'
+    (Collection/Humanities/Geography -> "Humanities::Geography")."""
     rel = os.path.relpath(os.path.abspath(folder), COLLECTION_DIR)
     if rel == "." or rel.startswith(".."):
         raise SystemExit(f"{folder}: not inside {COLLECTION_DIR}; the folder path names the deck")
-    top, *rest = rel.split(os.sep)
-    return "::".join([f"[{top}]", *rest])
+    return "::".join(rel.split(os.sep))
 
 
 def load_manifest(folder):
@@ -211,6 +212,12 @@ ANKI_MANAGED_TAGS = {"leech", "marked"}
 # reports one that isn't suspended. See README.md.
 MEDIA_SAVER_TAG = "media_saver"
 
+# Notes the tutor adds straight to Anki, in any deck (see tutor/anki_cards.py). They
+# aren't in the repo, so every query below leaves them out: they're never drift,
+# never matched against repo rows, and never pruned.
+TUTOR_TAG = "tutor"
+NOT_TUTOR = f"-tag:{TUTOR_TAG}"
+
 
 def note_key(values, key_field):
     """A note's match key: one field's value, or for a list of fields their
@@ -221,7 +228,7 @@ def note_key(values, key_field):
 
 
 def anki_notes_by_key(anki_deck, model_name, key_field):
-    query = f'deck:"{anki_deck}" note:"{model_name}"'
+    query = f'deck:"{anki_deck}" note:"{model_name}" {NOT_TUTOR}'
     note_ids = invoke("findNotes", query=query)
     by_key = {}
     if not note_ids:
@@ -472,7 +479,7 @@ def cmd_push(folder, dry_run=False, prune=True, build=True):
             model, kf = spec["modelName"], spec["keyField"]
             if isinstance(kf, list):
                 raise SystemExit(f"{model_key}: \"renames\" needs a single keyField, not {kf}")
-            note_ids = invoke("findNotes", query=f'note:"{model}"')
+            note_ids = invoke("findNotes", query=f'note:"{model}" {NOT_TUTOR}')
             if not note_ids:
                 continue
             key_to_id = {}
@@ -601,7 +608,7 @@ def cmd_push(folder, dry_run=False, prune=True, build=True):
                     )
 
             saver_keys = [k for k, r in repo_by_key.items() if MEDIA_SAVER_TAG in r["tags"]]
-            saver_query = f'deck:"{anki_deck}" note:"{model}" tag:{MEDIA_SAVER_TAG} -is:suspended'
+            saver_query = f'deck:"{anki_deck}" note:"{model}" tag:{MEDIA_SAVER_TAG} -is:suspended {NOT_TUTOR}'
             if saver_keys and ([k for k in saver_keys if k not in anki_by_key]
                                or invoke("findCards", query=saver_query)):
                 do(

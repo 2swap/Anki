@@ -25,8 +25,15 @@
   @media (max-width: 1000px) { main { grid-template-columns: minmax(0, 1fr); max-width: 680px; } }
   .q { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
        padding: 16px 20px; margin-bottom: 16px; }
+  /* A faint per-subject tint: the hue comes from a hash of the topic (subjectHue). */
+  .q[style*="--hue"] { background: hsl(var(--hue) 45% 97.5%); }
+  @media (prefers-color-scheme: dark) {
+    .q[style*="--hue"] { background: hsl(var(--hue) 14% 14%); }
+  }
   .q.new { animation: fadein .4s ease; }
   @keyframes fadein { from { opacity: 0; transform: translateY(6px); } }
+  .topic { font-size: .75rem; color: var(--muted); margin-bottom: 6px; }
+  .topic:empty { display: none; }
   .prompt > :first-child { margin-top: 0; }
   .prompt > :last-child { margin-bottom: 0; }
   .prompt pre { background: var(--bg); padding: 10px 12px; border-radius: 6px; overflow-x: auto; }
@@ -105,14 +112,30 @@ function md(el, text) {
     throwOnError: false });
 }
 
+// "spanish-language" -> "Spanish language": the notes file name the tutor puts in `topic`.
+function subjectName(topic) {
+  const words = String(topic || "").replace(/[-_]+/g, " ").trim();
+  return words ? words[0].toUpperCase() + words.slice(1) : "";
+}
+
+// A stable hue (0-359) per subject, from an FNV-1a hash of its topic.
+function subjectHue(topic) {
+  let h = 2166136261;
+  for (const ch of String(topic)) { h ^= ch.codePointAt(0); h = Math.imul(h, 16777619); }
+  return (h >>> 0) % 360;
+}
+
 function buildQuestion(q) {
   const el = document.createElement("section");
   el.className = "q new";
-  el.innerHTML = `<div class="prompt"></div>
+  el.innerHTML = `<div class="topic"></div>
+                  <div class="prompt"></div>
                   <form><input autocomplete="off"><button>Submit</button></form>
                   <div class="status"></div>
                   <div class="card"></div>
                   <div class="explainer"></div>`;
+  el.querySelector(".topic").textContent = subjectName(q.topic);
+  if (q.topic) el.style.setProperty("--hue", subjectHue(q.topic));
   md(el.querySelector(".prompt"), q.prompt);
   el.querySelector("form").addEventListener("submit", e => { e.preventDefault(); submit(q, el); });
   return el;
