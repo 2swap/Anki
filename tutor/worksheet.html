@@ -61,6 +61,18 @@
   .feedback.full { border-left: 3px solid var(--full); padding-left: 10px; }
   .feedback.partial { border-left: 3px solid var(--partial); padding-left: 10px; }
   .feedback.none { border-left: 3px solid var(--none); padding-left: 10px; }
+  /* Follow-up questions on feedback: the student's question, then the tutor's reply. */
+  .ask-q { margin-top: 10px; font-size: .9rem; color: var(--muted); }
+  .ask-q::before { content: "You asked: "; font-style: italic; }
+  .reply { margin-top: 4px; padding-left: 10px; border-left: 3px solid var(--line); }
+  .reply p { display: inline; margin: 0; }
+  .ask-btn { margin-left: 8px; padding: 1px 8px; font-size: .75rem; vertical-align: 1px;
+             background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .ask-form { margin-top: 8px; }
+  .ask-form[hidden] { display: none; }
+  .ask-form input { font-size: .9rem; padding: 6px 8px; }
+  .ask-form button { padding: 6px 12px; font-size: .85rem; }
+  .ask-error { font-size: .85rem; color: var(--none); margin-top: 4px; }
   #offline { position: fixed; bottom: 12px; right: 12px; background: var(--none); color: #fff;
              padding: 6px 12px; border-radius: 6px; font-size: .85rem; display: none; }
   #loading { position: fixed; inset: 0; pointer-events: none;
@@ -151,7 +163,7 @@ async function submit(q, el) {
   poll();
 }
 
-function updateStatus(q, el, answer) {
+function updateStatus(q, el, answer, asks = [], entry = {}) {
   if (!answer) return;
   const input = el.querySelector("input");
   if (!input.value) input.value = answer.answer;   // restore after a page reload
@@ -164,7 +176,75 @@ function updateStatus(q, el, answer) {
     return;
   }
   status.innerHTML = `<div class="feedback ${q.credit}"></div>`;
-  md(status.firstChild, q.feedback);
+  let last = status.firstChild;   // the tutor's latest text, where the Ask button goes
+  md(last, q.feedback);
+  let waiting = false;
+  for (const a of asks) {
+    const ask = document.createElement("div");
+    ask.className = "ask-q";
+    ask.textContent = a.text;
+    status.append(ask);
+    const reply = (q.replies || {})[a.id];
+    const box = document.createElement("div");
+    if (reply == null) {
+      box.className = "pending";
+      box.textContent = "Thinking…";
+      waiting = true;
+    } else {
+      box.className = "reply";
+      md(box, reply);
+      last = box;
+    }
+    status.append(box);
+  }
+  if (!waiting) addAsk(q, status, last, entry);
+}
+
+// The "Ask" button at the end of the tutor's latest text, and the one-line form it opens.
+function addAsk(q, status, last, entry) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "ask-btn";
+  btn.textContent = "Ask";
+  btn.title = "Ask the tutor about this explanation";
+  const tail = last.lastElementChild;
+  (tail && tail.tagName === "P" ? tail : last).append(btn);
+
+  const form = document.createElement("form");
+  form.className = "ask-form";
+  form.innerHTML = `<input autocomplete="off" maxlength="1000" placeholder="Ask about this explanation…"><button>Send</button>`;
+  const input = form.querySelector("input");
+  input.value = entry.askDraft || "";
+  input.addEventListener("input", () => { entry.askDraft = input.value; });
+  input.addEventListener("keydown", e => { if (e.key === "Escape") { entry.askOpen = false; form.hidden = true; } });
+  form.hidden = !entry.askOpen;
+  const error = document.createElement("div");
+  error.className = "ask-error";
+  status.append(form, error);
+
+  btn.addEventListener("click", () => {
+    entry.askOpen = form.hidden;
+    form.hidden = !form.hidden;
+    if (!form.hidden) input.focus();
+  });
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    const send = form.querySelector("button");
+    send.disabled = true;
+    error.textContent = "";
+    try {
+      const res = await fetch("/ask", { method: "POST", body: JSON.stringify({ id: q.id, text }) });
+      if (!res.ok) throw new Error((await res.json()).error);
+      entry.askDraft = "";
+      entry.askOpen = false;
+      poll();
+    } catch (err) {
+      send.disabled = false;
+      error.textContent = `Couldn't send: ${err.message || "server unreachable"}`;
+    }
+  });
 }
 
 // An Anki card proposal on a graded question. The tutor names the deck and what the
@@ -207,7 +287,7 @@ function updateExplainer(q, el, state) {
   else box.innerHTML = "";   // none yet, or the render failed
 }
 
-function render({ worksheet, answers, explainers = {}, cards = {} }) {
+function render({ worksheet, answers, asks = [], explainers = {}, cards = {} }) {
   // Shown from page load until the tutor has posted its first question.
   document.getElementById("loading").hidden = (worksheet.questions || []).length > 0;
   const main = document.getElementById("questions");
@@ -228,10 +308,11 @@ function render({ worksheet, answers, explainers = {}, cards = {} }) {
       rendered.set(q.id, entry);
       container.appendChild(entry.el);
     }
-    const sig = JSON.stringify([answers[q.id], q.credit, q.feedback]);
+    const mine = asks.filter(a => a.question_id === q.id);
+    const sig = JSON.stringify([answers[q.id], q.credit, q.feedback, mine, q.replies]);
     if (sig !== entry.sig) {
       entry.sig = sig;
-      updateStatus(q, entry.el, answers[q.id]);
+      updateStatus(q, entry.el, answers[q.id], mine, entry);
     }
     const cardSig = JSON.stringify([q.credit, q.card_proposal, cards[q.id]]);
     if (cardSig !== entry.cardSig) {

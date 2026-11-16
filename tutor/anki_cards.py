@@ -19,6 +19,7 @@ Flow for one question (qid):
 Every note added this way is tagged "tutor". anki_sync.py ignores such notes, so
 they can live in synced decks without being reported as drift or pruned by a push.
 """
+import html
 import json
 import re
 import subprocess
@@ -26,6 +27,7 @@ import sys
 import threading
 import time
 import urllib.request
+from datetime import datetime
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
@@ -40,6 +42,7 @@ RUN_TIMEOUT = 300       # seconds for one make_cards.py run
 SAMPLES = 2             # example notes per deck and note type, so the tutor sees its direction and style
 SAMPLE_CHARS = 100      # a sample field is cut to this length (some decks hold long data fields)
 EXISTING_LIMIT = 20     # existing-note matches sent to the tutor on accept
+MISSES = 10             # recent "Again" cards per deck, sent as starting points for a subject
 
 # Card makers: the only ways cards get added. A deck whose notes all use the vocab
 # note types gets "vocab", so its new notes get audio like the rest; every other deck
@@ -78,7 +81,8 @@ def quote(text):
 def plain(field):
     """A field's text without [sound:] tags or HTML, for showing the tutor."""
     text = re.sub(r"\[sound:[^\]]*\]", "", field)
-    text = re.sub(r"<[^>]+>", " ", text).replace("&nbsp;", " ")
+    text = re.sub(r"</?(?:sub|sup|b|i|u|em|strong|span|font)\b[^>]*>", "", text)  # inline: no gap
+    text = html.unescape(re.sub(r"<[^>]+>", " ", text))
     return re.sub(r"\s+", " ", text).strip()
 
 
@@ -135,6 +139,33 @@ def catalog_text(catalog):
     return "\n".join(lines)
 
 
+def recent_misses(deck, n=MISSES):
+    """The last n distinct cards answered "Again" in `deck` itself, newest first."""
+    # cardReviews rows: (reviewTime ms, cardID, usn, buttonPressed, newInterval,
+    # previousInterval, newFactor, reviewDuration, reviewType). It covers only cards
+    # whose deck is exactly `deck`, matching how decks are listed in the catalog.
+    reviews = ac("cardReviews", deck=deck, startID=0)
+    latest = {}
+    for r in sorted(reviews, key=lambda r: r[0], reverse=True):
+        if r[3] == 1 and r[1] not in latest:
+            latest[r[1]] = r[0]
+            if len(latest) == n:
+                break
+    if not latest:
+        return []
+    infos = {i["cardId"]: i for i in ac("cardsInfo", cards=list(latest))}
+    out = []
+    for cid, ms in latest.items():
+        info = infos.get(cid)
+        if not info or not info.get("fields"):
+            continue  # card deleted since
+        fields = sorted(info["fields"].items(), key=lambda kv: kv[1]["order"])
+        out.append({"deck": deck,
+                    "missed": datetime.fromtimestamp(ms / 1000).strftime("%Y-%m-%d"),
+                    "fields": {k: clip(plain(v["value"])) for k, v in fields if plain(v["value"])}})
+    return out
+
+
 class Cards:
     def __init__(self, live_dir, notify):
         self.dir = Path(live_dir) / "cards"
@@ -143,6 +174,7 @@ class Cards:
         self.state = {}         # qid -> {"state", "deck", "label", "summary", "mtime", "attempts"}
         self.catalog = None     # None: Anki unreachable at startup
         self.languages = set()
+        self.miss_cache = {}    # deck -> recent_misses(deck)
 
     def start(self):
         self.dir.mkdir(parents=True, exist_ok=True)
@@ -159,6 +191,25 @@ class Cards:
 
     def catalog_text(self):
         return catalog_text(self.catalog)
+
+    def misses(self, decks):
+        """The last MISSES cards answered "Again" in each of `decks` (subdecks not
+        included), newest first, as [{deck, missed, fields}]. Cached for the session."""
+        if self.catalog is None:
+            return []
+        known = {d["name"] for d in self.catalog["decks"]}
+        out = []
+        for deck in decks:
+            if deck not in known:
+                continue
+            if deck not in self.miss_cache:
+                try:
+                    self.miss_cache[deck] = recent_misses(deck)
+                except (OSError, RuntimeError, ValueError) as e:
+                    print(f"cards: misses for {deck} unavailable ({e})", flush=True)
+                    self.miss_cache[deck] = []
+            out += self.miss_cache[deck]
+        return out
 
     def eligible(self, deck):
         """The maker for `deck`, or None if there is no such deck."""

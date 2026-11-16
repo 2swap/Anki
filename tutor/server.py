@@ -2,8 +2,9 @@
 """Worksheet server plus one persistent Claude tutor session.
 
 The tutor writes live/worksheet.json; the student's submissions are appended
-to live/answers.jsonl and forwarded to the tutor. Both files are wiped on
-startup — sessions are not kept. Student notes in notes/ persist.
+to live/answers.jsonl and follow-up questions on feedback to live/asks.jsonl,
+and both are forwarded to the tutor. All three files are wiped on startup —
+sessions are not kept. Student notes in notes/ persist.
 """
 import json
 import os
@@ -27,6 +28,7 @@ ROOT = Path(__file__).resolve().parent
 LIVE = ROOT / "live"
 WORKSHEET = LIVE / "worksheet.json"
 ANSWERS = LIVE / "answers.jsonl"
+ASKS = LIVE / "asks.jsonl"         # the student's follow-up questions on feedback
 NOTES = ROOT / "notes"
 COUNTS = NOTES / "question_counts.json"  # questions answered per subject, across sessions
 PAGE = ROOT / "worksheet.html"
@@ -43,13 +45,15 @@ TUTOR_CMD = [
 ]
 START_MESSAGE = (
     "The worksheet server is running and the student has the page open. "
-    "Read notes/, then write 3 questions to live/worksheet.json, one per thread: "
-    "thread 1 on {}, thread 2 on {}, thread 3 on {} (the least-asked subjects). "
-    "From now on, each message I send is one or more student submissions."
+    "Read those three subjects' notes, then write 3 questions to live/worksheet.json, "
+    "one per thread: thread 1 on {}, thread 2 on {}, thread 3 on {} (the least-asked subjects). "
+    "From now on, each message I send is one or more student submissions.\n\n"
+    "All subjects (notes/<subject>.md): {}."
 )
 
 SWITCH_PROBABILITY = 0.15  # per submission; switches the subject of that question's thread
 MAX_SUGGESTION = 2000      # characters
+MAX_ASK = 1000             # characters
 
 submit_lock = threading.Lock()
 inbox = queue.Queue()   # messages for the tutor
@@ -67,29 +71,23 @@ def read_answers():
     return answers
 
 
+def read_asks():
+    """Follow-up questions in the order asked: [{id, question_id, text, time}]."""
+    if not ASKS.exists():
+        return []
+    return [json.loads(line) for line in ASKS.read_text().splitlines() if line.strip()]
+
+
 def subjects():
-    return sorted(p.stem for p in NOTES.glob("*.md") if p.stem != "index")
+    return sorted(p.stem for p in NOTES.glob("*.md"))
 
 
 def read_counts():
-    """Questions answered per subject. Seeded once from the "(N pts)" in notes/index.md;
-    a subject the index lists without a count starts at the median."""
+    """Questions answered per subject; a subject not in the file counts as 0."""
     try:
         return json.loads(COUNTS.read_text())
     except (OSError, json.JSONDecodeError):
-        pass
-    counts, uncounted = {}, []
-    index = NOTES / "index.md"
-    if index.exists():
-        for line in index.read_text().splitlines():
-            name = re.search(r"\]\(([\w-]+)\.md\)", line)
-            pts = re.search(r"\((\d+) pts?\)", line)  # the first count on the line
-            if name and pts:
-                counts[name[1]] = int(pts[1])
-            elif name:
-                uncounted.append(name[1])
-    median = sorted(counts.values())[len(counts) // 2] if counts else 0
-    return counts | {s: median for s in uncounted}
+        return {}
 
 
 def write_counts(counts):
@@ -104,6 +102,24 @@ def least_asked(exclude=(), n=1):
     pool = [s for s in subjects() if s not in exclude]
     random.shuffle(pool)
     return sorted(pool, key=lambda s: counts.get(s, 0))[:n]
+
+
+def subject_decks(subject):
+    """The decks named in backticks on the subject's **Anki deck:** line."""
+    try:
+        text = (NOTES / f"{subject}.md").read_text()
+    except OSError:
+        return []
+    line = re.search(r"^\*\*Anki deck:\*\*(.*)$", text, re.M)
+    return re.findall(r"`([^`]+)`", line[1]) if line else []
+
+
+def anki_misses(subject):
+    """Recent Anki misses for the subject, as one line for the tutor ("" if none)."""
+    misses = cards.misses(subject_decks(subject))
+    if not misses:
+        return ""
+    return f"Anki misses for {subject}: " + json.dumps(misses, ensure_ascii=False)
 
 
 def thread_topics(questions):
@@ -162,7 +178,8 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(503, '{"error": "worksheet not ready"}')
                 return
             self.send(200, json.dumps({"worksheet": worksheet, "answers": read_answers(),
-                                       "explainers": explainers.states(), "cards": cards.states()}))
+                                       "asks": read_asks(), "explainers": explainers.states(),
+                                       "cards": cards.states()}))
         elif self.path.startswith("/explainers/") and self.path.endswith(".mp4"):
             video = explainers.video(self.path[len("/explainers/"):-len(".mp4")])
             if video:
@@ -173,7 +190,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send(404, '{"error": "not found"}')
 
     def do_POST(self):
-        if self.path not in ("/submit", "/suggest", "/cards/accept"):
+        if self.path not in ("/submit", "/suggest", "/ask", "/cards/accept"):
             self.send(404, '{"error": "not found"}')
             return
         try:
@@ -183,6 +200,8 @@ class Handler(BaseHTTPRequestHandler):
             return
         if self.path == "/suggest":
             self.suggest(body)
+        elif self.path == "/ask":
+            self.ask(body)
         elif self.path == "/cards/accept":
             self.accept_cards(body)
         else:
@@ -213,6 +232,35 @@ class Handler(BaseHTTPRequestHandler):
         inbox.put(json.dumps({"suggestion": text}))
         self.send(200, '{"ok": true}')
 
+    def ask(self, body):
+        """A follow-up question about a graded question's feedback. One may be open
+        (unanswered) per question at a time."""
+        qid, text = body.get("id"), str(body.get("text", "")).strip()
+        if not text or len(text) > MAX_ASK:
+            self.send(400, '{"error": "empty or too long"}')
+            return
+        try:
+            questions = json.loads(WORKSHEET.read_text()).get("questions", [])
+        except (OSError, json.JSONDecodeError):
+            self.send(503, '{"error": "worksheet not ready"}')
+            return
+        q = next((q for q in questions if q.get("id") == qid), None)
+        if not q or not q.get("credit"):
+            self.send(400, '{"error": "no graded question with that id"}')
+            return
+        with submit_lock:
+            mine = [a for a in read_asks() if a["question_id"] == qid]
+            if any(a["id"] not in (q.get("replies") or {}) for a in mine):
+                self.send(400, '{"error": "the tutor is still answering your last question"}')
+                return
+            entry = {"id": f"{qid}-a{len(mine) + 1}", "question_id": qid, "text": text,
+                     "time": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+            with ASKS.open("a") as f:
+                f.write(json.dumps(entry) + "\n")
+        log(f"ask {entry['id']}: {text}")
+        inbox.put(json.dumps({"ask": {k: entry[k] for k in ("id", "question_id", "text")}}))
+        self.send(200, '{"ok": true}')
+
     def submit(self, body):
         qid, answer = body.get("id"), body.get("answer", "")
         try:
@@ -239,7 +287,10 @@ class Handler(BaseHTTPRequestHandler):
             busy = set(thread_topics(questions).values())
             message["switch_subject"] = True
             message["switch_to"] = least_asked(exclude=busy)[0]
-        inbox.put(json.dumps(message))
+        text = json.dumps(message)
+        if message.get("switch_to"):
+            text = "\n".join(filter(None, [text, anki_misses(message["switch_to"])]))
+        inbox.put(text)
         self.send(200, '{"ok": true}')
 
     def log_message(self, *args):
@@ -252,11 +303,12 @@ if __name__ == "__main__":
     LIVE.mkdir(exist_ok=True)
     WORKSHEET.write_text(json.dumps({"questions": []}, indent=2))
     ANSWERS.write_text("")
+    ASKS.write_text("")
     explainers.start()
     cards.start()
-    if not COUNTS.exists():
-        write_counts(read_counts())
-    inbox.put(START_MESSAGE.format(*least_asked(n=3)) + "\n\n" + cards.catalog_text())
+    first = least_asked(n=3)
+    misses = "\n".join(filter(None, map(anki_misses, first)))
+    inbox.put("\n\n".join(filter(None, [START_MESSAGE.format(*first, ", ".join(subjects())), cards.catalog_text(), misses])))
     tutor = subprocess.Popen(TUTOR_CMD, cwd=ROOT, text=True,
                              stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     threading.Thread(target=run_tutor, args=(tutor,), daemon=True).start()
