@@ -21,8 +21,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlsplit
 
-from anki_cards import Cards
-from explainer.renderer import Explainers
+from anki_cards import Cards, ac
+from games.games import CSP as GAME_CSP, Games
 
 ROOT = Path(__file__).resolve().parent
 LIVE = ROOT / "live"
@@ -54,11 +54,17 @@ START_MESSAGE = (
 SWITCH_PROBABILITY = 0.15  # per submission; switches the subject of that question's thread
 MAX_SUGGESTION = 2000      # characters
 MAX_ASK = 1000             # characters
+# Question kinds: the share of application blocks among the last KIND_WINDOW questions is
+# kept within APPLICATION_RANGE by requiring the next question's kind when it drifts out.
+KIND_WINDOW = 12
+KIND_MIN_SAMPLE = 4        # don't steer on fewer questions than this
+APPLICATION_RANGE = (0.25, 0.50)
 
 submit_lock = threading.Lock()
+required_kinds = {}     # question id -> kind required of the question that follows it
 inbox = queue.Queue()   # messages for the tutor
-explainers = Explainers(LIVE, inbox.put)
 cards = Cards(LIVE, inbox.put)
+games = Games(LIVE, inbox.put)
 
 
 def read_answers():
@@ -127,6 +133,27 @@ def thread_topics(questions):
     return {q.get("thread"): q.get("topic") for q in questions}
 
 
+def question_kind(q):
+    return "application" if isinstance(q.get("items"), list) else "understanding"
+
+
+def required_kind(questions):
+    """The kind the next question must be, or None while the mix is in range.
+
+    Counts the last KIND_WINDOW questions on the worksheet, plus questions already
+    required but not written yet (a thread whose latest question has a requirement
+    recorded), so several submissions arriving together don't all overshoot."""
+    kinds = [question_kind(q) for q in questions]
+    latest = {q.get("thread"): q.get("id") for q in questions}
+    kinds += [required_kinds[qid] for qid in latest.values() if qid in required_kinds]
+    kinds = kinds[-KIND_WINDOW:]
+    if len(kinds) < KIND_MIN_SAMPLE:
+        return None
+    share = kinds.count("application") / len(kinds)
+    low, high = APPLICATION_RANGE
+    return "application" if share < low else "understanding" if share > high else None
+
+
 def log(msg):
     print(f"[{datetime.now():%H:%M:%S}] {msg}", flush=True)
 
@@ -157,11 +184,13 @@ def run_tutor(proc):
 
 
 class Handler(BaseHTTPRequestHandler):
-    def send(self, code, body, content_type="application/json"):
+    def send(self, code, body, content_type="application/json", headers=()):
         data = body.encode() if isinstance(body, str) else body
         self.send_response(code)
         self.send_header("Content-Type", content_type)
         self.send_header("Cache-Control", "no-store")
+        for name, value in headers:
+            self.send_header(name, value)
         self.send_header("Content-Length", str(len(data)))
         self.end_headers()
         self.wfile.write(data)
@@ -178,19 +207,20 @@ class Handler(BaseHTTPRequestHandler):
                 self.send(503, '{"error": "worksheet not ready"}')
                 return
             self.send(200, json.dumps({"worksheet": worksheet, "answers": read_answers(),
-                                       "asks": read_asks(), "explainers": explainers.states(),
-                                       "cards": cards.states()}))
-        elif self.path.startswith("/explainers/") and self.path.endswith(".mp4"):
-            video = explainers.video(self.path[len("/explainers/"):-len(".mp4")])
-            if video:
-                self.send(200, video.read_bytes(), "video/mp4")
+                                       "asks": read_asks(),
+                                       "cards": cards.states(), "games": games.states()}))
+        elif self.path.startswith("/games/") and self.path.endswith(".html"):
+            page = games.page(self.path[len("/games/"):-len(".html")])
+            if page:
+                self.send(200, page, "text/html; charset=utf-8",
+                          [("Content-Security-Policy", GAME_CSP), ("X-Content-Type-Options", "nosniff")])
             else:
-                self.send(404, '{"error": "no such explainer"}')
+                self.send(404, '{"error": "no such game"}')
         else:
             self.send(404, '{"error": "not found"}')
 
     def do_POST(self):
-        if self.path not in ("/submit", "/suggest", "/ask", "/cards/accept"):
+        if self.path not in ("/submit", "/suggest", "/ask", "/cards/accept", "/games/event"):
             self.send(404, '{"error": "not found"}')
             return
         try:
@@ -204,6 +234,12 @@ class Handler(BaseHTTPRequestHandler):
             self.ask(body)
         elif self.path == "/cards/accept":
             self.accept_cards(body)
+        elif self.path == "/games/event":
+            error = games.event(body.get("id"), body.get("version"), body.get("type"), body.get("detail", ""))
+            if error:
+                self.send(400, json.dumps({"error": error}))
+            else:
+                self.send(200, '{"ok": true}')
         else:
             self.submit(body)
 
@@ -268,6 +304,16 @@ class Handler(BaseHTTPRequestHandler):
         except (OSError, json.JSONDecodeError):
             questions = []
         q = next((q for q in questions if q.get("id") == qid), {})
+        # An application question has one answer per item; any other question has one string.
+        items = q.get("items")
+        if isinstance(items, list):
+            ok = (isinstance(answer, list) and len(answer) == len(items)
+                  and all(isinstance(a, str) for a in answer))
+        else:
+            ok = isinstance(answer, str)
+        if not ok:
+            self.send(400, '{"error": "answer doesn\'t match the question"}')
+            return
         with submit_lock:
             if not qid or qid in read_answers():
                 self.send(400, '{"error": "unknown or already answered"}')
@@ -280,7 +326,12 @@ class Handler(BaseHTTPRequestHandler):
                 counts = read_counts()
                 counts[q["topic"]] = counts.get(q["topic"], 0) + 1
                 write_counts(counts)
+            kind = required_kind(questions)
+            if kind:
+                required_kinds[qid] = kind
         message = {"submission": {"id": qid, "answer": answer}}
+        if kind:
+            message["next_kind"] = kind
         if random.random() < SWITCH_PROBABILITY:
             # Load balancing: the thread moves to the least-asked subject that no
             # thread is on now.
@@ -298,14 +349,22 @@ class Handler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
+    # The tutor depends on Anki (decks, misses, card proposals): refuse to start without it.
+    try:
+        ac("version")
+    except (OSError, RuntimeError, ValueError) as e:
+        sys.exit(f"Anki isn't reachable (AnkiConnect at localhost:8765: {e}). "
+                 "Open Anki and try again.")
     # Bind before wiping live/ so a failed start doesn't destroy a running session.
     server = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
     LIVE.mkdir(exist_ok=True)
     WORKSHEET.write_text(json.dumps({"questions": []}, indent=2))
     ANSWERS.write_text("")
     ASKS.write_text("")
-    explainers.start()
+    games.start()
     cards.start()
+    if cards.catalog is None:
+        sys.exit("Couldn't read the Anki deck catalog; not starting the tutor.")
     first = least_asked(n=3)
     misses = "\n".join(filter(None, map(anki_misses, first)))
     inbox.put("\n\n".join(filter(None, [START_MESSAGE.format(*first, ", ".join(subjects())), cards.catalog_text(), misses])))

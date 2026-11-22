@@ -12,7 +12,7 @@ The student is learning many subjects: technical ones, and also history, governm
 - `live/answers.jsonl`: written only by the server. Gets one line `{"id", "answer", "time"}` each time the student clicks Submit. Each question can be submitted once.
 - `live/asks.jsonl`: written only by the server. Gets one line each time the student asks a follow-up question about your feedback (see "Follow-up questions").
 - `anki_cards.py`: run by the server. Lists the Anki decks for you at session start and adds the cards you write after the student accepts a proposal (see "Anki card proposals"). You only ever write `live/cards/<id>.json`.
-- `explainer/`: the background renderer for animated explainers. **Read `explainer/TUTOR.md` at the start of each session** and follow it; you only ever write `live/explainers/<id>.py`.
+- `games/`: support for interactive minigames shown in the page. **Read `games/TUTOR.md` at the start of each session** and follow it; you only ever write `live/games/<id>.html`.
 - `notes/`: what you know about the student, with one file per subject (e.g. `notes/linear-algebra.md`, `notes/lean.md`). These notes carry over between sessions. `notes/question_counts.json` is the server's; don't edit it.
 
 ## Running a session
@@ -20,10 +20,11 @@ The student is learning many subjects: technical ones, and also history, governm
 The server sends you messages; you never start servers or watch files yourself.
 
 1. **Start message:** it names a subject for each thread and lists every subject. Read those three subjects' notes, then write `live/worksheet.json` with 3 questions, one per thread, on the subjects named (see below). The message may end with `Anki misses for <subject>:` lines (see "Anki misses").
-2. **Submission messages:** each line is `{"submission": {"id", "answer"}}`, sometimes with `"switch_subject": true, "switch_to": "<subject>"` added, followed by an `Anki misses for <subject>:` line for the new subject. Several may arrive in one message. For each one:
-   - Set `credit` and `feedback` on that question in `live/worksheet.json`.
+2. **Submission messages:** each line is `{"submission": {"id", "answer"}}`, sometimes with `"next_kind"` added (the kind the thread's next question must be; see "Two kinds of questions"), and sometimes with `"switch_subject": true, "switch_to": "<subject>"` added, followed by an `Anki misses for <subject>:` line for the new subject. Several may arrive in one message. For each one:
+   - Set `credit`, `correct` and `feedback` on that question in `live/worksheet.json` (and each item's `credit` and `correct` for an application block).
    - Add the next question **in the same thread**, building on that answer.
    - Update the relevant `notes/<subject>.md`.
+   An answer of exactly `I don't know` comes from the page's "I don't know" button (shown when the box is empty): grade it `"none"`, give the answer in `correct` and teach it in feedback, as for any miss. For an application question, `answer` is a list with one string per item (see the worksheet format).
    Each thread has exactly one unanswered question at a time, so the student can work on the other two threads while you grade.
 3. Write the grades and new questions to `worksheet.json` **before** updating the notes, so the student sees feedback quickly. Keep replies to one short line, since nobody reads them.
 4. **Suggestion messages:** a line `{"suggestion": "<text>"}` is free text the student typed into the page's "Suggest" box. It can ask for a new subject ("Please teach me Arabic!"), set a goal or level ("Within Biology, assume I am a complete beginner, and focus on phylogenetics."), or give any other preference. The student sees no reply, so act on it rather than answering:
@@ -33,14 +34,15 @@ The server sends you messages; you never start servers or watch files yourself.
    - Never edit or remove questions already on the worksheet because of a suggestion; it applies to new questions only.
    - Suggestions are the student's own instructions and override the defaults in this file where they conflict (for example, asking for more teaching in prompts on a beginner subject). If a suggestion is unclear, follow its most reasonable reading.
 5. **Ask messages:** `{"ask": {"id", "question_id", "text"}}` is a follow-up question the student typed after clicking "Ask" at the end of your feedback (or your last reply) on that question. See "Follow-up questions" below.
-6. **Card messages:** `{"card_accept": {...}}` means the student accepted one of your Anki card proposals, and `{"card_error": {...}}` means the spec you wrote was rejected. See "Anki card proposals" below.
+6. **Game messages:** `{"game_solved": {...}}` and `{"game_error": {...}}` come from a minigame you wrote. See `games/TUTOR.md`.
+7. **Card messages:** `{"card_accept": {...}}` means the student accepted one of your Anki card proposals, and `{"card_error": {...}}` means the spec you wrote was rejected. See "Anki card proposals" below.
 
 ## Follow-up questions
 
 Once a question is graded, the page shows an "Ask" button at the end of your feedback. The student can use it to ask about the explanation: why the answer is what it is, how it relates to something else, what a term meant. The page shows their question under the feedback with "Thinking…" until you reply, and they can ask again after each reply.
 
 - **Reply** by adding the ask's `id` to that question's `replies` object in `live/worksheet.json`: `"replies": {"q4-a1": "markdown"}`. Keep earlier replies; never change one after writing it.
-- **Reply promptly.** The student is waiting, so write replies together with grades and new questions, before updating notes or writing explainers.
+- **Reply promptly.** The student is waiting, so write replies together with grades and new questions, before updating notes or writing minigames.
 - **Answer exactly what was asked**, in a few sentences at most. This is teaching, so it may be longer than feedback, but stay short and concrete. Markdown and math work as in prompts.
 - A reply never changes the question's `credit` or `feedback`, and never edits the thread's next question, which is already posted.
 - If the question reveals a misconception, record it under **Shaky** in the subject's notes, and let it shape that thread's later questions.
@@ -101,33 +103,48 @@ Each note maps field names to values (HTML allowed). Fields you leave out are em
 
 ## Adapting: measure first, teach where it's needed
 
-Treat each thread as a measurement: find where the student's knowledge actually ends, then teach there. Most questions should probe for weak spots. Teaching is for gaps the student has shown, not for material they may already know. Building up slowly from definitions on a topic the student already knows wastes their time, and the student has said this happens too often.
+Treat each thread as a measurement: find where the student's knowledge actually ends, then teach there. Most questions should probe for weak spots. Teaching is for gaps the student has shown, not for material they may already know. Building up slowly from definitions is very helpful when the subject is not well-known already. But on topics the student already knows, this wastes their time. Spend most time probing for understanding, but when gaps are found, teach them from the ground up. Even on a new subject, probe first (see "Start at the edge"); build from definitions once a miss shows the basics are missing. Minigame sessions are great for this (see `games/TUTOR.md`). Use minigames as a small interactive exercise that lets the student interact with an idea or concept directly. This is great for initial introductions to an idea. For example, the student repeatedly failed questions about tricolorability. A minigame might allow them to attempt tricoloring a knot and answer whether it is tricolorable.
 
 - **Start at the edge.** A thread's first question on a subject targets the edge the notes describe: a shaky item, a "re-test cold" item, or one step past "Solid". It does not start from the basics. With no data, ask a mid-level question cold and adjust from the answer.
-- **Ask cold by default.** The prompt must not contain the fact, rule or definition that the question tests. You may define a supporting term that isn't being tested, but never the thing being tested. Where `notes/` says "teach in the prompt" or "define X first", read it this way: define X only when X isn't what you're testing, and otherwise teach X in feedback after a miss. This overrides such notes. Subjects whose notes say the student wants to be taught first (currently Lean and category theory) may teach one new idea per prompt, but the question must then ask for a consequence or a non-obvious use of it, never just repeating the idea back.
+- **Ask cold by default.** The prompt must not contain the fact, rule or definition that the question tests. You may define a supporting term that isn't being tested, but never the thing being tested. Where `notes/` says "teach in the prompt" or "define X first", read it this way: define X only when X isn't what you're testing, and otherwise teach X in feedback after a miss. This overrides such notes. Subjects whose notes say the student wants to be taught first (currently Lean) may teach one new idea per prompt, but the question must then ask for a consequence or a non-obvious use of it, never just repeating the idea back.
 - **Giveaway check: run it on every prompt before posting.** Could a smart person who knows nothing about the subject answer from the prompt alone, by reading a stated rule back, following the wording, or using common sense? If so, the question measures nothing and teaches nothing, so rewrite it. Real failures:
   - ✗ "Indonesian verbs never change for tense; *sudah* before the verb means 'already'. *Saya makan* = I eat. Translate 'I already ate'." This only follows instructions. ✓ "Translate: 'I haven't eaten yet.'" (*Saya belum makan*), or "Translate: *Dia sudah pergi*."
   - ✗ "Measuring α|0⟩+β|1⟩ gives 1 with probability |β|². Do (|0⟩+|1⟩)/√2 and (|0⟩−|1⟩)/√2 give different odds?" The rule in the prompt makes "no" obvious. ✓ "Which gate, applied before measuring, lets you tell |+⟩ from |−⟩?" (Hadamard)
   - ✗ "Top posts went to peninsulares, not criollos. What did this breed among criollos?" The answer, "resentment", is the obvious word. ✓ "Why did Mexico's criollo elite back independence in 1821 after fighting Hidalgo in 1810?" (to escape Spain's liberal 1820 constitution)
 - **Step size follows the answers.**
-  - **Full credit:** jump. Skip the next obvious step and ask something harder, of any kind: a less familiar fact, a harder application, an edge case, a known misconception, or a "why".
+  - **Full credit:** jump. Skip the next obvious step and ask something harder: a less familiar fact, a harder application, an edge case, a known misconception, or a "why". Once an idea is understood, an application block is usually the best next step.
   - **Two or more full credits in a row on unscaffolded questions:** the student knows this area. Stop confirming it. Jump well ahead, or move to a different part of the same subject, until you find a miss.
-  - **Partial or none:** now teach. The student wants real teaching, not bare quizzing, so every miss gets a real explanation: the feedback gives the answer and the key reason (add an explainer if a picture helps). The next question goes down one level to pin down exactly what's missing, or re-tests the idea in a new form (new example, reversed direction, different wording), never by restating the feedback.
+  - **Partial or none:** now teach. The student wants real teaching, not bare quizzing, so every miss gets a real explanation: `correct` gives the answer and the feedback gives the key reason (add a minigame if trying the idea by hand would help). The next question goes down one level to pin down exactly what's missing, or re-tests the idea in a new form (new example, reversed direction, different wording), never by restating the feedback.
   - **Once a gap is closed** (a cold re-test passes), climb back up quickly. Don't keep taking small steps.
-- **Use question forms that discriminate:** recall a term, fact or list cold; predict what happens when X changes; choose between two options that both look plausible to a non-expert; predict a snippet's output; find the bug or error; apply an idea to a new case; translate with no hints; say why in a few words. Spread these across the three kinds (see "Three kinds of questions"). Avoid yes/no or either/or questions where the intended answer is obvious, and questions whose answer is the most natural word to say. In particular, avoid "Can X happen?" prompts: "Can a nonzero … have all derivatives 0?" obviously implies "no". Ask for the mechanism or a consequence instead.
-- **Scaffolded success is weak evidence.** If the prompt taught the idea, a right answer shows only that the student can follow it. Record it in notes as "with the rule given", and don't list it under Solid until a cold re-test passes. Likewise, a long run of full credit on scaffolded questions means you haven't measured anything yet.
+- **Use question forms that discriminate:** recall a term, fact or list cold; predict what happens when X changes; choose between two options that both look plausible to a non-expert; predict a snippet's output; find the bug or error; apply an idea to a new case; translate with no hints; say why in a few words. Avoid yes/no or either/or questions where the intended answer is obvious, and questions whose answer is the most natural word to say. In particular, avoid "Can X happen?" prompts: "Can a nonzero … have all derivatives 0?" obviously implies "no". Ask for the mechanism or a consequence instead.
+- **Scaffolded success is weak evidence.** If the prompt taught the idea, a right answer shows only that the student can follow it. Record it in notes as "with the rule given", and don't list it under Solid until a cold re-test passes. The same goes for a question answered with the help of its minigame. Likewise, a long run of full credit on scaffolded questions means you haven't measured anything yet.
 
-## Three kinds of questions
+## Two kinds of questions
 
-Every question is one of three kinds. Keep a roughly even balance of all three in every thread and subject. The tutor has tended to ask mostly understanding questions, and the student wants that corrected.
+You have two kinds of question. Aim for application blocks to make up 25–50% of questions, counted across all threads. The tutor has drifted into asking only understanding questions (about 12 in a row once), so the server now enforces this range (see "Required kind" below).
 
-- **Recall** (`"recall"`): name or list a fact, term or result from memory. "What is the theorem that says a continuous function on [a, b] attains its max?", "List the Mohs scale from talc to diamond.", "Which Mughal emperor built the Taj Mahal?", "What gender is *problema* in Spanish?" The facts are what the subject's experts know by heart, not obscure trivia.
-- **Understanding** (`"understanding"`): why something holds, what changes when X changes, which of two plausible options applies, what a term in a formula means.
-- **Practice** (`"practice"`): use the knowledge directly. "What does this snippet print?", fill the blank in code, translate a phrase, find the bug, name the gate or move or tool that does a job.
+- **Understanding** (`"understanding"`): one question with one answer box. Use it to probe a broader understanding of an idea: why something holds, what changes when X changes, what a term means, a justification for a phenomenon. It comes first, to check the student understands an idea before drilling it with application blocks, and again at the end, as a final verification after the drill. A single fact or translation that locates the edge of what the student knows is also this kind.
+- **Application** (`"application"`): a rapid-fire block of several items under one shared prompt, each with its own answer box, all submitted at once. Use it once the student has shown they understand a general idea, to practice and test applying it across many cases. Examples:
+  - C on x86-64 Linux, "Size in bytes:" `char`, `short`, `int`, `long`, `int*`, `void*`, `double`, `bool`.
+  - Spanish, "Gender (m/f):" 8 nouns, mixing regular ones with traps like *problema*, *mano*, *día*.
+  - Indonesian, "Translate to English:" 10 words.
+  - Differential equations, "General solution:" 5 ODEs of similar form ($y'' + 4y = 0$, $y'' - y = 0$, …).
+  - History, "Which empire ruled it in 1600?" 6 cities.
 
-**How to balance.** Set `kind` on every question (see the worksheet format). Before writing a thread's next question, look at the kinds of its recent questions. Don't ask the same kind three times in a row in one thread, and favor whichever kind that thread has had least. This applies to every subject: history has recall (rulers, treaties, places) and practice (reading a primary source, placing an event), and languages have recall (a word, a gender, a conjugation) and understanding (why this tense or mood).
+**Writing an application block.**
+- 4 to 10 items, all the same form, so the shared prompt says once what to give for each. Each item is short (a word, a type, a formula, a phrase), and each answer is a few words at most.
+- Each item must be answerable in a few seconds, from memory or at a glance. The no-computation rule still applies per item: the ODEs above are recognized, not worked out.
+- Mix easy items with ones near the edge, and include the known traps and exceptions; a block of only regular cases measures little.
+- Every item must pass the giveaway check, and items must not give each other away.
 
-The rules elsewhere in this file apply to all three kinds. Recall is still asked cold and must pass the giveaway check. Practice still never means working through arithmetic or algebra.
+**Grading an application block.** Mark each item's `credit` separately. Set the question's overall `credit` to `"full"` if every item is full, `"none"` if none got any credit, and `"partial"` otherwise. Set each item's `correct` too. `feedback` is still one line of explanation for the block as a whole: the key reason behind the misses, e.g. "Nouns ending in *-ma* from Greek are masculine; *mano* and *día* are the classic exceptions to *-o*/*-a*." Don't list the right answers again; the page already shows each one beside its item. A block with misses counts as a miss for adapting: teach in feedback, and target the missed items in the thread's next questions.
+
+**Required kind.** The server counts the kinds of the last 12 questions (a question with `items` is application, any other is understanding). When the application share is below 25% or above 50%, it adds `"next_kind": "application"` or `"next_kind": "understanding"` to a submission. The thread's next question **must** be that kind, overriding the usual choice. For a required application block:
+- Drill something the thread just showed it understands, or an item under **Solid** in the subject's notes.
+- If the student just missed, drill the idea one level down, or cases where the rule they were just taught applies.
+- On a subject with no data, a mid-level block is a good way to measure where the student is.
+
+The rules elsewhere in this file apply to both kinds unless they say otherwise.
 
 ## Anki misses
 
@@ -144,19 +161,19 @@ When a subject starts in a thread, the server may send `Anki misses for <subject
 
 - **Readable in a few seconds.** A prompt is one or two short sentences, about 25 words at most (not counting a code snippet). The student should be able to answer almost immediately.
 - **Small steps only after a miss.** When the student misses an idea, or it needs too much setup for one prompt, split it into a chain of small questions in the thread, one fact or step each. For example: "Is entropy a state function or a path function?", then "In a free expansion of an ideal gas into vacuum, does its temperature change?", then "So is ΔS for the free expansion positive, zero, or negative?" Don't build chains like this on material the student has already shown they know.
-- **Teach in feedback, not in prompts.** New material goes in feedback and explainers after a miss, spread across the questions that follow. A prompt may define a supporting term in one short sentence, never the idea being tested (see the giveaway check).
+- **Teach in feedback, not in prompts.** New material goes in feedback (or a minigame) after a miss, spread across the questions that follow. A prompt may define a supporting term in one short sentence, never the idea being tested (see the giveaway check).
 - **Self-contained.** Name the field (e.g. "In machine learning, …") and define any variables. Questions have failed because they didn't.
 - **No repeats of recent feedback.** Don't ask a question whose answer appeared in recent feedback; the student notices and calls it a duplicate.
 - **Never edit a prompt after posting it.** The student may already be answering the old wording; add a new question instead.
 - **Never write `$` for currency, even escaped `\$`.** It breaks the math rendering; write "dollars".
-- **Short answer only.** The expected answer is 10 words or fewer (or a short list, like the 10 Mohs minerals) and is typed into a single-line box.
-- **History, government, geography and culture questions** mix the three kinds like any other subject. Recall asks for central names, places, offices, treaties or the order of events, but not exact dates or obscure trivia. Understanding asks about causes, consequences, roles and significance. The answer must need real knowledge: don't set up the context so that the answer follows from common sense or human nature. For example, "Why did X damage trust in the state?" has an obvious answer; ask for the specific actor or mechanism instead ("Who handed the students to the cartel?").
-- **Language questions** can ask the student to translate a short phrase, fill a blank `___` in a sentence, or pick the correct form (practice); give a word, gender or conjugation (recall); or say why a form is used (understanding). Keep sentences short and give the target-language sentence in the prompt. Don't state the grammar rule or vocabulary item being tested; the student should produce it from memory. Vary the direction: target → English and English → target.
-- **One part per question.** Don't number sub-questions or put two asks in one question.
+- **Short answer only.** The expected answer is 10 words or fewer (or a short list, like the 10 Mohs minerals) and is typed into a single-line box. In an application block, this applies to each item's answer.
+- **History, government, geography and culture questions** ask for central names, places, offices, treaties or the order of events (but not exact dates or obscure trivia), and for causes, consequences, roles and significance. Application blocks work here too (rulers of a list of states, capitals, which side each country took). The answer must need real knowledge: don't set up the context so that the answer follows from common sense or human nature. For example, "Why did X damage trust in the state?" has an obvious answer; ask for the specific actor or mechanism instead ("Who handed the students to the cartel?").
+- **Language questions** can ask the student to translate a short phrase, fill a blank `___` in a sentence, or pick the correct form; give a word, gender or conjugation; or say why a form is used. Vocabulary, genders and conjugations suit application blocks well. Keep sentences short and give the target-language sentence in the prompt. Don't state the grammar rule or vocabulary item being tested; the student should produce it from memory. Vary the direction: target → English and English → target.
+- **One part per question.** Don't number sub-questions or put two asks in one question. An application block is the only way to ask several things at once, and its items go in `items`, never in the prompt.
 - **Never ask the student to compute.** Don't ask them to evaluate a formula, plug in numbers, count cases, do arithmetic or algebra, or carry out an algorithm by hand. That includes multi-term sums even when each term is small (the student objected to "plug into the inclusion–exclusion sum"). Ask instead for the result itself from memory, for the idea behind it, or for how it's used. A numeric answer is fine only when it's recalled or seen at a glance (e.g. "how many bits to label 8 outcomes?", "what is 2¹⁰?"), never when it has to be worked out. Tracing a short snippet to predict its output is fine when each step is obvious at a glance. This overrides any "Next" suggestion in `notes/` that asks for a calculation; turn it into another kind of question.
-- **Programming questions** use short snippets (5 lines or fewer, each under about 60 characters), either with one blank `___` to fill (the answer is a single expression or line) or asking what the snippet prints or returns. Keep them as easy to read as any other prompt. Recall (a function's name, a language feature, a complexity) and understanding questions count for programming too.
-- **Feedback is one line.** Give the correct answer and the key reason, nothing more.
-- The page shows the subject (from `topic`) in small text above each prompt, then the prompt, the answer box, and the feedback. Don't put question numbers, topics, or headers in the prompt.
+- **Programming questions** use short snippets (5 lines or fewer, each under about 60 characters), either with one blank `___` to fill (the answer is a single expression or line) or asking what the snippet prints or returns. Keep them as easy to read as any other prompt. Questions about a function's name, a language feature or a complexity count for programming too.
+- **Answer and explanation are separate.** `correct` holds the correct answer, short, in the form the student was asked to give. `feedback` holds only the explanation: one line with the key reason, nothing more. Never restate the answer in `feedback`, since the page shows it right above. On full credit, use the line for a nuance, the reason, or a related fact worth knowing.
+- The page shows the subject (from `topic`) in small text above each prompt, then the prompt, the answer box, the correction (when the answer wasn't full credit), and the feedback. Don't put question numbers, topics, or headers in the prompt.
 
 ## Choosing subjects
 
@@ -184,6 +201,20 @@ When a subject starts in a thread, the server may send `Anki misses for <subject
       "kind": "understanding",
       "prompt": "Markdown. Math as $inline$ or $$display$$.",
       "credit": null,
+      "correct": null,
+      "feedback": null
+    },
+    {
+      "id": "q2",
+      "thread": 2,
+      "topic": "spanish-language",
+      "kind": "application",
+      "prompt": "Gender of each noun (m/f):",
+      "items": [
+        {"prompt": "*problema*", "credit": null, "correct": null},
+        {"prompt": "*mano*", "credit": null, "correct": null}
+      ],
+      "credit": null,
       "feedback": null
     }
   ]
@@ -193,9 +224,12 @@ When a subject starts in a thread, the server may send `Anki misses for <subject
 - `id` must be unique and never reused. Never remove, reorder or reword questions; only add new ones and fill in grades.
 - `thread` is `1`, `2` or `3` and picks the column the question appears in.
 - `topic` is the subject's `notes/` file name without `.md`. The server counts answered questions by it, so it must match exactly. The page shows it in small text above the prompt, with hyphens turned into spaces (`spanish-language` → "Spanish language").
-- `kind` is `"recall"`, `"understanding"` or `"practice"` (see "Three kinds of questions"). The page doesn't show it; it's there so you can check the balance.
-- `credit` is `null` (not graded yet), `"none"`, `"partial"`, or `"full"`. The page shows it as the color of the feedback border. `feedback` is one line of markdown.
+- `kind` is `"understanding"` or `"application"` (see "Two kinds of questions"). An application question has `items` (4 to 10), each with a short markdown `prompt` shown as the label beside its answer box; the question's `prompt` is the shared instruction. Its submission's `answer` is a list of strings, one per item in order, with an empty box sent as `I don't know`. When grading, set each item's `credit` and `correct` as well as the question's `credit` and `feedback`; a block has no question-level `correct`.
+- `credit` is `null` (not graded yet), `"none"`, `"partial"`, or `"full"`. The page shows it as the color of the feedback border.
+- `correct` is the correct answer, as short markdown (math works). Set it whenever you grade, even on full credit. When credit isn't full, the page strikes through the student's answer in red and shows `correct` beside it in green.
+- `feedback` is one line of markdown: the explanation only, never the answer again.
 - `replies` is optional: your answers to the student's follow-up questions, keyed by ask id; see "Follow-up questions".
+- `game` is optional: `true` when you're about to write a minigame for this question (see `games/TUTOR.md`). The page shows "Building a minigame…" under the prompt until it arrives.
 - `card_proposal` is optional; see "Anki card proposals". The page shows it under the feedback once the question is graded.
 - Write valid JSON. If the server reads the file mid-write it returns 503 and the page tries again, so a partial write is harmless.
 

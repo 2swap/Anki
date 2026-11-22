@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  :root { --ink: #1d1d1f; --muted: #6b6b70; --line: #d6d6d2; --accent: #2b59c3;
+          --good: #1f8a4c; --bad: #c53030; --surface: rgba(0,0,0,.03); color-scheme: light dark; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #ececec; --muted: #9a9aa0; --line: #3a3a40; --accent: #7aa2ff;
+            --good: #48bb78; --bad: #fc8181; --surface: rgba(255,255,255,.04); }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: transparent; color: var(--ink);
+               font: 15px/1.5 system-ui, -apple-system, sans-serif; }
+  body { padding: 10px 12px; }
+  button { padding: 5px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface);
+           color: var(--ink); font: inherit; font-size: .9rem; cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  svg { display: block; max-width: 100%; user-select: none; touch-action: none; }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .status { min-height: 1.5em; color: var(--muted); }
+  .status.good { color: var(--good); font-weight: 600; }
+  .status.bad { color: var(--bad); }
+</style>
+<script>
+<!--KIT-->
+</script>
+</head>
+<body>
+<!--GAME-->
+</body>
+</html>

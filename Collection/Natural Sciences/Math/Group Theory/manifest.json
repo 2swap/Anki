@@ -1,0 +1,37 @@
+{
+  "models": {
+    "Group": {
+      "modelName": "Group Theory - Group",
+      "keyField": "Name"
+    }
+  },
+  "build": [
+    "build.py"
+  ],
+  "media": {
+    "group_trivial_group.svg": "media/group_trivial_group.svg",
+    "group_cyclic_group_c2.svg": "media/group_cyclic_group_c2.svg",
+    "group_cyclic_group_c3.svg": "media/group_cyclic_group_c3.svg",
+    "group_cyclic_group_c4.svg": "media/group_cyclic_group_c4.svg",
+    "group_klein_four_group_c2_x_c2.svg": "media/group_klein_four_group_c2_x_c2.svg",
+    "group_cyclic_group_c5.svg": "media/group_cyclic_group_c5.svg",
+    "group_cyclic_group_c6.svg": "media/group_cyclic_group_c6.svg",
+    "group_symmetric_group_s3_d3.svg": "media/group_symmetric_group_s3_d3.svg",
+    "group_cyclic_group_c7.svg": "media/group_cyclic_group_c7.svg",
+    "group_cyclic_group_c8.svg": "media/group_cyclic_group_c8.svg",
+    "group_c4_x_c2.svg": "media/group_c4_x_c2.svg",
+    "group_elementary_abelian_group_c23.svg": "media/group_elementary_abelian_group_c23.svg",
+    "group_dihedral_group_d4.svg": "media/group_dihedral_group_d4.svg",
+    "group_quaternion_group_q8.svg": "media/group_quaternion_group_q8.svg",
+    "group_cyclic_group_c9.svg": "media/group_cyclic_group_c9.svg",
+    "group_c3_x_c3.svg": "media/group_c3_x_c3.svg",
+    "group_cyclic_group_c10.svg": "media/group_cyclic_group_c10.svg",
+    "group_dihedral_group_d5.svg": "media/group_dihedral_group_d5.svg",
+    "group_cyclic_group_c11.svg": "media/group_cyclic_group_c11.svg",
+    "group_cyclic_group_c12.svg": "media/group_cyclic_group_c12.svg",
+    "group_c6_x_c2.svg": "media/group_c6_x_c2.svg",
+    "group_alternating_group_a4.svg": "media/group_alternating_group_a4.svg",
+    "group_dihedral_group_d6.svg": "media/group_dihedral_group_d6.svg",
+    "group_dicyclic_group_dic3.svg": "media/group_dicyclic_group_dic3.svg"
+  }
+}

@@ -91,10 +91,19 @@ pruning deletes notes missing from the repo.
 
 ### Decks with a build script
 
-Geography, Math, Minerals, Music, Standard Model and Export Portfolios generate
-their TSVs (and sometimes media and the manifest's media list), so edit the
-build script or its source data, never the generated TSV, and run `check`
-(which builds) to confirm. The others' TSVs are edited by hand.
+Geography, Math, Group Theory, Minerals, Music, Standard Model and Export
+Portfolios generate their TSVs (and sometimes media and the manifest's media
+list), so edit the build script or its source data, never the generated TSV,
+and run `check` (which builds) to confirm. The others' TSVs are edited by hand.
+
+Generated files are git-ignored and not committed (see `.gitignore`): the TSVs
+of these decks, plus Music's mp3s, Export Portfolios' treemaps and Group
+Theory's Cayley tables in `media/`. A fresh clone has them only after a build,
+so don't use `--no-build` there (a deck with no TSV is skipped). Downloaded or
+hand-made media (Minerals' images, Geography's `geog.js`) are source and stay
+committed. The manifest's `media` map is rewritten by some builds but is
+committed, since the manifest also holds hand-written config. Music's build
+needs `lame` and numpy; Export Portfolios' needs Pillow and the Noto Sans fonts.
 
 ## Schema changes force a full sync
 

@@ -195,9 +195,11 @@ class Cards:
     def misses(self, decks):
         """The last MISSES cards answered "Again" in each of `decks` (subdecks not
         included), newest first, as [{deck, missed, fields}]. Cached for the session."""
-        if self.catalog is None:
+        try:
+            known = set(ac("deckNames"))    # fresh, so decks made mid-session count
+        except (OSError, RuntimeError, ValueError) as e:
+            print(f"cards: deck list unavailable ({e})", flush=True)
             return []
-        known = {d["name"] for d in self.catalog["decks"]}
         out = []
         for deck in decks:
             if deck not in known:
@@ -212,11 +214,18 @@ class Cards:
         return out
 
     def eligible(self, deck):
-        """The maker for `deck`, or None if there is no such deck."""
-        for d in (self.catalog or {}).get("decks", []):
-            if d["name"] == deck:
-                return d["maker"]
-        return None
+        """The maker for `deck`, or None if there is no such deck. Asks Anki fresh
+        each time, so decks made mid-session are found."""
+        try:
+            if deck not in ac("deckNames"):
+                return None
+            own = f'"deck:{quote(deck)}" -"deck:{quote(deck)}::*"'
+            types = [m for m in ac("modelNames")
+                     if ac("findNotes", query=f'{own} "note:{quote(m)}"')]
+        except (OSError, RuntimeError, ValueError) as e:
+            print(f"cards: couldn't look up deck {deck!r} ({e})", flush=True)
+            return None
+        return maker_for(types)
 
     def states(self):
         """{qid: {"state": "writing" | "adding" | "done" | "failed", "summary"}}."""

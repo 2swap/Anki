@@ -1,0 +1,143 @@
+<!-- Example minigame: find a tricoloring of a knot diagram.
+     Diagrams are built from closed parametric space curves f(t) = [x, y, z]: crossings are
+     the projection's self-intersections, and z decides which strand goes over. To add a
+     knot, add an entry to KNOTS (any smooth closed curve whose projection is generic). -->
+<style>
+  .hint { color: var(--muted); font-size: .9rem; margin: 0 0 8px; }
+  .row { margin-bottom: 6px; }
+  .spacer { flex: 1; }
+  .board { width: 100%; max-width: 380px; margin: 0 auto; }
+  .hit { stroke: transparent; stroke-width: 22; fill: none; cursor: pointer; pointer-events: stroke; }
+  .strand { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+  .ring { fill: none; stroke-width: 2.5; pointer-events: none; }
+</style>
+
+<p class="hint">Click a strand to cycle its color. At each crossing, the three strands that meet must be all the same color or all different, and the whole knot must use at least two colors.</p>
+<div class="row" id="picker"><span class="spacer"></span><button id="reset">Reset</button></div>
+<svg class="board" id="board" viewBox="0 0 400 400"></svg>
+<div class="status" id="status"></div>
+
+<script>
+const S = Math.sin, C = Math.cos;
+const KNOTS = [
+  { name: "Trefoil", f: t => [S(t) + 2 * S(2 * t), C(t) - 2 * C(2 * t), -S(3 * t)] },
+  { name: "Figure-eight", f: t => [(2 + C(2 * t)) * C(3 * t), (2 + C(2 * t)) * S(3 * t), S(4 * t)] },
+];
+
+// A diagram: the curve's samples in board coordinates, its crossings, and its arcs
+// (the strands between consecutive under-crossings).
+function buildDiagram(f, N = 720) {
+  let P = [];
+  for (let i = 0; i < N; i++) P.push(f(2 * Math.PI * i / N));
+  // Fit into the 400×400 board with a margin.
+  const xs = P.map(p => p[0]), ys = P.map(p => p[1]);
+  const [x0, x1, y0, y1] = [Math.min(...xs), Math.max(...xs), Math.min(...ys), Math.max(...ys)];
+  const scale = 340 / Math.max(x1 - x0, y1 - y0);
+  P = P.map(([x, y, z]) => [200 + (x - (x0 + x1) / 2) * scale, 200 - (y - (y0 + y1) / 2) * scale, z]);
+
+  const at = pos => {   // the point at a fractional sample position
+    const i = Math.floor(pos) % N, s = pos - Math.floor(pos), a = P[i], b = P[(i + 1) % N];
+    return [a[0] + s * (b[0] - a[0]), a[1] + s * (b[1] - a[1])];
+  };
+  const crossings = [];
+  for (let i = 0; i < N; i++) {
+    const a = P[i], b = P[(i + 1) % N];
+    for (let j = i + 2; j < N; j++) {
+      if (i === 0 && j === N - 1) continue;   // neighbors across the seam
+      const c = P[j], d = P[(j + 1) % N];
+      const den = (b[0] - a[0]) * (d[1] - c[1]) - (b[1] - a[1]) * (d[0] - c[0]);
+      if (Math.abs(den) < 1e-12) continue;
+      const s = ((c[0] - a[0]) * (d[1] - c[1]) - (c[1] - a[1]) * (d[0] - c[0])) / den;
+      const u = ((c[0] - a[0]) * (b[1] - a[1]) - (c[1] - a[1]) * (b[0] - a[0])) / den;
+      if (s < 0 || s >= 1 || u < 0 || u >= 1) continue;
+      const iOver = a[2] + s * (b[2] - a[2]) > c[2] + u * (d[2] - c[2]);
+      crossings.push({ x: a[0] + s * (b[0] - a[0]), y: a[1] + s * (b[1] - a[1]),
+                       over: iOver ? i + s : j + u, under: iOver ? j + u : i + s });
+    }
+  }
+  const cuts = crossings.map(c => c.under).sort((p, q) => p - q);
+  const n = cuts.length;
+  const arcAt = pos => (cuts.filter(c => c <= pos).length - 1 + n) % n;
+  for (const c of crossings) {
+    const k = cuts.indexOf(c.under);
+    c.arcs = [arcAt(c.over), k, (k - 1 + n) % n];   // over strand, then the two under strands
+  }
+
+  // Arc k runs from cut k to cut k+1, leaving a gap where it passes under.
+  const GAP = 13;
+  const arcs = cuts.map((start, k) => {
+    let end = cuts[(k + 1) % n];
+    if (end <= start) end += N;
+    const pA = at(start), pB = at(end % N);
+    const pts = [];
+    for (let i = Math.ceil(start); i <= Math.floor(end); i++) pts.push(P[i % N]);
+    return pts.filter(p => Math.hypot(p[0] - pA[0], p[1] - pA[1]) > GAP &&
+                           Math.hypot(p[0] - pB[0], p[1] - pB[1]) > GAP);
+  });
+  return { crossings, arcs };
+}
+
+const board = document.getElementById("board");
+const status = document.getElementById("status");
+const picker = document.getElementById("picker");
+const COLORS = Game.colors.slice(0, 3);
+let knot, diagram, colors;
+
+function load(k) {
+  knot = k;
+  diagram = buildDiagram(k.f);
+  colors = diagram.arcs.map(() => null);
+  for (const b of picker.querySelectorAll("button.knot")) b.classList.toggle("active", b.textContent === k.name);
+  draw();
+}
+
+function draw() {
+  board.replaceChildren();
+  const rings = Game.svg("g", {}, board);
+  diagram.arcs.forEach((pts, k) => {
+    const d = "M" + pts.map(p => p[0].toFixed(1) + " " + p[1].toFixed(1)).join("L");
+    Game.svg("path", { d, class: "strand",
+                       stroke: colors[k] == null ? "var(--muted)" : COLORS[colors[k]],
+                       opacity: colors[k] == null ? 0.55 : 1 }, board);
+    const hit = Game.svg("path", { d, class: "hit" }, board);
+    hit.addEventListener("click", () => {
+      colors[k] = colors[k] == null ? 0 : colors[k] === 2 ? null : colors[k] + 1;
+      draw();
+    });
+  });
+
+  let bad = 0, done = 0;
+  for (const c of diagram.crossings) {
+    const cs = c.arcs.map(a => colors[a]);
+    if (cs.includes(null)) continue;
+    done++;
+    const ok = new Set(cs).size !== 2;
+    if (!ok) bad++;
+    Game.svg("circle", { cx: c.x, cy: c.y, r: 17, class: "ring",
+                         stroke: ok ? "var(--good)" : "var(--bad)" }, rings);
+  }
+  const colored = colors.filter(c => c != null).length, total = colors.length;
+  status.className = "status";
+  if (colored < total) {
+    status.textContent = `${colored} of ${total} strands colored` + (bad ? ` · ${bad} crossing${bad > 1 ? "s" : ""} broken` : "");
+    if (bad) status.className = "status bad";
+  } else if (bad) {
+    status.textContent = `${bad} crossing${bad > 1 ? "s" : ""} broken: exactly two colors meet there.`;
+    status.className = "status bad";
+  } else if (new Set(colors).size < 2) {
+    status.textContent = "Every crossing passes, but a tricoloring must use at least two colors.";
+  } else {
+    status.textContent = `A valid tricoloring of the ${knot.name.toLowerCase()}!`;
+    status.className = "status good";
+    Game.solved(`found a tricoloring of the ${knot.name.toLowerCase()}`);
+  }
+}
+
+for (const k of KNOTS) {
+  const b = Game.el("button", { class: "knot" }, k.name);
+  b.addEventListener("click", () => load(k));
+  picker.insertBefore(b, picker.querySelector(".spacer"));
+}
+document.getElementById("reset").addEventListener("click", () => load(knot));
+load(KNOTS[0]);
+</script>

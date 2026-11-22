@@ -17,8 +17,10 @@
   * { box-sizing: border-box; }
   body { margin: 0; background: var(--bg); color: var(--ink);
          font: 16px/1.55 system-ui, -apple-system, sans-serif; }
-  main { max-width: 1500px; margin: 0 auto; padding: 56px 20px 120px;
-         display: grid; gap: 20px; align-items: start;
+  /* Like a chat: the threads are bottom-aligned, so each thread's current question sits on
+     the same line at the bottom of the page and history grows upward. */
+  main { max-width: 1500px; margin: 0 auto; padding: 56px 20px 48px; min-height: 100vh;
+         display: grid; gap: 20px; align-items: end; align-content: end;
          /* A column is never narrower than its widest code line, so code doesn't scroll;
             the other columns shrink to make room. */
          grid-template-columns: repeat(3, minmax(min-content, 1fr)); }
@@ -26,9 +28,10 @@
   .q { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
        padding: 16px 20px; margin-bottom: 16px; }
   /* A faint per-subject tint: the hue comes from a hash of the topic (subjectHue). */
-  .q[style*="--hue"] { background: hsl(var(--hue) 45% 97.5%); }
+  /* The outline is the card's own tint, a hair stronger, instead of a neutral gray. */
+  .q[style*="--hue"] { background: hsl(var(--hue) 45% 97.5%); border-color: hsl(var(--hue) 40% 91%); }
   @media (prefers-color-scheme: dark) {
-    .q[style*="--hue"] { background: hsl(var(--hue) 14% 14%); }
+    .q[style*="--hue"] { background: hsl(var(--hue) 14% 14%); border-color: hsl(var(--hue) 16% 20%); }
   }
   .q.new { animation: fadein .4s ease; }
   @keyframes fadein { from { opacity: 0; transform: translateY(6px); } }
@@ -41,9 +44,27 @@
   form { display: flex; gap: 8px; margin-top: 12px; }
   input { flex: 1; width: 0; min-width: 4em; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
           background: var(--bg); color: var(--ink); font: inherit; }
+  /* An application block: one row per item (label, answer box, mark), one Submit for all. */
+  form.items { display: grid; grid-template-columns: max-content minmax(6em, 1fr) 1.2em;
+               gap: 6px 10px; align-items: center; }
+  form.items .label > :first-child { margin: 0; }
+  form.items input { width: auto; padding: 5px 8px; }
+  form.items > button { grid-column: 1 / -1; justify-self: end; margin-top: 4px; }
+  .mark { font-weight: 600; text-align: center; }
+  .mark.full { color: var(--full); }
+  .mark.partial { color: var(--partial); }
+  .mark.none { color: var(--none); }
+  input.full { border-color: var(--full); }
+  input.partial { border-color: var(--partial); }
+  input.none { border-color: var(--none); }
+  .result { flex: 1; padding: 8px 0; overflow-wrap: anywhere; }
+  form.items .result { padding: 5px 0; }
+  .result .wrong { color: var(--none); }
+  .result .right { color: var(--full); font-weight: 600; }
   button { padding: 8px 16px; border: 0; border-radius: 6px;
            background: var(--accent); color: #fff; font: inherit; cursor: pointer; }
   button:disabled { opacity: .5; cursor: default; }
+  button.idk { background: var(--line); color: var(--ink); }
   .status { margin-top: 10px; }
   .status:empty { display: none; }
   .pending { color: var(--muted); font-style: italic; }
@@ -54,9 +75,10 @@
   .card .label { color: var(--ink); }
   .card .done { color: var(--full); }
   .card .failed { color: var(--none); }
-  .explainer:empty { display: none; }
-  .explainer { margin-top: 10px; }
-  .explainer video { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .game:empty { display: none; }
+  .game { margin-top: 12px; }
+  .game iframe { width: 100%; height: 360px; border: 1px solid var(--line); border-radius: 6px;
+                 display: block; background: transparent; color-scheme: normal; }
   .feedback p { display: inline; margin: 0; }
   .feedback.full { border-left: 3px solid var(--full); padding-left: 10px; }
   .feedback.partial { border-left: 3px solid var(--partial); padding-left: 10px; }
@@ -117,8 +139,8 @@
 const rendered = new Map();   // question id -> { el, sig }
 const THREADS = [1, 2, 3];
 
-function md(el, text) {
-  el.innerHTML = marked.parse(text || "");
+function md(el, text, inline = false) {
+  el.innerHTML = (inline ? marked.parseInline : marked.parse)(text || "");
   renderMathInElement(el, { delimiters: [
     { left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }],
     throwOnError: false });
@@ -137,38 +159,126 @@ function subjectHue(topic) {
   return (h >>> 0) % 360;
 }
 
+// An application question: several items under one prompt, answered and submitted together.
+const isBlock = q => Array.isArray(q.items);
+const answerInputs = el => [...el.querySelectorAll("input.answer")];
+
 function buildQuestion(q) {
   const el = document.createElement("section");
   el.className = "q new";
   el.innerHTML = `<div class="topic"></div>
                   <div class="prompt"></div>
-                  <form><input autocomplete="off"><button>Submit</button></form>
+                  <div class="game"></div>
+                  <form class="answer-form"><button>Submit</button></form>
                   <div class="status"></div>
-                  <div class="card"></div>
-                  <div class="explainer"></div>`;
+                  <div class="card"></div>`;
   el.querySelector(".topic").textContent = subjectName(q.topic);
   if (q.topic) el.style.setProperty("--hue", subjectHue(q.topic));
   md(el.querySelector(".prompt"), q.prompt);
-  el.querySelector("form").addEventListener("submit", e => { e.preventDefault(); submit(q, el); });
+  const form = el.querySelector("form");
+  const btn = form.querySelector("button");
+  const newInput = () => {
+    const input = document.createElement("input");
+    input.className = "answer";
+    input.autocomplete = "off";
+    input.addEventListener("input", () => syncButton(el));
+    return input;
+  };
+  if (isBlock(q)) {
+    form.classList.add("items");
+    q.items.forEach((item, i) => {
+      const label = document.createElement("label");
+      label.className = "label";
+      md(label, item.prompt, true);
+      const input = newInput();
+      input.id = `${q.id}-item${i}`;
+      label.htmlFor = input.id;
+      const mark = document.createElement("span");
+      mark.className = "mark";
+      form.insertBefore(label, btn);
+      form.insertBefore(input, btn);
+      form.insertBefore(mark, btn);
+    });
+    // Enter moves to the next box; Enter in the last box submits.
+    const inputs = answerInputs(el);
+    inputs.forEach((input, i) => input.addEventListener("keydown", e => {
+      if (e.key === "Enter" && i < inputs.length - 1) { e.preventDefault(); inputs[i + 1].focus(); }
+    }));
+  } else {
+    form.insertBefore(newInput(), btn);
+  }
+  form.addEventListener("submit", e => { e.preventDefault(); submit(q, el); });
+  syncButton(el);
   return el;
 }
 
+const IDK = "I don't know";
+
+// When every box is empty, "I don't know" replaces Submit; typing switches it back.
+function syncButton(el) {
+  const btn = el.querySelector("form.answer-form > button");
+  const empty = answerInputs(el).every(i => !i.value.trim());
+  btn.textContent = empty ? IDK : "Submit";
+  btn.classList.toggle("idk", empty);
+}
+
 async function submit(q, el) {
-  const answer = el.querySelector("input").value;
-  if (!answer.trim()) return;
-  const btn = el.querySelector("button");
+  const values = answerInputs(el).map(i => i.value.trim() || IDK);
+  const answer = isBlock(q) ? values : values[0];
+  const btn = el.querySelector("form.answer-form > button");
   btn.disabled = true;
   const res = await fetch("/submit", { method: "POST", body: JSON.stringify({ id: q.id, answer }) });
-  if (!res.ok) btn.disabled = false;
+  if (res.ok) btn.hidden = true;   // submitted: the button goes away
+  else btn.disabled = false;
   poll();
+}
+
+const MARKS = { full: "✓", partial: "½", none: "✗" };
+
+// Once graded, an answer box that didn't get full credit is replaced by the student's
+// answer struck through in red, followed by the correct answer in green.
+function showCorrection(input, given, credit, correct) {
+  input.nextElementSibling?.classList.contains("result") && input.nextElementSibling.remove();
+  input.hidden = false;
+  if (!credit || credit === "full" || correct == null || correct === "") return;
+  const result = document.createElement("span");
+  result.className = "result";
+  if (given && given !== IDK) {
+    const wrong = document.createElement("s");
+    wrong.className = "wrong";
+    wrong.textContent = given;
+    result.append(wrong, " ");
+  }
+  const right = document.createElement("span");
+  right.className = "right";
+  md(right, String(correct), true);
+  result.append(right);
+  input.hidden = true;
+  input.after(result);
 }
 
 function updateStatus(q, el, answer, asks = [], entry = {}) {
   if (!answer) return;
-  const input = el.querySelector("input");
-  if (!input.value) input.value = answer.answer;   // restore after a page reload
-  input.disabled = true;
-  el.querySelector("button").disabled = true;
+  const inputs = answerInputs(el);
+  const given = Array.isArray(answer.answer) ? answer.answer : [answer.answer];
+  inputs.forEach((input, i) => {
+    if (!input.value) input.value = given[i] ?? "";   // restore after a page reload
+    input.disabled = true;
+  });
+  syncButton(el);
+  el.querySelector("form.answer-form > button").hidden = true;
+  if (isBlock(q)) {
+    const marks = el.querySelectorAll("form.items .mark");
+    q.items.forEach((item, i) => {
+      const credit = MARKS[item.credit] ? item.credit : "";
+      inputs[i].className = `answer ${credit}`;
+      marks[i].className = `mark ${credit}`;
+      marks[i].textContent = MARKS[credit] || "";
+      showCorrection(inputs[i], given[i], credit, item.correct);
+    });
+  } else {
+    showCorrection(inputs[0], given[0], q.credit, q.correct);
+  }
 
   const status = el.querySelector(".status");
   if (!q.credit) {
@@ -279,15 +389,49 @@ function updateCard(q, el, card) {
   else note(card.summary).className = card.state === "done" ? "done" : "failed";
 }
 
-function updateExplainer(q, el, state) {
-  const box = el.querySelector(".explainer");
-  if (state === "rendering") box.innerHTML = `<div class="pending">Rendering animation…</div>`;
-  else if (state === "ok") box.innerHTML =
-    `<video src="/explainers/${encodeURIComponent(q.id)}.mp4" controls autoplay muted playsinline></video>`;
-  else box.innerHTML = "";   // none yet, or the render failed
+// A minigame the tutor wrote for this question, in a sandboxed frame: its code runs with an
+// opaque origin and no network, and talks to this page only through postMessage.
+const MAX_GAME_HEIGHT = 900;
+
+function updateGame(q, el, version) {
+  const box = el.querySelector(".game");
+  if (version === "dropped") {
+    box.innerHTML = "";   // failed twice; the question stands on its own
+  } else if (version) {
+    const frame = document.createElement("iframe");
+    frame.sandbox = "allow-scripts";
+    frame.title = "Minigame";
+    frame.src = `/games/${encodeURIComponent(q.id)}.html?v=${version}`;
+    frame.dataset.id = q.id;
+    frame.dataset.version = version;
+    box.replaceChildren(frame);
+  } else if (q.game && !q.credit) {
+    box.innerHTML = `<div class="pending">Building a minigame…</div>`;
+  } else {
+    box.innerHTML = "";
+  }
 }
 
-function render({ worksheet, answers, asks = [], explainers = {}, cards = {} }) {
+addEventListener("message", e => {
+  const frame = [...document.querySelectorAll(".game iframe")].find(f => f.contentWindow === e.source);
+  const msg = e.data;
+  if (!frame || !msg || msg.game !== true) return;
+  if (msg.type === "height") {
+    const h = Math.min(MAX_GAME_HEIGHT, Math.max(60, Number(msg.height) || 0));
+    frame.style.height = `${h + 2}px`;
+  } else if (msg.type === "error" || msg.type === "solved") {
+    fetch("/games/event", { method: "POST", body: JSON.stringify({
+      id: frame.dataset.id, version: frame.dataset.version, type: msg.type,
+      detail: String(msg.type === "error" ? msg.error : msg.detail).slice(0, 500) }) }).catch(() => {});
+  }
+});
+
+let firstRender = true;
+
+function render({ worksheet, answers, asks = [], cards = {}, games = {} }) {
+  // Stay pinned to the bottom (the current questions) unless the student scrolled up.
+  const root = document.documentElement;
+  const atBottom = firstRender || innerHeight + scrollY >= root.scrollHeight - 150;
   // Shown from page load until the tutor has posted its first question.
   document.getElementById("loading").hidden = (worksheet.questions || []).length > 0;
   const main = document.getElementById("questions");
@@ -309,7 +453,8 @@ function render({ worksheet, answers, asks = [], explainers = {}, cards = {} }) 
       container.appendChild(entry.el);
     }
     const mine = asks.filter(a => a.question_id === q.id);
-    const sig = JSON.stringify([answers[q.id], q.credit, q.feedback, mine, q.replies]);
+    const sig = JSON.stringify([answers[q.id], q.credit, q.correct, q.feedback, mine, q.replies,
+                                (q.items || []).map(i => [i.credit, i.correct])]);
     if (sig !== entry.sig) {
       entry.sig = sig;
       updateStatus(q, entry.el, answers[q.id], mine, entry);
@@ -319,11 +464,16 @@ function render({ worksheet, answers, asks = [], explainers = {}, cards = {} }) 
       entry.cardSig = cardSig;
       updateCard(q, entry.el, cards[q.id]);
     }
-    if (explainers[q.id] !== entry.explainer) {
-      entry.explainer = explainers[q.id];
-      updateExplainer(q, entry.el, entry.explainer);
+    const gameSig = JSON.stringify([games[q.id], !!q.game, !!q.credit]);
+    if (gameSig !== entry.gameSig) {
+      // Keep a running game when only the grade changes; reload only for a new version.
+      const running = entry.el.querySelector(".game iframe");
+      if (!(running && running.dataset.version === games[q.id])) updateGame(q, entry.el, games[q.id]);
+      entry.gameSig = gameSig;
     }
   }
+  if (worksheet.questions?.length) firstRender = false;
+  if (atBottom) scrollTo(0, root.scrollHeight);
 }
 
 async function poll() {
