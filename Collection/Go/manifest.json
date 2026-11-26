@@ -4,10 +4,21 @@
       "modelName": "Go Tsumego",
       "keyField": [
         "Board",
-        "ToPlay"
-      ],
-      "templateName": "Card 1"
+        "ToMove"
+      ]
     }
   },
-  "media": {}
+  "media": {
+    "_go.js": "media/_go.js",
+    "go_ja_kagigata.mp3": "media/go_ja_kagigata.mp3",
+    "go_ja_sumi_no_hachimokukei.mp3": "media/go_ja_sumi_no_hachimokukei.mp3",
+    "go_ja_sumi_no_itaroku.mp3": "media/go_ja_sumi_no_itaroku.mp3",
+    "go_ja_sumi_no_magari_yonmoku.mp3": "media/go_ja_sumi_no_magari_yonmoku.mp3",
+    "go_ja_ichigou_masu.mp3": "media/go_ja_ichigou_masu.mp3",
+    "go_ja_kushigata.mp3": "media/go_ja_kushigata.mp3",
+    "go_ja_mannenkou.mp3": "media/go_ja_mannenkou.mp3"
+  },
+  "build": [
+    "build.py"
+  ]
 }

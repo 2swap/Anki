@@ -12,6 +12,7 @@ import queue
 import random
 import re
 import signal
+import socket
 import subprocess
 import sys
 import threading
@@ -48,10 +49,10 @@ START_MESSAGE = (
     "Read those three subjects' notes, then write 3 questions to live/worksheet.json, "
     "one per thread: thread 1 on {}, thread 2 on {}, thread 3 on {} (the least-asked subjects). "
     "From now on, each message I send is one or more student submissions.\n\n"
-    "All subjects (notes/<subject>.md): {}."
+    "All subjects (notes/<subject>/notes.md): {}."
 )
 
-SWITCH_PROBABILITY = 0.15  # per submission; switches the subject of that question's thread
+SWITCH_EVERY = 10          # a thread switches subject after this many questions in a row on one
 MAX_SUGGESTION = 2000      # characters
 MAX_ASK = 1000             # characters
 # Question kinds: the share of application blocks among the last KIND_WINDOW questions is
@@ -84,8 +85,21 @@ def read_asks():
     return [json.loads(line) for line in ASKS.read_text().splitlines() if line.strip()]
 
 
+def lan_address():
+    """This machine's address on the local network, or None if there isn't one.
+
+    Connecting a UDP socket sends nothing; it only picks the outgoing interface."""
+    try:
+        with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+            s.connect(("10.255.255.255", 1))
+            return s.getsockname()[0]
+    except OSError:
+        return None
+
+
 def subjects():
-    return sorted(p.stem for p in NOTES.glob("*.md"))
+    """Every folder in notes/ with a notes.md (notes/dont_use/ has none at its top)."""
+    return sorted(p.parent.name for p in NOTES.glob("*/notes.md"))
 
 
 def read_counts():
@@ -113,7 +127,7 @@ def least_asked(exclude=(), n=1):
 def subject_decks(subject):
     """The decks named in backticks on the subject's **Anki deck:** line."""
     try:
-        text = (NOTES / f"{subject}.md").read_text()
+        text = (NOTES / subject / "notes.md").read_text()
     except OSError:
         return []
     line = re.search(r"^\*\*Anki deck:\*\*(.*)$", text, re.M)
@@ -131,6 +145,18 @@ def anki_misses(subject):
 def thread_topics(questions):
     """The current subject of each thread: the topic of its latest question."""
     return {q.get("thread"): q.get("topic") for q in questions}
+
+
+def subject_streak(questions, q):
+    """How many questions in a row q's thread has had on q's topic, up to and including q."""
+    streak = 0
+    for other in reversed(questions[:questions.index(q) + 1]):
+        if other.get("thread") != q.get("thread"):
+            continue
+        if other.get("topic") != q.get("topic"):
+            break
+        streak += 1
+    return streak
 
 
 def question_kind(q):
@@ -332,7 +358,7 @@ class Handler(BaseHTTPRequestHandler):
         message = {"submission": {"id": qid, "answer": answer}}
         if kind:
             message["next_kind"] = kind
-        if random.random() < SWITCH_PROBABILITY:
+        if q and subject_streak(questions, q) >= SWITCH_EVERY:
             # Load balancing: the thread moves to the least-asked subject that no
             # thread is on now.
             busy = set(thread_topics(questions).values())
@@ -356,7 +382,8 @@ if __name__ == "__main__":
         sys.exit(f"Anki isn't reachable (AnkiConnect at localhost:8765: {e}). "
                  "Open Anki and try again.")
     # Bind before wiping live/ so a failed start doesn't destroy a running session.
-    server = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
+    # All interfaces, so a phone on the same network can open the page too.
+    server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     LIVE.mkdir(exist_ok=True)
     WORKSHEET.write_text(json.dumps({"questions": []}, indent=2))
     ANSWERS.write_text("")
@@ -373,6 +400,8 @@ if __name__ == "__main__":
     threading.Thread(target=run_tutor, args=(tutor,), daemon=True).start()
     signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
     log(f"Worksheet at http://localhost:{PORT}")
+    if lan := lan_address():
+        log(f"On a phone on the same network: http://{lan}:{PORT}")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

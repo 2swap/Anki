@@ -91,19 +91,18 @@ pruning deletes notes missing from the repo.
 
 ### Decks with a build script
 
-Geography, Math, Group Theory, Minerals, Music, Standard Model and Export
-Portfolios generate their TSVs (and sometimes media and the manifest's media
-list), so edit the build script or its source data, never the generated TSV,
-and run `check` (which builds) to confirm. The others' TSVs are edited by hand.
+Geography, Go, Math, Group Theory, Minerals, Music and Standard Model generate
+their TSVs (and sometimes media and the manifest's media list), so edit the
+build script or its source data, never the generated TSV, and run `check`
+(which builds) to confirm. The others' TSVs are edited by hand.
 
 Generated files are git-ignored and not committed (see `.gitignore`): the TSVs
-of these decks, plus Music's mp3s, Export Portfolios' treemaps and Group
-Theory's Cayley tables in `media/`. A fresh clone has them only after a build,
-so don't use `--no-build` there (a deck with no TSV is skipped). Downloaded or
-hand-made media (Minerals' images, Geography's `geog.js`) are source and stay
-committed. The manifest's `media` map is rewritten by some builds but is
-committed, since the manifest also holds hand-written config. Music's build
-needs `lame` and numpy; Export Portfolios' needs Pillow and the Noto Sans fonts.
+of these decks, plus Music's mp3s and Group Theory's Cayley tables in `media/`.
+A fresh clone has them only after a build, so don't use `--no-build` there (a
+deck with no TSV is skipped). Downloaded or hand-made media (Minerals' images,
+Geography's `geog.js`) are source and stay committed. The manifest's `media`
+map is rewritten by some builds but is committed, since the manifest also holds
+hand-written config. Music's build needs `lame` and numpy.
 
 ## Schema changes force a full sync
 
@@ -123,8 +122,19 @@ how Standard Model once got a separate Decay type, merged back 2026-11).
 
 - **Chemicals:** `python3 draw_structure.py "Name" "SMILES"` draws a new
   structure in the deck's style (RDKit) and prints the TSV row to add.
-- **Go:** `go_tsumego.py check|add spec.json` verifies corner life-and-death
-  problems by exhaustive search (with `go_search.c`) before they become cards.
+- **Go:** every note is transcribed from Sensei's Library, never solved by
+  program. Save a page into `~/carpenter/` ("Web page, complete"), run
+  `python3 Data/extract.py` to decode its diagrams into `Data/sldata.json`
+  (positions from the page's board data, move numbers and letters read from the
+  diagram images via `Data/glyphs.json`), then add notes to `notes.py`. A note
+  names its base diagram and its lines as numbered diagrams (`S(page, n)`,
+  with `at={5: 'W6'}` for "5 at 6"); `build.py` replays every line with
+  capture and ko rules and checks it against the position its source diagram
+  shows. Lines hold only moves the source endorses for the side the person
+  plays; the computer's side may include the mistakes the source discusses.
+  Each note has two cards: "Determine status" and "Play out variation"
+  (shared script `media/_go.js`). `go_tsumego.py`/`go_search.c`, the old
+  exhaustive solver, are no longer used by the deck.
 - **Geography:** source data is `Data/<folder>/` (map JS + pronunciation mp3s);
   `AUDIO_CREDITS.tsv` credits every recording and marks AI voices;
   `build_tiles.py` regenerates the git-ignored Blue Marble tiles in `bluemarble/`.

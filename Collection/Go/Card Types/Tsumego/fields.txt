@@ -1,6 +1,11 @@
+Title
 Board
 Edges
-ToPlay
-Solution
+ToMove
+Player
+Status
 Prompt
+Solution
 Notes
+Source
+Japanese

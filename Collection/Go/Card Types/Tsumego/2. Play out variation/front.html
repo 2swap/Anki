@@ -1,0 +1,19 @@
+<script type="text/plain" id="go-board">{{Board}}</script>
+<script type="text/plain" id="go-edges">{{Edges}}</script>
+<script type="text/plain" id="go-tomove">{{ToMove}}</script>
+<script type="text/plain" id="go-player">{{Player}}</script>
+<script type="text/plain" id="go-prompt">{{Prompt}}</script>
+<script type="text/plain" id="go-solution">{{Solution}}</script>
+<div class="go-wrap"><canvas id="go-canvas"></canvas></div>
+<div id="go-text" class="go-text"></div>
+<div id="go-controls" class="go-controls"></div>
+<script>
+(function () {
+    var run = function () { GoCard.init('play'); };
+    if (window.GoCard) { run(); return; }
+    var s = document.createElement('script');
+    s.src = '_go.js';
+    s.onload = run;
+    document.body.appendChild(s);
+})();
+</script>

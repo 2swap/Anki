@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Worksheet</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -29,9 +30,9 @@
        padding: 16px 20px; margin-bottom: 16px; }
   /* A faint per-subject tint: the hue comes from a hash of the topic (subjectHue). */
   /* The outline is the card's own tint, a hair stronger, instead of a neutral gray. */
-  .q[style*="--hue"] { background: hsl(var(--hue) 45% 97.5%); border-color: hsl(var(--hue) 40% 91%); }
+  .q[style*="--hue"] { background: hsl(var(--hue) 55% 96.25%); border-color: hsl(var(--hue) 45% 86.5%); }
   @media (prefers-color-scheme: dark) {
-    .q[style*="--hue"] { background: hsl(var(--hue) 14% 14%); border-color: hsl(var(--hue) 16% 20%); }
+    .q[style*="--hue"] { background: hsl(var(--hue) 21% 14%); border-color: hsl(var(--hue) 24% 21%); }
   }
   .q.new { animation: fadein .4s ease; }
   @keyframes fadein { from { opacity: 0; transform: translateY(6px); } }
@@ -44,12 +45,19 @@
   form { display: flex; gap: 8px; margin-top: 12px; }
   input { flex: 1; width: 0; min-width: 4em; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px;
           background: var(--bg); color: var(--ink); font: inherit; }
-  /* An application block: one row per item (label, answer box, mark), one Submit for all. */
-  form.items { display: grid; grid-template-columns: max-content minmax(6em, 1fr) 1.2em;
+  /* An application block: one row per item (label, answer box, mark), one Submit for all.
+     Labels wrap past 60% of the width, so a long label never widens its whole column. */
+  form.items { display: grid; grid-template-columns: fit-content(60%) minmax(6em, 1fr) 1.2em;
                gap: 6px 10px; align-items: center; }
   form.items .label > :first-child { margin: 0; }
   form.items input { width: auto; padding: 5px 8px; }
   form.items > button { grid-column: 1 / -1; justify-self: end; margin-top: 4px; }
+  /* A rule between items, so a wrapped correction is clearly tied to its own item. */
+  form.items .sep { grid-column: 1 / -1; border-top: 1px solid var(--line); }
+  .q[style*="--hue"] form.items .sep { border-color: hsl(var(--hue) 30% 85%); }
+  @media (prefers-color-scheme: dark) {
+    .q[style*="--hue"] form.items .sep { border-color: hsl(var(--hue) 14% 26%); }
+  }
   .mark { font-weight: 600; text-align: center; }
   .mark.full { color: var(--full); }
   .mark.partial { color: var(--partial); }
@@ -195,6 +203,11 @@ function buildQuestion(q) {
       label.htmlFor = input.id;
       const mark = document.createElement("span");
       mark.className = "mark";
+      if (i > 0) {
+        const sep = document.createElement("div");
+        sep.className = "sep";
+        form.insertBefore(sep, btn);
+      }
       form.insertBefore(label, btn);
       form.insertBefore(input, btn);
       form.insertBefore(mark, btn);

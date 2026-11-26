@@ -5,4 +5,13 @@
     color: white;
     background-color: black;
 }
-.notes { font-size: 18px; margin-top: 8px; }
+.go-wrap canvas { max-width: 100%; height: auto; }
+.go-text { min-height: 1.4em; margin: 8px 0; font-weight: bold; }
+.go-title { font-size: 34px; font-weight: bold; margin: 4px 0 6px; }
+.go-status { font-size: 22px; color: #ffd27a; margin-bottom: 10px; }
+.go-controls button { font-size: 16px; margin: 0 4px; padding: 4px 12px; }
+.go-notes { font-size: 18px; margin: 10px auto 0; max-width: 40em; }
+.go-source { font-size: 14px; margin-top: 10px; color: #aaa; }
+.go-source a { color: #8cf; }
+.go-japanese { font-size: 24px; margin-bottom: 8px; }
+.go-japanese rt { font-size: 13px; }
